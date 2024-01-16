@@ -154,11 +154,16 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../README.html">
-                    ML book
+                    ML Book
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to ML</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../intro/intro_to_ML.html">Overview</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../intro/definition.html">Definitions of ML</a></li>
@@ -226,6 +231,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../unsupervised_learning/unsupervised.html">Unsupervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/pca.html">Principal components analysis (PCA)</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/clustering_metrics.html">Clustering metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/k_means.html">K-means</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/hierarchic_clustering.html">Hierarchical Clustering</a></li>
@@ -236,8 +242,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../mlp/mlp.html">Multilayer perceptron (MLP)</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/layers.html">Layers of MLP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Forward and backward pass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/activations.html">Activation functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Training of MLP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/backprop.html">Back propagation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/weight_init.html">Weights initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/regularization.html">Regularization in MLP</a></li>
@@ -269,8 +275,8 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rl/RL.html">Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../rl/basics.html">RL basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rl/multiarmed_bandits.html">Multiarmed bandits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rl/mdp.html">Markov decision process (MDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/multiarmed_bandits.html">Multi-armed bandits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/mdp.html">Markov Decision Process (MDP)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rl/q_learning.html">Q-learning</a></li>
 </ul>
 </li>
@@ -664,7 +670,7 @@ Regression trees are a popular machine learning technique for modeling relations
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train R-score: 1.0
-Test R-score: 0.6348005191671737
+Test R-score: 0.7694344425542772
 </pre></div>
 </div>
 </div>
@@ -677,7 +683,7 @@ Test R-score: 0.6348005191671737
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/22dbec96fd6e611de15f8180d2dd714522dfb17cfde724ffc173976bec6351db.png" src="../_images/22dbec96fd6e611de15f8180d2dd714522dfb17cfde724ffc173976bec6351db.png" />
+<img alt="../_images/536bd61f9f33bae615f7a9ea9130ccfb98d60e6ea1d012f006bd2f815473d0aa.png" src="../_images/536bd61f9f33bae615f7a9ea9130ccfb98d60e6ea1d012f006bd2f815473d0aa.png" />
 </div>
 </div>
 <p>Let’s limit its depth:</p>
@@ -691,8 +697,8 @@ Test R-score: 0.6348005191671737
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train R-score: 0.9228664496635549
-Test R-score: 0.6392755026448721
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train R-score: 0.9196417570873037
+Test R-score: 0.7888027508821464
 </pre></div>
 </div>
 </div>
@@ -704,7 +710,7 @@ Test R-score: 0.6392755026448721
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/997747ee45f1f467984989850bd747a3926d2d8ef2f878c0ecddbeb29a3f272b.png" src="../_images/997747ee45f1f467984989850bd747a3926d2d8ef2f878c0ecddbeb29a3f272b.png" />
+<img alt="../_images/f2ae2a252ff3d223b9dc8ff112a6f19828aa5baf0644f4a62ca66674a07e829a.png" src="../_images/f2ae2a252ff3d223b9dc8ff112a6f19828aa5baf0644f4a62ca66674a07e829a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -721,7 +727,7 @@ Test R-score: 0.6392755026448721
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/96f9b99bcdee2e5e15317df65348d44cfb435a3b11e37d931357a6fa4f84c1ed.svg" src="../_images/96f9b99bcdee2e5e15317df65348d44cfb435a3b11e37d931357a6fa4f84c1ed.svg" /></div>
+<img alt="../_images/96a5bd2d16f18c4b95ba7a98da5f1b7644b58b8df2095d1c39871cc95a60e018.svg" src="../_images/96a5bd2d16f18c4b95ba7a98da5f1b7644b58b8df2095d1c39871cc95a60e018.svg" /></div>
 </div>
 </section>
 </section>

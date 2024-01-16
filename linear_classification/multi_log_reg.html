@@ -156,11 +156,16 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../README.html">
-                    ML book
+                    ML Book
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to ML</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../intro/intro_to_ML.html">Overview</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../intro/definition.html">Definitions of ML</a></li>
@@ -228,6 +233,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../unsupervised_learning/unsupervised.html">Unsupervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/pca.html">Principal components analysis (PCA)</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/clustering_metrics.html">Clustering metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/k_means.html">K-means</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/hierarchic_clustering.html">Hierarchical Clustering</a></li>
@@ -238,8 +244,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../mlp/mlp.html">Multilayer perceptron (MLP)</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/layers.html">Layers of MLP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Forward and backward pass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/activations.html">Activation functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Training of MLP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/backprop.html">Back propagation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/weight_init.html">Weights initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/regularization.html">Regularization in MLP</a></li>
@@ -271,8 +277,8 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rl/RL.html">Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../rl/basics.html">RL basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rl/multiarmed_bandits.html">Multiarmed bandits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rl/mdp.html">Markov decision process (MDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/multiarmed_bandits.html">Multi-armed bandits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/mdp.html">Markov Decision Process (MDP)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rl/q_learning.html">Q-learning</a></li>
 </ul>
 </li>
@@ -605,7 +611,7 @@ k = 1, \ldots, K.
 <p>Visualize some random samples:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/bbdf73c313fe4f0479e5a5cd9b47ad88f13969879e482af563b5904bcbf6f71b.svg" src="../_images/bbdf73c313fe4f0479e5a5cd9b47ad88f13969879e482af563b5904bcbf6f71b.svg" /></div>
+<img alt="../_images/3e85af0331d97b17c8f2ccb1f55340a240163050efe2cc6b7d3806306672bd09.svg" src="../_images/3e85af0331d97b17c8f2ccb1f55340a240163050efe2cc6b7d3806306672bd09.svg" /></div>
 </div>
 </section>
 <section id="splitting-into-train-and-test">
@@ -650,8 +656,8 @@ k = 1, \ldots, K.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 36.3 s, sys: 657 ms, total: 37 s
-Wall time: 20.7 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 40.2 s, sys: 1.14 s, total: 41.3 s
+Wall time: 26.1 s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/sklearn/linear_model/_logistic.py:460: ConvergenceWarning: lbfgs failed to converge (status=1):
@@ -727,7 +733,7 @@ Please also refer to the documentation for alternative solver options:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/dbaf58a61ab38c7033eb231fbdd445b738123bbad77ee90e8fe1b12f7935675d.svg" src="../_images/dbaf58a61ab38c7033eb231fbdd445b738123bbad77ee90e8fe1b12f7935675d.svg" /></div>
+<img alt="../_images/f89ed3e63ea182119744fa52bd428c9f35aeefb31a720d6a794ad95eed274e97.svg" src="../_images/f89ed3e63ea182119744fa52bd428c9f35aeefb31a720d6a794ad95eed274e97.svg" /></div>
 </div>
 <p>Plot some samples with predictions and ground truths:</p>
 <div class="cell docutils container">
@@ -737,7 +743,7 @@ Please also refer to the documentation for alternative solver options:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f144d8593aa1669eeefaa229e866b9970e01e8718dcaf110d835a3ccb2c72027.svg" src="../_images/f144d8593aa1669eeefaa229e866b9970e01e8718dcaf110d835a3ccb2c72027.svg" /></div>
+<img alt="../_images/5e0819bb8c7557f05d03aa3f04c828828849316d4411928e9ae069ee83b31d09.svg" src="../_images/5e0819bb8c7557f05d03aa3f04c828828849316d4411928e9ae069ee83b31d09.svg" /></div>
 </div>
 </section>
 </section>

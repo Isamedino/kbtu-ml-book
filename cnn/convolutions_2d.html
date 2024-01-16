@@ -156,11 +156,16 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../README.html">
-                    ML book
+                    ML Book
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to ML</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../intro/intro_to_ML.html">Overview</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../intro/definition.html">Definitions of ML</a></li>
@@ -239,8 +244,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../mlp/mlp.html">Multilayer perceptron (MLP)</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/layers.html">Layers of MLP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Forward and backward pass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/activations.html">Activation functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Training of MLP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/backprop.html">Back propagation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/weight_init.html">Weights initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/regularization.html">Regularization in MLP</a></li>
@@ -787,7 +792,7 @@ Valid:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b18ed1c81672caa0621650710ec2ec67f7e84320931ccce3a74ee6055f7b42c4.svg" src="../_images/b18ed1c81672caa0621650710ec2ec67f7e84320931ccce3a74ee6055f7b42c4.svg" /></div>
+<img alt="../_images/b6c42d1bba8c551e6e613bda5f438f1b0a644f6eccd041c1edc25e61b3bcebef.svg" src="../_images/b6c42d1bba8c551e6e613bda5f438f1b0a644f6eccd041c1edc25e61b3bcebef.svg" /></div>
 </div>
 <p>The shape is <span class="math notranslate nohighlight">\(H\times W = 200\times 320\)</span>:</p>
 <div class="cell docutils container">
@@ -824,7 +829,7 @@ averages the values of each pixel with its neigbours, so the image becomes blurr
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/384c17ba60b79af648c9f5c707e48d6d6201eee7b01729f4f3cda82bc40772a5.svg" src="../_images/384c17ba60b79af648c9f5c707e48d6d6201eee7b01729f4f3cda82bc40772a5.svg" /></div>
+<img alt="../_images/7d9bde7e8401ef06c39b8a3df7c9f16ba5fd65245ce2eda6afb5d7f2899a0882.svg" src="../_images/7d9bde7e8401ef06c39b8a3df7c9f16ba5fd65245ce2eda6afb5d7f2899a0882.svg" /></div>
 </div>
 <p><span class="math notranslate nohighlight">\(n = 8\)</span>:</p>
 <div class="cell docutils container">
@@ -834,7 +839,7 @@ averages the values of each pixel with its neigbours, so the image becomes blurr
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0809a9e806029496d94bc12d66bf15d80a4a6929d274dfe7802a8d9712a527af.svg" src="../_images/0809a9e806029496d94bc12d66bf15d80a4a6929d274dfe7802a8d9712a527af.svg" /></div>
+<img alt="../_images/4cda221f873fd2f69851736b6de4ce971a637770294b0bcc7e64ca73ba3a4b06.svg" src="../_images/4cda221f873fd2f69851736b6de4ce971a637770294b0bcc7e64ca73ba3a4b06.svg" /></div>
 </div>
 <p>Now what if we convolve the image with kernel</p>
 <div class="math notranslate nohighlight">
@@ -862,7 +867,7 @@ averages the values of each pixel with its neigbours, so the image becomes blurr
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4492ed12036d6218b7d9568e08d7120930a05deb116ce55d65604172312150bf.svg" src="../_images/4492ed12036d6218b7d9568e08d7120930a05deb116ce55d65604172312150bf.svg" /></div>
+<img alt="../_images/7fca6f3b31861a37645930268598409b0e161c39deba5284f858150ab0adf122.svg" src="../_images/7fca6f3b31861a37645930268598409b0e161c39deba5284f858150ab0adf122.svg" /></div>
 </details>
 </div>
 </section>

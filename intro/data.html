@@ -156,11 +156,16 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../README.html">
-                    ML book
+                    ML Book
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to ML</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro_to_ML.html">Overview</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="definition.html">Definitions of ML</a></li>
@@ -228,6 +233,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../unsupervised_learning/unsupervised.html">Unsupervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/pca.html">Principal components analysis (PCA)</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/clustering_metrics.html">Clustering metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/k_means.html">K-means</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/hierarchic_clustering.html">Hierarchical Clustering</a></li>
@@ -238,8 +244,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../mlp/mlp.html">Multilayer perceptron (MLP)</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/layers.html">Layers of MLP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Forward and backward pass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/activations.html">Activation functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Training of MLP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/backprop.html">Back propagation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/weight_init.html">Weights initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/regularization.html">Regularization in MLP</a></li>
@@ -271,8 +277,8 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rl/RL.html">Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../rl/basics.html">RL basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rl/multiarmed_bandits.html">Multiarmed bandits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rl/mdp.html">Markov decision process (MDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/multiarmed_bandits.html">Multi-armed bandits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/mdp.html">Markov Decision Process (MDP)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rl/q_learning.html">Q-learning</a></li>
 </ul>
 </li>
@@ -488,8 +494,6 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-processing">Data processing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">Data types</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-continuous-data">Numerical continuous data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-discrete-data">Numerical discrete data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-nominal-variables">Categorical nominal variables</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-ordinal-variables">Categorical ordinal variables</a></li>
 </ul>
@@ -502,6 +506,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-encoding">One-hot encoding</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-matrix">Feature matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
             </nav>
         </div>
@@ -540,30 +545,41 @@ document.write(`
 </section>
 <section id="data-types">
 <h2>Data types<a class="headerlink" href="#data-types" title="Permalink to this heading">#</a></h2>
-<a class="bg-primary mb-1 reference internal image-reference" href="https://i.ytimg.com/vi/7bsNWq2A5gI/hqdefault.jpg"><img alt="data-types" class="bg-primary mb-1 align-center" src="https://i.ytimg.com/vi/7bsNWq2A5gI/hqdefault.jpg" style="width: 500px;" /></a>
-<section id="numerical-continuous-data">
-<h3>Numerical continuous data<a class="headerlink" href="#numerical-continuous-data" title="Permalink to this heading">#</a></h3>
-<p>Continuous data can take on any real<a class="footnote-reference brackets" href="#real" id="id1">1</a> value within a range and often involves measurements. For instance:</p>
+<!--
+```{image} https://i.ytimg.com/vi/7bsNWq2A5gI/hqdefault.jpg
+:alt: data-types
+:class: bg-primary mb-1
+:width: 500px
+:align: center
+```
+-->
 <ul class="simple">
-<li><p>height</p></li>
-<li><p>temperature</p></li>
-<li><p>distance</p></li>
-<li><p>time</p></li>
+<li><p>numerical (quantitative)</p></li>
+<li><p>categorical (qualitative)</p></li>
 </ul>
-</section>
-<section id="numerical-discrete-data">
-<h3>Numerical discrete data<a class="headerlink" href="#numerical-discrete-data" title="Permalink to this heading">#</a></h3>
-<p>Discrete data consists of distinct, separate values and often involves counts or categorizations, e.g.</p>
-<ul class="simple">
-<li><p>number of children</p></li>
-<li><p>shoe size</p></li>
-<li><p>test scores</p></li>
-</ul>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>The distiction between continuous and discrete data can be occasionally ambiguous. For example, <code class="docutils literal notranslate"><span class="pre">age</span></code> in years probably should be considered as a discrete variable. However, if we allow fractional ages, e.g. <span class="math notranslate nohighlight">\(30.2\)</span> years, it becomes a continuous variable.</p>
-</div>
-</section>
+<p>Categorical data in turn are divided into <strong>nominal</strong> and <strong>ordinal</strong>.</p>
+<!--
+### Numerical continuous data
+
+Continuous data can take on any real[^real] value within a range and often involves measurements. For instance:
+
+* height
+* temperature
+* distance
+* time
+
+### Numerical discrete data
+
+Discrete data consists of distinct, separate values and often involves counts or categorizations, e.g.
+
+* number of children
+* shoe size
+* test scores
+
+```{important} 
+The distiction between continuous and discrete data can be occasionally ambiguous. For example, `age` in years probably should be considered as a discrete variable. However, if we allow fractional ages, e.g. $30.2$ years, it becomes a continuous variable.
+```
+-->
 <section id="categorical-nominal-variables">
 <h3>Categorical nominal variables<a class="headerlink" href="#categorical-nominal-variables" title="Permalink to this heading">#</a></h3>
 <p>Nominal data consists of categories with no inherent order or ranking. For example:</p>
@@ -586,13 +602,13 @@ document.write(`
 <p><span style="display:none" id="variable_type">W3sicXVlc3Rpb24iOiAiU2VsZWN0IGFsbCBjYXRlZ29yaWNhbCBub21pbmFsIGRhdGEiLCAidHlwZSI6ICJtYW55X2Nob2ljZSIsICJhbnN3ZXJzIjogW3siYW5zd2VyIjogIk1vbnRobHkgbG9hbiBwYXltZW50cyIsICJjb3JyZWN0IjogZmFsc2UsICJmZWVkYmFjayI6ICJUaGlzIGlzIGEgbnVtZXJpY2FsIGNvbnRpbnVvdXMgdmFyaWFibGUifSwgeyJhbnN3ZXIiOiAiQ2l0aWVzIGluIEV1cm9wZSB3aXRoIHBvcHVsYXRpb24gbW9yZSB0aGFuIDFNIiwgImNvcnJlY3QiOiB0cnVlLCAiZmVlZGJhY2siOiAiUXVpdGUgcmlnaHQhIENpdGllcyBhcmUgY2F0ZWdvcmljYWwgdmFyaWFibGVzLCBhbmQgdGhlcmUgaXMgbm8gbmF0dXJhbCBvcmRlcmluZyBvbiB0aGVtIn0sIHsiYW5zd2VyIjogIkNsb3RoaW5nIHNpemVzIChTLCBNLCBMLCBYTCwgZXRjLikiLCAiY29ycmVjdCI6IGZhbHNlLCAiZmVlZGJhY2siOiAiVGhpcyBpcyBhIGNhdGVnb3JpY2FsIG9yZGluYWwgdmFyaWFibGUifSwgeyJhbnN3ZXIiOiAiUGxhbmV0cyBpbiB0aGUgU29sYXIgc3lzdGVtIiwgImNvcnJlY3QiOiB0cnVlLCAiZmVlZGJhY2siOiAiWWVzISBUaGlzIGlzIGEgY2F0ZWdvcmljYWwgbm9taW5hbCB2YXJpYWJsZSJ9LCB7ImFuc3dlciI6ICJOdW1iZXIgb2YgY2FycyBpbiBhIHBhcmtpbmcgbG90IiwgImNvcnJlY3QiOiBmYWxzZSwgImZlZWRiYWNrIjogIlRoaXMgaXMgYSBudW1lcmljYWwgZGlzY3JldGUgdmFyaWFibGUifSwgeyJhbnN3ZXIiOiAiY2hlbWljYWwgZWxlbWVudHMgaW4gdGhlIHBlcmlvZGljIHRhYmxlIiwgImNvcnJlY3QiOiB0cnVlLCAiZmVlZGJhY2siOiAiVGhpcyBpcyBhIHRyaWNreSBvbmU6IGRvZXMgdGhlIG51bWJlciBvZiBhbiBlbGVtZW50IG1ha2UgaXQgYW4gb3JkaW5hbCB2YXJpYWJsZSBvciBub3Q/In1dfV0=</span></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="TEzpVrUvZEgT" data-shufflequestions="False"
+<div class="output text_html"><div id="wCVnLMzFHKad" data-shufflequestions="False"
                data-shuffleanswers="True"
                data-preserveresponses="false"
                data-numquestions="1000000"
                data-maxwidth="600"
                style="border-radius: 10px; text-align: left"> <style>
-#TEzpVrUvZEgT {
+#wCVnLMzFHKad {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -763,14 +779,14 @@ document.write(`
     }
 }
 </style></div><script type="application/javascript">var element=document.getElementById("variable_type");
-            var questionsTEzpVrUvZEgT;
+            var questionswCVnLMzFHKad;
             try {
-               questionsTEzpVrUvZEgT=JSON.parse(window.atob(element.innerHTML));
+               questionswCVnLMzFHKad=JSON.parse(window.atob(element.innerHTML));
             } catch(err) {
                console.log("Fell into catch");
-               questionsTEzpVrUvZEgT = JSON.parse(element.innerHTML);
+               questionswCVnLMzFHKad = JSON.parse(element.innerHTML);
             }
-            console.log(questionsTEzpVrUvZEgT);;
+            console.log(questionswCVnLMzFHKad);;
     // Make a random ID
 function makeid(length) {
     var result = [];
@@ -1519,8 +1535,8 @@ if (typeof version == 'undefined') {
            Someone more knowledgeable could make this better ;-) */
 
         function try_show() {
-          if(document.getElementById("TEzpVrUvZEgT")) {
-            show_questions(questionsTEzpVrUvZEgT,  TEzpVrUvZEgT); 
+          if(document.getElementById("wCVnLMzFHKad")) {
+            show_questions(questionswCVnLMzFHKad,  wCVnLMzFHKad); 
           } else {
              setTimeout(try_show, 200);
           }
@@ -1529,8 +1545,8 @@ if (typeof version == 'undefined') {
         {
         // console.log(element);
 
-        //console.log("TEzpVrUvZEgT");
-        // console.log(document.getElementById("TEzpVrUvZEgT"));
+        //console.log("wCVnLMzFHKad");
+        // console.log(document.getElementById("wCVnLMzFHKad"));
 
         try_show();
         }
@@ -1552,7 +1568,7 @@ if (typeof version == 'undefined') {
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
 <span class="n">iris_data</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">iris_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+<span class="n">iris_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">iris_data</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1579,6 +1595,7 @@ if (typeof version == 'undefined') {
       <th>sepal width (cm)</th>
       <th>petal length (cm)</th>
       <th>petal width (cm)</th>
+      <th>target</th>
     </tr>
   </thead>
   <tbody>
@@ -1588,6 +1605,7 @@ if (typeof version == 'undefined') {
       <td>3.5</td>
       <td>1.4</td>
       <td>0.2</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1</th>
@@ -1595,6 +1613,7 @@ if (typeof version == 'undefined') {
       <td>3.0</td>
       <td>1.4</td>
       <td>0.2</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>2</th>
@@ -1602,6 +1621,7 @@ if (typeof version == 'undefined') {
       <td>3.2</td>
       <td>1.3</td>
       <td>0.2</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1609,6 +1629,7 @@ if (typeof version == 'undefined') {
       <td>3.1</td>
       <td>1.5</td>
       <td>0.2</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1616,9 +1637,11 @@ if (typeof version == 'undefined') {
       <td>3.6</td>
       <td>1.4</td>
       <td>0.2</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>...</th>
+      <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -1630,6 +1653,7 @@ if (typeof version == 'undefined') {
       <td>3.0</td>
       <td>5.2</td>
       <td>2.3</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>146</th>
@@ -1637,6 +1661,7 @@ if (typeof version == 'undefined') {
       <td>2.5</td>
       <td>5.0</td>
       <td>1.9</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>147</th>
@@ -1644,6 +1669,7 @@ if (typeof version == 'undefined') {
       <td>3.0</td>
       <td>5.2</td>
       <td>2.0</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>148</th>
@@ -1651,6 +1677,7 @@ if (typeof version == 'undefined') {
       <td>3.4</td>
       <td>5.4</td>
       <td>2.3</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>149</th>
@@ -1658,13 +1685,14 @@ if (typeof version == 'undefined') {
       <td>3.0</td>
       <td>5.1</td>
       <td>1.8</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
-<p>150 rows × 4 columns</p>
+<p>150 rows × 5 columns</p>
 </div></div></div>
 </div>
-<p>This is a <strong>tabular</strong> dataset. The targets are encoded by digits <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(1\)</span>, <span class="math notranslate nohighlight">\(2\)</span>:</p>
+<p>This is a <strong>tabular</strong> dataset. The last column is <strong>target</strong> variable which we want to predict. Here it is encoded by digits <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(1\)</span>, <span class="math notranslate nohighlight">\(2\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_data</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -1694,7 +1722,7 @@ Name: count, dtype: int64
 </div>
 </div>
 </div>
-<p>Here is how they look like in the wild (figure 1.1 from <span id="id2">[<a class="reference internal" href="../bibliography.html#id3" title="Kevin P. Murphy. Probabilistic Machine Learning: An introduction. MIT Press, 2022. URL: probml.ai.">Murphy, 2022</a>]</span>)</p>
+<p>Here is how they look like in the wild (figure 1.1 from <span id="id1">[<a class="reference internal" href="../bibliography.html#id3" title="Kevin P. Murphy. Probabilistic Machine Learning: An introduction. MIT Press, 2022. URL: probml.ai.">Murphy, 2022</a>]</span>)</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-center head"><p>setosa</p></th>
@@ -1709,90 +1737,156 @@ Name: count, dtype: int64
 </tr>
 </tbody>
 </table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In machine learning the range of categorical variables with <span class="math notranslate nohighlight">\(K\)</span> different values is usually denoted as <span class="math notranslate nohighlight">\(\{0, 1, \ldots, K-1\}\)</span> or <span class="math notranslate nohighlight">\(\{1, \ldots, K\}\)</span>.</p>
+</div>
 </section>
 <section id="bikeshare-dataset">
 <h3>Bikeshare dataset<a class="headerlink" href="#bikeshare-dataset" title="Permalink to this heading">#</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>To install Python library <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> (aka <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>), run the command <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">scikit-learn</span></code></p>
+<p>To install Python library <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, run the command <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">scikit-learn</span></code></p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">auto_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../ISLP_datsets/Bikeshare.csv&quot;</span><span class="p">)</span>
-<span class="n">auto_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Unnamed: 0&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">auto_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">bike_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../ISLP_datasets/Bikeshare.csv&quot;</span><span class="p">)</span>
+<span class="n">bike_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Unnamed: 0&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">bike_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">auto_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../ISLP_datsets/Bikeshare.csv&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">auto_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Unnamed: 0&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">auto_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py:912,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
-<span class="g g-Whitespace">    </span><span class="mi">899</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">900</span>     <span class="n">dialect</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">901</span>     <span class="n">delimiter</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">908</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">909</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">910</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">912</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py:577,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">574</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">576</span> <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">577</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">579</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">580</span>     <span class="k">return</span> <span class="n">parser</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1407,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1404</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1406</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">-&gt; </span><span class="mi">1407</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1661,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1659</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1660</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1661</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1662</span>     <span class="n">f</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1663</span>     <span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1664</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1665</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1666</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1667</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1668</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1669</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1670</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1671</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1672</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/common.py:859,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">854</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">855</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
-<span class="g g-Whitespace">    </span><span class="mi">856</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
-<span class="g g-Whitespace">    </span><span class="mi">857</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">858</span>         <span class="c1"># Encoding</span>
-<span class="ne">--&gt; </span><span class="mi">859</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">860</span>             <span class="n">handle</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">861</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">862</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">863</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">864</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">865</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">866</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">867</span>         <span class="c1"># Binary mode</span>
-<span class="g g-Whitespace">    </span><span class="mi">868</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../ISLP_datsets/Bikeshare.csv&#39;
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>season</th>
+      <th>mnth</th>
+      <th>day</th>
+      <th>hr</th>
+      <th>holiday</th>
+      <th>weekday</th>
+      <th>workingday</th>
+      <th>weathersit</th>
+      <th>temp</th>
+      <th>atemp</th>
+      <th>hum</th>
+      <th>windspeed</th>
+      <th>casual</th>
+      <th>registered</th>
+      <th>bikers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Jan</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>clear</td>
+      <td>0.24</td>
+      <td>0.2879</td>
+      <td>0.81</td>
+      <td>0.0</td>
+      <td>3</td>
+      <td>13</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Jan</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>clear</td>
+      <td>0.22</td>
+      <td>0.2727</td>
+      <td>0.80</td>
+      <td>0.0</td>
+      <td>8</td>
+      <td>32</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>Jan</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>clear</td>
+      <td>0.22</td>
+      <td>0.2727</td>
+      <td>0.80</td>
+      <td>0.0</td>
+      <td>5</td>
+      <td>27</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>Jan</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>clear</td>
+      <td>0.24</td>
+      <td>0.2879</td>
+      <td>0.75</td>
+      <td>0.0</td>
+      <td>3</td>
+      <td>10</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>Jan</td>
+      <td>1</td>
+      <td>4</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>clear</td>
+      <td>0.24</td>
+      <td>0.2879</td>
+      <td>0.75</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p><strong>Q.</strong> Which features are categorical and which are numeric?</p>
 </section>
@@ -1833,40 +1927,129 @@ Name: count, dtype: int64
     (\delta_1, \ldots, \delta_K) \in \{0, 1\}^K, \quad \sum\limits_{k=1}^K \delta _k = 1.
 \]</div>
 <p>Thus each categorical variable, which takes <span class="math notranslate nohighlight">\(K\)</span> different values, is converted to <span class="math notranslate nohighlight">\(K\)</span> numeric variables.</p>
+<p>For example, consider feature <code class="docutils literal notranslate"><span class="pre">wheathersit</span></code> in Bikeshare dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bike_df</span><span class="p">[</span><span class="s1">&#39;weathersit&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>weathersit
+clear              5645
+cloudy/misty       2218
+light rain/snow     781
+heavy rain/snow       1
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here <span class="math notranslate nohighlight">\(K = 4\)</span>, so after OHE this feature will be replaced by <span class="math notranslate nohighlight">\(4\)</span>-dimensional dummy vector, e.g.:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">clear</span></code> = <span class="math notranslate nohighlight">\((0, 0, 0, 1)\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cloudy/misty</span></code> = <span class="math notranslate nohighlight">\((0, 0, 1, 0)\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">light</span> <span class="pre">rain/snow</span></code> = <span class="math notranslate nohighlight">\((0, 1, 0, 0)\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">heavy</span> <span class="pre">rain/snow</span></code> = <span class="math notranslate nohighlight">\((1, 0, 0, 0)\)</span></p></li>
+</ul>
+<p>OHE can be performed by <code class="docutils literal notranslate"><span class="pre">sklearn.preprocessing.OneHotEncoder</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
+
+<span class="n">ohe</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">sparse_output</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ohe</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">bike_df</span><span class="p">[[</span><span class="s1">&#39;weathersit&#39;</span><span class="p">]])[:</span><span class="mi">15</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1., 0., 0., 0.],
+       [1., 0., 0., 0.],
+       [1., 0., 0., 0.],
+       [1., 0., 0., 0.],
+       [1., 0., 0., 0.],
+       [0., 1., 0., 0.],
+       [1., 0., 0., 0.],
+       [1., 0., 0., 0.],
+       [1., 0., 0., 0.],
+       [1., 0., 0., 0.],
+       [1., 0., 0., 0.],
+       [1., 0., 0., 0.],
+       [1., 0., 0., 0.],
+       [0., 1., 0., 0.],
+       [0., 1., 0., 0.]])
+</pre></div>
+</div>
+</div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In fact, it is enough to have <span class="math notranslate nohighlight">\(K-1\)</span> dummy variables since the value of <span class="math notranslate nohighlight">\(\delta_K\)</span> can be automatically deduced from the values of <span class="math notranslate nohighlight">\(\delta_1, \ldots, \delta_{K-1}\)</span>.</p>
+<p>In fact, it is enough to have <span class="math notranslate nohighlight">\(K-1\)</span> dummy variables since the value of <span class="math notranslate nohighlight">\(\delta_K\)</span> can be automatically deduced from the values of <span class="math notranslate nohighlight">\(\delta_1, \ldots, \delta_{K-1}\)</span>. This is also called one-hot encoding <strong>with dropping</strong></p>
+</div>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code> retains all values of categorical features. To enable dropping, pass <code class="docutils literal notranslate"><span class="pre">drop='first'</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ohe</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">sparse_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span>
+<span class="n">ohe</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">bike_df</span><span class="p">[[</span><span class="s1">&#39;weathersit&#39;</span><span class="p">]])[:</span><span class="mi">15</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 0., 0.],
+       [0., 0., 0.],
+       [0., 0., 0.],
+       [0., 0., 0.],
+       [0., 0., 0.],
+       [1., 0., 0.],
+       [0., 0., 0.],
+       [0., 0., 0.],
+       [0., 0., 0.],
+       [0., 0., 0.],
+       [0., 0., 0.],
+       [0., 0., 0.],
+       [0., 0., 0.],
+       [1., 0., 0.],
+       [1., 0., 0.]])
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="feature-matrix">
-<span id="id3"></span><h2>Feature matrix<a class="headerlink" href="#feature-matrix" title="Permalink to this heading">#</a></h2>
-<p>A tabular numerical dataset can be represented as a <strong>feature matrix</strong> (or <strong>design matrix</strong>) <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> of shape <span class="math notranslate nohighlight">\(N\times D\)</span> where</p>
+<span id="id2"></span><h2>Feature matrix<a class="headerlink" href="#feature-matrix" title="Permalink to this heading">#</a></h2>
+<p>A tabular numerical dataset can be represented as a <strong>feature matrix</strong> (or <strong>design matrix</strong>) <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> of shape <span class="math notranslate nohighlight">\(n\times d\)</span> where</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(N\)</span> — number of samples (rows)</p></li>
-<li><p><span class="math notranslate nohighlight">\(D\)</span> — number of features (columns)</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> — number of samples (rows)</p></li>
+<li><p><span class="math notranslate nohighlight">\(d\)</span> — number of features (columns)</p></li>
 </ul>
 <p>Each sample <span class="math notranslate nohighlight">\(\boldsymbol x_i\)</span> is therefore represented by <span class="math notranslate nohighlight">\(i\)</span>-th row of the feature matrix <span class="math notranslate nohighlight">\(\boldsymbol X\)</span>.</p>
+<p>For example in <a class="reference internal" href="#iris"><span class="std std-ref">Iris dataset</span></a> dataset there are <span class="math notranslate nohighlight">\(n=150\)</span> samples and <span class="math notranslate nohighlight">\(d=4\)</span> features; each flower is represented by a <span class="math notranslate nohighlight">\(4\)</span>-dimensional vector, e.g.</p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol x_1^{\mathsf T} = (5.1, 3.5, 1.4, 0.3).
+\]</div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>A sample <span class="math notranslate nohighlight">\(\boldsymbol x_i\)</span> is a row vector with <span class="math notranslate nohighlight">\(D\)</span> coordinates. However, in linear algebra a vector is by default a column vector. That’s why in vector-matrix operations a training sample is often denoted as <span class="math notranslate nohighlight">\(\boldsymbol x_i^\top\)</span> to emphasize that it is a row.</p>
+<p>A sample <span class="math notranslate nohighlight">\(\boldsymbol x_i\)</span> is a row vector with <span class="math notranslate nohighlight">\(d\)</span> coordinates. However, in linear algebra a vector is by default a column vector. That’s why in vector-matrix operations a training sample is often denoted as <span class="math notranslate nohighlight">\(\boldsymbol x_i^\top\)</span> to emphasize that it is a row.</p>
 </div>
-<div class="warning admonition">
-<p class="admonition-title">TODO</p>
-<ul class="simple">
-<li><p>Give other examples of datasets</p></li>
-<li><p>Investigate the type of data in them (all columns of <code class="docutils literal notranslate"><span class="pre">iris</span></code> dataset are numerical continuous, but this isn’t always the case)</p></li>
-<li><p>Describe the ways of fetching datasets in Python</p></li>
-<li><p>Add info about image and text datasets (see also <span id="id4">[<a class="reference internal" href="../bibliography.html#id3" title="Kevin P. Murphy. Probabilistic Machine Learning: An introduction. MIT Press, 2022. URL: probml.ai.">Murphy, 2022</a>]</span>, pp. 19—22)</p></li>
-<li><p>Add more visualizations and quizzes</p></li>
-</ul>
-</div>
-<hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="real"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>In fact, only a finite amount of rational numbers is used in practice. However, the real numbers <span class="math notranslate nohighlight">\(\mathbb R\)</span> so firmly took place of the default number set that it seems unreasonable to make any attempts to substitute them by something more realistic.</p>
-</dd>
-</dl>
 </section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>How many features does a colored image of width <span class="math notranslate nohighlight">\(1920\)</span> and height <span class="math notranslate nohighlight">\(1080\)</span> have?</p></li>
+<li><p>What is the shape of the feature matrix of MNIST dataset?</p></li>
+<li><p>A dataset contains <span class="math notranslate nohighlight">\(10\)</span> features. Six of them are numeric, the rest four are categorical with <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(3\)</span>, <span class="math notranslate nohighlight">\(5\)</span> and 9 categories respectively. How many features will be in this dataset after one-hot-encoding with/without dropping?</p></li>
+</ol>
+<!--
+```{admonition} TODO
+:class: warning
+* Give other examples of datasets
+* Investigate the type of data in them (all columns of `iris` dataset are numerical continuous, but this isn't always the case)
+* Describe the ways of fetching datasets in Python
+* Add info about image and text datasets (see also {cite:p}`pml1Book`, pp. 19—22)
+* Add more visualizations and quizzes
+```
+--></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1938,8 +2121,6 @@ Name: count, dtype: int64
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-processing">Data processing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">Data types</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-continuous-data">Numerical continuous data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-discrete-data">Numerical discrete data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-nominal-variables">Categorical nominal variables</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-ordinal-variables">Categorical ordinal variables</a></li>
 </ul>
@@ -1952,6 +2133,7 @@ Name: count, dtype: int64
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-encoding">One-hot encoding</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-matrix">Feature matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
   </nav></div>
 

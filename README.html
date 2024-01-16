@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>ML book &#8212; ML book</title>
+    <title>ML Book &#8212; ML book</title>
   
   
   
@@ -63,12 +63,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'README';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Overview" href="intro/intro_to_ML.html" />
+    <link rel="next" title="ML 2023" href="courses/ML_2023.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -155,11 +153,16 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    ML book
+                    ML Book
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to ML</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="courses/ML_2023.html">ML 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="courses/Intro2ML.html">Introduction to ML</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="intro/intro_to_ML.html">Overview</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro/definition.html">Definitions of ML</a></li>
@@ -463,9 +466,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -476,30 +477,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>ML book</h1>
+    <h1>ML Book</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-book-demo">Jupyter-book demo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-assessment">Course assessment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-team-construction">Project team construction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-writer">Technical writer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#author-of-executable-content">Author of executable content</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#designer-of-interactive-plots">Designer of interactive plots</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#designer-of-quizzes">Designer of quizzes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-manager">Project manager</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-main-tool">The main tool</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips">Tips</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -510,7 +492,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ml-book">
-<h1>ML book<a class="headerlink" href="#ml-book" title="Permalink to this heading">#</a></h1>
+<h1>ML Book<a class="headerlink" href="#ml-book" title="Permalink to this heading">#</a></h1>
 <blockquote class="epigraph">
 <div><p>We are drowning in information and starving for knowledge.</p>
 <p class="attribution">—Rutherford D. Roger</p>
@@ -525,120 +507,8 @@ document.write(`
 <img alt="https://slideplayer.com/7520891/24/images/slide_1.jpg" src="https://slideplayer.com/7520891/24/images/slide_1.jpg" />
 </figure>
 <p>Our attempt will technically rely on <a class="reference external" href="https://jupyterbook.org/en/stable/intro.html">Jupyter book</a>, an open-source tool for building publication-quality books and documents from computational material.</p>
-<section id="jupyter-book-demo">
-<h2>Jupyter-book demo<a class="headerlink" href="#jupyter-book-demo" title="Permalink to this heading">#</a></h2>
-<p>To introduce the capabilities of Jupyter book along with some methodological ideas I wrote the <a class="reference external" href="https://fedmug.github.io/e_book/intro.html">e_book</a>. For now it consists only of one chapter devoted to the Euler number.</p>
-<p>The main features:</p>
-<ul class="simple">
-<li><p>interactive quizzes (taken “as is” from <a class="reference external" href="https://github.com/jmshea/jupyterquiz">here</a>);</p></li>
-<li><p>mix of narrative and executable content as it is usually done via markdown and code cells in Jupyter notebook;</p></li>
-<li><p>pictures and visualizations (sometimes interactive);</p></li>
-<li><p>available online on any device.</p></li>
-</ul>
-<p>Hopefully, during this course we’ll write something similar about machine learning.</p>
-</section>
-<section id="course-assessment">
-<h2>Course assessment<a class="headerlink" href="#course-assessment" title="Permalink to this heading">#</a></h2>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Activity</p></th>
-<th class="head"><p>Final scores</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Attendance</p></td>
-<td><p><span class="math notranslate nohighlight">\(10\%\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Practice</p></td>
-<td><p><span class="math notranslate nohighlight">\(10\%\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Midterm</p></td>
-<td><p><span class="math notranslate nohighlight">\(10\%\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Jupyter book project</p></td>
-<td><p><span class="math notranslate nohighlight">\(30\%\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Final exam</p></td>
-<td><p><span class="math notranslate nohighlight">\(40\%\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="project-team-construction">
-<h2>Project team construction<a class="headerlink" href="#project-team-construction" title="Permalink to this heading">#</a></h2>
-<p>Successive completion of the project requires effective team collaboration. The team should consist of several students with different roles:</p>
-<ul class="simple">
-<li><p>technical writer</p></li>
-<li><p>author of executable content</p></li>
-<li><p>designer of interactive plots</p></li>
-<li><p>designer of quizzes</p></li>
-<li><p><strike>the most useless…</strike> project manager</p></li>
-</ul>
-<p>The goal of every team is to create a nicely looking section in the ML book.</p>
-<section id="technical-writer">
-<h3>Technical writer<a class="headerlink" href="#technical-writer" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>writes clear and neat <a class="reference external" href="https://jupyterbook.org/en/stable/content/index.html#">narrative content</a> in Markdown</p></li>
-<li><p>looks for consistency with all other types of content</p></li>
-<li><p>translates some Russian texts into English if necessary</p></li>
-</ul>
-</section>
-<section id="author-of-executable-content">
-<h3>Author of executable content<a class="headerlink" href="#author-of-executable-content" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>writes <a class="reference external" href="https://jupyterbook.org/en/stable/content/executable/index.html">executable content</a> in Jupyter notebook</p></li>
-<li><p>suggests ideas of python calculations and static plots which would enrich the narrative content</p></li>
-<li><p>searches for existing datasets and visualizations</p></li>
-<li><p>tries different models of machine learning</p></li>
-</ul>
-</section>
-<section id="designer-of-interactive-plots">
-<h3>Designer of interactive plots<a class="headerlink" href="#designer-of-interactive-plots" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>uses <a class="reference external" href="https://plotly.com/python/">plotly</a> or <a class="reference external" href="https://ipywidgets.readthedocs.io/en/stable/">pywidgets</a> or something else to create interactive visualizations</p></li>
-<li><p>searches for places where it would be quite beneficial to insert interactive elements</p></li>
-<li><p>suggests ideas of quizzes which could be solved by investigating of interactive content</p></li>
-</ul>
-</section>
-<section id="designer-of-quizzes">
-<h3>Designer of quizzes<a class="headerlink" href="#designer-of-quizzes" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>searches for ideas of single/multiple choice and numeric quizzes</p></li>
-<li><p>writes quizzes using <a class="reference external" href="https://github.com/jmshea/jupyterquiz">Jupyterquiz</a> in a separate Jupyter notebook</p></li>
-<li><p>encodes the quiz bodies and inserts them into main content</p></li>
-</ul>
-</section>
-<section id="project-manager">
-<h3>Project manager<a class="headerlink" href="#project-manager" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>tracks the progress of each member of the team</p></li>
-<li><p>checks for consistency of all types of content, notations and cross-references to other parts of the book</p></li>
-<li><p>searches for different sources of information</p></li>
-<li><p>communicates with PMs of teams which work on related topics</p></li>
-<li><p>communicates with <a class="reference external" href="https://en.wikipedia.org/wiki/Benevolent_dictator_for_life">BDFL</a></p></li>
-</ul>
-</section>
-</section>
-<section id="the-main-tool">
-<h2>The main tool<a class="headerlink" href="#the-main-tool" title="Permalink to this heading">#</a></h2>
-<figure class="align-center">
-<img alt="_images/chatGPT.png" src="_images/chatGPT.png" />
-</figure>
-</section>
-<section id="tips">
-<h2>Tips<a class="headerlink" href="#tips" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Don’t copypaste from chatGPT, it can serve just as a starting point</p></li>
-<li><p>Study carefully the documentation of <a class="reference external" href="https://jupyterbook.org/en/stable/intro.html">Jupyter book</a> and <a class="reference external" href="https://github.com/jmshea/jupyterquiz">jupyterquiz</a>; pay special attention to the things relevant to your role in the team</p></li>
-<li><p>The Jupyter book ecosystem allows to produce diverse content, make advantage of this as much as you can (see <a class="reference external" href="https://fedmug.github.io/e_book/intro.html">e_book</a> for a baseline)</p></li>
-<li><p>As a starting point, clone the <a class="reference external" href="https://github.com/Fedmug/kbtu-ml-book">ML book repo</a> and check that you can build the book locally</p></li>
-<li><p>Clone only one branch of <a class="reference external" href="https://github.com/Fedmug/kbtu-ml-book">ML book repo</a> which corresponds to your section:
-<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">-b</span> <span class="pre">BRANCH_NAME</span> <span class="pre">--single-branch</span> <span class="pre">https://github.com/Fedmug/kbtu-ml-book.git</span> <span class="pre">BRANCH_NAME</span></code></p></li>
-<li><p>Try to investigate all possible sources of information about your topic, especially those from <a class="reference internal" href="resources.html"><span class="doc std std-doc">ML resources</span></a></p></li>
-<li><p>Think about links between parts of your section or to some other sections and chapters</p></li>
-<li><p>Keep in mind that you are creating content for newbies</p></li>
-</ul>
-</section>
+<div class="toctree-wrapper compound">
+</div>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -685,11 +555,11 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="right-next"
-       href="intro/intro_to_ML.html"
+       href="courses/ML_2023.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Overview</p>
+        <p class="prev-next-title">ML 2023</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -702,31 +572,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-book-demo">Jupyter-book demo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-assessment">Course assessment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-team-construction">Project team construction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-writer">Technical writer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#author-of-executable-content">Author of executable content</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#designer-of-interactive-plots">Designer of interactive plots</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#designer-of-quizzes">Designer of quizzes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-manager">Project manager</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-main-tool">The main tool</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips">Tips</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

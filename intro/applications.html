@@ -154,11 +154,16 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../README.html">
-                    ML book
+                    ML Book
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to ML</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro_to_ML.html">Overview</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="definition.html">Definitions of ML</a></li>
@@ -226,6 +231,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../unsupervised_learning/unsupervised.html">Unsupervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/pca.html">Principal components analysis (PCA)</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/clustering_metrics.html">Clustering metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/k_means.html">K-means</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/hierarchic_clustering.html">Hierarchical Clustering</a></li>
@@ -236,8 +242,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../mlp/mlp.html">Multilayer perceptron (MLP)</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/layers.html">Layers of MLP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Forward and backward pass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/activations.html">Activation functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Training of MLP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/backprop.html">Back propagation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/weight_init.html">Weights initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/regularization.html">Regularization in MLP</a></li>
@@ -269,8 +275,8 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rl/RL.html">Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../rl/basics.html">RL basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rl/multiarmed_bandits.html">Multiarmed bandits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rl/mdp.html">Markov decision process (MDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/multiarmed_bandits.html">Multi-armed bandits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/mdp.html">Markov Decision Process (MDP)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rl/q_learning.html">Q-learning</a></li>
 </ul>
 </li>
@@ -492,6 +498,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-translation">Machine translation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robotics">Robotics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#playing-games">Playing games</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-and-text-generation">Image and text generation</a></li>
 </ul>
             </nav>
         </div>
@@ -536,16 +543,25 @@ document.write(`
 <section id="playing-games">
 <h2>Playing games<a class="headerlink" href="#playing-games" title="Permalink to this heading">#</a></h2>
 <a class="bg-primary mb-1 reference internal image-reference" href="https://c.files.bbci.co.uk/0D9B/production/_88738430_pic1go.jpg"><img alt="img-recognition" class="bg-primary mb-1 align-center" src="https://c.files.bbci.co.uk/0D9B/production/_88738430_pic1go.jpg" style="width: 500px;" /></a>
-<div class="warning admonition">
-<p class="admonition-title">TODO</p>
-<ul class="simple">
-<li><p>Add some text description</p></li>
-<li><p>Add some code</p></li>
-<li><p>Add more applications</p></li>
-<li><p>Add more morden stuff like chatGPT and generative AI</p></li>
-<li><p>The interactive quizzes and plots are probably redundant here</p></li>
-</ul>
-</div>
+<!---
+```{admonition} TODO
+:class: warning
+* Add some text description
+* Add some code
+* Add more applications 
+* Add more morden stuff like chatGPT and generative AI
+* The interactive quizzes and plots are probably redundant here
+```
+--->
+</section>
+<section id="image-and-text-generation">
+<h2>Image and text generation<a class="headerlink" href="#image-and-text-generation" title="Permalink to this heading">#</a></h2>
+<figure class="align-center">
+<img alt="https://s0.rbk.ru/v6_top_pics/media/img/3/69/346971151176693.jpeg" src="https://s0.rbk.ru/v6_top_pics/media/img/3/69/346971151176693.jpeg" />
+</figure>
+<figure class="align-center">
+<img alt="https://media.licdn.com/dms/image/D5612AQFoxSZYLjV_EA/article-cover_image-shrink_720_1280/0/1677588476245?e=2147483647&amp;v=beta&amp;t=5WT3HMuBEmRSB9aJY-gUJkivFbH7DvkIH4LWk9T7u1Y" src="https://media.licdn.com/dms/image/D5612AQFoxSZYLjV_EA/article-cover_image-shrink_720_1280/0/1677588476245?e=2147483647&amp;v=beta&amp;t=5WT3HMuBEmRSB9aJY-gUJkivFbH7DvkIH4LWk9T7u1Y" />
+</figure>
 </section>
 </section>
 
@@ -624,6 +640,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-translation">Machine translation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robotics">Robotics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#playing-games">Playing games</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-and-text-generation">Image and text generation</a></li>
 </ul>
   </nav></div>
 

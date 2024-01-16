@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'rl/multiarmed_bandits';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Markov decision process (MDP)" href="mdp.html" />
+    <link rel="next" title="Markov Decision Process (MDP)" href="mdp.html" />
     <link rel="prev" title="RL basics" href="basics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -156,11 +156,16 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../README.html">
-                    ML book
+                    ML Book
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to ML</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../intro/intro_to_ML.html">Overview</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../intro/definition.html">Definitions of ML</a></li>
@@ -239,8 +244,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../mlp/mlp.html">Multilayer perceptron (MLP)</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/layers.html">Layers of MLP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Forward and backward pass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/activations.html">Activation functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Training of MLP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/backprop.html">Back propagation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/weight_init.html">Weights initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/regularization.html">Regularization in MLP</a></li>
@@ -273,7 +278,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="RL.html">Reinforcement Learning</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="basics.html">RL basics</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Multi-armed bandits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mdp.html">Markov decision process (MDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdp.html">Markov Decision Process (MDP)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="q_learning.html">Q-learning</a></li>
 </ul>
 </li>
@@ -615,7 +620,7 @@ A_t = \arg\max\limits_{a\in \mathcal A} Q_t(a)
 Optimal mean reward: 1.3376758127929265
 </pre></div>
 </div>
-<img alt="../_images/335d9c3b98760f6ca41aad7a407556d6457540a74c70492a9d30c90974d9b0c5.svg" src="../_images/335d9c3b98760f6ca41aad7a407556d6457540a74c70492a9d30c90974d9b0c5.svg" /></div>
+<img alt="../_images/76e2c7e15b74f3ae131743c9566decce8ff74daee0c1563858ec5a434c53cd4a.svg" src="../_images/76e2c7e15b74f3ae131743c9566decce8ff74daee0c1563858ec5a434c53cd4a.svg" /></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
@@ -629,8 +634,8 @@ Optimal mean reward: 1.3376758127929265
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 13.9 s, sys: 164 ms, total: 14.1 s
-Wall time: 14.8 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 14.4 s, sys: 230 ms, total: 14.6 s
+Wall time: 15.3 s
 </pre></div>
 </div>
 </div>
@@ -644,7 +649,7 @@ Wall time: 14.8 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d3b2bc2f6aff5dc7bae7229930cd05b1666c78ce39a614b5e94226d7e90a2c7f.svg" src="../_images/d3b2bc2f6aff5dc7bae7229930cd05b1666c78ce39a614b5e94226d7e90a2c7f.svg" /></div>
+<img alt="../_images/a661223b4357f853abc9eda16157388cdbcdb8ed70ae850c4532e14e19a9f433.svg" src="../_images/a661223b4357f853abc9eda16157388cdbcdb8ed70ae850c4532e14e19a9f433.svg" /></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
@@ -655,7 +660,7 @@ Wall time: 14.8 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c012e8bc3f505f04653d37a85e6ac5c21bde6ad8cbe122e4153c5ade1b27a46f.svg" src="../_images/c012e8bc3f505f04653d37a85e6ac5c21bde6ad8cbe122e4153c5ade1b27a46f.svg" /></div>
+<img alt="../_images/f81a5f0b5b0130b2eac5af25156e3561e374c8f6b11c0ac1ee08861e161ccd83.svg" src="../_images/f81a5f0b5b0130b2eac5af25156e3561e374c8f6b11c0ac1ee08861e161ccd83.svg" /></div>
 </div>
 <p><strong>Q.</strong> What is the cumulative regret of <span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy policy for a single testbed? Calculate</p>
 <div class="math notranslate nohighlight">
@@ -678,8 +683,8 @@ Wall time: 14.8 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 3.26 s, sys: 39.2 ms, total: 3.3 s
-Wall time: 3.4 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 3.54 s, sys: 75.1 ms, total: 3.61 s
+Wall time: 4.21 s
 </pre></div>
 </div>
 </div>
@@ -692,7 +697,7 @@ Wall time: 3.4 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ff524b66a9518174f2ad27728e3d3d706d6d8296a6a1f240411679be8b93d8f2.svg" src="../_images/ff524b66a9518174f2ad27728e3d3d706d6d8296a6a1f240411679be8b93d8f2.svg" /></div>
+<img alt="../_images/b5e832f8e9d202b1f4aa2a08cc0112e45f38a0cfe1465cff357b6361227bc5c4.svg" src="../_images/b5e832f8e9d202b1f4aa2a08cc0112e45f38a0cfe1465cff357b6361227bc5c4.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -701,7 +706,7 @@ Wall time: 3.4 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cc411ad5eb3e23b77c0c79f793c8f03c938e918177cb49852e0c179e3c4dbb12.svg" src="../_images/cc411ad5eb3e23b77c0c79f793c8f03c938e918177cb49852e0c179e3c4dbb12.svg" /></div>
+<img alt="../_images/b13493d696c73d3a497895c852dcc01c524dade74878d83244a5739b016cd6b0.svg" src="../_images/b13493d696c73d3a497895c852dcc01c524dade74878d83244a5739b016cd6b0.svg" /></div>
 </div>
 </section>
 <section id="upper-confidence-bound">
@@ -744,8 +749,8 @@ A_t = \arg\max\limits_a \bigg\{Q_t(a) + c\sqrt{\frac{\log t}{N_t(a)}}\bigg\}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.87 s, sys: 30.7 ms, total: 1.9 s
-Wall time: 1.96 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.81 s, sys: 31.1 ms, total: 1.84 s
+Wall time: 1.89 s
 </pre></div>
 </div>
 </div>
@@ -758,7 +763,7 @@ Wall time: 1.96 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/00ac13488a3eb13ab7e8b82806ea4b7e1db9d5f79547459f6e5aead691fc6639.svg" src="../_images/00ac13488a3eb13ab7e8b82806ea4b7e1db9d5f79547459f6e5aead691fc6639.svg" /></div>
+<img alt="../_images/1565ea50f1eb1ca183c22198bdb7b6f1904e83742cf07e0d805c58e54515d93a.svg" src="../_images/1565ea50f1eb1ca183c22198bdb7b6f1904e83742cf07e0d805c58e54515d93a.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -767,7 +772,7 @@ Wall time: 1.96 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e5a13af4f22723842c5ae829310b8a3bb4cf53092c8033984820a3ab0c46caa5.svg" src="../_images/e5a13af4f22723842c5ae829310b8a3bb4cf53092c8033984820a3ab0c46caa5.svg" /></div>
+<img alt="../_images/619290297543fd7935e2661566f93c30bbdb75696242075b2d84ee0ca4c111ef.svg" src="../_images/619290297543fd7935e2661566f93c30bbdb75696242075b2d84ee0ca4c111ef.svg" /></div>
 </div>
 </section>
 </section>
@@ -817,7 +822,7 @@ Wall time: 1.96 s
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Markov decision process (MDP)</p>
+        <p class="prev-next-title">Markov Decision Process (MDP)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

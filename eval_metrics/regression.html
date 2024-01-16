@@ -156,11 +156,16 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../README.html">
-                    ML book
+                    ML Book
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to ML</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../intro/intro_to_ML.html">Overview</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../intro/definition.html">Definitions of ML</a></li>
@@ -228,6 +233,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../unsupervised_learning/unsupervised.html">Unsupervised Learning</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/pca.html">Principal components analysis (PCA)</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/clustering_metrics.html">Clustering metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/k_means.html">K-means</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning/hierarchic_clustering.html">Hierarchical Clustering</a></li>
@@ -238,8 +244,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../mlp/mlp.html">Multilayer perceptron (MLP)</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/layers.html">Layers of MLP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Forward and backward pass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/activations.html">Activation functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Training of MLP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/backprop.html">Back propagation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/weight_init.html">Weights initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/regularization.html">Regularization in MLP</a></li>
@@ -271,8 +277,8 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rl/RL.html">Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../rl/basics.html">RL basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rl/multiarmed_bandits.html">Multiarmed bandits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rl/mdp.html">Markov decision process (MDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/multiarmed_bandits.html">Multi-armed bandits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/mdp.html">Markov Decision Process (MDP)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rl/q_learning.html">Q-learning</a></li>
 </ul>
 </li>
@@ -599,7 +605,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1418800cfe7fa4a4b7a45516c198ac6ef4ffd951d57eeed50770542754d1a44c.svg" src="../_images/1418800cfe7fa4a4b7a45516c198ac6ef4ffd951d57eeed50770542754d1a44c.svg" /></div>
+<img alt="../_images/7731768a73f9dffd2e52ce0aa0b1d5f52e5008dc0678211f98f35a0cb5bea7db.svg" src="../_images/7731768a73f9dffd2e52ce0aa0b1d5f52e5008dc0678211f98f35a0cb5bea7db.svg" /></div>
 </div>
 <p>Fit linear regression model and check metrics:</p>
 <div class="cell docutils container">
@@ -629,13 +635,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.7504962672679636
-Slope: -0.45458404020044246
-Mean Absolute Error (MAE): 0.4224
-Mean Squared Error (MSE): 0.2679
-Root Mean Squared Error (RMSE): 0.5176
-R2-score: 0.0604
-Mean absolute percentage error(MAPE): 0.3572
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.6815818745457998
+Slope: -0.4625712572003047
+Mean Absolute Error (MAE): 0.3984
+Mean Squared Error (MSE): 0.2486
+Root Mean Squared Error (RMSE): 0.4986
+R2-score: 0.0669
+Mean absolute percentage error(MAPE): 0.3601
 </pre></div>
 </div>
 </div>
@@ -653,7 +659,7 @@ Mean absolute percentage error(MAPE): 0.3572
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/61a215b7864fcd21203ffe9184a4715a7fb047bde920b2958e5dd1c1eac0333d.svg" src="../_images/61a215b7864fcd21203ffe9184a4715a7fb047bde920b2958e5dd1c1eac0333d.svg" /></div>
+<img alt="../_images/9eb6d5e82073d28292d9031bb55372c1d71840d92e34e22b9496f18b345da54e.svg" src="../_images/9eb6d5e82073d28292d9031bb55372c1d71840d92e34e22b9496f18b345da54e.svg" /></div>
 </div>
 <p>Fit linear regression once again:</p>
 <div class="cell docutils container">
@@ -667,8 +673,8 @@ Mean absolute percentage error(MAPE): 0.3572
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.5405952771689537
-Slope: 0.3734987680803855
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 2.04197791414976
+Slope: -0.7866036604406287
 </pre></div>
 </div>
 </div>
@@ -691,11 +697,11 @@ Slope: 0.3734987680803855
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error (MAE): 0.6866
-Mean Squared Error (MSE): 4.1787
-Root Mean Squared Error (RMSE): 2.0442
-R2-score: 0.0028
-Mean absolute percentage error(MAPE): 0.4674
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error (MAE): 0.6359
+Mean Squared Error (MSE): 4.3542
+Root Mean Squared Error (RMSE): 2.0867
+R2-score: 0.0117
+Mean absolute percentage error(MAPE): 0.4410
 </pre></div>
 </div>
 </div>
