@@ -68,8 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro/model_selection';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Linear regression" href="../lin_reg/linear_regression.html" />
-    <link rel="prev" title="k-Nearest Neighbors" href="knn.html" />
+    <link rel="next" title="k-Nearest Neighbors" href="knn.html" />
+    <link rel="prev" title="Types of ML" href="ml_types.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -172,8 +172,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="applications.html">Applications of ML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data.html">Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ml_types.html">Types of ML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="knn.html">k-Nearest Neighbors</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Model selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knn.html">k-Nearest Neighbors</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lin_reg/linear_regression.html">Linear regression</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -575,15 +575,15 @@ document.write(`
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/81feaf7ad7219ccd9bc49664d95ce082eb50c4ec63642cdfc1d76c248809bfdc.svg" src="../_images/81feaf7ad7219ccd9bc49664d95ce082eb50c4ec63642cdfc1d76c248809bfdc.svg" /></div>
+<img alt="../_images/992492b5ff8484fa5d51c3862637276395e8777e1b518fcc14302910b44abf96.svg" src="../_images/992492b5ff8484fa5d51c3862637276395e8777e1b518fcc14302910b44abf96.svg" /></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/9a41b12009db5324308e6a80fdbe11f95bbae9cf4bd73b298f32153cfbe3dc3b.svg" src="../_images/9a41b12009db5324308e6a80fdbe11f95bbae9cf4bd73b298f32153cfbe3dc3b.svg" /></div>
+<img alt="../_images/a1f0385a9cf18c3a96d9762156c944d85acdfd95952d04ea0f5152ca0882c7a0.svg" src="../_images/a1f0385a9cf18c3a96d9762156c944d85acdfd95952d04ea0f5152ca0882c7a0.svg" /></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/0e85b785698157d7d3b4aaa061e43da75067e7760911a98864ee008ee4059762.svg" src="../_images/0e85b785698157d7d3b4aaa061e43da75067e7760911a98864ee008ee4059762.svg" /></div>
+<img alt="../_images/9fc5ccca882ec2f1a52e5d2af87c168c3336644452650eed9a57a83b5b349f45.svg" src="../_images/9fc5ccca882ec2f1a52e5d2af87c168c3336644452650eed9a57a83b5b349f45.svg" /></div>
 </div>
 <p>The overfitting is a big problem in ML because an overfitted model makes poor predictions. The first signal of the overfitting: <span class="math notranslate nohighlight">\(\mathcal L_{\mathrm{train}} \ll \mathcal L_{\mathrm{test}}\)</span>.</p>
 </section>
@@ -592,15 +592,16 @@ document.write(`
 <figure class="align-center">
 <img alt="https://scikit-learn.org/stable/_images/grid_search_cross_validation.png" src="https://scikit-learn.org/stable/_images/grid_search_cross_validation.png" />
 </figure>
-<div class="warning admonition">
-<p class="admonition-title">TODO</p>
-<ul class="simple">
-<li><p>Add some text and original pictures</p></li>
-<li><p>Make Runge example interactive</p></li>
-<li><p>Show underfitting and overfitting on some real datasets</p></li>
-<li><p>Use comparison of k-NN and linear regression as it is done in the section 2.3 of <span id="id1">[<a class="reference internal" href="../bibliography.html#id2" title="T. Hastie, R. Tibshirani, and J.H. Friedman. The Elements of Statistical Learning: Data Mining, Inference, and Prediction. Springer series in statistics. Springer, 2009. ISBN 9780387848846. URL: https://books.google.kz/books?id=eBSgoAEACAAJ.">Hastie <em>et al.</em>, 2009</a>]</span></p></li>
-</ul>
-</div>
+<!--
+```{admonition} TODO
+:class: warning
+
+* Add some text and original pictures
+* Make Runge example interactive
+* Show underfitting and overfitting on some real datasets
+* Use comparison of k-NN and linear regression as it is done in the section 2.3 of {cite}`hastie2009elements`
+```
+-->
 </section>
 </section>
 
@@ -636,20 +637,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="knn.html"
+       href="ml_types.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">k-Nearest Neighbors</p>
+        <p class="prev-next-title">Types of ML</p>
       </div>
     </a>
     <a class="right-next"
-       href="../lin_reg/linear_regression.html"
+       href="knn.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Linear regression</p>
+        <p class="prev-next-title">k-Nearest Neighbors</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro/ml_types';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="k-Nearest Neighbors" href="knn.html" />
+    <link rel="next" title="Model selection" href="model_selection.html" />
     <link rel="prev" title="Data" href="data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -172,8 +172,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="applications.html">Applications of ML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data.html">Data</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Types of ML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="knn.html">k-Nearest Neighbors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_selection.html">Model selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knn.html">k-Nearest Neighbors</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lin_reg/linear_regression.html">Linear regression</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -501,6 +501,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-learning">Unsupervised learning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semisupervised-learning">Semisupervised learning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
             </nav>
         </div>
@@ -520,16 +521,16 @@ document.write(`
 <p>Supervised learning is a popular category of machine learning algorithms that involves training a model on labeled data to make predictions or decisions. In this approach, the algorithm learns from a given set of input-output pairs and uses this knowledge to predict the output for new, unseen inputs. The goal is to find a mapping function that generalizes well to unseen data.</p>
 <p>Now put it more mathematically. Denote</p>
 <ul class="simple">
-<li><p>training <strong>dataset</strong> <span class="math notranslate nohighlight">\(\mathcal D = \{(\boldsymbol x_i, y_i)\}_{i=1}^N\)</span>;</p></li>
-<li><p><strong>features</strong> <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathcal X\)</span> (usually <span class="math notranslate nohighlight">\(\mathcal X = \mathbb R^D\)</span>);</p></li>
+<li><p>training <strong>dataset</strong> <span class="math notranslate nohighlight">\(\mathcal D = \{(\boldsymbol x_i, y_i)\}_{i=1}^n\)</span>;</p></li>
+<li><p><strong>features</strong> <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathcal X\)</span> (usually <span class="math notranslate nohighlight">\(\mathcal X = \mathbb R^d\)</span>);</p></li>
 <li><p><strong>targets</strong> (<strong>labels</strong>) <span class="math notranslate nohighlight">\(y_i \in \mathcal Y\)</span>.</p></li>
 </ul>
-<p>The goal of the supervised learning is to find a mapping <span class="math notranslate nohighlight">\(f\colon \mathcal X \to \mathcal Y\)</span> which would minimize the <strong>cost</strong> (<strong>loss</strong>) <strong>function</strong></p>
+<p>The goal of the supervised learning is to find a mapping <span class="math notranslate nohighlight">\(f\colon \mathcal X \to \mathcal Y\)</span> which makes <strong>predictions</strong> <span class="math notranslate nohighlight">\(\widehat y = f(\boldsymbol x)\)</span>. This mapping should minimize the <strong>cost</strong> (<strong>loss</strong>) <strong>function</strong></p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal L = \frac 1N \sum\limits_{i=1}^N \ell(y_i, f(\boldsymbol x_i)).
+\mathcal L = \frac 1n \sum\limits_{i=1}^n \ell(y_i, f(\boldsymbol x_i)).
 \]</div>
-<p>Note that the loss <span class="math notranslate nohighlight">\(\ell(y_i, f(\boldsymbol x_i))\)</span> is calculated separately on each training object <span class="math notranslate nohighlight">\((\boldsymbol x_i, y_i)\)</span>, and then averaged over the whole training dataset.</p>
+<p>Note that the loss <span class="math notranslate nohighlight">\(\ell(y_i, f(\boldsymbol x_i))\)</span> is calculated separately on each training object <span class="math notranslate nohighlight">\((\boldsymbol x_i, y_i)\)</span>, and then averaged over the whole training dataset. The loss function <span class="math notranslate nohighlight">\(\mathcal L\)</span> reflects the overall error of the predictions on the training dataset <span class="math notranslate nohighlight">\(\mathcal D\)</span>.</p>
 <section id="predictive-model">
 <h3>Predictive model<a class="headerlink" href="#predictive-model" title="Permalink to this heading">#</a></h3>
 <p>The mapping <span class="math notranslate nohighlight">\(f_{\boldsymbol \theta}\colon \mathcal X \to \mathcal Y\)</span> is usually taken from some parametric family</p>
@@ -541,7 +542,7 @@ document.write(`
 <p>To <strong>fit</strong> a model means to find <span class="math notranslate nohighlight">\(\boldsymbol \theta\)</span> which minimizes the loss function</p>
 <div class="math notranslate nohighlight">
 \[
-    \mathcal L(\boldsymbol \theta) = \frac 1N \sum\limits_{i=1}^N \ell(y_i, f_{\boldsymbol \theta}(\boldsymbol x_i))
+    \mathcal L(\boldsymbol \theta) = \frac 1n \sum\limits_{i=1}^n \ell(y_i, f_{\boldsymbol \theta}(\boldsymbol x_i)) \to \min \limits_{\boldsymbol \theta}
 \]</div>
 </section>
 <section id="classification">
@@ -551,18 +552,28 @@ document.write(`
 <ul>
 <li><p><span class="math notranslate nohighlight">\(\mathcal Y = \{0, 1\}\)</span> or <span class="math notranslate nohighlight">\(\mathcal Y = \{-1, +1\}\)</span></p></li>
 <li><p>denote model predictions as <span class="math notranslate nohighlight">\(\hat y_i = f_{\boldsymbol \theta}(\boldsymbol x_i)\)</span></p></li>
-<li><p>typical loss function is <strong>misclassification rate</strong></p>
+<li><p>typical loss function is <strong>misclassification rate</strong> (or <strong>error rate</strong>)</p>
 <div class="math notranslate nohighlight" id="equation-mis-rate">
-<span class="eqno">(1)<a class="headerlink" href="#equation-mis-rate" title="Permalink to this equation">#</a></span>\[    \mathcal L(\boldsymbol \theta) = \frac 1N \sum\limits_{i=1}^N \big[y_i \ne \hat y_i\big]\]</div>
-<p>(it actually equals one minus accuracy)</p>
+<span class="eqno">(1)<a class="headerlink" href="#equation-mis-rate" title="Permalink to this equation">#</a></span>\[    \mathcal L(\boldsymbol \theta) = \frac 1n \sum\limits_{i=1}^n \mathbb I\big[y_i \ne \hat y_i\big]\]</div>
 </li>
 <li><p>this loss is not a smooth function, that’s why they often predict  which is treated as probability of class <span class="math notranslate nohighlight">\(1\)</span>, and then use <strong>cross-entropy loss</strong></p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-binary-cross-entropy">
-<span class="eqno">(2)<a class="headerlink" href="#equation-binary-cross-entropy" title="Permalink to this equation">#</a></span>\[    \mathcal L(\boldsymbol \theta) = -\frac 1N \sum\limits_{i=1}^N \big(y_i \log(\hat y_i) + (1-y_i) \log(1 - \hat y_i)\big)\]</div>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>The value <span class="math notranslate nohighlight">\(0\log 0 = 0\)</span> by definition</p>
+<span class="eqno">(2)<a class="headerlink" href="#equation-binary-cross-entropy" title="Permalink to this equation">#</a></span>\[    \mathcal L(\boldsymbol \theta) = -\frac 1n \sum\limits_{i=1}^n \big(y_i \log(\hat y_i) + (1-y_i) \log(1 - \hat y_i)\big)\]</div>
+<div class="important admonition">
+<p class="admonition-title">Notation</p>
+<ol class="arabic simple">
+<li><p>By convention <span class="math notranslate nohighlight">\(0\log 0 = 0\)</span></p></li>
+<li><p>By default each <span class="math notranslate nohighlight">\(\log\)</span> has base <span class="math notranslate nohighlight">\(e\)</span></p></li>
+<li><p><strong>Indicator</strong> <span class="math notranslate nohighlight">\(\mathbb I(P)\)</span> where <span class="math notranslate nohighlight">\(P\)</span> is some logical expression (<strong>predicate</strong>) is defined as</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \mathbb I(P) = \begin{cases}
+        1, &amp; P \text{ is true}, \\
+        0, &amp; P \text{ is false}
+    \end{cases}
+\end{split}\]</div>
 </div>
 <div class="admonition-example admonition">
 <p class="admonition-title">Example</p>
@@ -592,18 +603,18 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<p>Calculate the missclassification rate and cross-entropy loss.</p>
+<p>Calculate the missclassification rate <a class="reference internal" href="#equation-mis-rate">(1)</a> and cross-entropy loss <a class="reference internal" href="#equation-binary-cross-entropy">(2)</a>.</p>
 </div>
 <p><span style="display:none" id="binary_loss">W3sicXVlc3Rpb24iOiAiQ2FsY3VsYXRlIHRoZSBtaXNjbGFzc2lmaWNhdGlvbiByYXRlIiwgInR5cGUiOiAibnVtZXJpYyIsICJhbnN3ZXJzIjogW3sidHlwZSI6ICJ2YWx1ZSIsICJ2YWx1ZSI6IDAuNCwgImNvcnJlY3QiOiB0cnVlLCAiZmVlZGJhY2siOiAiUmlnaHQgeW91IGFyZSEgSGVyZSAkTj01JCwgdHdvIGluY29ycmVjdCBwcmVkaWN0aW9ucywgc28gdGhlIGxvc3MgaXMgJFxcZnJhYyAyNSQifSwgeyJ0eXBlIjogImRlZmF1bHQiLCAiZmVlZGJhY2siOiAiTm9wZSJ9XX0sIHsicXVlc3Rpb24iOiAiQ2FsY3VsYXRlIHRoZSBjcm9zcy1lbnRyb3B5IGxvc3MiLCAidHlwZSI6ICJtYW55X2Nob2ljZSIsICJhbnN3ZXJzIjogW3siYW5zd2VyIjogIiQwJCIsICJjb3JyZWN0IjogZmFsc2UsICJmZWVkYmFjayI6ICJUb28gbG93In0sIHsiYW5zd2VyIjogIiRcXGZyYWMgMTUgXFxsb2cgMiQiLCAiY29ycmVjdCI6IGZhbHNlLCAiZmVlZGJhY2siOiAiRG9lc24ndCBsb29rIGNvcnJlY3QifSwgeyJhbnN3ZXIiOiAiJFxcZnJhYyAxNSBcXGxvZyAzJCIsICJjb3JyZWN0IjogZmFsc2UsICJmZWVkYmFjayI6ICJOb3BlIn0sIHsiYW5zd2VyIjogIiQrXFxpbmZ0eSQiLCAiY29ycmVjdCI6IHRydWUsICJmZWVkYmFjayI6ICJPaCwgeWVhaC4uLiJ9XX1d</span></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="tEKKwqCFIQOZ" data-shufflequestions="False"
+<div class="output text_html"><div id="EjsFkKbVELPR" data-shufflequestions="False"
                data-shuffleanswers="True"
                data-preserveresponses="false"
                data-numquestions="1000000"
                data-maxwidth="600"
                style="border-radius: 10px; text-align: left"> <style>
-#tEKKwqCFIQOZ {
+#EjsFkKbVELPR {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -774,14 +785,14 @@ document.write(`
     }
 }
 </style></div><script type="application/javascript">var element=document.getElementById("binary_loss");
-            var questionstEKKwqCFIQOZ;
+            var questionsEjsFkKbVELPR;
             try {
-               questionstEKKwqCFIQOZ=JSON.parse(window.atob(element.innerHTML));
+               questionsEjsFkKbVELPR=JSON.parse(window.atob(element.innerHTML));
             } catch(err) {
                console.log("Fell into catch");
-               questionstEKKwqCFIQOZ = JSON.parse(element.innerHTML);
+               questionsEjsFkKbVELPR = JSON.parse(element.innerHTML);
             }
-            console.log(questionstEKKwqCFIQOZ);;
+            console.log(questionsEjsFkKbVELPR);;
     // Make a random ID
 function makeid(length) {
     var result = [];
@@ -1530,8 +1541,8 @@ if (typeof version == 'undefined') {
            Someone more knowledgeable could make this better ;-) */
 
         function try_show() {
-          if(document.getElementById("tEKKwqCFIQOZ")) {
-            show_questions(questionstEKKwqCFIQOZ,  tEKKwqCFIQOZ); 
+          if(document.getElementById("EjsFkKbVELPR")) {
+            show_questions(questionsEjsFkKbVELPR,  EjsFkKbVELPR); 
           } else {
              setTimeout(try_show, 200);
           }
@@ -1540,8 +1551,8 @@ if (typeof version == 'undefined') {
         {
         // console.log(element);
 
-        //console.log("tEKKwqCFIQOZ");
-        // console.log(document.getElementById("tEKKwqCFIQOZ"));
+        //console.log("EjsFkKbVELPR");
+        // console.log(document.getElementById("EjsFkKbVELPR"));
 
         try_show();
         }
@@ -1562,7 +1573,7 @@ if (typeof version == 'undefined') {
 <li><p>the cross-entropy loss is now written as follows:</p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-cross-entropy">
-<span class="eqno">(3)<a class="headerlink" href="#equation-cross-entropy" title="Permalink to this equation">#</a></span>\[\mathcal L(\boldsymbol \theta) = -\frac 1N \sum\limits_{i=1}^N \sum\limits_{k=1}^Ky_{ik} \log(\hat y_{ik})\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-cross-entropy" title="Permalink to this equation">#</a></span>\[\mathcal L(\boldsymbol \theta) = -\frac 1n \sum\limits_{i=1}^n \sum\limits_{k=1}^Ky_{ik} \log(\hat y_{ik})\]</div>
 <div class="admonition-example admonition">
 <p class="admonition-title">Example</p>
 <p>Classifying into <span class="math notranslate nohighlight">\(3\)</span> classes, model produces the following outputs:</p>
@@ -1592,13 +1603,13 @@ if (typeof version == 'undefined') {
 <p><span style="display:none" id="cross_entropy_loss">W3sicXVlc3Rpb24iOiAiQ2FsY3VsYXRlIHRoZSBjcm9zcyBlbnRyb3B5IGZyb20gdGhlIHByZXZpb3VzIGV4YW1wbGUiLCAidHlwZSI6ICJudW1lcmljIiwgImFuc3dlcnMiOiBbeyJ0eXBlIjogInZhbHVlIiwgInZhbHVlIjogMC44NzUsICJjb3JyZWN0IjogdHJ1ZSwgImZlZWRiYWNrIjogIkV4YWN0bHkhIn0sIHsidHlwZSI6ICJkZWZhdWx0IiwgImZlZWRiYWNrIjogIkluY29ycmVjdCJ9XX1d</span></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="wxaZIIBArzpu" data-shufflequestions="False"
+<div class="output text_html"><div id="HpCzhTwjFoHw" data-shufflequestions="False"
                data-shuffleanswers="True"
                data-preserveresponses="false"
                data-numquestions="1000000"
                data-maxwidth="600"
                style="border-radius: 10px; text-align: left"> <style>
-#wxaZIIBArzpu {
+#HpCzhTwjFoHw {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -1769,14 +1780,14 @@ if (typeof version == 'undefined') {
     }
 }
 </style></div><script type="application/javascript">var element=document.getElementById("cross_entropy_loss");
-            var questionswxaZIIBArzpu;
+            var questionsHpCzhTwjFoHw;
             try {
-               questionswxaZIIBArzpu=JSON.parse(window.atob(element.innerHTML));
+               questionsHpCzhTwjFoHw=JSON.parse(window.atob(element.innerHTML));
             } catch(err) {
                console.log("Fell into catch");
-               questionswxaZIIBArzpu = JSON.parse(element.innerHTML);
+               questionsHpCzhTwjFoHw = JSON.parse(element.innerHTML);
             }
-            console.log(questionswxaZIIBArzpu);;
+            console.log(questionsHpCzhTwjFoHw);;
     // Make a random ID
 function makeid(length) {
     var result = [];
@@ -2525,8 +2536,8 @@ if (typeof version == 'undefined') {
            Someone more knowledgeable could make this better ;-) */
 
         function try_show() {
-          if(document.getElementById("wxaZIIBArzpu")) {
-            show_questions(questionswxaZIIBArzpu,  wxaZIIBArzpu); 
+          if(document.getElementById("HpCzhTwjFoHw")) {
+            show_questions(questionsHpCzhTwjFoHw,  HpCzhTwjFoHw); 
           } else {
              setTimeout(try_show, 200);
           }
@@ -2535,8 +2546,8 @@ if (typeof version == 'undefined') {
         {
         // console.log(element);
 
-        //console.log("wxaZIIBArzpu");
-        // console.log(document.getElementById("wxaZIIBArzpu"));
+        //console.log("HpCzhTwjFoHw");
+        // console.log(document.getElementById("HpCzhTwjFoHw"));
 
         try_show();
         }
@@ -2546,7 +2557,7 @@ if (typeof version == 'undefined') {
 <section id="regression">
 <h3>Regression<a class="headerlink" href="#regression" title="Permalink to this heading">#</a></h3>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(\mathcal Y = \mathbb R\)</span> or <span class="math notranslate nohighlight">\(\mathcal Y = \mathbb R^n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal Y = \mathbb R\)</span> or <span class="math notranslate nohighlight">\(\mathcal Y = \mathbb R^m\)</span></p></li>
 <li><p>the common choice is the quadratic loss</p>
 <div class="math notranslate nohighlight">
 \[
@@ -2556,7 +2567,7 @@ if (typeof version == 'undefined') {
 <li><p>then the overall loss function — mean squared error:</p>
 <div class="math notranslate nohighlight">
 \[
-    \mathcal L(\boldsymbol \theta) = \mathrm{MSE}(\boldsymbol \theta) = \frac 1N\sum\limits_{i=1}^N (y_i - f_{\boldsymbol \theta}(\boldsymbol x_i))^2
+    \mathcal L(\boldsymbol \theta) = \mathrm{MSE}(\boldsymbol \theta) = \frac 1n\sum\limits_{i=1}^n (y_i - f_{\boldsymbol \theta}(\boldsymbol x_i))^2
     \]</div>
 </li>
 </ul>
@@ -2567,7 +2578,6 @@ if (typeof version == 'undefined') {
 <img alt="../_images/7b9f311f98cc3a20fbe668161537bc9a938cddc85c123ee532fc9df13967f024.png" src="../_images/7b9f311f98cc3a20fbe668161537bc9a938cddc85c123ee532fc9df13967f024.png" />
 </div>
 </div>
-<p><strong>Q.</strong> Suppose that training dataset has only one sample (<span class="math notranslate nohighlight">\(N=1\)</span>) and one feature (<span class="math notranslate nohighlight">\(n=1\)</span>). How would linear regression look like in this case? What if <span class="math notranslate nohighlight">\(N=2\)</span>?</p>
 <div class="cell tag_remove-input docutils container">
 </div>
 </section>
@@ -2575,7 +2585,7 @@ if (typeof version == 'undefined') {
 <section id="unsupervised-learning">
 <h2>Unsupervised learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this heading">#</a></h2>
 <a class="bg-primary mb-1 reference internal image-reference" href="https://cdn-images-1.medium.com/max/1440/1*YUl_BcqFPgX49sSb5yrk3A.jpeg"><img alt="unsupervised-learning" class="bg-primary mb-1 align-center" src="https://cdn-images-1.medium.com/max/1440/1*YUl_BcqFPgX49sSb5yrk3A.jpeg" style="width: 500px;" /></a>
-<p>No targets anymore! The training dataset <span class="math notranslate nohighlight">\(\mathcal D = (\boldsymbol x_i)_{i=1}^N\)</span>.</p>
+<p>No targets anymore! The training dataset <span class="math notranslate nohighlight">\(\mathcal D = (\boldsymbol x_i)_{i=1}^n\)</span>.</p>
 <p>Examples of unsupervised learning tasks:</p>
 <ul class="simple">
 <li><p>clustering</p></li>
@@ -2586,7 +2596,7 @@ if (typeof version == 'undefined') {
 <p>Clusterisation made on <a class="reference internal" href="data.html#iris"><span class="std std-ref">Iris dataset</span></a> (figure 1.8 from <span id="id2">[<a class="reference internal" href="../bibliography.html#id3" title="Kevin P. Murphy. Probabilistic Machine Learning: An introduction. MIT Press, 2022. URL: probml.ai.">Murphy, 2022</a>]</span>):</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/b68c9abadba953f1eb48bfb4ccb94be12b0fee31f3e2993a8a3e1b2620eafde1.svg" src="../_images/b68c9abadba953f1eb48bfb4ccb94be12b0fee31f3e2993a8a3e1b2620eafde1.svg" /></div>
+<img alt="../_images/7d2f98e32f73393cc9aa8337378a3d8ee13a49abec2eef83e13e3d99cee94370.svg" src="../_images/7d2f98e32f73393cc9aa8337378a3d8ee13a49abec2eef83e13e3d99cee94370.svg" /></div>
 </div>
 </section>
 <section id="semisupervised-learning">
@@ -2597,16 +2607,29 @@ if (typeof version == 'undefined') {
 <section id="reinforcement-learning">
 <h2>Reinforcement learning<a class="headerlink" href="#reinforcement-learning" title="Permalink to this heading">#</a></h2>
 <p><strong>Reinforcement learning</strong> is a machine learning paradigm where an agent learns to make sequential decisions by interacting with an environment. It aims to maximize a cumulative reward signal by exploring actions and learning optimal strategies through trial and error.</p>
-<div class="warning admonition">
-<p class="admonition-title">TODO</p>
-<ul class="simple">
-<li><p>Pictures from the internet is a temporary solution, try to create original ones</p></li>
-<li><p>Add a subsection about dummy model (move something from the next chapter if necessary)</p></li>
-<li><p>Write more about ML beyond supervised learning</p></li>
-<li><p>Convert <span class="math notranslate nohighlight">\(N\)</span> and <span class="math notranslate nohighlight">\(D\)</span> into <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(d\)</span></p></li>
-</ul>
-</div>
 </section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Accuracy</strong> of a predictive model is calculated as</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+      \frac{\text{Number of correct predictions}}{\text{Total number of samples}}.
+  \]</div>
+<p>Prove that accuracy equals one minus error rate <a class="reference internal" href="#equation-mis-rate">(1)</a>.</p>
+<ol class="arabic simple" start="2">
+<li><p>Suppose that training dataset has only one sample (<span class="math notranslate nohighlight">\(n=1\)</span>) and one feature. How would linear regression look like in this case? What if <span class="math notranslate nohighlight">\(n=2\)</span>? <span class="math notranslate nohighlight">\(n=3\)</span>?</p></li>
+<li><p>Show that the binary cross-entropy loss <a class="reference internal" href="#equation-binary-cross-entropy">(2)</a> is a special case of the cross-entropy <a class="reference internal" href="#equation-cross-entropy">(3)</a>.</p></li>
+</ol>
+<!--
+```{admonition} TODO
+:class: warning
+* Pictures from the internet is a temporary solution, try to create original ones
+* Add a subsection about dummy model (move something from the next chapter if necessary)
+* Write more about ML beyond supervised learning
+```
+--></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -2650,11 +2673,11 @@ if (typeof version == 'undefined') {
       </div>
     </a>
     <a class="right-next"
-       href="knn.html"
+       href="model_selection.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">k-Nearest Neighbors</p>
+        <p class="prev-next-title">Model selection</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2685,6 +2708,7 @@ if (typeof version == 'undefined') {
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-learning">Unsupervised learning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semisupervised-learning">Semisupervised learning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
   </nav></div>
 

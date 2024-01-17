@@ -8,7 +8,6 @@ The key word is **introduction**. Completing this course one should be acquire k
 > Machine learning is a dynamic and interdisciplinary field that has emerged from the symbiotic combination of mathematics and programming. At its core, machine learning leverages mathematical principles, particularly statistics, linear algebra, and calculus, to develop algorithms that enable computers to learn from data and make predictions or decisions without explicit programming. The fusion of these mathematical foundations with programming languages such as Python and R has led to the creation of powerful frameworks and libraries, facilitating the implementation and deployment of complex machine learning models. 
 
 Sincerely yours,
-
 chatGPT
 ```
 
@@ -26,4 +25,4 @@ Hence, the course constists of two parts:
 | Midterm              | $20\%$       |
 | Final exam           | $40\%$       |
 
-Practice consists of weekly assignments, approximately $10$ homeworks.
+Practice consists of (nearly) weekly assignments in Jupyter Notebooks, around $3$ points each.
