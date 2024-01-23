@@ -164,6 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="current nav bd-sidenav">
@@ -303,11 +304,10 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/vectors.html">Vectors</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/matrices.html">Matrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/linear_systems.html">Linear systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/inverse.html">Inverse matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/rank.html">Rank of a matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/orthogonality.html">Orthogonality</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/projections.html">Orthogonal projections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/determinant.html">Determinants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/eig.html">Eigenvalues and eigenvectors</a></li>
@@ -552,7 +552,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5a7944d6f154f0a6e0b1297e04cbd68d63a23e8978340875bd4afc9f252e7c2d.png" src="../_images/5a7944d6f154f0a6e0b1297e04cbd68d63a23e8978340875bd4afc9f252e7c2d.png" />
+<img alt="../_images/5e4daa2fd57cea3b6d75088e9f3883a63a7ca942a30799e57ddaa3c7f101874b.png" src="../_images/5e4daa2fd57cea3b6d75088e9f3883a63a7ca942a30799e57ddaa3c7f101874b.png" />
 </div>
 </div>
 <p>A prettier tree can be drawn by <code class="docutils literal notranslate"><span class="pre">graphviz</span></code>:</p>
@@ -571,7 +571,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/123b5fba0251a69339684c80f9f18e9cf19177093bd6ae602dc804401987aa7d.svg" src="../_images/123b5fba0251a69339684c80f9f18e9cf19177093bd6ae602dc804401987aa7d.svg" /></div>
+<img alt="../_images/386204336140eb914c25547bb4c8156e6684067ac2c533f6bbb798dbe0ac3cc1.svg" src="../_images/386204336140eb914c25547bb4c8156e6684067ac2c533f6bbb798dbe0ac3cc1.svg" /></div>
 </div>
 <p>Depth equal to <span class="math notranslate nohighlight">\(2\)</span> is enough for this toy dataset:</p>
 <div class="cell docutils container">
@@ -590,7 +590,7 @@ document.write(`
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/8a5f1c375ee12cd8f4a6373d0abfd0ffc99f5a091535fb7fcbd05b050421aa08.svg" src="../_images/8a5f1c375ee12cd8f4a6373d0abfd0ffc99f5a091535fb7fcbd05b050421aa08.svg" /></div>
+<img alt="../_images/6d9e99c87ae639de8e8484aa5c4d97819c3683a1c8d46e155562ae465be1b267.svg" src="../_images/6d9e99c87ae639de8e8484aa5c4d97819c3683a1c8d46e155562ae465be1b267.svg" /></div>
 </div>
 </section>
 <section id="mnist">
@@ -617,7 +617,7 @@ document.write(`
 <p>Visualize data:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/23ca245369cfb61b285cf908169dababf2f4b738bd362a0a91099db73ce8fd3a.svg" src="../_images/23ca245369cfb61b285cf908169dababf2f4b738bd362a0a91099db73ce8fd3a.svg" /></div>
+<img alt="../_images/f981b9807c00d72e9cfba3896f74b01647f7e07380c572c4e3d8cff790af42fa.svg" src="../_images/f981b9807c00d72e9cfba3896f74b01647f7e07380c572c4e3d8cff790af42fa.svg" /></div>
 </div>
 <p>Split into train and test:</p>
 <div class="cell docutils container">
@@ -670,7 +670,7 @@ Test accuracy: 0.8735
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/30cee34489af5bf0a4895bd8ade48073d15b2a9c5a2bd2f40a200f4fed78b38c.svg" src="../_images/30cee34489af5bf0a4895bd8ade48073d15b2a9c5a2bd2f40a200f4fed78b38c.svg" /></div>
+<img alt="../_images/5f95948ab6f08da4344394d356a1555f278b5aa9149b8dd70b612220e11ee7be.svg" src="../_images/5f95948ab6f08da4344394d356a1555f278b5aa9149b8dd70b612220e11ee7be.svg" /></div>
 </div>
 <p>Limit the tree depth and size of leaves:</p>
 <div class="cell docutils container">
@@ -699,7 +699,7 @@ Test accuracy: 0.8776
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/7ab8557ecea543c7ebd178ba0972c03db5fa85b55ee7823a9a32dea6745bad9b.svg" src="../_images/7ab8557ecea543c7ebd178ba0972c03db5fa85b55ee7823a9a32dea6745bad9b.svg" /></div>
+<img alt="../_images/9891196287cc33f28022eec7166f1faafae5032e0ecfec8d0bff16586e6623bf.svg" src="../_images/9891196287cc33f28022eec7166f1faafae5032e0ecfec8d0bff16586e6623bf.svg" /></div>
 </div>
 </section>
 <section id="splitting-conditions">

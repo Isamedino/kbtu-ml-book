@@ -164,6 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="nav bd-sidenav">
@@ -303,11 +304,10 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/vectors.html">Vectors</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/matrices.html">Matrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/linear_systems.html">Linear systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/inverse.html">Inverse matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/rank.html">Rank of a matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/orthogonality.html">Orthogonality</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/projections.html">Orthogonal projections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/determinant.html">Determinants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/eig.html">Eigenvalues and eigenvectors</a></li>
@@ -620,7 +620,7 @@ A_t = \arg\max\limits_{a\in \mathcal A} Q_t(a)
 Optimal mean reward: 1.3376758127929265
 </pre></div>
 </div>
-<img alt="../_images/6bb28f38a65b72f86037bc7115bb3bd7fe16dfb0c54b4b9de5c9d29d7591b6cc.svg" src="../_images/6bb28f38a65b72f86037bc7115bb3bd7fe16dfb0c54b4b9de5c9d29d7591b6cc.svg" /></div>
+<img alt="../_images/63c8633f98e57a57e8acceaf3d1af3d8aa332966f9712a30172010e9908f37cc.svg" src="../_images/63c8633f98e57a57e8acceaf3d1af3d8aa332966f9712a30172010e9908f37cc.svg" /></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
@@ -634,8 +634,8 @@ Optimal mean reward: 1.3376758127929265
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 20.4 s, sys: 627 ms, total: 21.1 s
-Wall time: 25.4 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 14.1 s, sys: 135 ms, total: 14.3 s
+Wall time: 14.7 s
 </pre></div>
 </div>
 </div>
@@ -649,7 +649,7 @@ Wall time: 25.4 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e1b43f5fe7c39543d2edbec2e57ca0f76f7f37c716664d26deb632d576da8875.svg" src="../_images/e1b43f5fe7c39543d2edbec2e57ca0f76f7f37c716664d26deb632d576da8875.svg" /></div>
+<img alt="../_images/fe7f7e703fa410bd8aac2b08bde59701e417336ce3c5da3711d9c495e8e2c65c.svg" src="../_images/fe7f7e703fa410bd8aac2b08bde59701e417336ce3c5da3711d9c495e8e2c65c.svg" /></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
@@ -660,7 +660,7 @@ Wall time: 25.4 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b2009fdffea51ac87a30671ef658caf39cb492f0f1b63b2f910cf562e8ce801f.svg" src="../_images/b2009fdffea51ac87a30671ef658caf39cb492f0f1b63b2f910cf562e8ce801f.svg" /></div>
+<img alt="../_images/0e3e21d19cc7837552c5e822b72bd51902f221f3c426137d72b88aef716e2c62.svg" src="../_images/0e3e21d19cc7837552c5e822b72bd51902f221f3c426137d72b88aef716e2c62.svg" /></div>
 </div>
 <p><strong>Q.</strong> What is the cumulative regret of <span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy policy for a single testbed? Calculate</p>
 <div class="math notranslate nohighlight">
@@ -683,8 +683,8 @@ Wall time: 25.4 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 5.03 s, sys: 159 ms, total: 5.18 s
-Wall time: 6.49 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 3.09 s, sys: 12.9 ms, total: 3.11 s
+Wall time: 3.13 s
 </pre></div>
 </div>
 </div>
@@ -697,7 +697,7 @@ Wall time: 6.49 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2c669d025c707a868209be6be59c2c79813323166a393b3108301bd5075cafd8.svg" src="../_images/2c669d025c707a868209be6be59c2c79813323166a393b3108301bd5075cafd8.svg" /></div>
+<img alt="../_images/15852a9f2b100f58902b011f795d3febb29d3a043400f9dba63394888d9b6541.svg" src="../_images/15852a9f2b100f58902b011f795d3febb29d3a043400f9dba63394888d9b6541.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -706,7 +706,7 @@ Wall time: 6.49 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4665920f6ae0b4feb152ef261c618e63e9be93f12dc1ef1fee24375008d05b72.svg" src="../_images/4665920f6ae0b4feb152ef261c618e63e9be93f12dc1ef1fee24375008d05b72.svg" /></div>
+<img alt="../_images/b08ae98f152e028598424ffe05592ba838562a0560e87271c5f51b608c4a5257.svg" src="../_images/b08ae98f152e028598424ffe05592ba838562a0560e87271c5f51b608c4a5257.svg" /></div>
 </div>
 </section>
 <section id="upper-confidence-bound">
@@ -749,8 +749,8 @@ A_t = \arg\max\limits_a \bigg\{Q_t(a) + c\sqrt{\frac{\log t}{N_t(a)}}\bigg\}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2.74 s, sys: 97.7 ms, total: 2.83 s
-Wall time: 3.37 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.74 s, sys: 15.1 ms, total: 1.75 s
+Wall time: 1.76 s
 </pre></div>
 </div>
 </div>
@@ -763,7 +763,7 @@ Wall time: 3.37 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8ddbbc9fdc3572f15efd7dad8f055d5f03697ce218b850e81ab88a0a73f96cea.svg" src="../_images/8ddbbc9fdc3572f15efd7dad8f055d5f03697ce218b850e81ab88a0a73f96cea.svg" /></div>
+<img alt="../_images/da8c79a14fa80aa8f0f755b018d590b853d965c9bba7d8a78d87155ac031ff9e.svg" src="../_images/da8c79a14fa80aa8f0f755b018d590b853d965c9bba7d8a78d87155ac031ff9e.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -772,7 +772,7 @@ Wall time: 3.37 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7a9aa1e81428bb5ac9f94d5238bcf8cb65a51dc3996e7146db947f6c7c39833e.svg" src="../_images/7a9aa1e81428bb5ac9f94d5238bcf8cb65a51dc3996e7146db947f6c7c39833e.svg" /></div>
+<img alt="../_images/a3b932d961eb210cdd03c40daaf7728efe694cee57246a46b116cbc76c08a9fd.svg" src="../_images/a3b932d961eb210cdd03c40daaf7728efe694cee57246a46b116cbc76c08a9fd.svg" /></div>
 </div>
 </section>
 </section>

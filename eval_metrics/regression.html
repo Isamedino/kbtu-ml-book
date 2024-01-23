@@ -164,6 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="current nav bd-sidenav">
@@ -303,11 +304,10 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/vectors.html">Vectors</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/matrices.html">Matrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/linear_systems.html">Linear systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/inverse.html">Inverse matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/rank.html">Rank of a matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/orthogonality.html">Orthogonality</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/projections.html">Orthogonal projections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/determinant.html">Determinants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/eig.html">Eigenvalues and eigenvectors</a></li>
@@ -605,7 +605,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/30956873687f075a37d649baaf15f8160191e6639773a7afaf6e6d9c41a50a13.svg" src="../_images/30956873687f075a37d649baaf15f8160191e6639773a7afaf6e6d9c41a50a13.svg" /></div>
+<img alt="../_images/4ee8426d9b95156f07561bafc96207dd93ab5224790eda13ddde9d3f1328c9b5.svg" src="../_images/4ee8426d9b95156f07561bafc96207dd93ab5224790eda13ddde9d3f1328c9b5.svg" /></div>
 </div>
 <p>Fit linear regression model and check metrics:</p>
 <div class="cell docutils container">
@@ -635,13 +635,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.6730355479790613
-Slope: -0.4821908252161125
-Mean Absolute Error (MAE): 0.4298
-Mean Squared Error (MSE): 0.2796
-Root Mean Squared Error (RMSE): 0.5288
-R2-score: 0.0648
-Mean absolute percentage error(MAPE): 0.3828
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.5621848376987653
+Slope: -0.2634669009445359
+Mean Absolute Error (MAE): 0.3511
+Mean Squared Error (MSE): 0.1880
+Root Mean Squared Error (RMSE): 0.4335
+R2-score: 0.0299
+Mean absolute percentage error(MAPE): 0.3316
 </pre></div>
 </div>
 </div>
@@ -659,7 +659,7 @@ Mean absolute percentage error(MAPE): 0.3828
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f5d56da16ee8b4c95347bda554b46094f1adc3005089e29788129baa1d84c8d9.svg" src="../_images/f5d56da16ee8b4c95347bda554b46094f1adc3005089e29788129baa1d84c8d9.svg" /></div>
+<img alt="../_images/d32ae0778d1ff582edb6b7c1a870572b6dfd96c04da9a8a8ef1a5bfbe0785513.svg" src="../_images/d32ae0778d1ff582edb6b7c1a870572b6dfd96c04da9a8a8ef1a5bfbe0785513.svg" /></div>
 </div>
 <p>Fit linear regression once again:</p>
 <div class="cell docutils container">
@@ -673,8 +673,8 @@ Mean absolute percentage error(MAPE): 0.3828
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.5225404984741109
-Slope: 0.22587998186459554
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.8037689961146068
+Slope: -0.3474753017846199
 </pre></div>
 </div>
 </div>
@@ -697,11 +697,11 @@ Slope: 0.22587998186459554
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error (MAE): 0.6827
-Mean Squared Error (MSE): 3.8633
-Root Mean Squared Error (RMSE): 1.9655
-R2-score: 0.0011
-Mean absolute percentage error(MAPE): 0.4852
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error (MAE): 0.5661
+Mean Squared Error (MSE): 3.8592
+Root Mean Squared Error (RMSE): 1.9645
+R2-score: 0.0026
+Mean absolute percentage error(MAPE): 0.3965
 </pre></div>
 </div>
 </div>

@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'math/lin_alg/matrices';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Linear systems" href="linear_systems.html" />
+    <link rel="next" title="Inverse matrix" href="inverse.html" />
     <link rel="prev" title="Vectors" href="vectors.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -164,6 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../courses/Intro2ML.html">Introduction to ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="nav bd-sidenav">
@@ -303,11 +304,10 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../linear_algebra.html">Linear Algebra</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="vectors.html">Vectors</a></li>
+
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Matrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_systems.html">Linear systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inverse.html">Inverse matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rank.html">Rank of a matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="orthogonality.html">Orthogonality</a></li>
 <li class="toctree-l2"><a class="reference internal" href="projections.html">Orthogonal projections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="determinant.html">Determinants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="eig.html">Eigenvalues and eigenvectors</a></li>
@@ -492,10 +492,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#square-matrices">Square matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#square-matrices">Square matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identity-matrix">Identity matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonal-matrix">Diagonal matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triangular-matrices">Triangular matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#symmetric-matrices">Symmetric matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-matrices">Orthogonal matrices</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-operations">Matrix operations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-product">Matrix-vector product</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-product">Matrix product</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-product">Matrix-vector product</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-times-column-column">Matrix times column = column</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#row-times-matrix-row">Row times matrix = row</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#row-times-column">Row times column</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-product">Matrix product</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-matrix-product">Properties of matrix product</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#powers-of-matrices">Powers of matrices</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-rank-matrix">One-rank matrix</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-matrices">Block matrices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
@@ -527,10 +543,10 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \boldsymbol A  = \begin{pmatrix}
-        \boldsymbol b_1^\top \\
-        \boldsymbol b_2^\top \\
+        \boldsymbol b_1^\mathsf{T} \\
+        \boldsymbol b_2^\mathsf{T} \\
         \vdots\\
-        \boldsymbol b_m^\top \\
+        \boldsymbol b_m^\mathsf{T} \\
     \end{pmatrix} = 
     [\boldsymbol c_1 \boldsymbol c_2 \dots \boldsymbol c_n], \quad
     \boldsymbol b_i = \begin{pmatrix}
@@ -548,7 +564,20 @@ document.write(`
     \end{pmatrix}
 \end{split}\]</div>
 <p>Если <span class="math notranslate nohighlight">\(m=n\)</span>, то матрица <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> называется <strong>квадратной</strong>, в противном случае — <strong>прямоугольной</strong>. Вектор <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^n\)</span> можно считать матрицей размера <span class="math notranslate nohighlight">\(n\times 1\)</span> (столбец) или <span class="math notranslate nohighlight">\(1\times n\)</span> (строка).</p>
-<p><strong>Транспонированная</strong> матрица <span class="math notranslate nohighlight">\(\boldsymbol A^\top \in \mathbb R^{n\times m}\)</span> в качестве строк содержит столбцы матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>: <span class="math notranslate nohighlight">\(A^\top_{ij} = A_{ji}\)</span>. В частности, вектор-столбец получается транспонированием из вектора-строки, и наоборот, чем и объясняется обозначение <span class="math notranslate nohighlight">\(\boldsymbol x^\top\)</span> для векторов-строк.</p>
+<p><strong>Транспонированная</strong> матрица <span class="math notranslate nohighlight">\(\boldsymbol A^\mathsf{T} \in \mathbb R^{n\times m}\)</span> в качестве строк содержит столбцы матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>: <span class="math notranslate nohighlight">\(A^\mathsf{T}_{ij} = A_{ji}\)</span>. В частности, вектор-столбец получается транспонированием из вектора-строки, и наоборот, чем и объясняется обозначение <span class="math notranslate nohighlight">\(\boldsymbol x^\mathsf{T}\)</span> для векторов-строк.</p>
+<div class="tip admonition">
+<p class="admonition-title">Feature matrix</p>
+<p>In machine learning a numeric dataset is usually represented by the <a class="reference internal" href="../../intro/data.html#feature-matrix"><span class="std std-ref">feature matrix</span></a> <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> in which each training sample is represented by a row vector <span class="math notranslate nohighlight">\(\boldsymbol x_i^\mathsf{T}\)</span>. Hence,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \boldsymbol X  = \begin{pmatrix}
+        \boldsymbol x_1^\mathsf{T} \\
+        \boldsymbol x_2^\mathsf{T} \\
+        \vdots\\
+        \boldsymbol x_n^\mathsf{T} \\
+    \end{pmatrix}
+\end{split}\]</div>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">np.array</span></code> can handle multidimenstional arrays including matrices. For example, let’s generate a random matrix of shape <span class="math notranslate nohighlight">\(2\times 3\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -559,8 +588,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.08728969, 0.54601015, 0.72351181],
-       [0.96028496, 0.03162472, 0.2270256 ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.2529354 , 0.47368762, 0.10053724],
+       [0.95880111, 0.8528477 , 0.22616888]])
 </pre></div>
 </div>
 </div>
@@ -573,22 +602,24 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.08728969, 0.96028496],
-       [0.54601015, 0.03162472],
-       [0.72351181, 0.2270256 ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.2529354 , 0.95880111],
+       [0.47368762, 0.8528477 ],
+       [0.10053724, 0.22616888]])
 </pre></div>
 </div>
 </div>
 </div>
 <section id="square-matrices">
 <h2>Square matrices<a class="headerlink" href="#square-matrices" title="Permalink to this heading">#</a></h2>
-<p>Квадратные матрицы <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{n\times n}\)</span> имеют одинаковое количество строк и столцов. Такие матрицы представляют особый интерес как в теории, так и на практике.</p>
-<p>У квадратной матрицы есть две диагонали: главная и побочная.</p>
-<p><img alt="" src="https://cdn.fxyz.ru/img/linear-algebra/matrix-diagonals.png" /></p>
-<p>Сумма элементов главной диагонали называется <strong>следом</strong> матрицы: <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol A) = \sum\limits_{i=1}^n a_{ii}\)</span>.</p>
-<p>Перечислим самые распространённые классы квадратных матриц.</p>
-<ol class="arabic">
-<li><p><strong>Единичная матрица</strong>. Такая матрица содержит единицы на главной диагонали и нули вне неё; обозначается <span class="math notranslate nohighlight">\(\boldsymbol I\)</span> или <span class="math notranslate nohighlight">\(\boldsymbol I_n\)</span>, если нужно подчеркнуть её размер:</p>
+<p>A <strong>square matrix</strong> <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{n\times n}\)</span> has the same number of rows and columns.
+Each square matrix has two diagonals: <strong>main</strong> (<strong>primaty</strong>, <strong>principle</strong>) and <strong>secondary</strong> (<strong>side</strong>, <strong>antidiagonal</strong>).</p>
+<figure class="align-default">
+<img alt="https://learnetutorials.com/assets/images/programs/diagonal1.png" class="figure" src="https://learnetutorials.com/assets/images/programs/diagonal1.png" />
+</figure>
+<p><strong>Trace</strong> of a matrix is equal to the sum of the elements on its main diagonsl: <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol A) = \sum\limits_{i=1}^n a_{ii}\)</span>.</p>
+<section id="identity-matrix">
+<h3>Identity matrix<a class="headerlink" href="#identity-matrix" title="Permalink to this heading">#</a></h3>
+<p>All ones on the main diagonal, all zeros outside it. Identity matrix is denoted as <span class="math notranslate nohighlight">\(\boldsymbol I\)</span> or <span class="math notranslate nohighlight">\(\boldsymbol I_n\)</span> if we want to underscore its shape:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \boldsymbol I_2 = \begin{pmatrix}
@@ -606,9 +637,43 @@ document.write(`
         \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
         0 &amp; 0 &amp;\dots &amp; 1 \\
     \end{pmatrix}.
-    \end{split}\]</div>
-</li>
-<li><p><strong>Диагональная матрица</strong>. Все ненулевые элементы диагональной матрицы находятся на главной диагонали:</p>
+\end{split}\]</div>
+<p>Identity matrix in NumPy is created by <code class="docutils literal notranslate"><span class="pre">np.eye</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="n">I</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 0, 0, 0],
+       [0, 1, 0, 0],
+       [0, 0, 1, 0],
+       [0, 0, 0, 1]], dtype=int32)
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default the underlying type is float:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1., 0., 0.],
+       [0., 1., 0.],
+       [0., 0., 1.]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="diagonal-matrix">
+<h3>Diagonal matrix<a class="headerlink" href="#diagonal-matrix" title="Permalink to this heading">#</a></h3>
+<p>Can have nonzero elements only on the main diagonal:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \boldsymbol \Lambda = \mathrm{diag}\{\lambda_1, \lambda_2, \ldots, \lambda_n\} = \begin{pmatrix}
@@ -616,57 +681,103 @@ document.write(`
         0 &amp; \lambda_2 &amp; \dots &amp; 0 \\
         \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
         0 &amp; 0 &amp; \dots &amp; \lambda_n \\
-    \end{pmatrix}.
-    \end{split}\]</div>
-<p>Единичная матрица является частным случаем диагональной:</p>
+    \end{pmatrix}.\end{split}\]</div>
+<p>Identity matrix is a special case of a diagonal matrix:</p>
 <div class="math notranslate nohighlight">
 \[
     \boldsymbol I = \mathrm{diag}\{1, 1, \dots, 1\}.
-    \]</div>
-</li>
-<li><p><strong>Матрица перестановки</strong>. Такая матрица состоит из нулей и единиц, и содержит ровно одну единицу в каждой строке и в каждом столбце. Любая матрица перестановки получается некоторой перестановкой строк/столбцов единичной матрицы. Существует <span class="math notranslate nohighlight">\(n!\)</span> различных матриц перестановок размера <span class="math notranslate nohighlight">\(n\times n\)</span>. Например, ниже перечислены все <span class="math notranslate nohighlight">\(3!=6\)</span> матрицы перестановок размера <span class="math notranslate nohighlight">\(3\times3\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+\]</div>
+<p><code class="docutils literal notranslate"><span class="pre">np.diag</span></code> can either create a diagonal matrix or extract the main diagonal of a matrix. Here we create a diagonal matrix:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">D</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 0, 0],
+       [0, 2, 0],
+       [0, 0, 3]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.04076426, -0.34784649, -1.6685273 ],
+       [-0.09889954, -0.32287573, -1.16117529],
+       [ 0.87227011, -0.33736643,  0.27524385]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>And here the extraction of the main diagonal happens:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.04076426, -0.32287573,  0.27524385])
+</pre></div>
+</div>
+</div>
+</div>
+<!--
+3. **Матрица перестановки**. Такая матрица состоит из нулей и единиц, и содержит ровно одну единицу в каждой строке и в каждом столбце. Любая матрица перестановки получается некоторой перестановкой строк/столбцов единичной матрицы. Существует $n!$ различных матриц перестановок размера $n\times n$. Например, ниже перечислены все $3!=6$ матрицы перестановок размера $3\times3$:
+
+    $$
     \begin{pmatrix}
-    1 &amp; 0 &amp; 0 \\
-    0 &amp; 1 &amp; 0 \\
-    0 &amp; 0 &amp; 1 \\
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
     \end{pmatrix},
     \quad
     \begin{pmatrix}
-    1 &amp; 0 &amp; 0 \\
-    0 &amp; 0 &amp; 1 \\
-    0 &amp; 1 &amp; 0 \\
+    1 & 0 & 0 \\
+    0 & 0 & 1 \\
+    0 & 1 & 0 \\
     \end{pmatrix},
     \quad
     \begin{pmatrix}
-    0 &amp; 1 &amp; 0 \\
-    1 &amp; 0 &amp; 0 \\
-    0 &amp; 0 &amp; 1 \\
+    0 & 1 & 0 \\
+    1 & 0 & 0 \\
+    0 & 0 & 1 \\
     \end{pmatrix},
-    \end{split}\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+    $$
+
+    $$
     \begin{pmatrix}
-    0 &amp; 1 &amp; 0 \\
-    0 &amp; 0 &amp; 1 \\
-    1 &amp; 0 &amp; 0 \\
-    \end{pmatrix},
-    \quad
-    \begin{pmatrix}
-    0 &amp; 0 &amp; 1 \\
-    1 &amp; 0 &amp; 0 \\
-    0 &amp; 1 &amp; 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+    1 & 0 & 0 \\
     \end{pmatrix},
     \quad
     \begin{pmatrix}
-    0 &amp; 0 &amp; 1 \\
-    0 &amp; 1 &amp; 0 \\
-    1 &amp; 0 &amp; 0 \\
+    0 & 0 & 1 \\
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    \end{pmatrix},
+    \quad
+    \begin{pmatrix}
+    0 & 0 & 1 \\
+    0 & 1 & 0 \\
+    1 & 0 & 0 \\
     \end{pmatrix}.
-    \end{split}\]</div>
-</li>
-<li><p><strong>Треугольные матрицы</strong>. У <strong>верхней треугольной</strong> матрицы <span class="math notranslate nohighlight">\(\boldsymbol U\)</span> все элементы ниже главной диагонали равны нулю: <span class="math notranslate nohighlight">\(U_{ij} = 0\)</span> при <span class="math notranslate nohighlight">\(i &gt; j\)</span>,</p>
+    $$
+-->
+</section>
+<section id="triangular-matrices">
+<h3>Triangular matrices<a class="headerlink" href="#triangular-matrices" title="Permalink to this heading">#</a></h3>
+<p>An <strong>upper triangular</strong> matrix <span class="math notranslate nohighlight">\(\boldsymbol U\)</span> has all zeros <strong>above</strong> the main diagonal: <span class="math notranslate nohighlight">\(U_{ij} = 0\)</span> if <span class="math notranslate nohighlight">\(i &gt; j\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \boldsymbol U  = \begin{pmatrix}
@@ -676,8 +787,8 @@ document.write(`
         \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
         0 &amp; 0 &amp; 0 &amp; \dots &amp; u_n \\
     \end{pmatrix}.
-    \end{split}\]</div>
-<p>У <strong>нижней треугольной</strong> матрицы <span class="math notranslate nohighlight">\(\boldsymbol L\)</span>, наоборот, все элементы выше главной диагонали равны нулю: <span class="math notranslate nohighlight">\(L_{ij} = 0\)</span> при <span class="math notranslate nohighlight">\(i &lt; j\)</span>,</p>
+\end{split}\]</div>
+<p>A <strong>lower triangular</strong> matrix <span class="math notranslate nohighlight">\(\boldsymbol L\)</span>, on the other hand, has all zeros <strong>below</strong> the main diagonal: <span class="math notranslate nohighlight">\(L_{ij} = 0\)</span> if <span class="math notranslate nohighlight">\(i &lt; j\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \boldsymbol L = \begin{pmatrix}
@@ -687,29 +798,31 @@ document.write(`
         \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
         * &amp; * &amp; * &amp; \dots &amp; \ell_n \\
     \end{pmatrix}. 
-    \end{split}\]</div>
-<p>Матрица <span class="math notranslate nohighlight">\(\boldsymbol U\)</span> верхняя треугольная тогда и только тогда, когда матрица <span class="math notranslate nohighlight">\(\boldsymbol U^\top\)</span> нижняя треугольная.</p>
-</li>
-<li><p><strong>Симметричные матрицы</strong>. Квадратная матрица <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> называется</p>
+\end{split}\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(\boldsymbol U\)</span> is upper triangular iff <span class="math notranslate nohighlight">\(\boldsymbol U^\mathsf{T}\)</span> is lower triangular.</p>
+</section>
+<section id="symmetric-matrices">
+<h3>Symmetric matrices<a class="headerlink" href="#symmetric-matrices" title="Permalink to this heading">#</a></h3>
+<p>A square matrix <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> is called</p>
 <ul class="simple">
-<li><p><strong>симметричной</strong>, если <span class="math notranslate nohighlight">\(\boldsymbol A^\top  = \boldsymbol A\)</span>;</p></li>
-<li><p><strong>кососимметричной</strong>, если <span class="math notranslate nohighlight">\(\boldsymbol A^\top  = -\boldsymbol A\)</span>.</p></li>
+<li><p><strong>symmetric</strong> if <span class="math notranslate nohighlight">\(\boldsymbol A^\mathsf{T}  = \boldsymbol A\)</span>;</p></li>
+<li><p><strong>skew-symmetric</strong> if <span class="math notranslate nohighlight">\(\boldsymbol A^\mathsf{T}  = -\boldsymbol A\)</span>.</p></li>
 </ul>
-<p>На главной диагонали кососимметричной матрицы всегда находятся нули. Всякая квадратная матрица <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> может быть единственным образом представлена в виде суммы симметричной и кососимметричной матриц:</p>
+<p>Any square matrix <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> can be represented as a sum of a symmetric and a skew-symmetric matrix:</p>
 <div class="math notranslate nohighlight">
 \[
     \boldsymbol A = \frac{\boldsymbol A + \boldsymbol A^\top}2 + \frac{\boldsymbol A - \boldsymbol A^\top}2.
-    \]</div>
-</li>
-<li><p><strong>Ортогональная матрица</strong>. Квадратная матрица <span class="math notranslate nohighlight">\(\boldsymbol Q = [\boldsymbol q_1, \ldots, \boldsymbol q_n]\)</span> <strong>ортогональная</strong>, если её столбцы образуют ортонормированную систему, т. е. <span class="math notranslate nohighlight">\(\langle \boldsymbol q_i, \boldsymbol q_j\rangle = \delta_{ij}\)</span>, где <span class="math notranslate nohighlight">\(\delta_{ij}\)</span> — <a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%BC%D0%B2%D0%BE%D0%BB_%D0%9A%D1%80%D0%BE%D0%BD%D0%B5%D0%BA%D0%B5%D1%80%D0%B0">символ Кронекера</a>{:target=”_blank”}.</p>
-<p>Любая матрица перестановки является ортогональной. Также ортогональна, к примеру, <strong>матрица поворота</strong> на угол <span class="math notranslate nohighlight">\(\theta\)</span></p>
+\]</div>
+</section>
+<section id="orthogonal-matrices">
+<h3>Orthogonal matrices<a class="headerlink" href="#orthogonal-matrices" title="Permalink to this heading">#</a></h3>
+<p>A square matrix <span class="math notranslate nohighlight">\(\boldsymbol Q = [\boldsymbol q_1 \ldots \boldsymbol q_n]\)</span> is <strong>orthogonal</strong> if its columns are orthonormal, i.e., <span class="math notranslate nohighlight">\(\langle \boldsymbol q_i, \boldsymbol q_j\rangle = \delta_{ij}\)</span>, where <span class="math notranslate nohighlight">\(\delta_{ij}\)</span> is <a class="reference external" href="https://en.wikipedia.org/wiki/Kronecker_delta">Kronecker delta</a>.</p>
+<p>An example of orthogonal matrix is given by the <strong>rotation matrix</strong></p>
 <div class="math notranslate nohighlight" id="equation-rotation-matrix">
-<span class="eqno">(34)<a class="headerlink" href="#equation-rotation-matrix" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol Q = \begin{pmatrix}
-    \cos \theta &amp; -\sin\theta \\
-    \sin \theta &amp; \cos\theta \\
-\end{pmatrix}.\end{split}\]</div>
-</li>
-</ol>
+<span class="eqno">(37)<a class="headerlink" href="#equation-rotation-matrix" title="Permalink to this equation">#</a></span>\[\begin{split}    \boldsymbol Q = \begin{pmatrix}
+        \cos \theta &amp; -\sin\theta \\
+        \sin \theta &amp; \cos\theta \\
+    \end{pmatrix}.\end{split}\]</div>
 <!--
 * Иногда бывает полезна матрица из одних нулей или одних единиц; такие матрицы размера $m\times n$ будем обозначать $$\boldsymbol 0_{m\times n}$$ и $$\boldsymbol 1_{m\times n}$$ соответственно.
 
@@ -754,67 +867,7 @@ document.write(`
 
     
 Квадратные матрицы — очень важный класс матриц, среди них в свою очередь выделяют несколько часто встречающихся семейств
---><p>Identity matrix in NumPy is created by <code class="docutils literal notranslate"><span class="pre">np.eye</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
-<span class="n">I</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 0, 0, 0],
-       [0, 1, 0, 0],
-       [0, 0, 1, 0],
-       [0, 0, 0, 1]], dtype=int32)
-</pre></div>
-</div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">np.diag</span></code> can either create a diagonal matrix or extract the main diagonal of a matrix. Here we create a diagonal matrix:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-<span class="n">D</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 0, 0],
-       [0, 2, 0],
-       [0, 0, 3]])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="n">A</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.44717254,  1.4078295 , -0.6438964 ],
-       [ 0.30502598,  1.0711746 ,  1.15591706],
-       [ 1.51407551,  1.83549146, -1.7051814 ]])
-</pre></div>
-</div>
-</div>
-</div>
-<p>And here the extraction of the main diagonal happens:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.44717254,  1.0711746 , -1.7051814 ])
-</pre></div>
-</div>
-</div>
-</div>
+--></section>
 </section>
 <section id="matrix-operations">
 <h2>Matrix operations<a class="headerlink" href="#matrix-operations" title="Permalink to this heading">#</a></h2>
@@ -844,7 +897,7 @@ document.write(`
 </li>
 </ul>
 <p>Первые два свойства указывают на то, что матрицы можно рассматривать как вектора особого вида. Можно даже пойти дальше и записать матрицу размера <span class="math notranslate nohighlight">\(m\times n\)</span> в виде одномерного массива длины <span class="math notranslate nohighlight">\(mn\)</span> (например, построчно), и получится вектор в чистом виде. Такая операция применяется, к примеру, в свёрточных нейронных сетях, когда на определённом этапе представленная матрицей или тензором картинка выпрямляется (flatten) в вектор для дальнейшего прохождения через один или несколько полносвязных слоёв.</p>
-<p>Matrix operations in NumPy are quite natrural:</p>
+<p>Matrix operations in NumPy are quite natural:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
@@ -855,8 +908,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0 -2  0]
- [ 1  1 -1]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 2  2 -2]
+ [ 2  2 -2]]
 [[1 2 3]
  [4 5 6]]
 </pre></div>
@@ -870,8 +923,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 0, 3],
-       [5, 6, 5]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3, 4, 1],
+       [6, 7, 4]])
 </pre></div>
 </div>
 </div>
@@ -883,8 +936,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1, -4, -3],
-       [-3, -4, -7]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1,  0, -5],
+       [-2, -3, -8]])
 </pre></div>
 </div>
 </div>
@@ -896,8 +949,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0, -4,  0],
-       [ 4,  5, -6]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[  2,   4,  -6],
+       [  8,  10, -12]])
 </pre></div>
 </div>
 </div>
@@ -909,8 +962,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.        , -1.        ,  0.        ],
-       [ 0.25      ,  0.2       , -0.16666667]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2.        ,  1.        , -0.66666667],
+       [ 0.5       ,  0.4       , -0.33333333]])
 </pre></div>
 </div>
 </div>
@@ -918,44 +971,46 @@ document.write(`
 </section>
 <section id="matrix-vector-product">
 <h2>Matrix-vector product<a class="headerlink" href="#matrix-vector-product" title="Permalink to this heading">#</a></h2>
-<p>Чтобы матрицу <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> можно было умножить на вектор <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>, число её столбцов должно совпадать с размерностью вектора <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>. Если <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span>,  <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^n\)</span>, то  <span class="math notranslate nohighlight">\(\boldsymbol A\boldsymbol x =  \boldsymbol b \in \mathbb R^m\)</span>; координаты вектора  <span class="math notranslate nohighlight">\(\boldsymbol b\)</span> вычисляются по формуле</p>
+<section id="matrix-times-column-column">
+<h3>Matrix times column = column<a class="headerlink" href="#matrix-times-column-column" title="Permalink to this heading">#</a></h3>
+<p>If <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span>,  <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^n\)</span>, then  <span class="math notranslate nohighlight">\(\boldsymbol A\boldsymbol x =  \boldsymbol b \in \mathbb R^m\)</span>, and its coordinates are</p>
 <div class="math notranslate nohighlight">
 \[
     b_i = \sum\limits_{j=1}^n A_{ij} x_j, \quad 1 \leqslant i \leqslant m.
 \]</div>
-<p>По-другому можно сказать, что <span class="math notranslate nohighlight">\(b_i =  \boldsymbol a_i^\top  \boldsymbol x\)</span>, где  <span class="math notranslate nohighlight">\(\boldsymbol a_i^\top\)</span> — <span class="math notranslate nohighlight">\(i\)</span>-я строка матрицы  <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>. Таким образом, для умножения матрицы на вектор требуется вычислить <span class="math notranslate nohighlight">\(m\)</span> скалярных произведений <span class="math notranslate nohighlight">\(n\)</span>-мерных векторов, поэтому сложность этих вычислений составляет <span class="math notranslate nohighlight">\(O(mn)\)</span>. Если матрица  <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> квадратная размера <span class="math notranslate nohighlight">\(n\times n\)</span>, то эта сложность равна <span class="math notranslate nohighlight">\(O(n^2)\)</span>.</p>
-<p>На матрично-векторное умножение можно взглянуть с другой стороны. А именно, если обозначить <span class="math notranslate nohighlight">\(j\)</span>-й столбец через <span class="math notranslate nohighlight">\(\boldsymbol a_j\)</span>, то получается, что</p>
+<p>Observe that <span class="math notranslate nohighlight">\(b_i =  \boldsymbol a_i^\mathsf{T}  \boldsymbol x\)</span> where <span class="math notranslate nohighlight">\(\boldsymbol a_i^\mathsf{T}\)</span> — <span class="math notranslate nohighlight">\(i\)</span>-th row of <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>. Alternatively, if we denote <span class="math notranslate nohighlight">\(j\)</span>-th column of <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> as <span class="math notranslate nohighlight">\(\boldsymbol a_j\)</span>, then</p>
 <div class="math notranslate nohighlight">
 \[
    \boldsymbol b =  \boldsymbol A\boldsymbol x =  \sum\limits_{j=1}^n x_j \boldsymbol a_j.
 \]</div>
-<p>Таким образом, вектор <span class="math notranslate nohighlight">\(\boldsymbol b =  \boldsymbol A\boldsymbol x\)</span> является линейной комбинацией столбцов матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> с координатами вектора <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> в качестве коэффициентов.</p>
-<p>Умножая матрицу на вектор-столбец, мы получаем снова вектор-столбец; умножение матрицы на вектор-строку записывают в обратном порядке:</p>
-<div class="math notranslate nohighlight">
-\[
-    \boldsymbol y^\top \boldsymbol A = \boldsymbol c^\top,\quad \boldsymbol y \in \mathbb R^m, \quad \boldsymbol A \in \mathbb R^{m\times n}, \quad \boldsymbol c \in \mathbb R^n, \quad
-    c_j = \sum\limits_{i=1}^m y_i A_{ij}.
-\]</div>
-<p>Результат такого умножения представляет собой линейную комбинацию строк матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>:  <span class="math notranslate nohighlight">\(\boldsymbol c^\top = \sum\limits_{i=1}^m y_i \boldsymbol a_i^\top\)</span>.</p>
-<p>Заметим, что матрицу <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> размера <span class="math notranslate nohighlight">\(1 \times n\)</span> можно представить в виде вектора-строки <span class="math notranslate nohighlight">\(\boldsymbol a^\top\)</span>. С другой стороны, согласно определению результат её умножения на вектор <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^n\)</span> равен числу</p>
-<div class="math notranslate nohighlight">
-\[
-\boldsymbol A \boldsymbol x = \boldsymbol a^\top \boldsymbol x = \sum\limits_{j=1}^n a_j x_j,
-\]</div>
-<p>а это в точности скалярное произведение <span class="math notranslate nohighlight">\(\langle \boldsymbol a, \boldsymbol x\rangle\)</span>. Отсюда и проистекает его весьма популярное обозначение через матрично-векторное произведение <span class="math notranslate nohighlight">\(\boldsymbol a^\top \boldsymbol x\)</span>, которым мы также будем активно пользоваться в дальнейшем.</p>
+<p>Hence, <span class="math notranslate nohighlight">\(\boldsymbol b =  \boldsymbol A\boldsymbol x\)</span> is a linear combination of columns of <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>.</p>
+<!--
+Чтобы матрицу $\boldsymbol A$ можно было умножить на вектор $\boldsymbol x$, число её столбцов должно совпадать с размерностью вектора $\boldsymbol x$. Если $\boldsymbol A \in \mathbb R^{m\times n}$,  $\boldsymbol x \in \mathbb R^n$, то  $\boldsymbol A\boldsymbol x =  \boldsymbol b \in \mathbb R^m$; координаты вектора  $\boldsymbol b$ вычисляются по формуле
+-->
+<!--
+Таким образом, для умножения матрицы на вектор требуется вычислить $m$ скалярных произведений $n$-мерных векторов, поэтому сложность этих вычислений составляет $O(mn)$. Если матрица  $\boldsymbol A$ квадратная размера $n\times n$, то эта сложность равна $O(n^2)$.
+
+
+На матрично-векторное умножение можно взглянуть с другой стороны. А именно, если обозначить $j$-й столбец через $\boldsymbol a_j$, то получается, что
+
+$$
+   \boldsymbol b =  \boldsymbol A\boldsymbol x =  \sum\limits_{j=1}^n x_j \boldsymbol a_j.
+$$
+
+Таким образом, вектор $\boldsymbol b =  \boldsymbol A\boldsymbol x$ является линейной комбинацией столбцов матрицы $\boldsymbol A$ с координатами вектора $\boldsymbol x$ в качестве коэффициентов.
+-->
 <p>Since matrix times vector operation is quite similar to inner products, the Python syntax is the same as <a class="reference internal" href="vectors.html#inner-python"><span class="std std-ref">here</span></a>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
 <span class="n">A</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 1, 2],
-       [3, 4, 5],
-       [6, 7, 8]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 1, 2, 3, 4],
+       [5, 6, 7, 8, 9]])
 </pre></div>
 </div>
 </div>
@@ -967,11 +1022,90 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([-1,  5, 11]), array([-1,  5, 11]), array([-1,  5, 11]))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([-9, -9]), array([-9, -9]), array([-9, -9]))
 </pre></div>
 </div>
 </div>
 </div>
+<p>If the number of columns of <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> is different form the size of <span class="math notranslate nohighlight">\(\boldsymbol b\)</span>, the try to multiply them will result in an error:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">A</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="nn">ValueError: matmul: Input operand 1 has a mismatch</span> in <span class="ni">its core dimension 0, with gufunc signature (n?,k),(k,m?)-&gt;(n?,m?) </span><span class="nt">(size 4 is different from 5)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="row-times-matrix-row">
+<h3>Row times matrix = row<a class="headerlink" href="#row-times-matrix-row" title="Permalink to this heading">#</a></h3>
+<p>Умножая матрицу на вектор-столбец, мы получаем снова вектор-столбец; умножение матрицы на вектор-строку записывают в обратном порядке:</p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol y^\top \boldsymbol A = \boldsymbol c^\top,\quad \boldsymbol y \in \mathbb R^m, \quad \boldsymbol A \in \mathbb R^{m\times n}, \quad \boldsymbol c \in \mathbb R^n, \quad
+    c_j = \sum\limits_{i=1}^m y_i A_{ij}.
+\]</div>
+<p>Результат такого умножения представляет собой линейную комбинацию строк матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>:  <span class="math notranslate nohighlight">\(\boldsymbol c^\top = \sum\limits_{i=1}^m y_i \boldsymbol a_i^\top\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-2, -1],
+       [ 0,  1],
+       [ 2,  3]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-6, -4])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Without transposition <span class="math notranslate nohighlight">\(\boldsymbol b\)</span> is treated as a column vector, and attempt to multiply it by <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> fails:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">@</span> <span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-6, -4])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="row-times-column">
+<h3>Row times column<a class="headerlink" href="#row-times-column" title="Permalink to this heading">#</a></h3>
+<p>Заметим, что матрицу <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> размера <span class="math notranslate nohighlight">\(1 \times n\)</span> можно представить в виде вектора-строки <span class="math notranslate nohighlight">\(\boldsymbol a^\mathsf{T}\)</span>. С другой стороны, согласно определению результат её умножения на вектор <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^n\)</span> равен числу</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol A \boldsymbol x = \boldsymbol a^\mathsf{T} \boldsymbol x = \sum\limits_{j=1}^n a_j x_j,
+\]</div>
+<p>а это в точности скалярное произведение <span class="math notranslate nohighlight">\(\langle \boldsymbol a, \boldsymbol x\rangle\)</span>. Отсюда и проистекает его весьма популярное обозначение через матрично-векторное произведение <span class="math notranslate nohighlight">\(\boldsymbol a^\mathsf{T} \boldsymbol x\)</span>, которым мы также будем активно пользоваться в дальнейшем.</p>
+</section>
 </section>
 <section id="matrix-product">
 <h2>Matrix product<a class="headerlink" href="#matrix-product" title="Permalink to this heading">#</a></h2>
@@ -980,7 +1114,7 @@ document.write(`
 \[
     C_{ik} = \sum\limits_{j=1}^n A_{ij}B_{jk},\quad 1\leqslant i \leqslant m, \quad 1\leqslant k \leqslant p.
 \]</div>
-<p>Элементы матрицы <span class="math notranslate nohighlight">\(\boldsymbol C\)</span> можно записать в виде <span class="math notranslate nohighlight">\(C_{ik} = \boldsymbol a_i^\top \boldsymbol b_k\)</span>, где <span class="math notranslate nohighlight">\(\boldsymbol a_i^\top\)</span> — строки матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>, а <span class="math notranslate nohighlight">\(\boldsymbol b_k\)</span> — столбцы матрицы <span class="math notranslate nohighlight">\(\boldsymbol B\)</span>. Вычисление каждого элемента <span class="math notranslate nohighlight">\(C_{ik}\)</span> требует <span class="math notranslate nohighlight">\(O(n)\)</span> арифметических операций, поэтому общая сложность подсчёта произведения матриц составляет <span class="math notranslate nohighlight">\(O(mnp)\)</span>. Если все матрицы квадратные размера <span class="math notranslate nohighlight">\(n\times n\)</span>, то сложность будет <span class="math notranslate nohighlight">\(O(n^3)\)</span>.</p>
+<p>Элементы матрицы <span class="math notranslate nohighlight">\(\boldsymbol C\)</span> можно записать в виде <span class="math notranslate nohighlight">\(C_{ik} = \boldsymbol a_i^\mathsf{T} \boldsymbol b_k\)</span>, где <span class="math notranslate nohighlight">\(\boldsymbol a_i^\mathsf{T}\)</span> — строки матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>, а <span class="math notranslate nohighlight">\(\boldsymbol b_k\)</span> — столбцы матрицы <span class="math notranslate nohighlight">\(\boldsymbol B\)</span>. Вычисление каждого элемента <span class="math notranslate nohighlight">\(C_{ik}\)</span> требует <span class="math notranslate nohighlight">\(O(n)\)</span> арифметических операций, поэтому общая сложность подсчёта произведения матриц составляет <span class="math notranslate nohighlight">\(O(mnp)\)</span>. Если все матрицы квадратные размера <span class="math notranslate nohighlight">\(n\times n\)</span>, то сложность будет <span class="math notranslate nohighlight">\(O(n^3)\)</span>.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">А быстрее можно?</p>
 <p><a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC_%D0%A8%D1%82%D1%80%D0%B0%D1%81%D1%81%D0%B5%D0%BD%D0%B0">Алгоритм Штрассена</a> позволяет перемножать квадратные матрицы чуть быстрее, а именно за <span class="math notranslate nohighlight">\(O(n^{\log_2 7})\)</span>, что примерно составляет <span class="math notranslate nohighlight">\(O(n^{2.81})\)</span>. Алгоритм Штрассена был разработан ещё в 1969 году, и с тех пор было предложено множество алгоритмов с лучшей асимптотикой. Подробнее про эту гонку можно почитать в этой <a class="reference external" href="https://www.quantamagazine.org/mathematicians-inch-closer-to-matrix-multiplication-goal-20210323/">статье</a>, где текущая SoTA указана как <span class="math notranslate nohighlight">\(O(n^{2.3728596})\)</span>. Математики не оставляют надежд добиться асимптотики <span class="math notranslate nohighlight">\(O(n^2)\)</span> или хотя бы <span class="math notranslate nohighlight">\(O(n^{2+\varepsilon})\)</span> для любого сколь угодно малого <span class="math notranslate nohighlight">\(\varepsilon &gt; 0\)</span>, однако, все эти изыскания носят сугубо теоретический характер из-за гигантских констант в O-большом и сложности реализации подобных алгоритмов.</p>
@@ -995,54 +1129,20 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \boldsymbol A  = \begin{pmatrix}
-        \boldsymbol a_1^\top \\
-        \boldsymbol a_2^\top \\
+        \boldsymbol a_1^\mathsf{T} \\
+        \boldsymbol a_2^\mathsf{T} \\
         \vdots\\
-        \boldsymbol a_m^\top \\
+        \boldsymbol a_m^\mathsf{T} \\
     \end{pmatrix},
     \text{ то }
     \boldsymbol A \boldsymbol B = 
     \begin{pmatrix}
-        \boldsymbol a_1^\top \boldsymbol B \\
-        \boldsymbol a_2^\top \boldsymbol B \\
+        \boldsymbol a_1^\mathsf{T} \boldsymbol B \\
+        \boldsymbol a_2^\mathsf{T} \boldsymbol B \\
         \vdots\\
-        \boldsymbol a_m^\top \boldsymbol B \\
+        \boldsymbol a_m^\mathsf{T} \boldsymbol B \\
     \end{pmatrix}.
 \end{split}\]</div>
-<p><strong>Свойства матричного умножения</strong> (предполагается, что размеры всех матриц согласованы)</p>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\((\boldsymbol{AB})\boldsymbol{C} = \boldsymbol{A}(\boldsymbol{BC})\)</span> (ассоциативность)</p></li>
-<li><p><span class="math notranslate nohighlight">\((\boldsymbol A + \boldsymbol B)\boldsymbol{C} = \boldsymbol{AC} + \boldsymbol{BC}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol{C}(\boldsymbol A + \boldsymbol B) = \boldsymbol{CA} + \boldsymbol{CB}\)</span> (дистрибутивность)</p></li>
-<li><p><span class="math notranslate nohighlight">\((\boldsymbol{AB})^\top = \boldsymbol B^\top \boldsymbol A^\top\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol{AB}) = \mathrm{tr}(\boldsymbol{BA})\)</span></p></li>
-</ol>
-<p>Последнее свойство обобщается до равенства <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol{ABС}) = \mathrm{tr}(\boldsymbol{СAB})\)</span>, которое справедливо для любого числа сомножителей с согласованными размерами. Это так называемое <strong>циклическое свойство</strong> следа матрицы.</p>
-<p>Несколько дополнительных свойств для квадратных матриц:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\boldsymbol{AI} = \boldsymbol{IA} = \boldsymbol A\)</span>;</p></li>
-<li><p>если <span class="math notranslate nohighlight">\(\boldsymbol P\)</span> — матрица перестановки, то матрица <span class="math notranslate nohighlight">\(\boldsymbol{PA}\)</span> получается из матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> перестановкой строк, а матрица <span class="math notranslate nohighlight">\(\boldsymbol{AP}\)</span> — перестановкой столбцов;</p></li>
-<li><p>произведение двух верхних (нижних) треугольных матриц тоже верхняя (нижняя) треугольная матрица;</p></li>
-<li><p>если матрица <span class="math notranslate nohighlight">\(\boldsymbol Q\)</span> ортогональна, то <span class="math notranslate nohighlight">\(\boldsymbol{QQ}^\top = \boldsymbol Q^\top \boldsymbol Q = \boldsymbol I\)</span>.</p></li>
-</ul>
-<p>А вот коммутировать квадратные матрицы не обязаны: в общем случае <span class="math notranslate nohighlight">\(\boldsymbol{AB} \ne \boldsymbol{BA}\)</span> (поищите контрпример среди матриц размера <span class="math notranslate nohighlight">\(2\times 2\)</span>).</p>
-<p>Квадратные матрицы можно возводить в натуральную степень так же, как и обычные числа. Вот, например, индуктивное определение степени матрицы:</p>
-<div class="math notranslate nohighlight">
-\[
-    \boldsymbol A^n = \boldsymbol A^{n-1} \boldsymbol A, \quad n\in\mathbb N,\quad \boldsymbol A^0 = \boldsymbol I.
-\]</div>
-<p>Справедливы равенства</p>
-<div class="math notranslate nohighlight">
-\[
-    \boldsymbol A^{m+n} = \boldsymbol A^m\boldsymbol A^n,\quad \boldsymbol A^{mn} = \boldsymbol (\boldsymbol A^m)^n, \quad m, n \in \mathbb N.
-\]</div>
-<p>Можно даже пойти дальше, и определить взятие экспоненты или синуса от матрицы через ряд Тейлора:</p>
-<div class="math notranslate nohighlight">
-\[
-    \exp(\boldsymbol A) = \sum\limits_{n=0}^\infty \frac{\boldsymbol A^n}{n!},\quad
-    \sin(\boldsymbol A) = \sum\limits_{n=0}^\infty (-1)^n\frac{\boldsymbol A^{2n+1}}{(2n+1)!}
-\]</div>
-<p>(можно доказать, что эти ряды сходятся).</p>
-<p><strong>Замечание</strong>. В машинном (и особенно глубинном) обучении часто берут числовую функцию от матрицы, например <span class="math notranslate nohighlight">\(\log(\boldsymbol A)\)</span>, <span class="math notranslate nohighlight">\(\tanh(\boldsymbol A)\)</span> или <span class="math notranslate nohighlight">\(\sigma(\boldsymbol A)\)</span>, где <span class="math notranslate nohighlight">\(\sigma(x) = \frac 1{1+e^{-x}}\)</span> — сигмоида. Такая запись почти наверное подразумевает поэлементное применение функции к каждой ячейке матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>, а вовсе не матричные ряды! Тем более что матрицы в машинном обучении чаще всего прямоугольные, а для них нельзя определить ни степень, ни ряд.</p>
 <p>Matrix product in NumPy is similar to that of vectors:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1071,7 +1171,127 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Exponent is elementwise:</p>
+<section id="properties-of-matrix-product">
+<h3>Properties of matrix product<a class="headerlink" href="#properties-of-matrix-product" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\((\boldsymbol{AB})\boldsymbol{C} = \boldsymbol{A}(\boldsymbol{BC})\)</span> (ассоциативность)</p></li>
+<li><p><span class="math notranslate nohighlight">\((\boldsymbol A + \boldsymbol B)\boldsymbol{C} = \boldsymbol{AC} + \boldsymbol{BC}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol{C}(\boldsymbol A + \boldsymbol B) = \boldsymbol{CA} + \boldsymbol{CB}\)</span> (дистрибутивность)</p></li>
+<li><p><span class="math notranslate nohighlight">\((\boldsymbol{AB})^\mathsf{T} = \boldsymbol B^\mathsf{T} \boldsymbol A^\mathsf{T}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol{AB}) = \mathrm{tr}(\boldsymbol{BA})\)</span></p></li>
+</ol>
+<p>Последнее свойство обобщается до равенства <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol{ABC}) = \mathrm{tr}(\boldsymbol{CAB})\)</span>, которое справедливо для любого числа сомножителей с согласованными размерами. Это так называемое <strong>циклическое свойство</strong> следа матрицы.</p>
+<p>Let’s check this properties for random matrices. Start with associativity:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">((</span><span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">C</span><span class="p">),</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span> <span class="o">@</span> <span class="n">C</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Distributivity:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">((</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">)</span> <span class="o">@</span> <span class="n">C</span><span class="p">,</span> <span class="n">A</span> <span class="o">@</span> <span class="n">C</span> <span class="o">+</span> <span class="n">B</span> <span class="o">@</span> <span class="n">C</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">((</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">)</span> <span class="o">@</span> <span class="n">C</span><span class="p">,</span> <span class="n">A</span> <span class="o">@</span> <span class="n">C</span> <span class="o">+</span> <span class="n">B</span> <span class="o">@</span> <span class="n">C</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: operands could not be broadcast together with shapes (2,3) (3,4) 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Transposing:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">((</span><span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Trace:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">B</span> <span class="o">@</span> <span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.904132200476985, 0.9041322004769845)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Несколько дополнительных свойств для квадратных матриц:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{AI} = \boldsymbol{IA} = \boldsymbol A\)</span>;</p></li>
+<li><p>если <span class="math notranslate nohighlight">\(\boldsymbol P\)</span> — матрица перестановки, то матрица <span class="math notranslate nohighlight">\(\boldsymbol{PA}\)</span> получается из матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> перестановкой строк, а матрица <span class="math notranslate nohighlight">\(\boldsymbol{AP}\)</span> — перестановкой столбцов;</p></li>
+<li><p>произведение двух верхних (нижних) треугольных матриц тоже верхняя (нижняя) треугольная матрица;</p></li>
+<li><p>если матрица <span class="math notranslate nohighlight">\(\boldsymbol Q\)</span> ортогональна, то <span class="math notranslate nohighlight">\(\boldsymbol{QQ}^\mathsf{T} = \boldsymbol Q^\mathsf{T} \boldsymbol Q = \boldsymbol I\)</span>.</p></li>
+</ul>
+<p>А вот коммутировать квадратные матрицы не обязаны: в общем случае <span class="math notranslate nohighlight">\(\boldsymbol{AB} \ne \boldsymbol{BA}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="p">,</span> <span class="n">B</span> <span class="o">@</span> <span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="powers-of-matrices">
+<h3>Powers of matrices<a class="headerlink" href="#powers-of-matrices" title="Permalink to this heading">#</a></h3>
+<p>Квадратные матрицы можно возводить в натуральную степень так же, как и обычные числа. Вот, например, индуктивное определение степени матрицы:</p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol A^n = \boldsymbol A^{n-1} \boldsymbol A, \quad n\in\mathbb N,\quad \boldsymbol A^0 = \boldsymbol I.
+\]</div>
+<p>Справедливы равенства</p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol A^{m+n} = \boldsymbol A^m\boldsymbol A^n,\quad \boldsymbol A^{mn} = \boldsymbol (\boldsymbol A^m)^n, \quad m, n \in \mathbb N.
+\]</div>
+<p>Можно даже пойти дальше, и определить взятие экспоненты или синуса от матрицы через ряд Тейлора:</p>
+<div class="math notranslate nohighlight">
+\[
+    \exp(\boldsymbol A) = \sum\limits_{n=0}^\infty \frac{\boldsymbol A^n}{n!},\quad
+    \sin(\boldsymbol A) = \sum\limits_{n=0}^\infty (-1)^n\frac{\boldsymbol A^{2n+1}}{(2n+1)!}
+\]</div>
+<p>(можно доказать, что эти ряды сходятся).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>В машинном (и особенно глубинном) обучении часто берут числовую функцию от матрицы, например <span class="math notranslate nohighlight">\(\log(\boldsymbol A)\)</span>, <span class="math notranslate nohighlight">\(\tanh(\boldsymbol A)\)</span> или <span class="math notranslate nohighlight">\(\sigma(\boldsymbol A)\)</span>, где <span class="math notranslate nohighlight">\(\sigma(x) = \frac 1{1+e^{-x}}\)</span> — сигмоида. Такая запись почти наверное подразумевает поэлементное применение функции к каждой ячейке матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>, а вовсе не матричные ряды! Тем более что матрицы в машинном обучении чаще всего прямоугольные, а для них нельзя определить ни степень, ни ряд.</p>
+</div>
+<p>Exponent in <code class="docutils literal notranslate"><span class="pre">numpy</span></code> is elementwise:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
@@ -1079,33 +1299,34 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.00000000e+00, 2.71828183e+00, 7.38905610e+00, 2.00855369e+01],
-       [5.45981500e+01, 1.48413159e+02, 4.03428793e+02, 1.09663316e+03],
-       [2.98095799e+03, 8.10308393e+03, 2.20264658e+04, 5.98741417e+04]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.75576684, 2.0822894 , 0.68144885],
+       [3.48920861, 0.43987471, 0.09565934],
+       [2.51448407, 2.62123713, 0.52013861]])
 </pre></div>
 </div>
 </div>
 </div>
 </section>
+</section>
 <section id="one-rank-matrix">
 <h2>One-rank matrix<a class="headerlink" href="#one-rank-matrix" title="Permalink to this heading">#</a></h2>
-<p><strong>Одноранговая матрица</strong> задаётся произведением столбца на строку: <span class="math notranslate nohighlight">\(\boldsymbol A = \boldsymbol {uv}^\top\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol u \in \mathbb R^m\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol v \in \mathbb R^n\)</span>. Элементы этой прямоугольной матрицы равны <span class="math notranslate nohighlight">\(A_{ij} = u_i v_j\)</span>, а все её строки/столбцы пропорциональны. Отметим также, что если <span class="math notranslate nohighlight">\(m=n\)</span>, то</p>
+<p><strong>Одноранговая матрица</strong> задаётся произведением столбца на строку: <span class="math notranslate nohighlight">\(\boldsymbol A = \boldsymbol {uv}^\mathsf{T}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol u \in \mathbb R^m\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol v \in \mathbb R^n\)</span>. Элементы этой прямоугольной матрицы равны <span class="math notranslate nohighlight">\(A_{ij} = u_i v_j\)</span>, а все её строки/столбцы пропорциональны. Отметим также, что если <span class="math notranslate nohighlight">\(m=n\)</span>, то</p>
 <div class="math notranslate nohighlight">
 \[
-    \mathrm{tr}(\boldsymbol {uv}^\top) = \sum\limits_{i=1}^n u_i v_i = \boldsymbol v^\top \boldsymbol u = \mathrm{tr}(\boldsymbol v^\top \boldsymbol u).
+    \mathrm{tr}(\boldsymbol {uv}^\mathsf{T}) = \sum\limits_{i=1}^n u_i v_i = \boldsymbol v^\mathsf{T} \boldsymbol u = \mathrm{tr}(\boldsymbol v^\mathsf{T} \boldsymbol u).
 \]</div>
 <p>Произведение матриц <span class="math notranslate nohighlight">\(\boldsymbol A \in\mathbb R^{m\times n}\)</span> и <span class="math notranslate nohighlight">\(\boldsymbol B \in\mathbb R^{n\times p}\)</span> можно записать в виде суммы одноранговых матриц:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \boldsymbol {AB} = [\boldsymbol a_1, \ldots, \boldsymbol a_n] \begin{pmatrix}
-        \boldsymbol b_1^\top \\
-        \boldsymbol b_2^\top \\
+        \boldsymbol b_1^\mathsf{T} \\
+        \boldsymbol b_2^\mathsf{T} \\
         \vdots\\
-        \boldsymbol b_n^\top \\
+        \boldsymbol b_n^\mathsf{T} \\
     \end{pmatrix} = 
-    \sum\limits_{j=1}^n \boldsymbol a_j  \boldsymbol b_j^\top.
+    \sum\limits_{j=1}^n \boldsymbol a_j  \boldsymbol b_j^\mathsf{T}.
 \end{split}\]</div>
-<p>В англоязычной литературе умножение столбца на строку <span class="math notranslate nohighlight">\(\boldsymbol {uv}^\top\)</span> называется <strong>outer product</strong> («внешнее произведение»), по аналогии со скалярным произведением  <span class="math notranslate nohighlight">\(\boldsymbol u^\top\boldsymbol v\)</span>, называемым <strong>inner product</strong> («внутреннее произведение»).</p>
+<p>В англоязычной литературе умножение столбца на строку <span class="math notranslate nohighlight">\(\boldsymbol {uv}^\mathsf{T}\)</span> называется <strong>outer product</strong> («внешнее произведение»), по аналогии со скалярным произведением  <span class="math notranslate nohighlight">\(\boldsymbol u^\mathsf{T}\boldsymbol v\)</span>, называемым <strong>inner product</strong> («внутреннее произведение»).</p>
 </section>
 <section id="block-matrices">
 <h2>Block matrices<a class="headerlink" href="#block-matrices" title="Permalink to this heading">#</a></h2>
@@ -1142,28 +1363,22 @@ document.write(`
         \end{matrix}
         \end{array}\right).
 \end{split}\]</div>
-<p><strong>Контрольный вопрос</strong>. Каков будет результат транспонирования блочной матрицы</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-    \begin{pmatrix}
-        \boldsymbol A &amp; \boldsymbol B \\
-        \boldsymbol C &amp; \boldsymbol D 
-    \end{pmatrix},
-\end{split}\]</div>
-<p>где <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{k\times m}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol B \in \mathbb R^{k\times n}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol C \in \mathbb R^{\ell\times m}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol D \in \mathbb R^{\ell\times n}\)</span>?</p>
+<!--
 <details>
  <summary markdown="span">Ответ </summary>
 <div>
 Блоки $\boldsymbol B$ и $\boldsymbol C$ надо переставить, и не забыть ещё транспонировать каждый блок:
-<div class="math notranslate nohighlight">
-\[\begin{split}
+
+$$
     \begin{pmatrix}
-        \boldsymbol A^\top &amp; \boldsymbol C^\top \\
-        \boldsymbol B^\top &amp; \boldsymbol D^\top 
+        \boldsymbol A^\top & \boldsymbol C^\top \\
+        \boldsymbol B^\top & \boldsymbol D^\top 
     \end{pmatrix}.
-\end{split}\]</div>
+$$
+
 </div>
 </details>
+-->
 <p>Блочные матрицы могут иметь произвольное число матричных блоков по каждому измерению. Интересно, что перемножать блочные матрицы можно по тем же правилам, что и матрицы из чисел, например</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1185,11 +1400,104 @@ document.write(`
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Prove that the rotation matrix <a class="reference internal" href="#equation-rotation-matrix">(34)</a> is orthogonal.</p></li>
+<li><p>Calculate <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol I_n)\)</span>.</p></li>
+<li><p>Prove that the main diagonal of a skew-symmetric matrix contains only zeros.</p></li>
+<li><p>Prove that the rotation matrix <a class="reference internal" href="#equation-rotation-matrix">(37)</a> is orthogonal.</p></li>
 <li><p>Prove that any <strong>reflection matrix</strong> <span class="math notranslate nohighlight">\(\boldsymbol I - 2\boldsymbol u \boldsymbol u^\top\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol u \in\mathbb R^n\)</span>, <span class="math notranslate nohighlight">\(\Vert \boldsymbol u \Vert_2 = 1\)</span>, is orthogonal.</p></li>
-<li><p>Prove that <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol{AB}) = \mathrm{tr}(\boldsymbol{BA})\)</span>.</p></li>
+<li><p>How many arithmetic operations is required for calculation <span class="math notranslate nohighlight">\(\boldsymbol{Ax}\)</span> if <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span>,  <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^n\)</span>? What if <span class="math notranslate nohighlight">\(m=n\)</span>?</p></li>
+<li><p>Give an example of two square matrices <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol B\)</span> such that <span class="math notranslate nohighlight">\(\boldsymbol{AB} \ne \boldsymbol{BA}\)</span>.</p></li>
+<li><p>Prove that <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol{A} + \boldsymbol{B}) = \mathrm{tr}(\boldsymbol{A}) + \mathrm{tr}(\boldsymbol{B})\)</span>, <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol{AB}) = \mathrm{tr}(\boldsymbol{BA})\)</span>.</p></li>
 <li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol B\)</span> be two symmetric matrices of the same shape. Is their product is necessarily symmetric?</p></li>
+<li><p>Find the transpose to the block matrix</p></li>
 </ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{pmatrix}
+        \boldsymbol A &amp; \boldsymbol B \\
+        \boldsymbol C &amp; \boldsymbol D 
+    \end{pmatrix},
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{k\times m}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol B \in \mathbb R^{k\times n}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol C \in \mathbb R^{\ell\times m}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol D \in \mathbb R^{\ell\times n}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">a</span> <span class="o">@</span> <span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 29 µs, sys: 24 µs, total: 53 µs
+Wall time: 59.1 µs
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.105136014359262
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="nb">sum</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 216 µs, sys: 6 µs, total: 222 µs
+Wall time: 230 µs
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1051360143592726
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 55 µs, sys: 21 µs, total: 76 µs
+Wall time: 63.9 µs
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1051360143592568
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">+=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="n">r</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 813 µs, sys: 11 µs, total: 824 µs
+Wall time: 847 µs
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1051360143592726
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -1234,11 +1542,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="linear_systems.html"
+       href="inverse.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Linear systems</p>
+        <p class="prev-next-title">Inverse matrix</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1260,10 +1568,26 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#square-matrices">Square matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#square-matrices">Square matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identity-matrix">Identity matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagonal-matrix">Diagonal matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triangular-matrices">Triangular matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#symmetric-matrices">Symmetric matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-matrices">Orthogonal matrices</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-operations">Matrix operations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-product">Matrix-vector product</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-product">Matrix product</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-vector-product">Matrix-vector product</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-times-column-column">Matrix times column = column</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#row-times-matrix-row">Row times matrix = row</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#row-times-column">Row times column</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-product">Matrix product</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-matrix-product">Properties of matrix product</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#powers-of-matrices">Powers of matrices</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-rank-matrix">One-rank matrix</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-matrices">Block matrices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>

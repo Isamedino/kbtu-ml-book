@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'math/lin_alg/rank';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Orthogonality" href="orthogonality.html" />
+    <link rel="next" title="Orthogonal projections" href="projections.html" />
     <link rel="prev" title="Inverse matrix" href="inverse.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -164,6 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../courses/Intro2ML.html">Introduction to ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="nav bd-sidenav">
@@ -303,11 +304,10 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../linear_algebra.html">Linear Algebra</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="vectors.html">Vectors</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="matrices.html">Matrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_systems.html">Linear systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inverse.html">Inverse matrix</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Rank of a matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="orthogonality.html">Orthogonality</a></li>
 <li class="toctree-l2"><a class="reference internal" href="projections.html">Orthogonal projections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="determinant.html">Determinants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="eig.html">Eigenvalues and eigenvectors</a></li>
@@ -493,7 +493,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-spaces">Matrix spaces</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rank">Rank</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rank">Rank</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#full-column-rank-matrices">Full column rank matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#full-row-rank-matrices">Full row rank matrices</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudo-inverse">Pseudo inverse</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exerices">Exerices</a></li>
 </ul>
@@ -519,7 +523,7 @@ document.write(`
         N(\boldsymbol A) = \{\boldsymbol x \in \mathbb R^n \colon \boldsymbol{Ax} = \boldsymbol 0\};
     \]</div>
 </li>
-<li><p><strong>left nullspace</strong> of <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> as all solutions of the homogeneous linear system <span class="math notranslate nohighlight">\(\boldsymbol y^\top \boldsymbol{A} = \boldsymbol 0\)</span> (note that it is equal to <span class="math notranslate nohighlight">\(N(\boldsymbol A^\top))\)</span>;</p></li>
+<li><p><strong>left nullspace</strong> of <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> as all solutions of the homogeneous linear system <span class="math notranslate nohighlight">\(\boldsymbol y^\mathsf{T} \boldsymbol{A} = \boldsymbol 0\)</span> (note that it is equal to <span class="math notranslate nohighlight">\(N(\boldsymbol A^\mathsf{T}))\)</span>;</p></li>
 <li><p><strong>column space</strong> of <span class="math notranslate nohighlight">\(\boldsymbol A = [\boldsymbol a_1 \ldots \boldsymbol a_n]\)</span> as the spanning space of its columns:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -530,35 +534,44 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \boldsymbol A = \begin{pmatrix}
-        \boldsymbol a_1^\top \\
+        \boldsymbol a_1^\mathsf{T} \\
          \vdots \\
-        \boldsymbol a_m^\top
+        \boldsymbol a_m^\mathsf{T}
     \end{pmatrix}
     \end{split}\]</div>
-<p>as the spanning space of its rows (note that it is equal to <span class="math notranslate nohighlight">\(C(\boldsymbol A^\top)\)</span>).</p>
+<p>as the spanning space of its rows:</p>
+<div class="math notranslate nohighlight">
+\[
+    R(\boldsymbol A) = \mathrm{span}(\boldsymbol a_1^\mathsf{T}, \ldots, \boldsymbol a_m^\mathsf{T}) = \Big\{\sum\limits_{j=1}^m c_j \boldsymbol a_j^\mathsf{T} \colon c_1, \ldots, c_m \in \mathbb R\Big\}.
+    \]</div>
 </li>
 </ul>
-<p>Note that both <span class="math notranslate nohighlight">\(N(\boldsymbol A)\)</span> and <span class="math notranslate nohighlight">\(C(\boldsymbol A^\top)\)</span> are subspaces of <span class="math notranslate nohighlight">\(\mathbb R^n\)</span>, whereas  <span class="math notranslate nohighlight">\(N(\boldsymbol A^\top)\)</span> and <span class="math notranslate nohighlight">\(C(\boldsymbol A)\)</span> are subspaces of <span class="math notranslate nohighlight">\(\mathbb R^m\)</span>.</p>
+<p>Note that <span class="math notranslate nohighlight">\( R(\boldsymbol A) = C(\boldsymbol A^\mathsf{T})\)</span>.
+Also, both <span class="math notranslate nohighlight">\(N(\boldsymbol A)\)</span> and <span class="math notranslate nohighlight">\(C(\boldsymbol A^\mathsf{T})\)</span> are subspaces of <span class="math notranslate nohighlight">\(\mathbb R^n\)</span>, whereas  <span class="math notranslate nohighlight">\(N(\boldsymbol A^\mathsf{T})\)</span> and <span class="math notranslate nohighlight">\(C(\boldsymbol A)\)</span> are subspaces of <span class="math notranslate nohighlight">\(\mathbb R^m\)</span>.</p>
 </section>
 <section id="rank">
 <h2>Rank<a class="headerlink" href="#rank" title="Permalink to this heading">#</a></h2>
-<p><strong>Ранг</strong> матрицы <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span> можно определить двумя эквивалентными способами:</p>
+<p>There are two ways to define the <strong>rank</strong> of <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span>:</p>
 <ul class="simple">
-<li><p><strong>ранг по столбцам</strong> равен <span class="math notranslate nohighlight">\(\dim C(\boldsymbol A)\)</span> — размеру максимальной линейно независимой подсистемы столбцов матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>;</p></li>
-<li><p><strong>ранг по строкам</strong> равен <span class="math notranslate nohighlight">\(\dim C(\boldsymbol A^\top)\)</span> — размеру максимальной линейно независимой подсистемы строк матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>.</p></li>
+<li><p><strong>column rank</strong> is <span class="math notranslate nohighlight">\(\dim C(\boldsymbol A)\)</span>;</p></li>
+<li><p><strong>row rank</strong> is <span class="math notranslate nohighlight">\(\dim C(\boldsymbol A^\mathsf{T})\)</span>.</p></li>
 </ul>
-<p>Оказывается, что столбцовый и строковый ранг любой матрицы совпадают. Их общее значение называется <strong>рангом</strong> матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> и обозначается <span class="math notranslate nohighlight">\(\mathrm{rank}(\boldsymbol A)\)</span>.</p>
-<p><strong>Теорема</strong>. Для любой матрицы <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span> верно равенство</p>
+<p>These two definitions are equivalent as the following theorem states.</p>
+<div class="important admonition">
+<p class="admonition-title">Fundamental theorem of linear algebra</p>
+<p>For any matrix <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span> the following equality holds:</p>
 <div class="math notranslate nohighlight">
 \[
-\dim C(\boldsymbol A) = \dim C(\boldsymbol A^\top) = r, \quad 0\leqslant r \leqslant \min\{m, n\},
+\dim C(\boldsymbol A) = \dim C(\boldsymbol A^\mathsf{T}) = r, \quad 0\leqslant r \leqslant \min\{m, n\},
 \]</div>
-<p>причём ранг <span class="math notranslate nohighlight">\(r = \mathrm{rank}(\boldsymbol A)\)</span> совпадает с количеством опорных элементов ступенчатой матрицы, к которой матрица <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> приводится методом Гаусса.</p>
-<p>It turn out that</p>
+<p>Moreover,</p>
 <div class="math notranslate nohighlight">
 \[
-    \dim C(\boldsymbol A) + \dim N(\boldsymbol A) = n, \quad \dim C(\boldsymbol A^\top) + \dim N(\boldsymbol A^\top) = m.
+    \dim C(\boldsymbol A) + \dim N(\boldsymbol A) = n, \quad \dim C(\boldsymbol A^\mathsf{T}) + \dim N(\boldsymbol A^\mathsf{T}) = m.
 \]</div>
+</div>
+<section id="full-column-rank-matrices">
+<h3>Full column rank matrices<a class="headerlink" href="#full-column-rank-matrices" title="Permalink to this heading">#</a></h3>
 <p>Прямоугольная матрица <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span> называется полноранговой по столбцам, если <span class="math notranslate nohighlight">\(\mathrm{rank}(\boldsymbol A) = n\)</span>. Такая матрица обладает следующими свойствами:</p>
 <ul class="simple">
 <li><p>все столбцы матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> опорные;</p></li>
@@ -566,6 +579,9 @@ document.write(`
 <li><p>однородная система уравнений <span class="math notranslate nohighlight">\(\boldsymbol {Ax} = \boldsymbol 0\)</span> имеет только нулевое решение;</p></li>
 <li><p>СЛАУ <span class="math notranslate nohighlight">\(\boldsymbol {Ax} = \boldsymbol b\)</span> имеет не более одного решения.</p></li>
 </ul>
+</section>
+<section id="full-row-rank-matrices">
+<h3>Full row rank matrices<a class="headerlink" href="#full-row-rank-matrices" title="Permalink to this heading">#</a></h3>
 <p>Матрица полного ранга по строкам, для которой <span class="math notranslate nohighlight">\(\mathrm{rank}(\boldsymbol A) = m\)</span>, обладает следующими свойствами:</p>
 <ul class="simple">
 <li><p>все строки матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> опорные;</p></li>
@@ -604,20 +620,21 @@ document.write(`
 </div>
 </div>
 </section>
+</section>
 <section id="pseudo-inverse">
 <span id="id1"></span><h2>Pseudo inverse<a class="headerlink" href="#pseudo-inverse" title="Permalink to this heading">#</a></h2>
 <p>The <strong>Moore-Penrose pseudo inverse</strong> of <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span> is such a matrix <span class="math notranslate nohighlight">\(\boldsymbol A^\dagger \in \mathbb R^{n\times m}\)</span> that satisfies the following <span class="math notranslate nohighlight">\(4\)</span> properties:</p>
 <ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\(\boldsymbol{AA}^\dagger \boldsymbol A = \boldsymbol A\)</span>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(\boldsymbol{A}^\dagger \boldsymbol A \boldsymbol{A}^\dagger =\boldsymbol{A}^\dagger\)</span>;</p></li>
-<li><p><span class="math notranslate nohighlight">\((\boldsymbol{AA}^\dagger)^\top = \boldsymbol{AA}^\dagger\)</span>;</p></li>
-<li><p><span class="math notranslate nohighlight">\((\boldsymbol{A}^\dagger \boldsymbol A)^\top = \boldsymbol{A}^\dagger \boldsymbol A\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\((\boldsymbol{AA}^\dagger)^\mathsf{T} = \boldsymbol{AA}^\dagger\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\((\boldsymbol{A}^\dagger \boldsymbol A)^\mathsf{T} = \boldsymbol{A}^\dagger \boldsymbol A\)</span>.</p></li>
 </ol>
 <p>Note that</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\boldsymbol{A}^\dagger = \boldsymbol{A}^{-1}\)</span> if <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> is a square invertible matrix;</p></li>
-<li><p><span class="math notranslate nohighlight">\(\boldsymbol{A}^\dagger = (\boldsymbol A^\top\boldsymbol A)^{-1} \boldsymbol A^\top\)</span> if <span class="math notranslate nohighlight">\(m &gt; n\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> has full column rank;</p></li>
-<li><p><span class="math notranslate nohighlight">\(\boldsymbol{A}^\dagger = \boldsymbol A^\top(\boldsymbol A\boldsymbol A^\top)^{-1} \)</span> if <span class="math notranslate nohighlight">\(m &lt; n\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> has full row rank.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{A}^\dagger = (\boldsymbol A^\mathsf{T}\boldsymbol A)^{-1} \boldsymbol A^\mathsf{T}\)</span> if <span class="math notranslate nohighlight">\(m &gt; n\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> has full column rank;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{A}^\dagger = \boldsymbol A^\mathsf{T}(\boldsymbol A\boldsymbol A^\mathsf{T})^{-1} \)</span> if <span class="math notranslate nohighlight">\(m &lt; n\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> has full row rank.</p></li>
 </ul>
 <p>To get pseudo inversed matrix, call <code class="docutils literal notranslate"><span class="pre">np.linalg.pinv</span></code>:</p>
 <div class="cell docutils container">
@@ -637,27 +654,33 @@ document.write(`
 </section>
 <section id="exerices">
 <h2>Exerices<a class="headerlink" href="#exerices" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Prove that for each one-rank matrix <span class="math notranslate nohighlight">\(\boldsymbol A = \boldsymbol{uv}^\top\)</span> the equality <span class="math notranslate nohighlight">\(\mathrm{rank}(\boldsymbol A) = 1\)</span> holds.</p></li>
-<li><p>Prove that <span class="math notranslate nohighlight">\(\mathrm{rank}(\boldsymbol{AB}) \leqslant \min\{\mathrm{rank}(\boldsymbol A), \mathrm{rank}(\boldsymbol B)\}\)</span>. Give an examples of two matrices for which this inequality is strict.</p></li>
-</ol>
+<ol class="arabic">
+<li><p>Find rank of the following matrices: <span class="math notranslate nohighlight">\(\boldsymbol 0_{m\times n}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol 1_{m\times n}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol I_n\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span>. Show that <span class="math notranslate nohighlight">\(N(\boldsymbol A)\)</span> is a subspace in <span class="math notranslate nohighlight">\(\mathbb R^n\)</span>, i.e., if <span class="math notranslate nohighlight">\(\boldsymbol x, \boldsymbol y \in N(\boldsymbol A)\)</span> then <span class="math notranslate nohighlight">\(\alpha\boldsymbol x + \beta\boldsymbol y \in N(\boldsymbol A)\)</span> for all <span class="math notranslate nohighlight">\(\alpha, \beta \in \mathbb R\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span>. Show that <span class="math notranslate nohighlight">\(C(\boldsymbol A)\)</span> is a subspace in <span class="math notranslate nohighlight">\(\mathbb R^m\)</span>, i.e., if <span class="math notranslate nohighlight">\(\boldsymbol x, \boldsymbol y \in C(\boldsymbol A)\)</span> then <span class="math notranslate nohighlight">\(\alpha\boldsymbol x + \beta\boldsymbol y \in C(\boldsymbol A)\)</span> for all <span class="math notranslate nohighlight">\(\alpha, \beta \in \mathbb R\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span>. Prove that <span class="math notranslate nohighlight">\(N(\boldsymbol A) = N(\boldsymbol A^{\mathsf T}\boldsymbol A)\)</span>.</p></li>
+<li><p>Prove that for each one-rank matrix <span class="math notranslate nohighlight">\(\boldsymbol A = \boldsymbol{uv}^\mathsf{T}\)</span> the equality <span class="math notranslate nohighlight">\(\mathrm{rank}(\boldsymbol A) = 1\)</span> holds.</p></li>
+<li><p>Prove that <span class="math notranslate nohighlight">\(\mathrm{rank}(\boldsymbol{AB}) \leqslant \min\{\mathrm{rank}(\boldsymbol A), \mathrm{rank}(\boldsymbol B)\}\)</span>. Give an examples of two matrices for which this inequality is strict.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Hint</p>
 <p>To prove the inequality <span class="math notranslate nohighlight">\(\mathrm{rank}(\boldsymbol{AB}) \leqslant \mathrm{rank}(\boldsymbol B)\)</span> write</p>
 <div class="math notranslate nohighlight">
 \[
-    \boldsymbol B = [\boldsymbol b_1 \ldots \boldsymbol  b_n], \quad \boldsymbol{AB} = [\boldsymbol {Ab}_1 \ldots \boldsymbol {Ab}_n],
+        \boldsymbol B = [\boldsymbol b_1 \ldots \boldsymbol  b_n], \quad \boldsymbol{AB} = [\boldsymbol {Ab}_1 \ldots \boldsymbol {Ab}_n],
 \]</div>
-<p>and show that if a linear combination of columns of <span class="math notranslate nohighlight">\(\boldsymbol{B}\)</span> is <span class="math notranslate nohighlight">\(\boldsymbol 0\)</span> than the same is true for the similar linear combination of columns of <span class="math notranslate nohighlight">\(\boldsymbol{AB}\)</span>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>and show that if a linear combination of columns of $\boldsymbol{B}$ is $\boldsymbol 0$ than the same is true for the similar linear combination of columns of $\boldsymbol{AB}$.
+</pre></div>
 </div>
-<ol class="arabic" start="3">
+</div>
+</li>
 <li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span>. Prove that</p>
 <div class="math notranslate nohighlight">
 \[
-        \mathrm{rank}(\boldsymbol A)  = \mathrm{rank}(\boldsymbol A^\top) =
-        \mathrm{rank}(\boldsymbol A^\top \boldsymbol A)  = \mathrm{rank}(\boldsymbol A \boldsymbol A^\top).
+        \mathrm{rank}(\boldsymbol A)  = \mathrm{rank}(\boldsymbol A^\mathsf{T}) =
+        \mathrm{rank}(\boldsymbol A^\mathsf{T} \boldsymbol A)  = \mathrm{rank}(\boldsymbol A \boldsymbol A^\mathsf{T}).
     \]</div>
 </li>
+<li><p>Prove that <span class="math notranslate nohighlight">\(\boldsymbol{A}^\dagger = \boldsymbol{A}^{-1}\)</span> if <span class="math notranslate nohighlight">\(\boldsymbol{A}\)</span> is a square invertible matrix.</p></li>
 </ol>
 </section>
 </section>
@@ -703,11 +726,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="orthogonality.html"
+       href="projections.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Orthogonality</p>
+        <p class="prev-next-title">Orthogonal projections</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -730,7 +753,11 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-spaces">Matrix spaces</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rank">Rank</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rank">Rank</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#full-column-rank-matrices">Full column rank matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#full-row-rank-matrices">Full row rank matrices</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudo-inverse">Pseudo inverse</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exerices">Exerices</a></li>
 </ul>

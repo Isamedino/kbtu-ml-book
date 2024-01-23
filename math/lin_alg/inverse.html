@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Rank of a matrix" href="rank.html" />
-    <link rel="prev" title="Linear systems" href="linear_systems.html" />
+    <link rel="prev" title="Matrices" href="matrices.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -164,6 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../courses/Intro2ML.html">Introduction to ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="nav bd-sidenav">
@@ -303,11 +304,10 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../linear_algebra.html">Linear Algebra</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="vectors.html">Vectors</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="matrices.html">Matrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_systems.html">Linear systems</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Inverse matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rank.html">Rank of a matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="orthogonality.html">Orthogonality</a></li>
 <li class="toctree-l2"><a class="reference internal" href="projections.html">Orthogonal projections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="determinant.html">Determinants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="eig.html">Eigenvalues and eigenvectors</a></li>
@@ -492,7 +492,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-systems">Linear systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Inverse matrix</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-inverse-matrices">Properties of inverse matrices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussjordan-method">Gauss—Jordan method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
@@ -509,6 +510,60 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="inverse-matrix">
 <h1>Inverse matrix<a class="headerlink" href="#inverse-matrix" title="Permalink to this heading">#</a></h1>
+<section id="linear-systems">
+<h2>Linear systems<a class="headerlink" href="#linear-systems" title="Permalink to this heading">#</a></h2>
+<p><strong>Система линейных алгебраических уравнений (СЛАУ)</strong> из <span class="math notranslate nohighlight">\(m\)</span> уравнений с <span class="math notranslate nohighlight">\(n\)</span> неизвестными имеет вид</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+a_{11}x_1 &amp;+ a_{12}x_2+ \ldots +a_{1n}x_n = b_1 \\
+a_{21}x_1 &amp;+ a_{22}x_2 + \ldots +a_{2n}x_n = b_2 \\
+\ldots &amp;\ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \ldots \\
+a_{m1}x_1 &amp;+ a_{m2}x_2 +\ldots + a_{mn}x_n = b_m \\
+\end{align*},
+\end{split}\]</div>
+<p>где коэффициенты <span class="math notranslate nohighlight">\(a_{ij}\)</span> и числа в правой части <span class="math notranslate nohighlight">\(b_i\)</span> считаются известными, а найти надо неизвестные переменные <span class="math notranslate nohighlight">\(x_j\)</span>. Записывать систему линейных уравнений в таком громоздком виде не очень удобно, вместо этого чаще используют матричную запись. Коэффициенты <span class="math notranslate nohighlight">\(a_{ij}\)</span> естественным образом образуют матрицу <span class="math notranslate nohighlight">\(\boldsymbol A\in\mathbb R^{m\times n}\)</span>, правая часть — вектор <span class="math notranslate nohighlight">\(\boldsymbol b \in \mathbb R^m\)</span>, а искомые переменные — вектор <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^n\)</span>. И тогда СЛАУ переписывается в чрезвычайно простом и коротком виде</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{Ax} = \boldsymbol b.
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(\boldsymbol b = \boldsymbol 0\)</span>, then the linear system is called <strong>homogeneous</strong>.</p>
+<p>A square matrix <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> is called <strong>singular</strong> if the homogeneous linear system <span class="math notranslate nohighlight">\(\boldsymbol{Ax} = \boldsymbol 0\)</span> has nonzero solution <span class="math notranslate nohighlight">\(\boldsymbol x \ne \boldsymbol 0\)</span>. Otherwise <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> is called <strong>non-singular</strong> or <strong>invertible</strong>. If <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> is invertible, then the linear system <span class="math notranslate nohighlight">\(\boldsymbol{Ax} = \boldsymbol b\)</span> has unique solution for any <span class="math notranslate nohighlight">\(\boldsymbol b\)</span> which can be written as <span class="math notranslate nohighlight">\(\boldsymbol x =\boldsymbol A^{-1} \boldsymbol b\)</span>.</p>
+<p>In NumPy a linear system of equations with <span class="math notranslate nohighlight">\(m=n\)</span> can be solved by <code class="docutils literal notranslate"><span class="pre">np.linalg.solve</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">pascal</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">pascal</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
+<span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 0, 0, 0],
+       [1, 1, 0, 0],
+       [1, 2, 1, 0],
+       [1, 3, 3, 1]], dtype=uint64)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1., -2.,  4., -8.])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h2>Inverse matrix<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>Квадратная матрица <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{n\times n}\)</span> называется <strong>обратимой</strong>, или <strong>невырожденной</strong>, если
 существует такая матрица <span class="math notranslate nohighlight">\(\boldsymbol B \in \mathbb R^{n\times n}\)</span>, что <span class="math notranslate nohighlight">\(\boldsymbol{AB} = \boldsymbol{BA} = \boldsymbol I\)</span>. Если такая матрица <span class="math notranslate nohighlight">\(\boldsymbol B\)</span> существует, то она называется <strong>обратной</strong> к матрице <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> и обозначается <span class="math notranslate nohighlight">\(\boldsymbol A^{-1}\)</span>; если же нет, то матрица <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> называется <strong>вырожденной</strong> (или <strong>сингулярной</strong>).</p>
 <p>Всякая система линейных уравнений <span class="math notranslate nohighlight">\(\boldsymbol{Ax} = \boldsymbol b\)</span> с обратимой матрицей имеет единственное решение, которое может быть получено домножением на <span class="math notranslate nohighlight">\(\boldsymbol A^{-1}\)</span> слева:</p>
@@ -517,34 +572,6 @@ document.write(`
     \boldsymbol{Ax} = \boldsymbol b \iff \underbrace{\boldsymbol A^{-1}\boldsymbol A}_{\boldsymbol I} \boldsymbol x = \boldsymbol A^{-1}\boldsymbol b \iff \boldsymbol x = \boldsymbol A^{-1}\boldsymbol b.
 \]</div>
 <p>В частности, <strong>однородная</strong> система уравнений <span class="math notranslate nohighlight">\(\boldsymbol{Ax} = \boldsymbol 0\)</span> с невырожденной матрицей имеет только нулевое решение <span class="math notranslate nohighlight">\(\boldsymbol A^{-1} \boldsymbol 0 = \boldsymbol 0\)</span>.</p>
-<section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
-<ul>
-<li><p>Обратную матрицу к матрице размера <span class="math notranslate nohighlight">\(2\times 2\)</span> можно вычислить по явной формуле</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-        \begin{pmatrix}
-            a &amp; b \\
-            c &amp; d \\
-        \end{pmatrix}^{-1}
-        =\frac1{ad -bc} \begin{pmatrix}
-            d &amp; -b \\
-            -c &amp; a \\
-        \end{pmatrix}.
-    \end{split}\]</div>
-<p>Такая матрица обратима тогда и только тогда, когда <span class="math notranslate nohighlight">\(ad\ne bc\)</span>.</p>
-</li>
-<li><p>Если <span class="math notranslate nohighlight">\(\boldsymbol \Lambda = \mathrm{diag}\{\lambda_1, \ldots, \lambda_n\}\)</span>, то <span class="math notranslate nohighlight">\(\boldsymbol \Lambda^{-1} = \mathrm{diag}\big\{\frac 1{\lambda_1}, \ldots, \frac 1{\lambda_n}\big\}\)</span> при условии, что <span class="math notranslate nohighlight">\(\lambda_k\ne 0\)</span> при всех <span class="math notranslate nohighlight">\(k=1,\ldots, n\)</span>; диагональная матрица обратима тогда и только тогда, когда все её диагональные элементы не равны нулю.</p></li>
-<li><p>Матрица перестановки двух строк <span class="math notranslate nohighlight">\(\boldsymbol P_{ij}\)</span> обратна самой себе, поскольку повторный обмен строк возвращает всё на место, т.е. <span class="math notranslate nohighlight">\(\boldsymbol P_{ij}^2 = \boldsymbol I\)</span>.</p></li>
-<li><p>Элементарная матрица <span class="math notranslate nohighlight">\(\boldsymbol E_{ij}^\lambda = \boldsymbol I - \lambda \boldsymbol \delta_{ij}\)</span> вычитает из строки номер <span class="math notranslate nohighlight">\(j\)</span> строку номер <span class="math notranslate nohighlight">\(j\)</span>, умноженную на <span class="math notranslate nohighlight">\(\lambda\)</span>; чтобы обратить это элементарное преобразование, необходимо выполнить сложение вместо вычитания. Таким образом,</p>
-<div class="math notranslate nohighlight">
-\[
-        \big(\boldsymbol E_{ij}^\lambda\big)^{-1} = \boldsymbol E_{ij}^{-\lambda} = \boldsymbol I + \lambda \boldsymbol \delta_{ij}.
-    \]</div>
-</li>
-<li><p>Если матрица <span class="math notranslate nohighlight">\(\boldsymbol Q\)</span> ортогональна, то <span class="math notranslate nohighlight">\(\boldsymbol Q^{-1} = \boldsymbol Q^\top\)</span>; действительно, поскольку её столбцы <span class="math notranslate nohighlight">\(\boldsymbol q_1, \ldots, \boldsymbol q_n\)</span> ортонормированы, получаем <span class="math notranslate nohighlight">\((\boldsymbol Q^\top\boldsymbol Q)_{ij} = \boldsymbol q_i^\top\boldsymbol q_j = \delta_{ij}\)</span>, т.е. <span class="math notranslate nohighlight">\(\boldsymbol Q^\top\boldsymbol Q = \boldsymbol I\)</span>.</p></li>
-<li><p>В частности, <span class="math notranslate nohighlight">\(\boldsymbol P^{-1} = \boldsymbol P^\top\)</span> для любой матрицы перестановки <span class="math notranslate nohighlight">\(\boldsymbol P\)</span>, ведь любая такая матрица ортогональна.</p></li>
-</ul>
 <p>In NumPy the inversed matrix can be found via <code class="docutils literal notranslate"><span class="pre">np.linalg.inv</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -621,7 +648,7 @@ document.write(`
 \end{split}\]</div>
 <p>где <span class="math notranslate nohighlight">\(\boldsymbol u \in \mathbb R^{n-1}\)</span>, верхняя треугольная матрица <span class="math notranslate nohighlight">\(\boldsymbol U_{n-1}\)</span> имеет размер <span class="math notranslate nohighlight">\((n-1)\times(n-1)\)</span>, а её обратная матрица <span class="math notranslate nohighlight">\( \boldsymbol U_{n-1}^{-1}\)</span> тоже верхняя треугольная с элементами <span class="math notranslate nohighlight">\(\frac 1{d_2}, \ldots, \frac 1{d_n}\)</span> на главной диагонали. Поищем обратную матрицу <span class="math notranslate nohighlight">\(\boldsymbol U^{-1}\)</span> в таком же виде:</p>
 <div class="math notranslate nohighlight" id="equation-u-inv">
-<span class="eqno">(35)<a class="headerlink" href="#equation-u-inv" title="Permalink to this equation">#</a></span>\[\begin{split}    \boldsymbol U^{-1} = \begin{pmatrix}
+<span class="eqno">(38)<a class="headerlink" href="#equation-u-inv" title="Permalink to this equation">#</a></span>\[\begin{split}    \boldsymbol U^{-1} = \begin{pmatrix}
         \frac 1{d_{1}} &amp; \boldsymbol v^\top \\
         \boldsymbol 0 &amp; \boldsymbol U_{n-1}^{-1}
     \end{pmatrix}. \end{split}\]</div>
@@ -633,23 +660,23 @@ document.write(`
         \boldsymbol 0 &amp; \boldsymbol I_{n-1}
     \end{pmatrix}.
 \end{split}\]</div>
-<p>Таким образом, полагая <span class="math notranslate nohighlight">\(\boldsymbol v^\top = -\frac 1{d_1} \boldsymbol u^\top \boldsymbol U_{n-1}^{-1}\)</span>, убеждаемся, что верхняя треугольная матрица <a class="reference internal" href="#equation-u-inv">(35)</a> действительно является обратной к матрице <span class="math notranslate nohighlight">\(\boldsymbol U\)</span>. Для нижних треугольных матриц доказательство аналогично.</p>
+<p>Таким образом, полагая <span class="math notranslate nohighlight">\(\boldsymbol v^\top = -\frac 1{d_1} \boldsymbol u^\top \boldsymbol U_{n-1}^{-1}\)</span>, убеждаемся, что верхняя треугольная матрица <a class="reference internal" href="#equation-u-inv">(38)</a> действительно является обратной к матрице <span class="math notranslate nohighlight">\(\boldsymbol U\)</span>. Для нижних треугольных матриц доказательство аналогично.</p>
 </div>
 </li>
 <li><p>Если матрица обратима, то транспонированная к ней матрица также обратима, причём</p>
 <div class="math notranslate nohighlight">
 \[
-        \big(\boldsymbol A^\top\big)^{-1} = \big(\boldsymbol A^{-1}\big)^\top.
+        \big(\boldsymbol A^\mathsf{T}\big)^{-1} = \big(\boldsymbol A^{-1}\big)^\mathsf{T}.
     \]</div>
-<p>Таким образом, операции транспонирония и взятия обратной матрицы коммутируют; применение подряд (в любом порядке) этих двух операций к матрице <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> обозначают через <span class="math notranslate nohighlight">\(\boldsymbol A^{-\top}\)</span>.</p>
+<p>Таким образом, операции транспонирония и взятия обратной матрицы коммутируют; применение подряд (в любом порядке) этих двух операций к матрице <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> обозначают через <span class="math notranslate nohighlight">\(\boldsymbol A^{-\mathsf{T}}\)</span>.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Proof</p>
 <p>Транспонируя равенства <span class="math notranslate nohighlight">\(\boldsymbol{AA}^{-1} = \boldsymbol{A}^{-1} \boldsymbol A = \boldsymbol I\)</span>, получаем</p>
 <div class="math notranslate nohighlight">
 \[
-    (\boldsymbol{A}^{-1})^\top \boldsymbol A^\top = \boldsymbol A^\top (\boldsymbol{A}^{-1})^\top = \boldsymbol I,
+    (\boldsymbol{A}^{-1})^\mathsf{T} \boldsymbol A^\mathsf{T} = \boldsymbol A^\mathsf{T} (\boldsymbol{A}^{-1})^\mathsf{T} = \boldsymbol I,
 \]</div>
-<p>откуда следует, то <span class="math notranslate nohighlight">\((\boldsymbol A^\top)^{-1} = (\boldsymbol A^{-1})^\top\)</span>.</p>
+<p>откуда следует, то <span class="math notranslate nohighlight">\((\boldsymbol A^\mathsf{T})^{-1} = (\boldsymbol A^{-1})^\mathsf{T}\)</span>.</p>
 </div>
 </li>
 <li><p>Если симметричная матрица обратима, то обратная к ней также симметрична.</p></li>
@@ -659,30 +686,46 @@ document.write(`
 <h2>Gauss—Jordan method<a class="headerlink" href="#gaussjordan-method" title="Permalink to this heading">#</a></h2>
 <p>Чтобы обратить невырожденную матрицу <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{n\times n}\)</span>, нужно решить <span class="math notranslate nohighlight">\(n\)</span> систем линейных уравнений</p>
 <div class="math notranslate nohighlight" id="equation-inv-systems">
-<span class="eqno">(36)<a class="headerlink" href="#equation-inv-systems" title="Permalink to this equation">#</a></span>\[    \boldsymbol{Ax}_1 = \boldsymbol e_1, \ldots, \boldsymbol{Ax}_n = \boldsymbol e_n,\]</div>
+<span class="eqno">(39)<a class="headerlink" href="#equation-inv-systems" title="Permalink to this equation">#</a></span>\[    \boldsymbol{Ax}_1 = \boldsymbol e_1, \ldots, \boldsymbol{Ax}_n = \boldsymbol e_n,\]</div>
 <p>и тогда <span class="math notranslate nohighlight">\(\boldsymbol A^{-1} = [\boldsymbol x_1 \ldots \boldsymbol x_n]\)</span>.</p>
-<p>Решение СЛАУ размера <span class="math notranslate nohighlight">\(n\times n\)</span> методом Гаусса требует <span class="math notranslate nohighlight">\(O(n^3)\)</span> арифметических операций. Если решать каждую систему из <a class="reference internal" href="#equation-inv-systems">(36)</a> по отдельности, то суммарная сложность составит <span class="math notranslate nohighlight">\(O(n^4)\)</span>. Однако <strong>метод Гаусса—Жордана</strong> позволяет решить все СЛАУ <a class="reference internal" href="#equation-inv-systems">(36)</a> одновременно за <span class="math notranslate nohighlight">\(O(n^3)\)</span> операций. Для этого составляют блочную матрицу</p>
+<p>Решение СЛАУ размера <span class="math notranslate nohighlight">\(n\times n\)</span> методом Гаусса требует <span class="math notranslate nohighlight">\(O(n^3)\)</span> арифметических операций. Если решать каждую систему из <a class="reference internal" href="#equation-inv-systems">(39)</a> по отдельности, то суммарная сложность составит <span class="math notranslate nohighlight">\(O(n^4)\)</span>. Однако <strong>метод Гаусса—Жордана</strong> позволяет решить все СЛАУ <a class="reference internal" href="#equation-inv-systems">(39)</a> одновременно за <span class="math notranslate nohighlight">\(O(n^3)\)</span> операций.
+Для этого составляют блочную матрицу</p>
 <div class="math notranslate nohighlight" id="equation-gj-matrix">
-<span class="eqno">(37)<a class="headerlink" href="#equation-gj-matrix" title="Permalink to this equation">#</a></span>\[(\;\boldsymbol A \;\vert\;\boldsymbol I\;)\]</div>
+<span class="eqno">(40)<a class="headerlink" href="#equation-gj-matrix" title="Permalink to this equation">#</a></span>\[(\;\boldsymbol A \;\vert\;\boldsymbol I\;)\]</div>
 <p>и проводят с ней следующие шаги:</p>
 <ol class="arabic simple">
 <li><p>методом Гаусса превращают матрицу <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> в вернюю треугольную матрицу <span class="math notranslate nohighlight">\(\boldsymbol U\)</span>;</p></li>
 <li><p>обратным ходом метода Гаусса из матрицы <span class="math notranslate nohighlight">\(\boldsymbol U\)</span> получают диагональную матрицу <span class="math notranslate nohighlight">\(\boldsymbol D\)</span>;</p></li>
 <li><p>после деления на диагональные элементы <span class="math notranslate nohighlight">\(\boldsymbol D\)</span> становится единичной.</p></li>
 </ol>
-<p>Шаги 1—3 применяются также и правому блоку матрицы <a class="reference internal" href="#equation-gj-matrix">(37)</a>, и после завершения работы метода Гаусса—Жордана на месте единичной матрицы оказывается обратная матрица <span class="math notranslate nohighlight">\(\boldsymbol A^{-1}\)</span>.</p>
+<p>Шаги 1—3 применяются также и правому блоку матрицы <a class="reference internal" href="#equation-gj-matrix">(40)</a>, и после завершения работы метода Гаусса—Жордана на месте единичной матрицы оказывается обратная матрица <span class="math notranslate nohighlight">\(\boldsymbol A^{-1}\)</span>.</p>
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
-<div class="note admonition">
-<p class="admonition-title">Sherman—Morrison formula</p>
-<p>Let <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{n\times n}\)</span> be an invertible matrix and <span class="math notranslate nohighlight">\(\boldsymbol u, \boldsymbol v \in \mathbb R^n\)</span>. Prove that</p>
+<ol class="arabic">
+<li><p>Prove  that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+        \begin{pmatrix}
+            a &amp; b \\
+            c &amp; d \\
+        \end{pmatrix}^{-1}
+        =\frac1{ad -bc} \begin{pmatrix}
+            d &amp; -b \\
+            -c &amp; a \\
+        \end{pmatrix}.
+    \end{split}\]</div>
+<p>if <span class="math notranslate nohighlight">\(ad \ne bc\)</span>.</p>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol \Lambda = \mathrm{diag}\{\lambda_1, \ldots, \lambda_n\}\)</span> be a diagonal matrix. Prove that <span class="math notranslate nohighlight">\(\boldsymbol \Lambda^{-1} = \mathrm{diag}\big\{\frac 1{\lambda_1}, \ldots, \frac 1{\lambda_n}\big\}\)</span> if <span class="math notranslate nohighlight">\(\lambda_i \ne 0\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+<li><p>Prove that <span class="math notranslate nohighlight">\(\boldsymbol Q^{-1} = \boldsymbol Q^\mathsf{T}\)</span> if <span class="math notranslate nohighlight">\(\boldsymbol Q\)</span> is orthogonal.</p></li>
+<li><p>(Sherman—Morrison formula) Let <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{n\times n}\)</span> be an invertible matrix and <span class="math notranslate nohighlight">\(\boldsymbol u, \boldsymbol v \in \mathbb R^n\)</span>. Prove that</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
-    (\boldsymbol A + \boldsymbol u \boldsymbol v^\top)^{-1} =
-    \boldsymbol A^{-1} - \frac{\boldsymbol A^{-1} \boldsymbol u \boldsymbol v^\top \boldsymbol A^{-1}}{1 + \boldsymbol v^\top\boldsymbol A^{-1} \boldsymbol u }.
+    (\boldsymbol A + \boldsymbol u \boldsymbol v^\mathsf{T})^{-1} =
+    \boldsymbol A^{-1} - \frac{\boldsymbol A^{-1} \boldsymbol u \boldsymbol v^\mathsf{T} \boldsymbol A^{-1}}{1 + \boldsymbol v^\mathsf{T}\boldsymbol A^{-1} \boldsymbol u }.
 \]</div>
-</div>
 </section>
 </section>
 
@@ -718,12 +761,12 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="linear_systems.html"
+       href="matrices.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Linear systems</p>
+        <p class="prev-next-title">Matrices</p>
       </div>
     </a>
     <a class="right-next"
@@ -753,7 +796,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-systems">Linear systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Inverse matrix</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-inverse-matrices">Properties of inverse matrices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussjordan-method">Gauss—Jordan method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
