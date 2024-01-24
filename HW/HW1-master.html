@@ -492,19 +492,19 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-1-0-5-points">Task 1.1 (0.5 points)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-solution-here">YOUR SOLUTION HERE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-2-1-point">Task 1.2 (1 point)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">YOUR SOLUTION HERE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-solution-here">YOUR SOLUTION HERE</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-3-0-5-points">Task 1.3 (0.5 points)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">YOUR SOLUTION HERE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">YOUR SOLUTION HERE</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-4-1-point">Task 1.4 (1 point)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">YOUR SOLUTION HERE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">YOUR SOLUTION HERE</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-5-programming-2-points">Task 1.5 (programming, 2 points)</a></li>
@@ -525,29 +525,35 @@ document.write(`
 <section id="task-1-1-0-5-points">
 <h2>Task 1.1 (0.5 points)<a class="headerlink" href="#task-1-1-0-5-points" title="Permalink to this heading">#</a></h2>
 <p>Show that cosine distance between two vectors is always between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(2\)</span>.</p>
-<section id="your-solution-here">
-<h3>YOUR SOLUTION HERE<a class="headerlink" href="#your-solution-here" title="Permalink to this heading">#</a></h3>
+<section id="solution">
+<h3>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h3>
+<p>Due to Cauchy-Schwarz inequality</p>
+<div class="math notranslate nohighlight">
+\[
+    -1 \leqslant \cos \theta = \frac{\boldsymbol u^\mathsf{T}\boldsymbol u}{\Vert \boldsymbol u \Vert_2 \Vert \boldsymbol v \Vert_2} \leqslant 1
+\]</div>
+<p>Hence, cosine distance <span class="math notranslate nohighlight">\(2 - \cos\theta\)</span> belongs to <span class="math notranslate nohighlight">\([0, 2]\)</span>.</p>
 </section>
 </section>
 <section id="task-1-2-1-point">
 <h2>Task 1.2 (1 point)<a class="headerlink" href="#task-1-2-1-point" title="Permalink to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(\boldsymbol A \in\mathbb R^{m\times n}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol B \in\mathbb R^{n\times m}\)</span>. Prove that <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol{AB}) = \mathrm{tr}(\boldsymbol{BA})\)</span>. Using this property, calculate <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol{uv}^\mathsf{T})\)</span> if <span class="math notranslate nohighlight">\(\boldsymbol u, \boldsymbol v \in\mathbb R^n\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol u \perp \boldsymbol v\)</span>.</p>
-<section id="id1">
-<h3>YOUR SOLUTION HERE<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<section id="your-solution-here">
+<h3>YOUR SOLUTION HERE<a class="headerlink" href="#your-solution-here" title="Permalink to this heading">#</a></h3>
 </section>
 </section>
 <section id="task-1-3-0-5-points">
 <h2>Task 1.3 (0.5 points)<a class="headerlink" href="#task-1-3-0-5-points" title="Permalink to this heading">#</a></h2>
 <p>A <strong>permutation matrix</strong> <span class="math notranslate nohighlight">\(\boldsymbol P\)</span> is obtained from the identity matrix <span class="math notranslate nohighlight">\(\boldsymbol I\)</span> by some permutation of rows (or columns). Show that <span class="math notranslate nohighlight">\(\boldsymbol P^{-1} = \boldsymbol P^\mathsf{T}\)</span>.</p>
-<section id="id2">
-<h3>YOUR SOLUTION HERE<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<section id="id1">
+<h3>YOUR SOLUTION HERE<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 </section>
 </section>
 <section id="task-1-4-1-point">
 <h2>Task 1.4 (1 point)<a class="headerlink" href="#task-1-4-1-point" title="Permalink to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span>. Prove that <span class="math notranslate nohighlight">\(N(\boldsymbol A) = N(\boldsymbol A^{\mathsf T}\boldsymbol A)\)</span>.</p>
-<section id="id3">
-<h3>YOUR SOLUTION HERE<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<section id="id2">
+<h3>YOUR SOLUTION HERE<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 </section>
 </section>
 <section id="task-1-5-programming-2-points">
@@ -638,7 +644,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.3 s ± 317 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>880 ms ± 57.1 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -651,7 +657,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34.2 ms ± 7.62 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23.8 ms ± 1.09 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 </div>
@@ -664,7 +670,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.52 ms ± 1.89 ms per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.03 ms ± 165 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -677,7 +683,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>203 µs ± 98.6 µs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>103 µs ± 15.3 µs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -731,7 +737,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d051801b32b8a85d3c7a64f1abe66933af65fc6edd2d3c688c17860e85c064df.svg" src="../_images/d051801b32b8a85d3c7a64f1abe66933af65fc6edd2d3c688c17860e85c064df.svg" /></div>
+<img alt="../_images/920a75180fb36d6e5fa2d43fc62076bd97070f1d6d470028b6a4bfa68f9418a8.svg" src="../_images/920a75180fb36d6e5fa2d43fc62076bd97070f1d6d470028b6a4bfa68f9418a8.svg" /></div>
 </div>
 </section>
 <section id="demo-for-task-1-5-dot-product-performance">
@@ -787,7 +793,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>956 µs ± 456 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>736 µs ± 320 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -800,7 +806,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>169 µs ± 48.4 µs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>111 µs ± 15.9 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -813,7 +819,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.13 µs ± 779 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.56 µs ± 1.11 µs per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -866,7 +872,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4b6094bac10bc7d5335ef81ced9a298ef57ba99e5868548de643db2ab5299d63.svg" src="../_images/4b6094bac10bc7d5335ef81ced9a298ef57ba99e5868548de643db2ab5299d63.svg" /></div>
+<img alt="../_images/3517d9d1e3a2f9c984b8b230e246fe88ea2ca40d7f866496a2fda34cee4b3676.svg" src="../_images/3517d9d1e3a2f9c984b8b230e246fe88ea2ca40d7f866496a2fda34cee4b3676.svg" /></div>
 </div>
 </section>
 </section>
@@ -921,19 +927,19 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-1-0-5-points">Task 1.1 (0.5 points)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-solution-here">YOUR SOLUTION HERE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-2-1-point">Task 1.2 (1 point)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">YOUR SOLUTION HERE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-solution-here">YOUR SOLUTION HERE</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-3-0-5-points">Task 1.3 (0.5 points)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">YOUR SOLUTION HERE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">YOUR SOLUTION HERE</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-4-1-point">Task 1.4 (1 point)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">YOUR SOLUTION HERE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">YOUR SOLUTION HERE</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-5-programming-2-points">Task 1.5 (programming, 2 points)</a></li>
