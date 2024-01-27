@@ -515,11 +515,11 @@ document.write(`
 </ul>
 <div class="math notranslate nohighlight">
 \[
-    z = \sigma(y), \quad \sigma(y) = [y &gt; 0].
+    z = \psi(y), \quad \psi(y) = \mathbb I[y &gt; 0].
 \]</div>
 <p>If we have several neurons <span class="math notranslate nohighlight">\(z_1, \ldots, z_m\)</span> in the output layer, then the linear transformation between layers can be written as</p>
 <div class="math notranslate nohighlight" id="equation-linear-layer-coord">
-<span class="eqno">(31)<a class="headerlink" href="#equation-linear-layer-coord" title="Permalink to this equation">#</a></span>\[    z_j = \sum\limits_{i=1}^n w_{ij} x_i, \quad j  1, \ldots, m\]</div>
+<span class="eqno">(31)<a class="headerlink" href="#equation-linear-layer-coord" title="Permalink to this equation">#</a></span>\[    z_j = \sum\limits_{i=1}^n w_{ij} x_i + b_j, \quad j = 1, \ldots, m.\]</div>
 <div class="important admonition">
 <p class="admonition-title">Question</p>
 <p>Denote <span class="math notranslate nohighlight">\(\boldsymbol x^{\mathsf T} = (x_1, \ldots, x_n)\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol z^{\mathsf T} = (z_1, \ldots, z_m)\)</span>,  <span class="math notranslate nohighlight">\(\boldsymbol W = (w_{ij})\)</span>. How to rewrite <a class="reference internal" href="#equation-linear-layer-coord">(31)</a> in matrix form?</p>

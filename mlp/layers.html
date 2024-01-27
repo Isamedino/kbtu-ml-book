@@ -493,6 +493,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-of-mlp">Parameters of MLP</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dense-layer">Dense layer</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-layer-in-pytorch">Linear layer in PyTorch</a></li>
@@ -541,6 +543,42 @@ F(\boldsymbol x) = (f_{L} \circ f_{L-1} \circ\ldots \circ f_2 \circ f_1)(\boldsy
 <p class="admonition-title">Warning</p>
 <p>The terminology about layers is a bit ambiguous. Both functions <span class="math notranslate nohighlight">\(f_\ell\)</span> and their outputs <span class="math notranslate nohighlight">\(\boldsymbol x_\ell = f(\boldsymbol x_{\ell - 1})\)</span> are called <span class="math notranslate nohighlight">\(\ell\)</span>-th layer in different sources.</p>
 </div>
+<section id="linear-regression">
+<h2>Linear regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h2>
+<p>Linear regression is one the simplest MLPs. There are several types of linear regression model:</p>
+<ul>
+<li><p>simple linear regression <a class="reference internal" href="../lin_reg/simple.html#equation-simple-lin-reg">(5)</a> <span class="math notranslate nohighlight">\(y = ax +b\)</span></p></li>
+<li><p><a class="reference internal" href="../lin_reg/multiple.html#linear-regression"><span class="std std-ref">multiple linear regression</span></a> <span class="math notranslate nohighlight">\(y = \boldsymbol x^\mathsf{T} \boldsymbol w + w_0\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+        \boldsymbol x = \begin{pmatrix} x_1 \\ \vdots \\ x_d \end{pmatrix}, \quad
+        \boldsymbol w = \begin{pmatrix} w_1 \\ \vdots \\ w_d \end{pmatrix}
+    \end{split}\]</div>
+</li>
+<li><p>multivariate linear regression <span class="math notranslate nohighlight">\(\boldsymbol y^\mathsf{T} = \boldsymbol x^\mathsf{T} \boldsymbol W + \boldsymbol b^\mathsf{T}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol W\in\mathbb R^{d \times m}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol y, \boldsymbol b \in \mathbb R^m\)</span></p></li>
+</ul>
+<div class="important admonition">
+<p class="admonition-title">Question</p>
+<p>How many layers does all these kinds of linear regression have? What are the sizes of input and output?</p>
+</div>
+</section>
+<section id="logistic-regression">
+<h2>Logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this heading">#</a></h2>
+<p>Logistic regression predicts probabilites of classes:</p>
+<ul>
+<li><p><span class="xref std std-ref">binary logistic regression</span> <span class="math notranslate nohighlight">\(y = \sigma(\boldsymbol x^\mathsf{T} \boldsymbol w + w_0)\)</span></p></li>
+<li><p><span class="xref std std-ref">multinomial logistic regression</span></p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol y^\mathsf{T} = \mathrm{Softmax}(\boldsymbol x^\mathsf{T} \boldsymbol W + \boldsymbol b^\mathsf{T}), \quad \boldsymbol W\in\mathbb R^{d \times K}, \quad \boldsymbol y, \boldsymbol b \in \mathbb R^K
+    \]</div>
+</li>
+</ul>
+<div class="important admonition">
+<p class="admonition-title">Question</p>
+<p>How many layers does logistic regression have? What are the sizes of input and output?</p>
+</div>
+</section>
 <section id="parameters-of-mlp">
 <h2>Parameters of MLP<a class="headerlink" href="#parameters-of-mlp" title="Permalink to this heading">#</a></h2>
 <p>However, one important element is missing in this description of MLP: parameters! Each layer <span class="math notranslate nohighlight">\(f_\ell\)</span> has a vector of parameters <span class="math notranslate nohighlight">\(\boldsymbol \theta_\ell\in\mathbb R^{m_\ell}\)</span> (sometimes empty). Hence, a layer should be defined as</p>
@@ -717,6 +755,8 @@ tensor([[-0.4484,  0.5759, -0.3938],
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-of-mlp">Parameters of MLP</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dense-layer">Dense layer</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-layer-in-pytorch">Linear layer in PyTorch</a></li>
