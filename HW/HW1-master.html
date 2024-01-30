@@ -496,15 +496,15 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-2-1-point">Task 1.2 (1 point)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-solution-here">YOUR SOLUTION HERE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-3-0-5-points">Task 1.3 (0.5 points)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">YOUR SOLUTION HERE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-4-1-point">Task 1.4 (1 point)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">YOUR SOLUTION HERE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Solution</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-5-programming-2-points">Task 1.5 (programming, 2 points)</a></li>
@@ -538,22 +538,29 @@ document.write(`
 <section id="task-1-2-1-point">
 <h2>Task 1.2 (1 point)<a class="headerlink" href="#task-1-2-1-point" title="Permalink to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(\boldsymbol A \in\mathbb R^{m\times n}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol B \in\mathbb R^{n\times m}\)</span>. Prove that <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol{AB}) = \mathrm{tr}(\boldsymbol{BA})\)</span>. Using this property, calculate <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol{uv}^\mathsf{T})\)</span> if <span class="math notranslate nohighlight">\(\boldsymbol u, \boldsymbol v \in\mathbb R^n\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol u \perp \boldsymbol v\)</span>.</p>
-<section id="your-solution-here">
-<h3>YOUR SOLUTION HERE<a class="headerlink" href="#your-solution-here" title="Permalink to this heading">#</a></h3>
+<section id="id1">
+<h3>Solution<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>If <span class="math notranslate nohighlight">\(\boldsymbol{C} = \boldsymbol{AB}\)</span>, then <span class="math notranslate nohighlight">\(C_{ik} = \sum\limits_{j=1}^n A_{ij}B_{jk}\)</span>, and <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol C) = \sum\limits_{i=1}^m C_{ii} =  \sum\limits_{i=1}^m \sum\limits_{j=1}^n A_{ij}B_{ji}\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(\boldsymbol{D} = \boldsymbol{BA}\)</span>, then <span class="math notranslate nohighlight">\(D_{ik} = \sum\limits_{j=1}^m B_{ij}A_{jk}\)</span>, and <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol D) = \sum\limits_{i=1}^n D_{ii} =  \sum\limits_{i=1}^n \sum\limits_{j=1}^m B_{ij}A_{ji}\)</span>.</p>
+<p>Hence, the only difference between <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol C)\)</span> and <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol D)\)</span> is the order of summation, so they are equal.</p>
+<p>If <span class="math notranslate nohighlight">\(\boldsymbol u \perp \boldsymbol v\)</span> then <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol{uv}^\mathsf{T}) = \mathrm{tr}(\boldsymbol v^\mathsf{T}\boldsymbol u) = \mathrm{tr}(0) = 0\)</span>.</p>
 </section>
 </section>
 <section id="task-1-3-0-5-points">
 <h2>Task 1.3 (0.5 points)<a class="headerlink" href="#task-1-3-0-5-points" title="Permalink to this heading">#</a></h2>
 <p>A <strong>permutation matrix</strong> <span class="math notranslate nohighlight">\(\boldsymbol P\)</span> is obtained from the identity matrix <span class="math notranslate nohighlight">\(\boldsymbol I\)</span> by some permutation of rows (or columns). Show that <span class="math notranslate nohighlight">\(\boldsymbol P^{-1} = \boldsymbol P^\mathsf{T}\)</span>.</p>
-<section id="id1">
-<h3>YOUR SOLUTION HERE<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<section id="id2">
+<h3>Solution<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>Any permutation matrix is othogonal, hence <span class="math notranslate nohighlight">\(\boldsymbol P^\mathsf{T} \boldsymbol P = \boldsymbol I\)</span>.</p>
 </section>
 </section>
 <section id="task-1-4-1-point">
 <h2>Task 1.4 (1 point)<a class="headerlink" href="#task-1-4-1-point" title="Permalink to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span>. Prove that <span class="math notranslate nohighlight">\(N(\boldsymbol A) = N(\boldsymbol A^{\mathsf T}\boldsymbol A)\)</span>.</p>
-<section id="id2">
-<h3>YOUR SOLUTION HERE<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<section id="id3">
+<h3>Solution<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>If <span class="math notranslate nohighlight">\(\boldsymbol x \in N(\boldsymbol A)\)</span>, then <span class="math notranslate nohighlight">\(\boldsymbol{Ax} = \boldsymbol 0\)</span>. Consequently, <span class="math notranslate nohighlight">\(\boldsymbol A^{\mathsf T}\boldsymbol A\boldsymbol{x}=\boldsymbol A^{\mathsf T}\boldsymbol 0 = \boldsymbol 0\)</span>, and <span class="math notranslate nohighlight">\(\boldsymbol x \in N(\boldsymbol A^{\mathsf T}\boldsymbol A)\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(\boldsymbol x \in N(\boldsymbol A^{\mathsf T}\boldsymbol A)\)</span>, then <span class="math notranslate nohighlight">\(\boldsymbol A^{\mathsf T}\boldsymbol A\boldsymbol{x} = \boldsymbol 0\)</span>. Multiplying this equality by <span class="math notranslate nohighlight">\(\boldsymbol x^{\mathsf T}\)</span> from the left, we obtain <span class="math notranslate nohighlight">\(\boldsymbol x^{\mathsf T}\boldsymbol A^{\mathsf T}\boldsymbol A\boldsymbol{x} = 0\)</span>, or <span class="math notranslate nohighlight">\(\Vert \boldsymbol{Ax}\Vert = 0\)</span>. Hence, <span class="math notranslate nohighlight">\(\boldsymbol{Ax} = \boldsymbol 0\)</span>, i.e., <span class="math notranslate nohighlight">\(\boldsymbol x \in N(\boldsymbol A)\)</span>.</p>
 </section>
 </section>
 <section id="task-1-5-programming-2-points">
@@ -644,7 +651,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>880 ms ± 57.1 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>674 ms ± 5.57 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -657,7 +664,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23.8 ms ± 1.09 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20.2 ms ± 691 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -670,7 +677,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.03 ms ± 165 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.89 ms ± 15.2 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -683,7 +690,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>103 µs ± 15.3 µs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>52.3 µs ± 766 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -737,7 +744,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/920a75180fb36d6e5fa2d43fc62076bd97070f1d6d470028b6a4bfa68f9418a8.svg" src="../_images/920a75180fb36d6e5fa2d43fc62076bd97070f1d6d470028b6a4bfa68f9418a8.svg" /></div>
+<img alt="../_images/bf95c17f4be0de02b63043babb2a249ec8c131beac70001528f74cbad14dc0dd.svg" src="../_images/bf95c17f4be0de02b63043babb2a249ec8c131beac70001528f74cbad14dc0dd.svg" /></div>
 </div>
 </section>
 <section id="demo-for-task-1-5-dot-product-performance">
@@ -793,7 +800,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>736 µs ± 320 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>355 µs ± 42.5 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -806,7 +813,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>111 µs ± 15.9 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>88.9 µs ± 3.28 µs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -819,7 +826,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.56 µs ± 1.11 µs per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.5 µs ± 27.5 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -872,7 +879,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3517d9d1e3a2f9c984b8b230e246fe88ea2ca40d7f866496a2fda34cee4b3676.svg" src="../_images/3517d9d1e3a2f9c984b8b230e246fe88ea2ca40d7f866496a2fda34cee4b3676.svg" /></div>
+<img alt="../_images/c5a1618ea0ffc7fd2c44dd5ac6ee05d6f93ac06dac7dbe46a6b01af8b3f42cbe.svg" src="../_images/c5a1618ea0ffc7fd2c44dd5ac6ee05d6f93ac06dac7dbe46a6b01af8b3f42cbe.svg" /></div>
 </div>
 </section>
 </section>
@@ -931,15 +938,15 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-2-1-point">Task 1.2 (1 point)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-solution-here">YOUR SOLUTION HERE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-3-0-5-points">Task 1.3 (0.5 points)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">YOUR SOLUTION HERE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-4-1-point">Task 1.4 (1 point)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">YOUR SOLUTION HERE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Solution</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-5-programming-2-points">Task 1.5 (programming, 2 points)</a></li>

@@ -493,9 +493,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-diagonalization-is-impossible">When diagonalization is impossible</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criterion-of-diagonalizability">Criterion of diagonalizability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-theorem">Spectral theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
             </nav>
         </div>
@@ -514,10 +514,11 @@ document.write(`
 \[
     \boldsymbol \Lambda e_i = \lambda_i \boldsymbol e_i, \quad i = 1, \ldots, n. 
 \]</div>
-<p>Если матрицу <span class="math notranslate nohighlight">\(\boldsymbol A \in\mathbb R^{n\times n}\)</span> можно привести к диагональному виду преобразованием подобия, то она называется  <strong>диагонализируемой</strong>. Диагонализация матрицы эквивалентна наличию базиса из собственных векторов.</p>
+<p>Если матрица <span class="math notranslate nohighlight">\(\boldsymbol A \in\mathbb R^{n\times n}\)</span> подобна диагональной, то она называется <strong>диагонализируемой</strong>. Диагонализация матрицы эквивалентна наличию базиса из собственных векторов.</p>
+<p>In other words, <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> is <strong>diagonalizable</strong> if there exist an invertible matrix <span class="math notranslate nohighlight">\(M\)</span> and a diagonal matrix <span class="math notranslate nohighlight">\(\boldsymbol \Lambda\)</span> such that <span class="math notranslate nohighlight">\(\boldsymbol M^{-1}\boldsymbol {AM} = \boldsymbol \Lambda\)</span>.</p>
 <p><strong>Теорема</strong>. Если у матрицы <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{n\times n}\)</span> есть <span class="math notranslate nohighlight">\(n\)</span> линейно независимых собственных векторов <span class="math notranslate nohighlight">\(\boldsymbol x_1, \ldots, \boldsymbol x_n\)</span>, то матрица <span class="math notranslate nohighlight">\(\boldsymbol X = [\boldsymbol x_1 \ldots \boldsymbol x_n]\)</span> <strong>диагонализирует</strong> матрицу <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-diagonalize">
-<span class="eqno">(51)<a class="headerlink" href="#equation-diagonalize" title="Permalink to this equation">#</a></span>\[    \boldsymbol X^{-1} \boldsymbol A \boldsymbol X =
+<span class="eqno">(49)<a class="headerlink" href="#equation-diagonalize" title="Permalink to this equation">#</a></span>\[    \boldsymbol X^{-1} \boldsymbol A \boldsymbol X =
     \boldsymbol\Lambda = \mathrm{diag} \{\lambda_1, \ldots, \lambda_n\}.\]</div>
 <div class="dropdown admonition">
 <p class="admonition-title">Proof</p>
@@ -546,13 +547,13 @@ document.write(`
 <p class="admonition-title">Proof</p>
 <p>Рассуждение проведём индукцией по <span class="math notranslate nohighlight">\(m\)</span>. При <span class="math notranslate nohighlight">\(m=1\)</span> утверждение, очевидно, верно. Пусть теперь <span class="math notranslate nohighlight">\(m&gt;1\)</span> и</p>
 <div class="math notranslate nohighlight" id="equation-linear-dep">
-<span class="eqno">(52)<a class="headerlink" href="#equation-linear-dep" title="Permalink to this equation">#</a></span>\[    c_1\boldsymbol x_1 + \ldots + c_{m-1} \boldsymbol x_{m-1} + c_m\boldsymbol x_m = \boldsymbol 0. \]</div>
+<span class="eqno">(50)<a class="headerlink" href="#equation-linear-dep" title="Permalink to this equation">#</a></span>\[    c_1\boldsymbol x_1 + \ldots + c_{m-1} \boldsymbol x_{m-1} + c_m\boldsymbol x_m = \boldsymbol 0. \]</div>
 <p>Умножим это равенство на матирцу <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> слева:</p>
 <div class="math notranslate nohighlight">
 \[
     c_1 \lambda_1\boldsymbol x_1 + \ldots + c_{m-1}\lambda_{m-1}\boldsymbol x_{m-1}+ c_m\lambda_m\boldsymbol x_m = \boldsymbol 0.
 \]</div>
-<p>Вычтем отсюда равенство <a class="reference internal" href="#equation-linear-dep">(52)</a>, умноженное на <span class="math notranslate nohighlight">\(\lambda_m\)</span>:</p>
+<p>Вычтем отсюда равенство <a class="reference internal" href="#equation-linear-dep">(50)</a>, умноженное на <span class="math notranslate nohighlight">\(\lambda_m\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
     c_1 (\lambda_1 - \lambda_m)\boldsymbol x_1 + \ldots + c_{m-1}(\lambda_{m-1} - \lambda_m)\boldsymbol x_{m-1} = \boldsymbol 0.
@@ -562,19 +563,19 @@ document.write(`
 \[
     c_k(\lambda_k - \lambda_m) = 0, \quad 1\leqslant k \leqslant m-1.
 \]</div>
-<p>Все собственные значения различны, значит, <span class="math notranslate nohighlight">\(c_k = 0\)</span> при <span class="math notranslate nohighlight">\(k=1, \ldots, m-1\)</span>. Но тогда <a class="reference internal" href="#equation-linear-dep">(52)</a> превращается в <span class="math notranslate nohighlight">\(c_m\boldsymbol x_m = \boldsymbol 0\)</span>, откуда <span class="math notranslate nohighlight">\(c_m = 0\)</span>. Итак, все коэффициенты линейной комбинации <a class="reference internal" href="#equation-linear-dep">(52)</a> обнулились, поэтому система собственных векторов <span class="math notranslate nohighlight">\(\boldsymbol x_1, \ldots,\boldsymbol x_m\)</span> линейно независима.</p>
+<p>Все собственные значения различны, значит, <span class="math notranslate nohighlight">\(c_k = 0\)</span> при <span class="math notranslate nohighlight">\(k=1, \ldots, m-1\)</span>. Но тогда <a class="reference internal" href="#equation-linear-dep">(50)</a> превращается в <span class="math notranslate nohighlight">\(c_m\boldsymbol x_m = \boldsymbol 0\)</span>, откуда <span class="math notranslate nohighlight">\(c_m = 0\)</span>. Итак, все коэффициенты линейной комбинации <a class="reference internal" href="#equation-linear-dep">(50)</a> обнулились, поэтому система собственных векторов <span class="math notranslate nohighlight">\(\boldsymbol x_1, \ldots,\boldsymbol x_m\)</span> линейно независима.</p>
 </div>
 <p>Применяя лемму к матрице <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{n\times n}\)</span> с простым спектром, заключаем, что у неё есть <span class="math notranslate nohighlight">\(n\)</span> линейно независимых собственных векторов <span class="math notranslate nohighlight">\(\boldsymbol x_1, \ldots,\boldsymbol x_n\)</span>, которые и образуют собственный базис. Следовательно, матрица <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> диагонализируема.</p>
 <p>Ну а что насчёт диагонализируемости, если спектр не простой? Бывает по-разному. Например, у единичной матрицы спектр отнюдь не простой (все <span class="math notranslate nohighlight">\(\lambda = 1\)</span>), однако, она уже диагональна. А вот у матрицы</p>
 <div class="math notranslate nohighlight" id="equation-non-diag">
-<span class="eqno">(53)<a class="headerlink" href="#equation-non-diag" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol A =
+<span class="eqno">(51)<a class="headerlink" href="#equation-non-diag" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol A =
 \begin{pmatrix}
         1 &amp; 1 \\
         0 &amp; 1 \\
     \end{pmatrix}\end{split}\]</div>
 <p>есть одно собственное значение <span class="math notranslate nohighlight">\(\lambda = 1\)</span> кратности <span class="math notranslate nohighlight">\(2\)</span>, но у него можно найти только один линейно независимый собственный вектор <span class="math notranslate nohighlight">\((1, 0)\)</span>. Собственного базиса не построишь, матрица не диагонализируема.</p>
-<section id="when-diagonalization-is-impossible">
-<h2>When diagonalization is impossible<a class="headerlink" href="#when-diagonalization-is-impossible" title="Permalink to this heading">#</a></h2>
+<section id="criterion-of-diagonalizability">
+<h2>Criterion of diagonalizability<a class="headerlink" href="#criterion-of-diagonalizability" title="Permalink to this heading">#</a></h2>
 <p>В общем случае собственный базис и диагонализируемость матрицы <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{n\times n}\)</span>  могут отсутствовать по двум причинам:</p>
 <ol class="arabic">
 <li><p>не хватает собственных значений:</p>
@@ -590,30 +591,34 @@ document.write(`
     \]</div>
 </li>
 </ol>
-<p>Первая причина снова приводит нас к вопросу о поле скаляров <span class="math notranslate nohighlight">\(F\)</span> векторного пространства. Если <span class="math notranslate nohighlight">\(F = \mathbb C\)</span>, то проблем нет: по основной теореме алгебры суммарная алгебраическая кратность собственных чисел всегда равна <span class="math notranslate nohighlight">\(n\)</span>. А вот дефолтное поле <span class="math notranslate nohighlight">\(F=\mathbb R\)</span> не гарантирует наличие у матрицы полного набора собственных значений из этого поля. Ну а если не хватает собственных значений, то собственных векторов для построения собственного базиса и подавно не хватит.</p>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Example: rotation matrix</p>
-<p>Снова рассмотрим матрицу поворота</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<!--
+Первая причина снова приводит нас к вопросу о поле скаляров $F$ векторного пространства. Если $F = \mathbb C$, то проблем нет: по основной теореме алгебры суммарная алгебраическая кратность собственных чисел всегда равна $n$. А вот дефолтное поле $F=\mathbb R$ не гарантирует наличие у матрицы полного набора собственных значений из этого поля. Ну а если не хватает собственных значений, то собственных векторов для построения собственного базиса и подавно не хватит.
+
+```{admonition} Example: rotation matrix
+:class: tip, dropdown
+Снова рассмотрим матрицу поворота
+
+$$
 \boldsymbol A =
     \begin{pmatrix}
-        \cos\theta &amp; -\sin\theta \\
-        \sin\theta &amp; \cos\theta \\
+        \cos\theta & -\sin\theta \\
+        \sin\theta & \cos\theta \\
     \end{pmatrix}.
-\end{split}\]</div>
-<p>Поскольку</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+$$
+
+Поскольку
+
+$$
     \chi_{\boldsymbol A}(\lambda) = \begin{vmatrix}
-        \cos\theta - \lambda &amp; -\sin\theta \\
-        \sin\theta &amp; \cos\theta - \lambda \\
+        \cos\theta - \lambda & -\sin\theta \\
+        \sin\theta & \cos\theta - \lambda \\
     \end{vmatrix} = 
     \lambda^2 - 2\lambda\cos\theta + 1 = 0 \iff \lambda = e^{\pm i\theta},
-\end{split}\]</div>
-<p>у матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> нет действительных собственных значений, и про диагонализацию над полем <span class="math notranslate nohighlight">\(F = \mathbb R\)</span> можно забыть. А вот при <span class="math notranslate nohighlight">\(F = \mathbb C\)</span> всё хорошо: находим собственные вектора</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+$$
+
+у матрицы $\boldsymbol A$ нет действительных собственных значений, и про диагонализацию над полем $F = \mathbb R$ можно забыть. А вот при $F = \mathbb C$ всё хорошо: находим собственные вектора
+
+$$
     \boldsymbol x_1 = \begin{pmatrix}
         i \\
         1
@@ -623,49 +628,51 @@ document.write(`
         -i \\
         1
     \end{pmatrix},
-\end{split}\]</div>
-<p>составляем из них матрицу</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+$$
+
+составляем из них матрицу
+
+$$
 \boldsymbol X = \begin{pmatrix}
-        i &amp; -i\\
-        1 &amp; 1
+        i & -i\\
+        1 & 1
     \end{pmatrix},
     \quad
 \boldsymbol X^{-1} = \frac 12\begin{pmatrix}
-        1 &amp; i\\
-        -1 &amp; i
+        1 & i\\
+        -1 & i
     \end{pmatrix}.
-\end{split}\]</div>
-<p>В результате согласно равенству <a class="reference internal" href="#equation-diagonalize">(51)</a> имеем</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+$$
+
+В результате согласно равенству {eq}`diagonalize` имеем
+
+$$
     \frac 12 \begin{pmatrix}
-        1 &amp; i\\
-        -1 &amp; i
+        1 & i\\
+        -1 & i
     \end{pmatrix}
     \begin{pmatrix}
-        \cos\theta &amp; -\sin\theta \\
-        \sin\theta &amp; \cos\theta \\
+        \cos\theta & -\sin\theta \\
+        \sin\theta & \cos\theta \\
     \end{pmatrix}
     \begin{pmatrix}
-        i &amp; -i\\
-        1 &amp; 1
+        i & -i\\
+        1 & 1
     \end{pmatrix}
     =
     \begin{pmatrix}
-        e^{i\theta} &amp; 0\\
-        0 &amp; e^{-i\theta}
+        e^{i\theta} & 0\\
+        0 & e^{-i\theta}
     \end{pmatrix}.
-\end{split}\]</div>
-<p>Диагонализация матрицы поворота над полем <span class="math notranslate nohighlight">\(\mathbb C\)</span> проведена успешно.</p>
-</div>
-<p>Как видно из предыдущего примера, поле скаляров существенно влияет на принципиальную возможность диагонализации матрицы. По этой причине часто говорят о «диагонализации над полем <span class="math notranslate nohighlight">\(F\)</span>». По умолчанию подразумевается, что <span class="math notranslate nohighlight">\(F = \mathbb R\)</span>, так что просто «диагонализация» — это диагонализация над <span class="math notranslate nohighlight">\(\mathbb R\)</span>.</p>
-<p>Но даже если собственных значений достаточно, возможно другое препятствие: для некоторого собственного значения не хватает линейно независимых собственных векторов. В таком случае собственного базиса также не получится. Простейший пример — матрица <a class="reference internal" href="#equation-non-diag">(53)</a>.</p>
-</section>
-<section id="criterion-of-diagonalizability">
-<h2>Criterion of diagonalizability<a class="headerlink" href="#criterion-of-diagonalizability" title="Permalink to this heading">#</a></h2>
-<p>Если же у матрицы нет проблем 1 и 2, то она диагонализируема.</p>
+$$
+
+Диагонализация матрицы поворота над полем $\mathbb C$ проведена успешно.
+```
+
+Как видно из предыдущего примера, поле скаляров существенно влияет на принципиальную возможность диагонализации матрицы. По этой причине часто говорят о «диагонализации над полем $F$». По умолчанию подразумевается, что $F = \mathbb R$, так что просто «диагонализация» — это диагонализация над $\mathbb R$.
+
+Но даже если собственных значений достаточно, возможно другое препятствие: для некоторого собственного значения не хватает линейно независимых собственных векторов. В таком случае собственного базиса также не получится. Простейший пример — матрица {eq}`non-diag`.
+--><p>Если же у матрицы нет проблем 1 и 2, то она диагонализируема.</p>
 <p><strong>Теорема</strong>. Матрица <span class="math notranslate nohighlight">\(\boldsymbol A  \in \mathbb R^{n\times n}\)</span> диагонализируема, если</p>
 <div class="math notranslate nohighlight">
 \[
@@ -697,41 +704,41 @@ document.write(`
 <section id="spectral-theorem">
 <h2>Spectral theorem<a class="headerlink" href="#spectral-theorem" title="Permalink to this heading">#</a></h2>
 <p>Если матрица симметричная, то все проблемы с комплексными собственными значениями улетучиваются.</p>
-<p><strong>Теорема</strong>. Если <span class="math notranslate nohighlight">\(\boldsymbol A^\top = \boldsymbol A\)</span> и <span class="math notranslate nohighlight">\(\lambda\in\mathrm{spec}(\boldsymbol A)\)</span>, то <span class="math notranslate nohighlight">\(\lambda \in \mathbb R\)</span>.</p>
+<p><strong>Теорема</strong>. Если <span class="math notranslate nohighlight">\(\boldsymbol A^\mathsf{T} = \boldsymbol A\)</span> и <span class="math notranslate nohighlight">\(\lambda\in\mathrm{spec}(\boldsymbol A)\)</span>, то <span class="math notranslate nohighlight">\(\lambda \in \mathbb R\)</span>.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Proof</p>
 <p>Если <span class="math notranslate nohighlight">\(\boldsymbol{Ax} = \lambda \boldsymbol x\)</span>, то</p>
 <div class="math notranslate nohighlight">
 \[
-    \overline{\boldsymbol x}^\top \boldsymbol{Ax} = \overline{\boldsymbol x}^\top \lambda\boldsymbol{x} = \lambda \overline{\boldsymbol x}^\top \boldsymbol{x}.
+    \overline{\boldsymbol x}^\mathsf{T} \boldsymbol{Ax} = \overline{\boldsymbol x}^\mathsf{T} \lambda\boldsymbol{x} = \lambda \overline{\boldsymbol x}^\mathsf{T} \boldsymbol{x}.
  \]</div>
 <p>Транспонируя левую часть, получаем</p>
 <div class="math notranslate nohighlight">
 \[
-    (\overline{\boldsymbol x}^\top \boldsymbol{Ax})^\top = \boldsymbol{x}^\top \boldsymbol A \overline{\boldsymbol x} = \boldsymbol{x}^\top \overline{\boldsymbol{Ax}} = \overline \lambda \boldsymbol{x}^\top \overline{\boldsymbol x}.
+    (\overline{\boldsymbol x}^\mathsf{T} \boldsymbol{Ax})^\mathsf{T} = \boldsymbol{x}^\mathsf{T} \boldsymbol A \overline{\boldsymbol x} = \boldsymbol{x}^\mathsf{T} \overline{\boldsymbol{Ax}} = \overline \lambda \boldsymbol{x}^\mathsf{T} \overline{\boldsymbol x}.
 \]</div>
 <p>Транспонирование не меняет значения скаляра, поэтому правые части обеих равнеств одинаковы. Поскольку</p>
 <div class="math notranslate nohighlight">
 \[
-    \overline{\boldsymbol x}^\top \boldsymbol{x} = \boldsymbol{x}^\top \overline{\boldsymbol x} = \sum\limits_{k=1}^n \vert x_k\vert^2  &gt; 0,
+    \overline{\boldsymbol x}^\mathsf{T} \boldsymbol{x} = \boldsymbol{x}^\mathsf{T} \overline{\boldsymbol x} = \sum\limits_{k=1}^n \vert x_k\vert^2  &gt; 0,
 \]</div>
 <p>получается, что <span class="math notranslate nohighlight">\(\lambda = \overline \lambda\)</span>.</p>
 </div>
 <p>Итак, всякая симметричная матрица имеет <span class="math notranslate nohighlight">\(n\)</span> действительных собственных значений (с учётом кратности). Этим замечательные свойства собственных чисел и векторов таких матриц не исчерпываются. Оказывается, что любые два собственных вектора симметричной матрицы, отвечающие разным собственным значениям, ортогональны.</p>
-<p><strong>Теорема</strong>. Если <span class="math notranslate nohighlight">\(\boldsymbol A^\top = \boldsymbol A\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol {Ax} = \lambda \boldsymbol x\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol {Ay} = \mu \boldsymbol y\)</span>, <span class="math notranslate nohighlight">\(\lambda \ne \mu\)</span>, то <span class="math notranslate nohighlight">\(\boldsymbol x^\top\boldsymbol y = 0\)</span>.</p>
+<p><strong>Теорема</strong>. Если <span class="math notranslate nohighlight">\(\boldsymbol A^\mathsf{T} = \boldsymbol A\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol {Ax} = \lambda \boldsymbol x\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol {Ay} = \mu \boldsymbol y\)</span>, <span class="math notranslate nohighlight">\(\lambda \ne \mu\)</span>, то <span class="math notranslate nohighlight">\(\boldsymbol x^\mathsf{T}\boldsymbol y = 0\)</span>.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Proof</p>
 <p>Имеем</p>
 <div class="math notranslate nohighlight">
 \[
-    (\lambda\boldsymbol x)^\top \boldsymbol y = (\boldsymbol{Ax})^\top\boldsymbol y =
-    \boldsymbol x^\top \boldsymbol A^\top \boldsymbol y  = \boldsymbol x^\top (\boldsymbol A \boldsymbol y) = \boldsymbol x^\top \mu \boldsymbol y.
+    (\lambda\boldsymbol x)^\mathsf{T} \boldsymbol y = (\boldsymbol{Ax})^\mathsf{T}\boldsymbol y =
+    \boldsymbol x^\mathsf{T} \boldsymbol A^\mathsf{T} \boldsymbol y  = \boldsymbol x^\mathsf{T} (\boldsymbol A \boldsymbol y) = \boldsymbol x^\mathsf{T} \mu \boldsymbol y.
 \]</div>
-<p>Поскольку <span class="math notranslate nohighlight">\(\lambda \ne \mu\)</span>, отсюда следует, что <span class="math notranslate nohighlight">\(\boldsymbol x^\top \boldsymbol y = 0\)</span>, т.е. собственные векторы ортогональны.</p>
+<p>Поскольку <span class="math notranslate nohighlight">\(\lambda \ne \mu\)</span>, отсюда следует, что <span class="math notranslate nohighlight">\(\boldsymbol x^\mathsf{T} \boldsymbol y = 0\)</span>, т.е. собственные векторы ортогональны.</p>
 </div>
 <p>Как мы помним, матрица с простым спектром всегда может быть диагонализирована. Из предыдущей теоремы следует, что если матрица вдобавок ещё и симметрична, то у неё  существует ортнонормированный собственный базис.</p>
 <div class="proof theorem admonition" id="spectral">
-<p class="admonition-title"><span>Theorem </span> (spectral)</p>
+<p class="admonition-title"><span>Theorem </span> (Spectral theorem)</p>
 <section class="theorem-content" id="proof-content">
 <p>Если симметричная матрица <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> имеет простой спектр</p>
 <div class="math notranslate nohighlight">
@@ -739,24 +746,45 @@ document.write(`
 \mathrm{spec}(\boldsymbol A) = \{\lambda_1, \ldots, \lambda_n\},
 \]</div>
 <p>то существует такая ортогональная матрица <span class="math notranslate nohighlight">\(\boldsymbol Q\)</span>, что</p>
-<div class="math notranslate nohighlight">
-\[
-    \boldsymbol Q^\top\boldsymbol{AQ} = \boldsymbol \Lambda = \mathrm{diag}\{\lambda_1, \ldots, \lambda_n\}.
-\]</div>
+<div class="math notranslate nohighlight" id="equation-spectral-decomposition">
+<span class="eqno">(52)<a class="headerlink" href="#equation-spectral-decomposition" title="Permalink to this equation">#</a></span>\[    \boldsymbol Q^\mathsf{T}\boldsymbol{AQ} = \boldsymbol \Lambda = \mathrm{diag}\{\lambda_1, \ldots, \lambda_n\}.\]</div>
 </section>
-</div><p>Верна ли спектральная теорема для всех симметричных матриц, не обязательно с простым спектром? Оказывается, да! Один из способов это доказать — воспользоваться <strong>разложением Шура</strong>.</p>
-<p><strong>Теорема</strong> (разложение Шура). Всякая квадратная матрица <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> может быть представлена в виде</p>
-<div class="math notranslate nohighlight" id="equation-schur-decomp">
-<span class="eqno">(54)<a class="headerlink" href="#equation-schur-decomp" title="Permalink to this equation">#</a></span>\[    \boldsymbol A = \boldsymbol{QU}\boldsymbol Q^{-1},\]</div>
-<p>где матрица <span class="math notranslate nohighlight">\(\boldsymbol Q\)</span> унитарная, а матрица <span class="math notranslate nohighlight">\(\boldsymbol U\)</span> — верхняя треугольная.</p>
-<p>Если все собственные значения матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> действительные, то все матрицы в разложении <a class="reference internal" href="#equation-schur-decomp">(54)</a> можно выбрать вещественными, и тогда матрица <span class="math notranslate nohighlight">\(\boldsymbol Q\)</span> ортогональная.</p>
-<p>Если <span class="math notranslate nohighlight">\(\boldsymbol A = \boldsymbol A^\top\)</span>, то из раложения <a class="reference internal" href="#equation-schur-decomp">(54)</a> получаем</p>
-<div class="math notranslate nohighlight">
-\[
+</div><p>Можно показать, что спектральная теорема справедлива для любой симметричной матрицы, а не только для матриц с простым спектром.</p>
+<!--
+Верна ли спектральная теорема для всех симметричных матриц, не обязательно с простым спектром? Оказывается, да! Один из способов это доказать — воспользоваться **разложением Шура**.
+
+**Теорема** (разложение Шура). Всякая квадратная матрица $\boldsymbol A$ может быть представлена в виде 
+
+```{math} 
+:label: schur-decomp
+    \boldsymbol A = \boldsymbol{QU}\boldsymbol Q^{-1},
+```
+
+где матрица $\boldsymbol Q$ унитарная, а матрица $\boldsymbol U$ — верхняя треугольная. 
+
+Если все собственные значения матрицы $\boldsymbol A$ действительные, то все матрицы в разложении {eq}`schur-decomp` можно выбрать вещественными, и тогда матрица $\boldsymbol Q$ ортогональная.
+
+Если $\boldsymbol A = \boldsymbol A^\top$, то из раложения {eq}`schur-decomp` получаем
+
+$$
     \boldsymbol U = \boldsymbol Q^\top \boldsymbol{AQ} \Rightarrow
     \boldsymbol U^\top = \boldsymbol{Q}^\top\boldsymbol {AQ} = \boldsymbol U^\top.
-\]</div>
-<p>Таким образом, верхняя треугольная матрица <span class="math notranslate nohighlight">\(\boldsymbol U\)</span> симметрична и, стало быть, диагональна. Значит, разложение <a class="reference internal" href="#equation-schur-decomp">(54)</a> и есть диагонализация симметричной матрицы <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>.</p>
+$$
+
+Таким образом, верхняя треугольная матрица $\boldsymbol U$ симметрична и, стало быть, диагональна. Значит, разложение {eq}`schur-decomp` и есть диагонализация симметричной матрицы $\boldsymbol A$.
+--></section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> be a diagonalizable matrix. Show that <span class="math notranslate nohighlight">\(\lim\limits_{k\to\infty} \boldsymbol A^k = \boldsymbol 0\)</span> iff <span class="math notranslate nohighlight">\(\vert \lambda \vert &lt; 1\)</span> for all <span class="math notranslate nohighlight">\(\lambda \in \mathrm{spec}(\boldsymbol A)\)</span>.</p></li>
+<li><p>Show that any symmetric matrix <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> with eigenvalues <span class="math notranslate nohighlight">\(\lambda_1, \ldots, \lambda_n\)</span> can be written as</p>
+<div class="math notranslate nohighlight">
+\[
+        \boldsymbol A = \sum\limits_{i=1}^n \lambda_i \boldsymbol x_i\boldsymbol x_i^\mathsf{T},\quad \boldsymbol x_i^\mathsf{T}\boldsymbol x_j = \delta_{ij}.
+    \]</div>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> be a symmetric matrix, <span class="math notranslate nohighlight">\( \mathrm{spec}(\boldsymbol A) = \{\lambda_1, \ldots, \lambda_n\}\)</span>. Prove that <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol A^\mathsf{T} \boldsymbol A) = \sum\limits_{i=1}^n \lambda_i^2\)</span>.</p></li>
+</ol>
 </section>
 </section>
 
@@ -827,9 +855,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-diagonalization-is-impossible">When diagonalization is impossible</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criterion-of-diagonalizability">Criterion of diagonalizability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-theorem">Spectral theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
   </nav></div>
 

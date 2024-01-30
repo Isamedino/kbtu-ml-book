@@ -497,6 +497,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-form-of-svd">Reduced form of SVD</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#truncated-svd">Truncated SVD</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-compression">Image compression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
             </nav>
         </div>
@@ -510,7 +511,18 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="singular-value-decomposition-svd">
 <span id="svd"></span><h1>Singular Value Decomposition (SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Permalink to this heading">#</a></h1>
-<p>Any rectangular matrix <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span> has a <strong>singular value decomposition</strong> <span class="math notranslate nohighlight">\(\boldsymbol A = \boldsymbol U \boldsymbol \Sigma \boldsymbol V^\intercal\)</span> where</p>
+<p>Any rectangular matrix <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span> has a <strong>singular value decomposition</strong></p>
+<div class="math notranslate nohighlight" id="equation-svd">
+<span class="eqno">(53)<a class="headerlink" href="#equation-svd" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol A = \boldsymbol U \boldsymbol \Sigma \boldsymbol V^\mathsf{T} = [\boldsymbol u_1 \ldots \boldsymbol u_m]  \begin{pmatrix}
+        \boldsymbol \Lambda &amp;  \boldsymbol 0 \\
+         \boldsymbol 0 &amp;  \boldsymbol 0
+    \end{pmatrix}
+     \begin{pmatrix}
+        \boldsymbol v_1^\mathsf{T}\\
+        \vdots \\
+         \boldsymbol v_n^\mathsf{T} 
+    \end{pmatrix}.\end{split}\]</div>
+<p>Here</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\boldsymbol U = [\boldsymbol u_1 \ldots \boldsymbol u_m] \in\mathbb R^{m\times m}\)</span> is an orthogonal matrix;</p></li>
 <li><p><span class="math notranslate nohighlight">\(\boldsymbol \Sigma = \begin{pmatrix}
@@ -521,8 +533,12 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(\boldsymbol V = [\boldsymbol v_1 \ldots \boldsymbol v_n] \in\mathbb R^{n\times n}\)</span> is an orthogonal matrix.</p></li>
 </ul>
 <p>The numbers <span class="math notranslate nohighlight">\(\sigma_1, \ldots, \sigma_r\)</span> are called the <strong>singular values</strong> of <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>.</p>
+<!--
+```{note}
+If $m=n=r$, then SVD coincides with spectral decompostion {eq}`<spectral-decomposition>`.
+```
+-->
 <p><strong>Q</strong>. What is the shape of all blocks of the matrix <span class="math notranslate nohighlight">\(\boldsymbol \Sigma\)</span>?</p>
-<p><strong>Q</strong>. Calculate <span class="math notranslate nohighlight">\(\Vert \boldsymbol A \Vert_F\)</span> in terms of its singular values.</p>
 <section id="svd-in-numpy">
 <h2>SVD in NumPy<a class="headerlink" href="#svd-in-numpy" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -593,10 +609,10 @@ V:
 </div>
 </div>
 </div>
-<p>If <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> is a positive semidefinite square matrix (<span class="math notranslate nohighlight">\(m=n\)</span>) then according to the <strong>spectral theorem</strong></p>
+<p>If <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> is a positive semidefinite square matrix (<span class="math notranslate nohighlight">\(m=n\)</span>) then according to the spectral <a class="reference internal" href="diagonalize.html#spectral">theorem</a></p>
 <div class="math notranslate nohighlight">
 \[
-    \boldsymbol A = \boldsymbol Q \boldsymbol \Lambda \boldsymbol Q^\intercal
+    \boldsymbol A = \boldsymbol Q \boldsymbol \Lambda \boldsymbol Q^\mathsf{T}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\boldsymbol Q\)</span> is orthogonal, <span class="math notranslate nohighlight">\(\boldsymbol \Lambda\)</span> is diagonal with nonnegative elements on the main diagonal. Hence, the spectral decomposition is a special case of SVD.</p>
 <div class="cell docutils container">
@@ -634,7 +650,7 @@ V:
 </div>
 </div>
 </div>
-<p>Here <span class="math notranslate nohighlight">\(\boldsymbol U = \boldsymbol V^\intercal\)</span>:</p>
+<p>Here <span class="math notranslate nohighlight">\(\boldsymbol U = \boldsymbol V^\mathsf{T}\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">U</span> <span class="o">-</span> <span class="n">V</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
@@ -650,48 +666,48 @@ V:
 </section>
 <section id="reduced-form-of-svd">
 <h2>Reduced form of SVD<a class="headerlink" href="#reduced-form-of-svd" title="Permalink to this heading">#</a></h2>
-<p>SVD can be equivalently written in reduced form <span class="math notranslate nohighlight">\(\boldsymbol{A} = \boldsymbol U_r \Lambda \boldsymbol V_r^\intercal\)</span> where</p>
+<p>SVD <a class="reference internal" href="#equation-svd">(53)</a> is equivalent to  <span class="math notranslate nohighlight">\(\boldsymbol{A} = \boldsymbol U_r \boldsymbol \Lambda \boldsymbol V_r^\mathsf{T}\)</span> where</p>
 <div class="math notranslate nohighlight">
 \[
     \boldsymbol{U}_r = [\boldsymbol u_1 \ldots \boldsymbol u_r],\quad
     \boldsymbol{V}_r = [\boldsymbol v_1 \ldots \boldsymbol v_r].
 \]</div>
-<p>Hence, <span class="math notranslate nohighlight">\(\boldsymbol{AV}_r = \boldsymbol U_r \Lambda\)</span>, or</p>
-<div class="math notranslate nohighlight">
-\[
-    [\boldsymbol {Av}_1 \ldots \boldsymbol {Av}_r] = [\sigma_1 \boldsymbol {u}_1 \ldots \sigma_r \boldsymbol {u}_r].
-\]</div>
-<p>Consequently, <span class="math notranslate nohighlight">\(\boldsymbol {Av}_i = \sigma_i \boldsymbol u_i\)</span>, <span class="math notranslate nohighlight">\(i=1,\ldots, r\)</span>. Also,</p>
+<p>Also, this can be written as</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \boldsymbol{A} = [\sigma_1 \boldsymbol {u}_1 \ldots \sigma_r \boldsymbol {u}_r] \begin{pmatrix}
-    \boldsymbol v_1^\intercal \\
+    \boldsymbol v_1^\mathsf{T} \\
     \vdots \\
-    \boldsymbol v_r^\intercal
-    \end{pmatrix} = \sum\limits_{i=1}^r \sigma_i \boldsymbol u_i\boldsymbol v_i^\intercal.
+    \boldsymbol v_r^\mathsf{T}
+    \end{pmatrix} = \sum\limits_{i=1}^r \sigma_i \boldsymbol u_i\boldsymbol v_i^\mathsf{T}.
 \end{split}\]</div>
-<p><strong>Q</strong>. Find SVD of <span class="math notranslate nohighlight">\(\boldsymbol A = \boldsymbol{uv}^\intercal\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol u \in \mathbb R^m\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol v \in \mathbb R^n\)</span>.</p>
-<p><strong>Q</strong>. Find <span class="math notranslate nohighlight">\(\boldsymbol {Av}_j\)</span> and  <span class="math notranslate nohighlight">\(\boldsymbol A^\intercal \boldsymbol u_j\)</span>, <span class="math notranslate nohighlight">\(j=1,\ldots, p\)</span>.</p>
-<div class="important admonition">
-<p class="admonition-title">Exercise</p>
-<p>Prove that <span class="math notranslate nohighlight">\(\boldsymbol u_i\)</span> are eigenvectors of <span class="math notranslate nohighlight">\(\boldsymbol {AA}^\intercal\)</span>, whereas
-<span class="math notranslate nohighlight">\(\boldsymbol v_i\)</span> are eigenvectors of <span class="math notranslate nohighlight">\(\boldsymbol A^\intercal \boldsymbol A\)</span>. What about eigenvalues?</p>
-</div>
-</section>
+<p>Hence, SVD allows to represent a matrix as a sum of one-rank matrices.</p>
+<!--
+Hence, $\boldsymbol{AV}_r = \boldsymbol U_r \boldsymbol \Lambda$, or
+
+$$
+    [\boldsymbol {Av}_1 \ldots \boldsymbol {Av}_r] = [\sigma_1 \boldsymbol {u}_1 \ldots \sigma_r \boldsymbol {u}_r].
+$$
+
+Consequently, $\boldsymbol {Av}_i = \sigma_i \boldsymbol u_i$, $i=1,\ldots, r$. Also,
+
+
+
+**Q**. Find $\boldsymbol {Av}_j$ and  $\boldsymbol A^\mathsf{T} \boldsymbol u_j$, $j=1,\ldots, r$.
+--></section>
 <section id="truncated-svd">
 <h2>Truncated SVD<a class="headerlink" href="#truncated-svd" title="Permalink to this heading">#</a></h2>
-<p>Let <span class="math notranslate nohighlight">\(\boldsymbol A = \boldsymbol U \boldsymbol \Sigma \boldsymbol V^\intercal\)</span> be SVD of <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>. <strong>Truncated SVD</strong> is</p>
+<p>Let <span class="math notranslate nohighlight">\(\boldsymbol A = \boldsymbol U \boldsymbol \Sigma \boldsymbol V^\mathsf{T}\)</span> be SVD of <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>. <strong>Truncated SVD</strong> is</p>
 <div class="math notranslate nohighlight">
 \[
-\widehat{\boldsymbol A}_K = \boldsymbol U_K \boldsymbol \Sigma_K \boldsymbol V_K^\intercal,\quad
+\hat{\boldsymbol A}_K = \boldsymbol U_K \boldsymbol \Sigma_K \boldsymbol V_K^\mathsf{T},\quad
 \Sigma_K = \mathrm{diag}\{\sigma_1, \ldots, \sigma_K\},\quad 1 \leqslant K \leqslant r.
 \]</div>
-<p>Note that <span class="math notranslate nohighlight">\(\widehat{\boldsymbol A}_K\)</span> has rank <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(\widehat{\boldsymbol A}_K = \boldsymbol A\)</span> if <span class="math notranslate nohighlight">\(K=r\)</span>. It turns out that <span class="math notranslate nohighlight">\(\widehat{\boldsymbol A}_K\)</span> is the best approximation of <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> among all matrices of rank <span class="math notranslate nohighlight">\(K\)</span>:</p>
+<p>Note that <span class="math notranslate nohighlight">\(\hat{\boldsymbol A}_K\)</span> has rank <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(\hat{\boldsymbol A}_K = \boldsymbol A\)</span> if <span class="math notranslate nohighlight">\(K=r\)</span>. It turns out that <span class="math notranslate nohighlight">\(\hat{\boldsymbol A}_K\)</span> is the best approximation of <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> among all matrices of rank <span class="math notranslate nohighlight">\(K\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-    \min\limits_{\boldsymbol B} \Vert \boldsymbol A - \boldsymbol B\Vert_F^2 = \Vert \boldsymbol A - \widehat{\boldsymbol A}_K\Vert_F^2 = \sum\limits_{i=K+1}^r \sigma_i^2.
+    \min\limits_{\boldsymbol B} \Vert \boldsymbol A - \boldsymbol B\Vert_F^2 = \Vert \boldsymbol A - \hat{\boldsymbol A}_K\Vert_F^2 = \sum\limits_{i=K+1}^r \sigma_i^2.
 \]</div>
-<p><strong>Q</strong>. Why the last equality is true?</p>
 </section>
 <section id="image-compression">
 <h2>Image compression<a class="headerlink" href="#image-compression" title="Permalink to this heading">#</a></h2>
@@ -703,6 +719,7 @@ V:
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">io</span>
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">getsizeof</span>
 
 <span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;svg&#39;
 
@@ -716,7 +733,7 @@ V:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7f036aff1df916e7a40786f3eed1ad2d53f54c36286a56e34065a7f19e0da4be.svg" src="../../_images/7f036aff1df916e7a40786f3eed1ad2d53f54c36286a56e34065a7f19e0da4be.svg" /></div>
+<img alt="../../_images/366af6053646215813a28b7e2f48723fadd1049d24bbc10eb981526838a59bbe.svg" src="../../_images/366af6053646215813a28b7e2f48723fadd1049d24bbc10eb981526838a59bbe.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -752,7 +769,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0b020f18178f2b9b5faed8702ca837c82514270cb2d212091bd5d25c19936f07.svg" src="../../_images/0b020f18178f2b9b5faed8702ca837c82514270cb2d212091bd5d25c19936f07.svg" /></div>
+<img alt="../../_images/22f62b0a3a2e62c878a38c2c90c691373c113b142706e57dee2a6cf1b2679d55.svg" src="../../_images/22f62b0a3a2e62c878a38c2c90c691373c113b142706e57dee2a6cf1b2679d55.svg" /></div>
 </div>
 <p><span class="math notranslate nohighlight">\(2\)</span>-rank approximaion:</p>
 <div class="cell docutils container">
@@ -762,7 +779,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ab75e75550be8a2e776ba0faf05befeb4f4ea7edae1650ba7ba5beccc0ca1e82.svg" src="../../_images/ab75e75550be8a2e776ba0faf05befeb4f4ea7edae1650ba7ba5beccc0ca1e82.svg" /></div>
+<img alt="../../_images/87bc19b78082aa89e1bcc7bd35ad4f7218d79be3c5baff9b69dd06a3b7ed1b8f.svg" src="../../_images/87bc19b78082aa89e1bcc7bd35ad4f7218d79be3c5baff9b69dd06a3b7ed1b8f.svg" /></div>
 </div>
 <p><span class="math notranslate nohighlight">\(5\)</span>-rank approximation:</p>
 <div class="cell docutils container">
@@ -772,7 +789,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3fbeac426fb302ba49eeb84bbf1278d836593d2558f230f6dd3ec5822bebfdeb.svg" src="../../_images/3fbeac426fb302ba49eeb84bbf1278d836593d2558f230f6dd3ec5822bebfdeb.svg" /></div>
+<img alt="../../_images/ee1652625bc15c351fbd630a6111c28e412329a06519bb75f6f93b69c0e20392.svg" src="../../_images/ee1652625bc15c351fbd630a6111c28e412329a06519bb75f6f93b69c0e20392.svg" /></div>
 </div>
 <p><span class="math notranslate nohighlight">\(10\)</span>-rank approximation:</p>
 <div class="cell docutils container">
@@ -782,7 +799,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/42c8f34eba6c27f47493212914a23965c5ab1d855b2d3d25f1af341a18f82eca.svg" src="../../_images/42c8f34eba6c27f47493212914a23965c5ab1d855b2d3d25f1af341a18f82eca.svg" /></div>
+<img alt="../../_images/f46acd4081c2d1fc16552f288a97d7c5d6650029632d2edf03f481a8f2ffa809.svg" src="../../_images/f46acd4081c2d1fc16552f288a97d7c5d6650029632d2edf03f481a8f2ffa809.svg" /></div>
 </div>
 <p><span class="math notranslate nohighlight">\(20\)</span>-rank approximation is quite admittable:</p>
 <div class="cell docutils container">
@@ -792,8 +809,30 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0906f4aa5705818c95f019e2a3c9d08efd9850107ab894c8b7fdcd857bfbc634.svg" src="../../_images/0906f4aa5705818c95f019e2a3c9d08efd9850107ab894c8b7fdcd857bfbc634.svg" /></div>
+<img alt="../../_images/81a99279bd43ddb0aed622e72fc8bccfb0d4b6b7d3c58e4461d6680524de48c3.svg" src="../../_images/81a99279bd43ddb0aed622e72fc8bccfb0d4b6b7d3c58e4461d6680524de48c3.svg" /></div>
 </div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<p>Now plot the error of arroximation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_SVD_approx</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/bd3da4d8bd1a4c90b9421d0035a1f1c60825c7fd705db3902e6182dbae89053b.svg" src="../../_images/bd3da4d8bd1a4c90b9421d0035a1f1c60825c7fd705db3902e6182dbae89053b.svg" /></div>
+</div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Show that <span class="math notranslate nohighlight">\(\Vert \boldsymbol A \Vert_F^2 = \sum\limits_{i = 1}^r \sigma_i^2\)</span>.</p></li>
+<li><p>Find SVD of a one-rank matrix <span class="math notranslate nohighlight">\(\boldsymbol A = \boldsymbol{uv}^\mathsf{T}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol u \in \mathbb R^m\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol v \in \mathbb R^n\)</span>.</p></li>
+<li><p>Prove that <span class="math notranslate nohighlight">\(\boldsymbol u_i\)</span> are eigenvectors of <span class="math notranslate nohighlight">\(\boldsymbol {AA}^\mathsf{T}\)</span>, whereas
+<span class="math notranslate nohighlight">\(\boldsymbol v_i\)</span> are eigenvectors of <span class="math notranslate nohighlight">\(\boldsymbol A^\mathsf{T} \boldsymbol A\)</span>. What about eigenvalues?</p></li>
+<li><p>Show that <span class="math notranslate nohighlight">\(\Vert \boldsymbol A - \hat{\boldsymbol A}_K\Vert_F^2 = \sum\limits_{i=K+1}^r \sigma_i^2\)</span>.</p></li>
+</ol>
 </section>
 </section>
 
@@ -868,6 +907,7 @@ Rank: 200
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-form-of-svd">Reduced form of SVD</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#truncated-svd">Truncated SVD</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-compression">Image compression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
   </nav></div>
 

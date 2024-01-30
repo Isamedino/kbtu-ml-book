@@ -496,6 +496,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frobenius-norm">Frobenius norm</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-norm">Spectral norm</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#condition-number">Condition number</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
             </nav>
         </div>
@@ -514,15 +515,15 @@ document.write(`
 <p>Let <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span>. <strong>Frobenius norm</strong> of <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> is defined as</p>
 <div class="math notranslate nohighlight">
 \[
-    \Vert \boldsymbol A \Vert_F = \sqrt{\mathrm{tr}(\boldsymbol A^\top \boldsymbol A)} = \sqrt{\sum\limits_{i=1}^m \sum\limits_{j=1}^n a_{ij}^2}.
+    \Vert \boldsymbol A \Vert_F = \sqrt{\mathrm{tr}(\boldsymbol A^\mathsf{T} \boldsymbol A)} = \sqrt{\sum\limits_{i=1}^m \sum\limits_{j=1}^n a_{ij}^2}.
 \]</div>
 </section>
 <section id="spectral-norm">
 <h2>Spectral norm<a class="headerlink" href="#spectral-norm" title="Permalink to this heading">#</a></h2>
-<p>The <strong>spectral norm</strong> of the matrix <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span> is equal to maximal eigenvalue of <span class="math notranslate nohighlight">\(\boldsymbol A^\top \boldsymbol A\)</span>:</p>
+<p>The <strong>spectral norm</strong> of the matrix <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span> is equal to maximal eigenvalue of <span class="math notranslate nohighlight">\(\boldsymbol A^\mathsf{T} \boldsymbol A\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-    \Vert \boldsymbol A \Vert_2 = \sqrt{\lambda_{\max}(\boldsymbol A^\top \boldsymbol A)}.
+    \Vert \boldsymbol A \Vert_2 = \sqrt{\lambda_{\max}(\boldsymbol A^\mathsf{T} \boldsymbol A)}.
 \]</div>
 </section>
 <section id="condition-number">
@@ -537,9 +538,17 @@ document.write(`
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\kappa(\boldsymbol A) \geqslant 1\)</span>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(\kappa(\boldsymbol A) = \kappa(\boldsymbol A^{-1})\)</span>;</p></li>
-<li><p><span class="math notranslate nohighlight">\(\kappa(\boldsymbol{AB}) \leqslant \kappa(\boldsymbol A)\kappa(\boldsymbol B)\)</span>;</p></li>
-<li><p><span class="math notranslate nohighlight">\(\kappa(\boldsymbol A) = \Big\vert\frac{\lambda_{\max}(\boldsymbol A)}{\lambda_{\min}(\boldsymbol A)}\Big\vert\)</span> if <span class="math notranslate nohighlight">\(\boldsymbol A^\top = \boldsymbol A\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\kappa(\boldsymbol{AB}) \leqslant \kappa(\boldsymbol A)\kappa(\boldsymbol B)\)</span>.</p></li>
 </ul>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Find <span class="math notranslate nohighlight">\(\Vert \boldsymbol I_n \Vert_F\)</span>, <span class="math notranslate nohighlight">\(\Vert \boldsymbol I_n \Vert_2\)</span>, <span class="math notranslate nohighlight">\(\kappa(\boldsymbol I_n)\)</span>.</p></li>
+<li><p>Find <span class="math notranslate nohighlight">\(\Vert \boldsymbol Q \Vert_F\)</span>, <span class="math notranslate nohighlight">\(\Vert \boldsymbol Q \Vert_2\)</span>, <span class="math notranslate nohighlight">\(\kappa(\boldsymbol Q)\)</span> if <span class="math notranslate nohighlight">\(\boldsymbol Q\)</span> is an orthogonal matrix.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol A  = \boldsymbol A^\mathsf{T}\)</span>. Show that <span class="math notranslate nohighlight">\(\Vert \boldsymbol A \Vert_2 = \max\limits_{\lambda \in \mathrm{spec}(\boldsymbol A)}\vert\lambda\vert\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> be a symmetric positive definite matrix. Show that <span class="math notranslate nohighlight">\(\kappa(\boldsymbol A) = \Big\vert\frac{\lambda_{\max}(\boldsymbol A)}{\lambda_{\min}(\boldsymbol A)}\Big\vert\)</span>.</p></li>
+</ol>
 </section>
 </section>
 
@@ -613,6 +622,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frobenius-norm">Frobenius norm</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-norm">Spectral norm</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#condition-number">Condition number</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
   </nav></div>
 
