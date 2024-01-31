@@ -167,6 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../HW/hw.html">Homeworks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW1.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -710,7 +711,7 @@ Consequently, $\boldsymbol {Av}_i = \sigma_i \boldsymbol u_i$, $i=1,\ldots, r$. 
 \]</div>
 </section>
 <section id="image-compression">
-<h2>Image compression<a class="headerlink" href="#image-compression" title="Permalink to this heading">#</a></h2>
+<span id="image-svd"></span><h2>Image compression<a class="headerlink" href="#image-compression" title="Permalink to this heading">#</a></h2>
 <p>Based on <span id="id1">[<a class="reference internal" href="../../bibliography.html#id3" title="Kevin P. Murphy. Probabilistic Machine Learning: An introduction. MIT Press, 2022. URL: probml.ai.">Murphy, 2022</a>]</span>, section 7.5.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -723,9 +724,6 @@ Consequently, $\boldsymbol {Av}_i = \sigma_i \boldsymbol u_i$, $i=1,\ldots, r$. 
 
 <span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;svg&#39;
 
-<span class="k">def</span> <span class="nf">rgb2gray</span><span class="p">(</span><span class="n">rgb</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">rgb</span><span class="p">[</span><span class="o">...</span><span class="p">,:</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2989</span><span class="p">,</span> <span class="mf">0.5870</span><span class="p">,</span> <span class="mf">0.1140</span><span class="p">])</span>
-
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://github.com/probml/probml-data/blob/main/data/clown.png?raw=true&#39;</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">);</span>
@@ -733,7 +731,7 @@ Consequently, $\boldsymbol {Av}_i = \sigma_i \boldsymbol u_i$, $i=1,\ldots, r$. 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/366af6053646215813a28b7e2f48723fadd1049d24bbc10eb981526838a59bbe.svg" src="../../_images/366af6053646215813a28b7e2f48723fadd1049d24bbc10eb981526838a59bbe.svg" /></div>
+<img alt="../../_images/2a8e5d03cf72cdd91890ce77647b332962dbbbd9d41873475969048490859a8a.svg" src="../../_images/2a8e5d03cf72cdd91890ce77647b332962dbbbd9d41873475969048490859a8a.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -769,7 +767,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/22f62b0a3a2e62c878a38c2c90c691373c113b142706e57dee2a6cf1b2679d55.svg" src="../../_images/22f62b0a3a2e62c878a38c2c90c691373c113b142706e57dee2a6cf1b2679d55.svg" /></div>
+<img alt="../../_images/1a599360c5126fde400255f930e2b077f78e70db730d3f8f6266c26583a85fcc.svg" src="../../_images/1a599360c5126fde400255f930e2b077f78e70db730d3f8f6266c26583a85fcc.svg" /></div>
 </div>
 <p><span class="math notranslate nohighlight">\(2\)</span>-rank approximaion:</p>
 <div class="cell docutils container">
@@ -779,7 +777,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/87bc19b78082aa89e1bcc7bd35ad4f7218d79be3c5baff9b69dd06a3b7ed1b8f.svg" src="../../_images/87bc19b78082aa89e1bcc7bd35ad4f7218d79be3c5baff9b69dd06a3b7ed1b8f.svg" /></div>
+<img alt="../../_images/687a406539cdbf8107207b8b633d9da0cecee58d422f3929538e77c95f406e62.svg" src="../../_images/687a406539cdbf8107207b8b633d9da0cecee58d422f3929538e77c95f406e62.svg" /></div>
 </div>
 <p><span class="math notranslate nohighlight">\(5\)</span>-rank approximation:</p>
 <div class="cell docutils container">
@@ -789,7 +787,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ee1652625bc15c351fbd630a6111c28e412329a06519bb75f6f93b69c0e20392.svg" src="../../_images/ee1652625bc15c351fbd630a6111c28e412329a06519bb75f6f93b69c0e20392.svg" /></div>
+<img alt="../../_images/65ec0760879fdde98353631eb1ff04b15af114e67109166075e30f4b954b1b93.svg" src="../../_images/65ec0760879fdde98353631eb1ff04b15af114e67109166075e30f4b954b1b93.svg" /></div>
 </div>
 <p><span class="math notranslate nohighlight">\(10\)</span>-rank approximation:</p>
 <div class="cell docutils container">
@@ -799,7 +797,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f46acd4081c2d1fc16552f288a97d7c5d6650029632d2edf03f481a8f2ffa809.svg" src="../../_images/f46acd4081c2d1fc16552f288a97d7c5d6650029632d2edf03f481a8f2ffa809.svg" /></div>
+<img alt="../../_images/6a228166633f48324e606c4414bafcfbee3c89bbad7c5e7e503e202011197ff7.svg" src="../../_images/6a228166633f48324e606c4414bafcfbee3c89bbad7c5e7e503e202011197ff7.svg" /></div>
 </div>
 <p><span class="math notranslate nohighlight">\(20\)</span>-rank approximation is quite admittable:</p>
 <div class="cell docutils container">
@@ -809,7 +807,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/81a99279bd43ddb0aed622e72fc8bccfb0d4b6b7d3c58e4461d6680524de48c3.svg" src="../../_images/81a99279bd43ddb0aed622e72fc8bccfb0d4b6b7d3c58e4461d6680524de48c3.svg" /></div>
+<img alt="../../_images/11bcc408ea4cb1a14d6a61fcd9c53285e1fbb0fb47f6830a46e8abc8170b96aa.svg" src="../../_images/11bcc408ea4cb1a14d6a61fcd9c53285e1fbb0fb47f6830a46e8abc8170b96aa.svg" /></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
@@ -821,7 +819,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/bd3da4d8bd1a4c90b9421d0035a1f1c60825c7fd705db3902e6182dbae89053b.svg" src="../../_images/bd3da4d8bd1a4c90b9421d0035a1f1c60825c7fd705db3902e6182dbae89053b.svg" /></div>
+<img alt="../../_images/e6781bc367a2cedcb269a8500fc37e05b8805486e41ae88f288a3f34e30f45a3.svg" src="../../_images/e6781bc367a2cedcb269a8500fc37e05b8805486e41ae88f288a3f34e30f45a3.svg" /></div>
 </div>
 </section>
 <section id="exercises">
