@@ -251,7 +251,6 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../mlp/mlp.html">Multilayer perceptron (MLP)</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../mlp/layers.html">Layers of MLP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../mlp/activations.html">Activation functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../mlp/forward_backward_pass.html">Training of MLP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../mlp/backprop.html">Back propagation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../mlp/weight_init.html">Weights initialization</a></li>
@@ -514,7 +513,7 @@ document.write(`
 <span id="svd"></span><h1>Singular Value Decomposition (SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Permalink to this heading">#</a></h1>
 <p>Any rectangular matrix <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span> has a <strong>singular value decomposition</strong></p>
 <div class="math notranslate nohighlight" id="equation-svd">
-<span class="eqno">(53)<a class="headerlink" href="#equation-svd" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol A = \boldsymbol U \boldsymbol \Sigma \boldsymbol V^\mathsf{T} = [\boldsymbol u_1 \ldots \boldsymbol u_m]  \begin{pmatrix}
+<span class="eqno">(56)<a class="headerlink" href="#equation-svd" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol A = \boldsymbol U \boldsymbol \Sigma \boldsymbol V^\mathsf{T} = [\boldsymbol u_1 \ldots \boldsymbol u_m]  \begin{pmatrix}
         \boldsymbol \Lambda &amp;  \boldsymbol 0 \\
          \boldsymbol 0 &amp;  \boldsymbol 0
     \end{pmatrix}
@@ -667,7 +666,7 @@ V:
 </section>
 <section id="reduced-form-of-svd">
 <h2>Reduced form of SVD<a class="headerlink" href="#reduced-form-of-svd" title="Permalink to this heading">#</a></h2>
-<p>SVD <a class="reference internal" href="#equation-svd">(53)</a> is equivalent to  <span class="math notranslate nohighlight">\(\boldsymbol{A} = \boldsymbol U_r \boldsymbol \Lambda \boldsymbol V_r^\mathsf{T}\)</span> where</p>
+<p>SVD <a class="reference internal" href="#equation-svd">(56)</a> is equivalent to  <span class="math notranslate nohighlight">\(\boldsymbol{A} = \boldsymbol U_r \boldsymbol \Lambda \boldsymbol V_r^\mathsf{T}\)</span> where</p>
 <div class="math notranslate nohighlight">
 \[
     \boldsymbol{U}_r = [\boldsymbol u_1 \ldots \boldsymbol u_r],\quad

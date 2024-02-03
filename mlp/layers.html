@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'mlp/layers';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Activation functions" href="activations.html" />
+    <link rel="next" title="Training of MLP" href="forward_backward_pass.html" />
     <link rel="prev" title="Multilayer perceptron (MLP)" href="mlp.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -167,6 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../HW/hw.html">Homeworks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -250,7 +251,6 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="mlp.html">Multilayer perceptron (MLP)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Layers of MLP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="activations.html">Activation functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="forward_backward_pass.html">Training of MLP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="backprop.html">Back propagation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="weight_init.html">Weights initialization</a></li>
@@ -500,7 +500,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-layer-in-pytorch">Linear layer in PyTorch</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activation-layer">Activation layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activation-layer">Activation layer</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activation-functions">Activation functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activations-in-pytorch">Activations in PyTorch</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -515,17 +519,15 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="layers-of-mlp">
 <h1>Layers of MLP<a class="headerlink" href="#layers-of-mlp" title="Permalink to this heading">#</a></h1>
 <p>From mathematical point of view MLP is a smooth function <span class="math notranslate nohighlight">\(F\)</span> which is constructed as a composition of some other functions</p>
-<div class="math notranslate nohighlight">
-\[
-F(\boldsymbol x) = (f_{L} \circ f_{L-1} \circ\ldots \circ f_2 \circ f_1)(\boldsymbol x),\quad
-\boldsymbol x \in \mathbb R^{n_0}
-\]</div>
+<div class="math notranslate nohighlight" id="equation-mlp-composition">
+<span class="eqno">(32)<a class="headerlink" href="#equation-mlp-composition" title="Permalink to this equation">#</a></span>\[F(\boldsymbol x) = (f_{L} \circ f_{L-1} \circ\ldots \circ f_2 \circ f_1)(\boldsymbol x),\quad
+\boldsymbol x \in \mathbb R^{n_0}\]</div>
 <p>Each function</p>
 <div class="math notranslate nohighlight">
 \[
     f_\ell \colon \mathbb R^{n_{\ell - 1}} \to \mathbb R^{n_\ell}
 \]</div>
-<p>is called a <strong>layer</strong>; it converts representation of <span class="math notranslate nohighlight">\((\ell-1)\)</span>-th layer</p>
+<p>performs transformation between <strong>layer</strong>: it converts representation of <span class="math notranslate nohighlight">\((\ell-1)\)</span>-th layer</p>
 <div class="math notranslate nohighlight">
 \[
     \boldsymbol x_{\ell -1} \in \mathbb R^{n_{\ell - 1}} 
@@ -566,8 +568,8 @@ F(\boldsymbol x) = (f_{L} \circ f_{L-1} \circ\ldots \circ f_2 \circ f_1)(\boldsy
 <h2>Logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this heading">#</a></h2>
 <p>Logistic regression predicts probabilites of classes:</p>
 <ul>
-<li><p><span class="xref std std-ref">binary logistic regression</span> <span class="math notranslate nohighlight">\(y = \sigma(\boldsymbol x^\mathsf{T} \boldsymbol w + w_0)\)</span></p></li>
-<li><p><span class="xref std std-ref">multinomial logistic regression</span></p>
+<li><p><a class="reference internal" href="../linear_classification/log_reg.html#simple-log-reg"><span class="std std-ref">binary logistic regression</span></a> <span class="math notranslate nohighlight">\(y = \sigma(\boldsymbol x^\mathsf{T} \boldsymbol w + w_0)\)</span></p></li>
+<li><p><a class="reference internal" href="../linear_classification/multi_log_reg.html#multi-log-reg"><span class="std std-ref">multinomial logistic regression</span></a></p>
 <div class="math notranslate nohighlight">
 \[
     \boldsymbol y^\mathsf{T} = \mathrm{Softmax}(\boldsymbol x^\mathsf{T} \boldsymbol W + \boldsymbol b^\mathsf{T}), \quad \boldsymbol W\in\mathbb R^{d \times K}, \quad \boldsymbol y, \boldsymbol b \in \mathbb R^K
@@ -581,7 +583,7 @@ F(\boldsymbol x) = (f_{L} \circ f_{L-1} \circ\ldots \circ f_2 \circ f_1)(\boldsy
 </section>
 <section id="parameters-of-mlp">
 <h2>Parameters of MLP<a class="headerlink" href="#parameters-of-mlp" title="Permalink to this heading">#</a></h2>
-<p>However, one important element is missing in this description of MLP: parameters! Each layer <span class="math notranslate nohighlight">\(f_\ell\)</span> has a vector of parameters <span class="math notranslate nohighlight">\(\boldsymbol \theta_\ell\in\mathbb R^{m_\ell}\)</span> (sometimes empty). Hence, a layer should be defined as</p>
+<p>However, one important element is missing in <a class="reference internal" href="#equation-mlp-composition">(32)</a>: parameters! Each layer <span class="math notranslate nohighlight">\(f_\ell\)</span> has a vector of parameters <span class="math notranslate nohighlight">\(\boldsymbol \theta_\ell\in\mathbb R^{m_\ell}\)</span> (sometimes empty). Hence, a layer should be defined as</p>
 <div class="math notranslate nohighlight">
 \[
     f_\ell \colon \mathbb R^{n_{\ell - 1}} \times \mathbb R^{m_\ell} \to \mathbb R^{n_\ell}.
@@ -643,10 +645,10 @@ F(\boldsymbol x) = (f_{L} \circ f_{L-1} \circ\ldots \circ f_2 \circ f_1)(\boldsy
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter containing:
-tensor([[-0.4484,  0.5759, -0.3938],
-        [-0.5506, -0.1603,  0.3134],
-        [-0.2858, -0.0493, -0.0959],
-        [-0.0627,  0.3831,  0.4740]], requires_grad=True)
+tensor([[ 0.0137, -0.5698, -0.3495],
+        [ 0.2764, -0.5551,  0.4146],
+        [ 0.4118, -0.4431, -0.5322],
+        [-0.0728,  0.5724,  0.1478]], requires_grad=True)
 </pre></div>
 </div>
 </div>
@@ -659,7 +661,7 @@ tensor([[-0.4484,  0.5759, -0.3938],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([-0.2664, -0.3975, -0.4310,  0.7944], grad_fn=&lt;SqueezeBackward4&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([-0.9056,  0.1358, -0.5635,  0.6474], grad_fn=&lt;SqueezeBackward4&gt;)
 </pre></div>
 </div>
 </div>
@@ -673,7 +675,7 @@ tensor([[-0.4484,  0.5759, -0.3938],
 \[
     \psi(\boldsymbol x^{\mathsf T}) = \psi\big((x_1, \ldots, x_n)\big) = \big(\psi(x_1), \ldots, \psi(x_n)\big)  = \boldsymbol z^{\mathsf T}
 \]</div>
-<p>In the origial work by Rosenblatt the activation function was <span class="math notranslate nohighlight">\(\psi(t) = [t &gt; 0]\)</span>. However, this function is discontinuous, that’s why in modern neural networks some other smooth alternatives are used.</p>
+<p>In the origial work by Rosenblatt the activation function was <span class="math notranslate nohighlight">\(\psi(t) = \mathbb I[t &gt; 0]\)</span>. However, this function is discontinuous, that’s why in modern neural networks some other smooth alternatives are used.</p>
 <p>Sometimes linear and activation layers are combined into a single layer. Then each MLP layer looks like</p>
 <div class="math notranslate nohighlight">
 \[
@@ -685,6 +687,77 @@ tensor([[-0.4484,  0.5759, -0.3938],
 <li><p><span class="math notranslate nohighlight">\(\boldsymbol x_i, \boldsymbol b_i \in \mathbb R^{n_i}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol x_{i-1} \in \mathbb R^{n_{i-1}}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\psi_i(t)\)</span> is an activation function which acts element-wise</p></li>
 </ul>
+<section id="activation-functions">
+<h3>Activation functions<a class="headerlink" href="#activation-functions" title="Permalink to this heading">#</a></h3>
+<p>The most popular <strong>activation functions</strong> (<strong>nonlinearities</strong>):</p>
+<ul class="simple">
+<li><p>sigmoid: <span class="math notranslate nohighlight">\(\sigma(x) = \frac 1{1+e^{-x}}\)</span></p></li>
+<li><p>hyperbolic tangent: <span class="math notranslate nohighlight">\(\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}\)</span></p></li>
+<li><p>Rectified Linear Unit:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{ReLU}(x) = x_+ = \max\{x, 0\}
+\]</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_activations</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a1ae60c39a363d8633e159968ffea5dbaba5dbe6a2aeec589fe7870599ac5010.svg" src="../_images/a1ae60c39a363d8633e159968ffea5dbaba5dbe6a2aeec589fe7870599ac5010.svg" /></div>
+</div>
+<p>You can read about advantages and disadvantages of different activation functions <a class="reference external" href="https://education.yandex.ru/handbook/ml/article/beta-pervoe-znakomstvo-s-polnosvyaznymi-nejrosetyami#populyarnye-funkczii-aktivaczii">here</a>.</p>
+</section>
+<section id="activations-in-pytorch">
+<h3>Activations in PyTorch<a class="headerlink" href="#activations-in-pytorch" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://pytorch.org/docs/stable/nn.html#non-linear-activations-weighted-sum-nonlinearity">Pytorch</a> library has a big zoo of activations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span><span class="p">,</span> <span class="n">randn</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.5218,  1.1672, -0.7677, -0.6332,  1.3901],
+        [ 1.3177, -0.3505, -0.5829,  1.3367,  0.3456]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>ReLU zeroes all negative inputs while Leaky ReLU — not:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()(</span><span class="n">X</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">LeakyReLU</span><span class="p">()(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([[0.5218, 1.1672, 0.0000, 0.0000, 1.3901],
+         [1.3177, 0.0000, 0.0000, 1.3367, 0.3456]]),
+ tensor([[ 0.5218,  1.1672, -0.0077, -0.0063,  1.3901],
+         [ 1.3177, -0.0035, -0.0058,  1.3367,  0.3456]]))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="important admonition">
+<p class="admonition-title">ELU</p>
+<p>ELU activation function</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \mathrm{ELU}(x) = \begin{cases} x,&amp; x &gt; 0 \\
+    \alpha \frac{e^x - 1}x, &amp; x \leqslant 0.
+    \end{cases}
+\end{split}\]</div>
+<p>has a hyperparameter <span class="math notranslate nohighlight">\(\alpha\)</span>. What is the main theoretical advantage of the default value <span class="math notranslate nohighlight">\(\alpha =1\)</span>?</p>
+</div>
+</section>
 </section>
 </section>
 
@@ -729,11 +802,11 @@ tensor([[-0.4484,  0.5759, -0.3938],
       </div>
     </a>
     <a class="right-next"
-       href="activations.html"
+       href="forward_backward_pass.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Activation functions</p>
+        <p class="prev-next-title">Training of MLP</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -762,7 +835,11 @@ tensor([[-0.4484,  0.5759, -0.3938],
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-layer-in-pytorch">Linear layer in PyTorch</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activation-layer">Activation layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activation-layer">Activation layer</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activation-functions">Activation functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activations-in-pytorch">Activations in PyTorch</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

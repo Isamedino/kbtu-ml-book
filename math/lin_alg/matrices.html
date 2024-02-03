@@ -167,6 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../HW/hw.html">Homeworks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW1.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -250,7 +251,6 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../mlp/mlp.html">Multilayer perceptron (MLP)</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../mlp/layers.html">Layers of MLP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../mlp/activations.html">Activation functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../mlp/forward_backward_pass.html">Training of MLP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../mlp/backprop.html">Back propagation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../mlp/weight_init.html">Weights initialization</a></li>
@@ -617,7 +617,7 @@ Each square matrix has two diagonals: <strong>main</strong> (<strong>primaty</st
 <figure class="align-default">
 <img alt="https://learnetutorials.com/assets/images/programs/diagonal1.png" class="figure" src="https://learnetutorials.com/assets/images/programs/diagonal1.png" />
 </figure>
-<p><strong>Trace</strong> of a matrix is equal to the sum of the elements on its main diagonsl: <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol A) = \sum\limits_{i=1}^n a_{ii}\)</span>.</p>
+<p><strong>Trace</strong> of a matrix is equal to the sum of the elements on its main diagonal: <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol A) = \sum\limits_{i=1}^n a_{ii}\)</span>.</p>
 <section id="identity-matrix">
 <h3>Identity matrix<a class="headerlink" href="#identity-matrix" title="Permalink to this heading">#</a></h3>
 <p>All ones on the main diagonal, all zeros outside it. Identity matrix is denoted as <span class="math notranslate nohighlight">\(\boldsymbol I\)</span> or <span class="math notranslate nohighlight">\(\boldsymbol I_n\)</span> if we want to underscore its shape:</p>
@@ -820,7 +820,7 @@ Each square matrix has two diagonals: <strong>main</strong> (<strong>primaty</st
 <p>A square matrix <span class="math notranslate nohighlight">\(\boldsymbol Q = [\boldsymbol q_1 \ldots \boldsymbol q_n]\)</span> is <strong>orthogonal</strong> if its columns are orthonormal, i.e., <span class="math notranslate nohighlight">\(\langle \boldsymbol q_i, \boldsymbol q_j\rangle = \delta_{ij}\)</span>, where <span class="math notranslate nohighlight">\(\delta_{ij}\)</span> is <a class="reference external" href="https://en.wikipedia.org/wiki/Kronecker_delta">Kronecker delta</a>.</p>
 <p>An example of orthogonal matrix is given by the <strong>rotation matrix</strong></p>
 <div class="math notranslate nohighlight" id="equation-rotation-matrix">
-<span class="eqno">(37)<a class="headerlink" href="#equation-rotation-matrix" title="Permalink to this equation">#</a></span>\[\begin{split}    \boldsymbol Q = \begin{pmatrix}
+<span class="eqno">(40)<a class="headerlink" href="#equation-rotation-matrix" title="Permalink to this equation">#</a></span>\[\begin{split}    \boldsymbol Q = \begin{pmatrix}
         \cos \theta &amp; -\sin\theta \\
         \sin \theta &amp; \cos\theta \\
     \end{pmatrix}.\end{split}\]</div>
@@ -1403,7 +1403,7 @@ $$
 <ol class="arabic simple">
 <li><p>Calculate <span class="math notranslate nohighlight">\(\mathrm{tr}(\boldsymbol I_n)\)</span>.</p></li>
 <li><p>Prove that the main diagonal of a skew-symmetric matrix contains only zeros.</p></li>
-<li><p>Prove that the rotation matrix <a class="reference internal" href="#equation-rotation-matrix">(37)</a> is orthogonal.</p></li>
+<li><p>Prove that the rotation matrix <a class="reference internal" href="#equation-rotation-matrix">(40)</a> is orthogonal.</p></li>
 <li><p>Prove that any <strong>reflection matrix</strong> <span class="math notranslate nohighlight">\(\boldsymbol I - 2\boldsymbol u \boldsymbol u^\top\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol u \in\mathbb R^n\)</span>, <span class="math notranslate nohighlight">\(\Vert \boldsymbol u \Vert_2 = 1\)</span>, is orthogonal.</p></li>
 <li><p>How many arithmetic operations is required for calculation <span class="math notranslate nohighlight">\(\boldsymbol{Ax}\)</span> if <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span>,  <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^n\)</span>? What if <span class="math notranslate nohighlight">\(m=n\)</span>?</p></li>
 <li><p>Give an example of two square matrices <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol B\)</span> such that <span class="math notranslate nohighlight">\(\boldsymbol{AB} \ne \boldsymbol{BA}\)</span>.</p></li>

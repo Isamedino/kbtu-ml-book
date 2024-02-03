@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Back propagation" href="backprop.html" />
-    <link rel="prev" title="Activation functions" href="activations.html" />
+    <link rel="prev" title="Layers of MLP" href="layers.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -167,6 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../HW/hw.html">Homeworks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -250,7 +251,6 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="mlp.html">Multilayer perceptron (MLP)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="layers.html">Layers of MLP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="activations.html">Activation functions</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Training of MLP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="backprop.html">Back propagation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="weight_init.html">Weights initialization</a></li>
@@ -576,20 +576,30 @@ document.write(`
 \[
 \mathcal L = \mathcal L_{\boldsymbol\theta}(\boldsymbol {\widehat y}, \boldsymbol y) \to \min\limits_{\boldsymbol \theta}
 \]</div>
-<p>where
-$<span class="math notranslate nohighlight">\(
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
 \boldsymbol \theta = (\boldsymbol W_1, \boldsymbol b_1, \boldsymbol W_2, \boldsymbol b_2, \ldots, \boldsymbol W_L, \boldsymbol b_L)
-\)</span>$</p>
+\]</div>
 <p>Let’s use the standard technique — the gradient descent!</p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Start from some random parameters <span class="math notranslate nohighlight">\(\boldsymbol \theta_0\)</span></p></li>
 <li><p>Given a training sample <span class="math notranslate nohighlight">\((\boldsymbol x, \boldsymbol y)\)</span>, do the <strong>forward pass</strong> and get the output <span class="math notranslate nohighlight">\(\boldsymbol {\widehat y} = F_{\boldsymbol \theta}(\boldsymbol x)\)</span></p></li>
 <li><p>Calculate the loss function
 <span class="math notranslate nohighlight">\(\mathcal L_{\boldsymbol\theta}(\boldsymbol {\widehat y}, \boldsymbol y)\)</span></p></li>
-<li><p>Do the <strong>backward pass</strong> and calculate gradients
-$<span class="math notranslate nohighlight">\(
-\nabla_{\boldsymbol\theta}\mathcal L_{\boldsymbol\theta}(\boldsymbol {\widehat y}, \boldsymbol y)
-\)</span>$</p></li>
+<li><p>Do the <strong>backward pass</strong> and calculate gradients</p>
+<div class="math notranslate nohighlight">
+\[
+  \nabla_{\boldsymbol\theta}\mathcal L_{\boldsymbol\theta}(\boldsymbol {\widehat y}, \boldsymbol y)  
+    \]</div>
+<p>i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+\nabla_{\boldsymbol W_\ell}\mathcal L_{\boldsymbol\theta}(\boldsymbol {\widehat y}, \boldsymbol y)
+\text{ and }
+\nabla_{\boldsymbol b_\ell}\mathcal L_{\boldsymbol\theta}(\boldsymbol {\widehat y}, \boldsymbol y), \quad 1\leqslant \ell \leqslant L.
+    \]</div>
+</li>
 <li><p>Update the parameters:</p></li>
 </ol>
 <div class="math notranslate nohighlight">
@@ -652,12 +662,12 @@ $<span class="math notranslate nohighlight">\(
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="activations.html"
+       href="layers.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Activation functions</p>
+        <p class="prev-next-title">Layers of MLP</p>
       </div>
     </a>
     <a class="right-next"
