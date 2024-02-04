@@ -167,6 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../HW/hw.html">Homeworks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -250,7 +251,6 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../mlp/mlp.html">Multilayer perceptron (MLP)</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/layers.html">Layers of MLP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../mlp/activations.html">Activation functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Training of MLP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/backprop.html">Back propagation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/weight_init.html">Weights initialization</a></li>
@@ -322,7 +322,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/calculus.html">Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus/1-d.html">1-d calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/1-d.html">Derivative</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/multivariate.html">Multivariate calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/matrix_diff.html">Matrix calculus</a></li>
 </ul>
@@ -623,16 +623,16 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>max_iter exceeded
-CPU times: user 1min, sys: 5.87 s, total: 1min 6s
-Wall time: 38.4 s
+CPU times: user 1min 13s, sys: 7.43 s, total: 1min 20s
+Wall time: 43.8 s
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.72706263,  0.11781258,  1.13901389, -0.04128594, -0.88620562,
-       -1.10535013,  0.5941695 , -0.85233681, -0.22791876, -0.24646115,
-        0.27828313, -0.63476808,  1.09385726, -0.24444192,  0.07357749,
-       -1.06518679,  0.00745636, -0.31911685,  1.00329231, -0.41515963,
-        1.73961186, -0.45101706, -0.73901559, -0.02743861, -0.04811332,
-       -1.13959786, -1.42474035,  0.6427098 , -1.36400522, -0.00801057])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.72102445,  0.26340751,  1.16463875, -0.0156332 , -0.56470659,
+       -1.16567552, -1.72686681, -0.78360688,  0.40403932,  0.58039832,
+       -0.0756131 ,  0.43045271,  0.35601464, -0.21038712,  0.16815284,
+       -1.37306527, -0.4040273 , -0.9094659 ,  0.42510318, -0.33462507,
+        0.96490388, -0.59770921, -0.59978856, -0.05259764, -0.47677231,
+       -2.3977709 , -0.24593008,  0.11896177, -0.57131798, -0.63888698])
 </pre></div>
 </div>
 </div>
@@ -646,7 +646,7 @@ Wall time: 38.4 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9472759226713533
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.945518453427065
 </pre></div>
 </div>
 </div>
@@ -686,7 +686,7 @@ Wall time: 38.4 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.063996060359498
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.906749332655979
 </pre></div>
 </div>
 </div>

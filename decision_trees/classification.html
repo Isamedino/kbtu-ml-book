@@ -167,6 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../HW/hw.html">Homeworks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -250,7 +251,6 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../mlp/mlp.html">Multilayer perceptron (MLP)</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/layers.html">Layers of MLP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../mlp/activations.html">Activation functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Training of MLP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/backprop.html">Back propagation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/weight_init.html">Weights initialization</a></li>
@@ -322,7 +322,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/calculus.html">Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus/1-d.html">1-d calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/1-d.html">Derivative</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/multivariate.html">Multivariate calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/matrix_diff.html">Matrix calculus</a></li>
 </ul>
@@ -553,7 +553,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/51fe45a96358301684ebc593b1445bc0ae4212449de4a1f1aa4dd7858b37f513.png" src="../_images/51fe45a96358301684ebc593b1445bc0ae4212449de4a1f1aa4dd7858b37f513.png" />
+<img alt="../_images/48f02e4d92b7c8c1ecb0e9d74cee349924f759b6c3b0fc2fba0ec610736bacbb.png" src="../_images/48f02e4d92b7c8c1ecb0e9d74cee349924f759b6c3b0fc2fba0ec610736bacbb.png" />
 </div>
 </div>
 <p>A prettier tree can be drawn by <code class="docutils literal notranslate"><span class="pre">graphviz</span></code>:</p>
@@ -572,7 +572,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b3e300768007a5841e969a62aa4afe076adcdcaad112951e84039a52b6a34bc7.svg" src="../_images/b3e300768007a5841e969a62aa4afe076adcdcaad112951e84039a52b6a34bc7.svg" /></div>
+<img alt="../_images/40826cf54eb8091ff7056c4a7997ab6484aaef7ccc05e9be16408f0830a732d1.svg" src="../_images/40826cf54eb8091ff7056c4a7997ab6484aaef7ccc05e9be16408f0830a732d1.svg" /></div>
 </div>
 <p>Depth equal to <span class="math notranslate nohighlight">\(2\)</span> is enough for this toy dataset:</p>
 <div class="cell docutils container">
@@ -618,7 +618,7 @@ document.write(`
 <p>Visualize data:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/b0debf3e3fbc341657b2efff1f9d440f1d963dcfb1a02eb677780c3598a12682.svg" src="../_images/b0debf3e3fbc341657b2efff1f9d440f1d963dcfb1a02eb677780c3598a12682.svg" /></div>
+<img alt="../_images/2d284b5e558bff862f6d3497879c4b830257c102ed43526cb96d8a6b94aa4fb7.svg" src="../_images/2d284b5e558bff862f6d3497879c4b830257c102ed43526cb96d8a6b94aa4fb7.svg" /></div>
 </div>
 <p>Split into train and test:</p>
 <div class="cell docutils container">
@@ -671,7 +671,7 @@ Test accuracy: 0.8735
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/55209cbe433a855ac351428b974ae853b5006c570f0ad416fa37c21caa0869bc.svg" src="../_images/55209cbe433a855ac351428b974ae853b5006c570f0ad416fa37c21caa0869bc.svg" /></div>
+<img alt="../_images/0492c7d1f65afde58fdf4e6397a6007b75e396962a27ba7fda81bc9eb4b02fa2.svg" src="../_images/0492c7d1f65afde58fdf4e6397a6007b75e396962a27ba7fda81bc9eb4b02fa2.svg" /></div>
 </div>
 <p>Limit the tree depth and size of leaves:</p>
 <div class="cell docutils container">
@@ -700,7 +700,7 @@ Test accuracy: 0.8776
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/6d8030533a34976814c679bdef418db40a9ddb1dc888b8dd478ca2f41f99adf2.svg" src="../_images/6d8030533a34976814c679bdef418db40a9ddb1dc888b8dd478ca2f41f99adf2.svg" /></div>
+<img alt="../_images/311a50754cd8ba69c8b1556ab2b46ab115b391875c920c896a26257869d68c4e.svg" src="../_images/311a50754cd8ba69c8b1556ab2b46ab115b391875c920c896a26257869d68c4e.svg" /></div>
 </div>
 </section>
 <section id="splitting-conditions">

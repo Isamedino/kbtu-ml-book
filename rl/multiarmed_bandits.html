@@ -167,6 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../HW/hw.html">Homeworks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -250,7 +251,6 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../mlp/mlp.html">Multilayer perceptron (MLP)</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/layers.html">Layers of MLP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../mlp/activations.html">Activation functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Training of MLP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/backprop.html">Back propagation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/weight_init.html">Weights initialization</a></li>
@@ -322,7 +322,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/calculus.html">Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus/1-d.html">1-d calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/1-d.html">Derivative</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/multivariate.html">Multivariate calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/matrix_diff.html">Matrix calculus</a></li>
 </ul>
@@ -621,7 +621,7 @@ A_t = \arg\max\limits_{a\in \mathcal A} Q_t(a)
 Optimal mean reward: 1.3376758127929265
 </pre></div>
 </div>
-<img alt="../_images/6f24fea6f3725a5e8275f578f30e2601273424007df931e452eb1eec2fe4788b.svg" src="../_images/6f24fea6f3725a5e8275f578f30e2601273424007df931e452eb1eec2fe4788b.svg" /></div>
+<img alt="../_images/653f335fda442a631a61e7bd1ebd011b7c969fc0f8e4e7028379b41d2bf73555.svg" src="../_images/653f335fda442a631a61e7bd1ebd011b7c969fc0f8e4e7028379b41d2bf73555.svg" /></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
@@ -635,8 +635,8 @@ Optimal mean reward: 1.3376758127929265
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 15.1 s, sys: 229 ms, total: 15.4 s
-Wall time: 16.9 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 13.3 s, sys: 72.8 ms, total: 13.3 s
+Wall time: 13.7 s
 </pre></div>
 </div>
 </div>
@@ -650,7 +650,7 @@ Wall time: 16.9 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4dd6fa95a4fc191b868f087ac0f2ba22fee8abad946e2a27a0a77ebd0c6aa4af.svg" src="../_images/4dd6fa95a4fc191b868f087ac0f2ba22fee8abad946e2a27a0a77ebd0c6aa4af.svg" /></div>
+<img alt="../_images/59e574e977d45296af9e0c268da8adb4337db6194cc58753708bbcc40bf4fb32.svg" src="../_images/59e574e977d45296af9e0c268da8adb4337db6194cc58753708bbcc40bf4fb32.svg" /></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
@@ -661,7 +661,7 @@ Wall time: 16.9 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/21f8ee59215acf70264c9e8f0e82c38a73e30089bedbcb38adf76b32ebd654bb.svg" src="../_images/21f8ee59215acf70264c9e8f0e82c38a73e30089bedbcb38adf76b32ebd654bb.svg" /></div>
+<img alt="../_images/ba0f8cc7eaef5861a7ab999b2e0bd22ed7907f5b623f2a49784ab9f215247b82.svg" src="../_images/ba0f8cc7eaef5861a7ab999b2e0bd22ed7907f5b623f2a49784ab9f215247b82.svg" /></div>
 </div>
 <p><strong>Q.</strong> What is the cumulative regret of <span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy policy for a single testbed? Calculate</p>
 <div class="math notranslate nohighlight">
@@ -684,8 +684,8 @@ Wall time: 16.9 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 3.4 s, sys: 40.4 ms, total: 3.44 s
-Wall time: 3.56 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 3.08 s, sys: 11.8 ms, total: 3.09 s
+Wall time: 3.1 s
 </pre></div>
 </div>
 </div>
@@ -698,7 +698,7 @@ Wall time: 3.56 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d308b31cba912aa9338dab109eac4ae82eb5fb43ef71c785696cb3ed94828cf7.svg" src="../_images/d308b31cba912aa9338dab109eac4ae82eb5fb43ef71c785696cb3ed94828cf7.svg" /></div>
+<img alt="../_images/a41307626c165da876a140ea0bf0ff9ac7dc57d101f57c88dcdd8043c2da74f9.svg" src="../_images/a41307626c165da876a140ea0bf0ff9ac7dc57d101f57c88dcdd8043c2da74f9.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -707,7 +707,7 @@ Wall time: 3.56 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/036f9e7a7d23caea7d674e8f4f5aeec55d9459cd19d837e652e37d500a08a4bf.svg" src="../_images/036f9e7a7d23caea7d674e8f4f5aeec55d9459cd19d837e652e37d500a08a4bf.svg" /></div>
+<img alt="../_images/b40bf37d5a574d54d880333c942f1f11bc80ad88762ea896774b88c40f103e8e.svg" src="../_images/b40bf37d5a574d54d880333c942f1f11bc80ad88762ea896774b88c40f103e8e.svg" /></div>
 </div>
 </section>
 <section id="upper-confidence-bound">
@@ -750,8 +750,8 @@ A_t = \arg\max\limits_a \bigg\{Q_t(a) + c\sqrt{\frac{\log t}{N_t(a)}}\bigg\}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.88 s, sys: 26.8 ms, total: 1.9 s
-Wall time: 1.94 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.74 s, sys: 15.1 ms, total: 1.75 s
+Wall time: 1.76 s
 </pre></div>
 </div>
 </div>
@@ -764,7 +764,7 @@ Wall time: 1.94 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a78fbeac2ee549ec5e92c2be1f458e8fd918a1afec892792e9f342e53f020208.svg" src="../_images/a78fbeac2ee549ec5e92c2be1f458e8fd918a1afec892792e9f342e53f020208.svg" /></div>
+<img alt="../_images/4f6d734269b119234c4913c701d29551241658d328cc289f5a627ddb5f2d21a1.svg" src="../_images/4f6d734269b119234c4913c701d29551241658d328cc289f5a627ddb5f2d21a1.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -773,7 +773,7 @@ Wall time: 1.94 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/90159624133eeef3fc6d3dee961125d2541b92202e1b3f8ca020bc598201ef2e.svg" src="../_images/90159624133eeef3fc6d3dee961125d2541b92202e1b3f8ca020bc598201ef2e.svg" /></div>
+<img alt="../_images/2baa7d15daee6d3e959102fefdb122950501ebd0e5df26028b19c531ec4a48bd.svg" src="../_images/2baa7d15daee6d3e959102fefdb122950501ebd0e5df26028b19c531ec4a48bd.svg" /></div>
 </div>
 </section>
 </section>

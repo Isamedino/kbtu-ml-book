@@ -167,6 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../HW/hw.html">Homeworks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -250,7 +251,6 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../mlp/mlp.html">Multilayer perceptron (MLP)</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/layers.html">Layers of MLP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../mlp/activations.html">Activation functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/forward_backward_pass.html">Training of MLP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/backprop.html">Back propagation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mlp/weight_init.html">Weights initialization</a></li>
@@ -322,7 +322,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/calculus.html">Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus/1-d.html">1-d calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/1-d.html">Derivative</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/multivariate.html">Multivariate calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/matrix_diff.html">Matrix calculus</a></li>
 </ul>
@@ -606,7 +606,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a9e63a594286f5aa6d02b88caef46343336f9ed0c5852a5c71eb8c049854dc0f.svg" src="../_images/a9e63a594286f5aa6d02b88caef46343336f9ed0c5852a5c71eb8c049854dc0f.svg" /></div>
+<img alt="../_images/50687fb3297c6d22dcc9e3d5e6834d53debeb060201709e269e9d193d55745ab.svg" src="../_images/50687fb3297c6d22dcc9e3d5e6834d53debeb060201709e269e9d193d55745ab.svg" /></div>
 </div>
 <p>Fit linear regression model and check metrics:</p>
 <div class="cell docutils container">
@@ -636,13 +636,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.529359351280453
-Slope: -0.23121467783677588
-Mean Absolute Error (MAE): 0.3937
-Mean Squared Error (MSE): 0.2425
-Root Mean Squared Error (RMSE): 0.4924
-R2-score: 0.0180
-Mean absolute percentage error(MAPE): 0.3823
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.9474802339807005
+Slope: -1.0344915907578098
+Mean Absolute Error (MAE): 0.3664
+Mean Squared Error (MSE): 0.2094
+Root Mean Squared Error (RMSE): 0.4576
+R2-score: 0.2987
+Mean absolute percentage error(MAPE): 0.6364
 </pre></div>
 </div>
 </div>
@@ -660,7 +660,7 @@ Mean absolute percentage error(MAPE): 0.3823
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ecd5e7aebaaaa3b4359529ff31e7439bd726a22200507526efb1ada67d50e2eb.svg" src="../_images/ecd5e7aebaaaa3b4359529ff31e7439bd726a22200507526efb1ada67d50e2eb.svg" /></div>
+<img alt="../_images/3270b96e98a2454f8eef9c7cd2f85ec34ccccfd76f1f9fe11338cd8263ad5877.svg" src="../_images/3270b96e98a2454f8eef9c7cd2f85ec34ccccfd76f1f9fe11338cd8263ad5877.svg" /></div>
 </div>
 <p>Fit linear regression once again:</p>
 <div class="cell docutils container">
@@ -674,8 +674,8 @@ Mean absolute percentage error(MAPE): 0.3823
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 2.210547470092334
-Slope: -1.2033118875577475
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.6306485508123836
+Slope: 0.00961281968323442
 </pre></div>
 </div>
 </div>
@@ -698,11 +698,11 @@ Slope: -1.2033118875577475
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error (MAE): 0.6765
-Mean Squared Error (MSE): 4.3463
-Root Mean Squared Error (RMSE): 2.0848
-R2-score: 0.0270
-Mean absolute percentage error(MAPE): 0.5030
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error (MAE): 0.6611
+Mean Squared Error (MSE): 4.2062
+Root Mean Squared Error (RMSE): 2.0509
+R2-score: 0.0000
+Mean absolute percentage error(MAPE): 0.9587
 </pre></div>
 </div>
 </div>
