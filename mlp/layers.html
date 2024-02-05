@@ -54,7 +54,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -163,14 +163,13 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../HW/hw.html">Homeworks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="nav bd-sidenav">
@@ -645,10 +644,10 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter containing:
-tensor([[ 0.2043, -0.2151, -0.4388],
-        [-0.3256,  0.5587, -0.1592],
-        [ 0.0758,  0.0124, -0.1173],
-        [ 0.1965, -0.4801,  0.3856]], requires_grad=True)
+tensor([[ 0.5432, -0.5571,  0.5016],
+        [ 0.5436, -0.5287, -0.1658],
+        [ 0.0294,  0.2930, -0.2154],
+        [-0.1488, -0.4061, -0.0837]], requires_grad=True)
 </pre></div>
 </div>
 </div>
@@ -661,7 +660,7 @@ tensor([[ 0.2043, -0.2151, -0.4388],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([-0.4495,  0.0740, -0.0292,  0.1020], grad_fn=&lt;SqueezeBackward4&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 0.4877, -0.1509,  0.1069, -0.6385], grad_fn=&lt;SqueezeBackward4&gt;)
 </pre></div>
 </div>
 </div>
@@ -708,7 +707,7 @@ tensor([[ 0.2043, -0.2151, -0.4388],
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ca2306c1101ef944506f1bd6925bb7e7a6056f10a054979c2e7e15aa86c3049a.svg" src="../_images/ca2306c1101ef944506f1bd6925bb7e7a6056f10a054979c2e7e15aa86c3049a.svg" /></div>
+<img alt="../_images/ab986f73ff46c3af9c5f6dc0d33af41f3abfed964591495b9a4b3f2cd0f233c9.svg" src="../_images/ab986f73ff46c3af9c5f6dc0d33af41f3abfed964591495b9a4b3f2cd0f233c9.svg" /></div>
 </div>
 <p>You can read about advantages and disadvantages of different activation functions <a class="reference external" href="https://education.yandex.ru/handbook/ml/article/beta-pervoe-znakomstvo-s-polnosvyaznymi-nejrosetyami#populyarnye-funkczii-aktivaczii">here</a>.</p>
 </section>
@@ -724,8 +723,8 @@ tensor([[ 0.2043, -0.2151, -0.4388],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-1.4540, -0.6453,  0.2953,  0.9449,  0.9441],
-        [ 0.0164, -0.2613,  1.3406, -0.4708, -0.5792]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.6771, -0.2234,  1.4849,  0.7099,  0.1054],
+        [ 0.9721,  1.5205,  0.1967, -0.8084,  0.1016]])
 </pre></div>
 </div>
 </div>
@@ -738,10 +737,10 @@ tensor([[ 0.2043, -0.2151, -0.4388],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([[0.0000, 0.0000, 0.2953, 0.9449, 0.9441],
-         [0.0164, 0.0000, 1.3406, 0.0000, 0.0000]]),
- tensor([[-0.0145, -0.0065,  0.2953,  0.9449,  0.9441],
-         [ 0.0164, -0.0026,  1.3406, -0.0047, -0.0058]]))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([[0.6771, 0.0000, 1.4849, 0.7099, 0.1054],
+         [0.9721, 1.5205, 0.1967, 0.0000, 0.1016]]),
+ tensor([[ 0.6771, -0.0022,  1.4849,  0.7099,  0.1054],
+         [ 0.9721,  1.5205,  0.1967, -0.0081,  0.1016]]))
 </pre></div>
 </div>
 </div>

@@ -54,7 +54,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -163,14 +163,13 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../HW/hw.html">Homeworks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="current nav bd-sidenav">
@@ -606,7 +605,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/50687fb3297c6d22dcc9e3d5e6834d53debeb060201709e269e9d193d55745ab.svg" src="../_images/50687fb3297c6d22dcc9e3d5e6834d53debeb060201709e269e9d193d55745ab.svg" /></div>
+<img alt="../_images/280307750529fe4c92ca7e47cdff5c472e3c7fd32ea27f76d801780a9f716bdd.svg" src="../_images/280307750529fe4c92ca7e47cdff5c472e3c7fd32ea27f76d801780a9f716bdd.svg" /></div>
 </div>
 <p>Fit linear regression model and check metrics:</p>
 <div class="cell docutils container">
@@ -636,13 +635,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.9474802339807005
-Slope: -1.0344915907578098
-Mean Absolute Error (MAE): 0.3664
-Mean Squared Error (MSE): 0.2094
-Root Mean Squared Error (RMSE): 0.4576
-R2-score: 0.2987
-Mean absolute percentage error(MAPE): 0.6364
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.5713828713159095
+Slope: -0.24530296075097466
+Mean Absolute Error (MAE): 0.3887
+Mean Squared Error (MSE): 0.2527
+Root Mean Squared Error (RMSE): 0.5027
+R2-score: 0.0195
+Mean absolute percentage error(MAPE): 0.5816
 </pre></div>
 </div>
 </div>
@@ -660,7 +659,7 @@ Mean absolute percentage error(MAPE): 0.6364
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3270b96e98a2454f8eef9c7cd2f85ec34ccccfd76f1f9fe11338cd8263ad5877.svg" src="../_images/3270b96e98a2454f8eef9c7cd2f85ec34ccccfd76f1f9fe11338cd8263ad5877.svg" /></div>
+<img alt="../_images/8e342bc8c91239c16e1faf2669d1960b82cf1b4fda765bb5e7a760c7ccf07f11.svg" src="../_images/8e342bc8c91239c16e1faf2669d1960b82cf1b4fda765bb5e7a760c7ccf07f11.svg" /></div>
 </div>
 <p>Fit linear regression once again:</p>
 <div class="cell docutils container">
@@ -674,8 +673,8 @@ Mean absolute percentage error(MAPE): 0.6364
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.6306485508123836
-Slope: 0.00961281968323442
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.3496006930980882
+Slope: 0.6067822477698772
 </pre></div>
 </div>
 </div>
@@ -698,11 +697,11 @@ Slope: 0.00961281968323442
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error (MAE): 0.6611
-Mean Squared Error (MSE): 4.2062
-Root Mean Squared Error (RMSE): 2.0509
-R2-score: 0.0000
-Mean absolute percentage error(MAPE): 0.9587
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error (MAE): 0.6540
+Mean Squared Error (MSE): 4.1509
+Root Mean Squared Error (RMSE): 2.0374
+R2-score: 0.0073
+Mean absolute percentage error(MAPE): 0.7487
 </pre></div>
 </div>
 </div>
