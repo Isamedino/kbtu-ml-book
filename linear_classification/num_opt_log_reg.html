@@ -324,6 +324,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/1-d.html">Derivative</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/multivariate.html">Multivariate calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/matrix_diff.html">Matrix calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/optimization.html">Optimization</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/probability.html">Probability</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -622,16 +623,16 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>max_iter exceeded
-CPU times: user 1min 1s, sys: 6.19 s, total: 1min 8s
-Wall time: 43.6 s
+CPU times: user 55 s, sys: 4.38 s, total: 59.3 s
+Wall time: 31.2 s
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2.0556107 ,  0.32025294,  1.1139759 , -0.06341681, -1.0595418 ,
-       -1.48689623, -0.00955092, -0.76054899, -0.28717139,  0.3162879 ,
-       -0.68223553,  1.27888354,  0.3863303 , -0.21519072, -2.07451043,
-        0.15268378, -0.0422416 ,  1.10507431,  0.28482129,  0.79410396,
-        0.0279025 , -0.69427291, -0.63016841, -0.01447809,  0.18152502,
-       -1.36728706, -0.62835953, -0.27970048,  0.39529933,  0.03764479])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.34907972,  0.20124283,  0.91841612, -0.02838355,  1.02716847,
+       -0.15214122, -0.2991366 ,  0.25810064,  0.67874786, -0.57297195,
+       -0.73571239,  0.70731498,  0.32148755, -0.2054559 ,  0.5975524 ,
+        0.29828244,  0.21740395,  0.4726862 , -0.52488563, -0.15505398,
+        2.41869915, -0.58220275, -0.60301785, -0.03600793,  0.69653903,
+       -1.00038035, -1.38426444, -0.59842097, -1.17455187, -0.31914419])
 </pre></div>
 </div>
 </div>
@@ -645,7 +646,7 @@ Wall time: 43.6 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9156414762741653
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9507908611599297
 </pre></div>
 </div>
 </div>
@@ -685,7 +686,7 @@ Wall time: 43.6 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.9651558995624083
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.505664369172538
 </pre></div>
 </div>
 </div>

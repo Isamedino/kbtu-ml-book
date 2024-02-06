@@ -324,6 +324,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/1-d.html">Derivative</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/multivariate.html">Multivariate calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/matrix_diff.html">Matrix calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/optimization.html">Optimization</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/probability.html">Probability</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -644,10 +645,10 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter containing:
-tensor([[ 0.5432, -0.5571,  0.5016],
-        [ 0.5436, -0.5287, -0.1658],
-        [ 0.0294,  0.2930, -0.2154],
-        [-0.1488, -0.4061, -0.0837]], requires_grad=True)
+tensor([[ 0.5500,  0.5069, -0.5118],
+        [ 0.2237, -0.2106, -0.2899],
+        [-0.0203, -0.5376,  0.0461],
+        [ 0.3952, -0.3093,  0.3852]], requires_grad=True)
 </pre></div>
 </div>
 </div>
@@ -660,7 +661,7 @@ tensor([[ 0.5432, -0.5571,  0.5016],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 0.4877, -0.1509,  0.1069, -0.6385], grad_fn=&lt;SqueezeBackward4&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 0.5451, -0.2769, -0.5119,  0.4711], grad_fn=&lt;SqueezeBackward4&gt;)
 </pre></div>
 </div>
 </div>
@@ -707,7 +708,7 @@ tensor([[ 0.5432, -0.5571,  0.5016],
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ab986f73ff46c3af9c5f6dc0d33af41f3abfed964591495b9a4b3f2cd0f233c9.svg" src="../_images/ab986f73ff46c3af9c5f6dc0d33af41f3abfed964591495b9a4b3f2cd0f233c9.svg" /></div>
+<img alt="../_images/fe82f7ddaf91c624580b57fca79076caeacbef81f67a72f9d5e0891d3871af90.svg" src="../_images/fe82f7ddaf91c624580b57fca79076caeacbef81f67a72f9d5e0891d3871af90.svg" /></div>
 </div>
 <p>You can read about advantages and disadvantages of different activation functions <a class="reference external" href="https://education.yandex.ru/handbook/ml/article/beta-pervoe-znakomstvo-s-polnosvyaznymi-nejrosetyami#populyarnye-funkczii-aktivaczii">here</a>.</p>
 </section>
@@ -723,8 +724,8 @@ tensor([[ 0.5432, -0.5571,  0.5016],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.6771, -0.2234,  1.4849,  0.7099,  0.1054],
-        [ 0.9721,  1.5205,  0.1967, -0.8084,  0.1016]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-0.8057, -1.0880, -0.7693, -2.4059, -0.6692],
+        [-0.4985, -0.0539,  0.1694,  0.7286,  0.5354]])
 </pre></div>
 </div>
 </div>
@@ -737,10 +738,10 @@ tensor([[ 0.5432, -0.5571,  0.5016],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([[0.6771, 0.0000, 1.4849, 0.7099, 0.1054],
-         [0.9721, 1.5205, 0.1967, 0.0000, 0.1016]]),
- tensor([[ 0.6771, -0.0022,  1.4849,  0.7099,  0.1054],
-         [ 0.9721,  1.5205,  0.1967, -0.0081,  0.1016]]))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([[0.0000, 0.0000, 0.0000, 0.0000, 0.0000],
+         [0.0000, 0.0000, 0.1694, 0.7286, 0.5354]]),
+ tensor([[-8.0573e-03, -1.0880e-02, -7.6928e-03, -2.4059e-02, -6.6917e-03],
+         [-4.9851e-03, -5.3901e-04,  1.6936e-01,  7.2860e-01,  5.3544e-01]]))
 </pre></div>
 </div>
 </div>

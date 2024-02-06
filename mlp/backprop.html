@@ -324,6 +324,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/1-d.html">Derivative</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/multivariate.html">Multivariate calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/calculus/matrix_diff.html">Matrix calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/optimization.html">Optimization</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/probability.html">Probability</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -546,7 +547,7 @@ document.write(`
 \[
     d\tilde{\mathcal L}(\boldsymbol V) = \mathrm{tr}\big(\nabla \tilde{\mathcal L}(\boldsymbol V)^\mathsf{T} d\boldsymbol V\big) = \mathrm{tr}\big(\nabla \mathcal L(\boldsymbol Z)^\mathsf{T} d\boldsymbol Z\big).
 \]</div>
-<p>From <a class="reference internal" href="../math/calculus/multivariate.html#activation-diff"><span class="std std-ref">here</span></a> we know that <span class="math notranslate nohighlight">\(d \boldsymbol Z = d\psi(\boldsymbol V) = \psi'(\boldsymbol V) \odot d\boldsymbol V =  d\boldsymbol V \odot \psi'(\boldsymbol V)\)</span>. Hence,</p>
+<p>From <a class="reference internal" href="../math/calculus/multivariate.html#equation-elementwise-diff">(62)</a> we know that <span class="math notranslate nohighlight">\(d \boldsymbol Z = d\psi(\boldsymbol V) = \psi'(\boldsymbol V) \odot d\boldsymbol V =  d\boldsymbol V \odot \psi'(\boldsymbol V)\)</span>. Hence,</p>
 <div class="math notranslate nohighlight">
 \[
 \mathrm{tr}\big(\nabla \mathcal L(\boldsymbol Z)^\mathsf{T} d\boldsymbol Z\big) = 
@@ -570,7 +571,7 @@ document.write(`
 <section id="backprop-through-linear-layer">
 <h3>Backprop through linear layer<a class="headerlink" href="#backprop-through-linear-layer" title="Permalink to this heading">#</a></h3>
 <p>Now our upstream gradient is <span class="math notranslate nohighlight">\(\nabla_{\boldsymbol V}\mathcal L(\boldsymbol V)\)</span>, and we want to find the downstream gradient <span class="math notranslate nohighlight">\(\nabla_{\boldsymbol X}\tilde{\mathcal L}(\boldsymbol X, \boldsymbol W, \boldsymbol B)\)</span> where <span class="math notranslate nohighlight">\(\tilde{\mathcal L}(\boldsymbol X, \boldsymbol W, \boldsymbol B)=\mathcal L(\boldsymbol{XW} + \boldsymbol B)\)</span>. Moreover, we also need formulas for <span class="math notranslate nohighlight">\(\nabla_{\boldsymbol W}\tilde{\mathcal L}(\boldsymbol X, \boldsymbol W, \boldsymbol B)\)</span> and <span class="math notranslate nohighlight">\(\nabla_{\boldsymbol B}\tilde{\mathcal L}(\boldsymbol X, \boldsymbol W, \boldsymbol B)\)</span> in order to make the gradient step.</p>
-<p>Once again use chain rule and simple <a class="reference internal" href="../math/calculus/multivariate.html#linear-diff"><span class="std std-ref">facts</span></a> from calculus:</p>
+<p>Once again use chain rule and simple <a class="reference internal" href="../math/calculus/matrix_diff.html#linear-diff"><span class="std std-ref">facts</span></a> from calculus:</p>
 <div class="math notranslate nohighlight">
 \[
     d\tilde{\mathcal L}(\boldsymbol X) = \mathrm{tr}\big(\nabla \mathcal L(\boldsymbol V)^\mathsf{T} d\boldsymbol V\big) = \mathrm{tr}\big(\nabla \mathcal L(\boldsymbol V)^\mathsf{T} d\boldsymbol X \cdot \boldsymbol W\big) = \mathrm{tr}\big(\boldsymbol W\cdot\nabla \mathcal L(\boldsymbol V)^\mathsf{T} d\boldsymbol X \big),
