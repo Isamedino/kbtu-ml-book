@@ -166,6 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW3.html">HW3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -333,12 +334,6 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/optimization.html">Optimization</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization/GD.html">Gradient descent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization/SGD.html">Stochastic gradient descent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization/newton.html">Newton’s method</a></li>
 </ul>
 </li>
 </ul>
@@ -598,13 +593,13 @@ TSS = \sum\limits_{i=1}^n(y_i - \overline {\boldsymbol y})^2.
 <p><span style="display:none" id="R2_dummy">W3sicXVlc3Rpb24iOiAiV2hhdCBpcyB0aGUgJFJeMiQtc2NvcmUgb2YgdGhlIGR1bW15IG1vZGVsICRcXHdpZGVoYXQgeSA9IFxcb3ZlcmxpbmUge1xcYm9sZHN5bWJvbCB5fSQ/IiwgInR5cGUiOiAibnVtZXJpYyIsICJhbnN3ZXJzIjogW3sidHlwZSI6ICJ2YWx1ZSIsICJ2YWx1ZSI6IDAsICJjb3JyZWN0IjogdHJ1ZSwgImZlZWRiYWNrIjogIllvdSBuYWlsZWQgaXQhICRSXjIgPSAxIC0gMSA9IDAkIn0sIHsidHlwZSI6ICJ2YWx1ZSIsICJ2YWx1ZSI6IDEsICJjb3JyZWN0IjogZmFsc2UsICJmZWVkYmFjayI6ICJObywgaXQgc2hvdWxkIGJlIHN1YnRyYWN0ZWQgZnJvbSAkMSQifSwgeyJ0eXBlIjogInJhbmdlIiwgInJhbmdlIjogWy0xMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCwgMF0sICJmZWVkYmFjayI6ICIkUl4yJC1zY29yZSBtdXN0IGJlIGJldHdlZW4gMCBhbmQgMSJ9LCB7InR5cGUiOiAicmFuZ2UiLCAicmFuZ2UiOiBbMS4wMDAwMDAwMDAxLCAxMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMF0sICJmZWVkYmFjayI6ICIkUl4yJC1zY29yZSBtdXN0IGJlIGJldHdlZW4gMCBhbmQgMSJ9LCB7InR5cGUiOiAiZGVmYXVsdCIsICJmZWVkYmFjayI6ICJUaGlzIHZhbHVlIGxvb2tzIGluY29ycmVjdCJ9XX1d</span></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="gvQLarAfcKHW" data-shufflequestions="False"
+<div class="output text_html"><div id="gpxQMVZECVVq" data-shufflequestions="False"
                data-shuffleanswers="True"
                data-preserveresponses="false"
                data-numquestions="1000000"
                data-maxwidth="600"
                style="border-radius: 10px; text-align: left"> <style>
-#gvQLarAfcKHW {
+#gpxQMVZECVVq {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -775,14 +770,14 @@ TSS = \sum\limits_{i=1}^n(y_i - \overline {\boldsymbol y})^2.
     }
 }
 </style></div><script type="application/javascript">var element=document.getElementById("R2_dummy");
-            var questionsgvQLarAfcKHW;
+            var questionsgpxQMVZECVVq;
             try {
-               questionsgvQLarAfcKHW=JSON.parse(window.atob(element.innerHTML));
+               questionsgpxQMVZECVVq=JSON.parse(window.atob(element.innerHTML));
             } catch(err) {
                console.log("Fell into catch");
-               questionsgvQLarAfcKHW = JSON.parse(element.innerHTML);
+               questionsgpxQMVZECVVq = JSON.parse(element.innerHTML);
             }
-            console.log(questionsgvQLarAfcKHW);;
+            console.log(questionsgpxQMVZECVVq);;
     // Make a random ID
 function makeid(length) {
     var result = [];
@@ -1531,8 +1526,8 @@ if (typeof version == 'undefined') {
            Someone more knowledgeable could make this better ;-) */
 
         function try_show() {
-          if(document.getElementById("gvQLarAfcKHW")) {
-            show_questions(questionsgvQLarAfcKHW,  gvQLarAfcKHW); 
+          if(document.getElementById("gpxQMVZECVVq")) {
+            show_questions(questionsgpxQMVZECVVq,  gpxQMVZECVVq); 
           } else {
              setTimeout(try_show, 200);
           }
@@ -1541,8 +1536,8 @@ if (typeof version == 'undefined') {
         {
         // console.log(element);
 
-        //console.log("gvQLarAfcKHW");
-        // console.log(document.getElementById("gvQLarAfcKHW"));
+        //console.log("gpxQMVZECVVq");
+        // console.log(document.getElementById("gpxQMVZECVVq"));
 
         try_show();
         }
@@ -1719,7 +1714,7 @@ if (typeof version == 'undefined') {
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e19543f249b8d5ca4f15a57b77a62eacbe00a4946977c9470827af224e261b79.svg" src="../_images/e19543f249b8d5ca4f15a57b77a62eacbe00a4946977c9470827af224e261b79.svg" /></div>
+<img alt="../_images/9dc8a298105877d4e6516ba7826b148de92a47c85255dcae85461a9a1e727179.svg" src="../_images/9dc8a298105877d4e6516ba7826b148de92a47c85255dcae85461a9a1e727179.svg" /></div>
 </div>
 <p>Calculate MSE:</p>
 <div class="cell docutils container">
@@ -1765,7 +1760,7 @@ Dummy R2-score: 0.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/baf841460993b8cf5d203dd9ef37e2dba93997c6b08f4f8f8d301e713daa13e3.svg" src="../_images/baf841460993b8cf5d203dd9ef37e2dba93997c6b08f4f8f8d301e713daa13e3.svg" /></div>
+<img alt="../_images/b801237697e3e66a7bb718f179b1f9d81b49b95d4e4e5e7cb4b7b87bf99bc2ac.svg" src="../_images/b801237697e3e66a7bb718f179b1f9d81b49b95d4e4e5e7cb4b7b87bf99bc2ac.svg" /></div>
 </div>
 <p>Linear regression from <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>:</p>
 <div class="cell docutils container">

@@ -166,6 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW3.html">HW3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -333,12 +334,6 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/optimization.html">Optimization</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization/GD.html">Gradient descent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization/SGD.html">Stochastic gradient descent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization/newton.html">Newton’s method</a></li>
 </ul>
 </li>
 </ul>
@@ -603,13 +598,13 @@ The distiction between continuous and discrete data can be occasionally ambiguou
 <p><span style="display:none" id="variable_type">W3sicXVlc3Rpb24iOiAiU2VsZWN0IGFsbCBjYXRlZ29yaWNhbCBub21pbmFsIGRhdGEiLCAidHlwZSI6ICJtYW55X2Nob2ljZSIsICJhbnN3ZXJzIjogW3siYW5zd2VyIjogIk1vbnRobHkgbG9hbiBwYXltZW50cyIsICJjb3JyZWN0IjogZmFsc2UsICJmZWVkYmFjayI6ICJUaGlzIGlzIGEgbnVtZXJpY2FsIGNvbnRpbnVvdXMgdmFyaWFibGUifSwgeyJhbnN3ZXIiOiAiQ2l0aWVzIGluIEV1cm9wZSB3aXRoIHBvcHVsYXRpb24gbW9yZSB0aGFuIDFNIiwgImNvcnJlY3QiOiB0cnVlLCAiZmVlZGJhY2siOiAiUXVpdGUgcmlnaHQhIENpdGllcyBhcmUgY2F0ZWdvcmljYWwgdmFyaWFibGVzLCBhbmQgdGhlcmUgaXMgbm8gbmF0dXJhbCBvcmRlcmluZyBvbiB0aGVtIn0sIHsiYW5zd2VyIjogIkNsb3RoaW5nIHNpemVzIChTLCBNLCBMLCBYTCwgZXRjLikiLCAiY29ycmVjdCI6IGZhbHNlLCAiZmVlZGJhY2siOiAiVGhpcyBpcyBhIGNhdGVnb3JpY2FsIG9yZGluYWwgdmFyaWFibGUifSwgeyJhbnN3ZXIiOiAiUGxhbmV0cyBpbiB0aGUgU29sYXIgc3lzdGVtIiwgImNvcnJlY3QiOiB0cnVlLCAiZmVlZGJhY2siOiAiWWVzISBUaGlzIGlzIGEgY2F0ZWdvcmljYWwgbm9taW5hbCB2YXJpYWJsZSJ9LCB7ImFuc3dlciI6ICJOdW1iZXIgb2YgY2FycyBpbiBhIHBhcmtpbmcgbG90IiwgImNvcnJlY3QiOiBmYWxzZSwgImZlZWRiYWNrIjogIlRoaXMgaXMgYSBudW1lcmljYWwgZGlzY3JldGUgdmFyaWFibGUifSwgeyJhbnN3ZXIiOiAiY2hlbWljYWwgZWxlbWVudHMgaW4gdGhlIHBlcmlvZGljIHRhYmxlIiwgImNvcnJlY3QiOiB0cnVlLCAiZmVlZGJhY2siOiAiVGhpcyBpcyBhIHRyaWNreSBvbmU6IGRvZXMgdGhlIG51bWJlciBvZiBhbiBlbGVtZW50IG1ha2UgaXQgYW4gb3JkaW5hbCB2YXJpYWJsZSBvciBub3Q/In1dfV0=</span></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="KlKFGAuloWsH" data-shufflequestions="False"
+<div class="output text_html"><div id="XEsCCcesSYdP" data-shufflequestions="False"
                data-shuffleanswers="True"
                data-preserveresponses="false"
                data-numquestions="1000000"
                data-maxwidth="600"
                style="border-radius: 10px; text-align: left"> <style>
-#KlKFGAuloWsH {
+#XEsCCcesSYdP {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -780,14 +775,14 @@ The distiction between continuous and discrete data can be occasionally ambiguou
     }
 }
 </style></div><script type="application/javascript">var element=document.getElementById("variable_type");
-            var questionsKlKFGAuloWsH;
+            var questionsXEsCCcesSYdP;
             try {
-               questionsKlKFGAuloWsH=JSON.parse(window.atob(element.innerHTML));
+               questionsXEsCCcesSYdP=JSON.parse(window.atob(element.innerHTML));
             } catch(err) {
                console.log("Fell into catch");
-               questionsKlKFGAuloWsH = JSON.parse(element.innerHTML);
+               questionsXEsCCcesSYdP = JSON.parse(element.innerHTML);
             }
-            console.log(questionsKlKFGAuloWsH);;
+            console.log(questionsXEsCCcesSYdP);;
     // Make a random ID
 function makeid(length) {
     var result = [];
@@ -1536,8 +1531,8 @@ if (typeof version == 'undefined') {
            Someone more knowledgeable could make this better ;-) */
 
         function try_show() {
-          if(document.getElementById("KlKFGAuloWsH")) {
-            show_questions(questionsKlKFGAuloWsH,  KlKFGAuloWsH); 
+          if(document.getElementById("XEsCCcesSYdP")) {
+            show_questions(questionsXEsCCcesSYdP,  XEsCCcesSYdP); 
           } else {
              setTimeout(try_show, 200);
           }
@@ -1546,8 +1541,8 @@ if (typeof version == 'undefined') {
         {
         // console.log(element);
 
-        //console.log("KlKFGAuloWsH");
-        // console.log(document.getElementById("KlKFGAuloWsH"));
+        //console.log("XEsCCcesSYdP");
+        // console.log(document.getElementById("XEsCCcesSYdP"));
 
         try_show();
         }

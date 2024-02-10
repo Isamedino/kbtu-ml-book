@@ -166,6 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW3.html">HW3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -333,12 +334,6 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/optimization.html">Optimization</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization/GD.html">Gradient descent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization/SGD.html">Stochastic gradient descent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization/newton.html">Newton’s method</a></li>
 </ul>
 </li>
 </ul>
@@ -645,10 +640,10 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter containing:
-tensor([[ 0.5500,  0.5069, -0.5118],
-        [ 0.2237, -0.2106, -0.2899],
-        [-0.0203, -0.5376,  0.0461],
-        [ 0.3952, -0.3093,  0.3852]], requires_grad=True)
+tensor([[-0.2277,  0.3730,  0.0443],
+        [-0.1655, -0.0463, -0.4230],
+        [ 0.0732, -0.2157,  0.2316],
+        [-0.2727,  0.4656, -0.5735]], requires_grad=True)
 </pre></div>
 </div>
 </div>
@@ -661,7 +656,7 @@ tensor([[ 0.5500,  0.5069, -0.5118],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 0.5451, -0.2769, -0.5119,  0.4711], grad_fn=&lt;SqueezeBackward4&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 0.1897, -0.6348,  0.0891, -0.3806], grad_fn=&lt;SqueezeBackward4&gt;)
 </pre></div>
 </div>
 </div>
@@ -708,7 +703,7 @@ tensor([[ 0.5500,  0.5069, -0.5118],
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fe82f7ddaf91c624580b57fca79076caeacbef81f67a72f9d5e0891d3871af90.svg" src="../_images/fe82f7ddaf91c624580b57fca79076caeacbef81f67a72f9d5e0891d3871af90.svg" /></div>
+<img alt="../_images/33092b50a7ad21f3a50ac59c0893b6c47b705048c3d84668aa10c0701c459b31.svg" src="../_images/33092b50a7ad21f3a50ac59c0893b6c47b705048c3d84668aa10c0701c459b31.svg" /></div>
 </div>
 <p>You can read about advantages and disadvantages of different activation functions <a class="reference external" href="https://education.yandex.ru/handbook/ml/article/beta-pervoe-znakomstvo-s-polnosvyaznymi-nejrosetyami#populyarnye-funkczii-aktivaczii">here</a>.</p>
 </section>
@@ -724,8 +719,8 @@ tensor([[ 0.5500,  0.5069, -0.5118],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-0.8057, -1.0880, -0.7693, -2.4059, -0.6692],
-        [-0.4985, -0.0539,  0.1694,  0.7286,  0.5354]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.9079,  0.4278,  1.2380, -0.5007,  0.1343],
+        [ 0.6846, -0.7535,  0.8055, -0.5264,  0.8778]])
 </pre></div>
 </div>
 </div>
@@ -738,10 +733,10 @@ tensor([[ 0.5500,  0.5069, -0.5118],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([[0.0000, 0.0000, 0.0000, 0.0000, 0.0000],
-         [0.0000, 0.0000, 0.1694, 0.7286, 0.5354]]),
- tensor([[-8.0573e-03, -1.0880e-02, -7.6928e-03, -2.4059e-02, -6.6917e-03],
-         [-4.9851e-03, -5.3901e-04,  1.6936e-01,  7.2860e-01,  5.3544e-01]]))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([[0.9079, 0.4278, 1.2380, 0.0000, 0.1343],
+         [0.6846, 0.0000, 0.8055, 0.0000, 0.8778]]),
+ tensor([[ 0.9079,  0.4278,  1.2380, -0.0050,  0.1343],
+         [ 0.6846, -0.0075,  0.8055, -0.0053,  0.8778]]))
 </pre></div>
 </div>
 </div>

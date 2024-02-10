@@ -166,6 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW1.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW2.html">HW2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW3.html">HW3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -333,12 +334,6 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../optimization.html">Optimization</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../optimization/GD.html">Gradient descent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../optimization/SGD.html">Stochastic gradient descent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../optimization/newton.html">Newton’s method</a></li>
 </ul>
 </li>
 </ul>
@@ -513,7 +508,7 @@ document.write(`
 <span id="svd"></span><h1>Singular Value Decomposition (SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Permalink to this heading">#</a></h1>
 <p>Any rectangular matrix <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span> has a <strong>singular value decomposition</strong></p>
 <div class="math notranslate nohighlight" id="equation-svd">
-<span class="eqno">(56)<a class="headerlink" href="#equation-svd" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol A = \boldsymbol U \boldsymbol \Sigma \boldsymbol V^\mathsf{T} = [\boldsymbol u_1 \ldots \boldsymbol u_m]  \begin{pmatrix}
+<span class="eqno">(57)<a class="headerlink" href="#equation-svd" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol A = \boldsymbol U \boldsymbol \Sigma \boldsymbol V^\mathsf{T} = [\boldsymbol u_1 \ldots \boldsymbol u_m]  \begin{pmatrix}
         \boldsymbol \Lambda &amp;  \boldsymbol 0 \\
          \boldsymbol 0 &amp;  \boldsymbol 0
     \end{pmatrix}
@@ -666,7 +661,7 @@ V:
 </section>
 <section id="reduced-form-of-svd">
 <h2>Reduced form of SVD<a class="headerlink" href="#reduced-form-of-svd" title="Permalink to this heading">#</a></h2>
-<p>SVD <a class="reference internal" href="#equation-svd">(56)</a> is equivalent to  <span class="math notranslate nohighlight">\(\boldsymbol{A} = \boldsymbol U_r \boldsymbol \Lambda \boldsymbol V_r^\mathsf{T}\)</span> where</p>
+<p>SVD <a class="reference internal" href="#equation-svd">(57)</a> is equivalent to  <span class="math notranslate nohighlight">\(\boldsymbol{A} = \boldsymbol U_r \boldsymbol \Lambda \boldsymbol V_r^\mathsf{T}\)</span> where</p>
 <div class="math notranslate nohighlight">
 \[
     \boldsymbol{U}_r = [\boldsymbol u_1 \ldots \boldsymbol u_r],\quad
@@ -730,7 +725,7 @@ Consequently, $\boldsymbol {Av}_i = \sigma_i \boldsymbol u_i$, $i=1,\ldots, r$. 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4c405212999042f32794049ac77b5466fc745ec684896799f450f01e21f05766.svg" src="../../_images/4c405212999042f32794049ac77b5466fc745ec684896799f450f01e21f05766.svg" /></div>
+<img alt="../../_images/333d412a6427cc10c893a3e68b6df9667873fb13a3434ddc5ea3fedeec5a3b89.svg" src="../../_images/333d412a6427cc10c893a3e68b6df9667873fb13a3434ddc5ea3fedeec5a3b89.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -766,7 +761,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6c5423f0bbac5e881bf54046c20bc081999dcecbb0c89c6a5a505cc4a0e64396.svg" src="../../_images/6c5423f0bbac5e881bf54046c20bc081999dcecbb0c89c6a5a505cc4a0e64396.svg" /></div>
+<img alt="../../_images/0c8e276911c49055eb98385779d2b2814c2573f773bc9c92c5808cf59d03b990.svg" src="../../_images/0c8e276911c49055eb98385779d2b2814c2573f773bc9c92c5808cf59d03b990.svg" /></div>
 </div>
 <p><span class="math notranslate nohighlight">\(2\)</span>-rank approximaion:</p>
 <div class="cell docutils container">
@@ -776,7 +771,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6c58d176a2606ff6c04df2df4e78ddfcbf38e9496dea98137347445185ea95a7.svg" src="../../_images/6c58d176a2606ff6c04df2df4e78ddfcbf38e9496dea98137347445185ea95a7.svg" /></div>
+<img alt="../../_images/6aa816d15332edb5c405e93238f80eea63dd705b78caea3323807b1a32ad960d.svg" src="../../_images/6aa816d15332edb5c405e93238f80eea63dd705b78caea3323807b1a32ad960d.svg" /></div>
 </div>
 <p><span class="math notranslate nohighlight">\(5\)</span>-rank approximation:</p>
 <div class="cell docutils container">
@@ -786,7 +781,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c0ab7cb205edcfb8a2782ff79a7eff5dd409f92049217605c90c79ffe3ad4f41.svg" src="../../_images/c0ab7cb205edcfb8a2782ff79a7eff5dd409f92049217605c90c79ffe3ad4f41.svg" /></div>
+<img alt="../../_images/a84aa627106baf89f01beafdb8b75e36b03cfec44975fe1007baa3c7218e6472.svg" src="../../_images/a84aa627106baf89f01beafdb8b75e36b03cfec44975fe1007baa3c7218e6472.svg" /></div>
 </div>
 <p><span class="math notranslate nohighlight">\(10\)</span>-rank approximation:</p>
 <div class="cell docutils container">
@@ -796,7 +791,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f9171edcb99f7c377ee5a4745de54c5a794e09dcf9a7277d4f9c0fa026c18df0.svg" src="../../_images/f9171edcb99f7c377ee5a4745de54c5a794e09dcf9a7277d4f9c0fa026c18df0.svg" /></div>
+<img alt="../../_images/71bb7c1fd5051b2c8a2b3600559c197ee00304c85813833b60d57f0dbaf20ea7.svg" src="../../_images/71bb7c1fd5051b2c8a2b3600559c197ee00304c85813833b60d57f0dbaf20ea7.svg" /></div>
 </div>
 <p><span class="math notranslate nohighlight">\(20\)</span>-rank approximation is quite admittable:</p>
 <div class="cell docutils container">
@@ -806,7 +801,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/79bdabee307b6788503e0a865146a06e9993ac76d049a009222cd27a8196ee01.svg" src="../../_images/79bdabee307b6788503e0a865146a06e9993ac76d049a009222cd27a8196ee01.svg" /></div>
+<img alt="../../_images/93145cebfce5d66d3ab184d648460e093c0ecb6c050df271e8d1cf81e04ff837.svg" src="../../_images/93145cebfce5d66d3ab184d648460e093c0ecb6c050df271e8d1cf81e04ff837.svg" /></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
@@ -818,7 +813,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/18ed8d2faf8e2de1692079d4112f3faf8e697e7bf2424e4757e4316be1e0c87f.svg" src="../../_images/18ed8d2faf8e2de1692079d4112f3faf8e697e7bf2424e4757e4316be1e0c87f.svg" /></div>
+<img alt="../../_images/527c9828d84306fa01ab3eab3b76b1acc2da001448513bf9047ea28c8a8f3a6d.svg" src="../../_images/527c9828d84306fa01ab3eab3b76b1acc2da001448513bf9047ea28c8a8f3a6d.svg" /></div>
 </div>
 </section>
 <section id="exercises">

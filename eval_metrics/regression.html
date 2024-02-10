@@ -166,6 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW3.html">HW3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -333,12 +334,6 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/optimization.html">Optimization</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization/GD.html">Gradient descent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization/SGD.html">Stochastic gradient descent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization/newton.html">Newton’s method</a></li>
 </ul>
 </li>
 </ul>
@@ -606,7 +601,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6b7f284645e55b481e4f8124ca9e328e2aeaceb9385c1025fa9f90cd020c7718.svg" src="../_images/6b7f284645e55b481e4f8124ca9e328e2aeaceb9385c1025fa9f90cd020c7718.svg" /></div>
+<img alt="../_images/5944abbb6f5cd47bc9995f45fa60b1a91a3fe669c552c3273398e4d851e2bf55.svg" src="../_images/5944abbb6f5cd47bc9995f45fa60b1a91a3fe669c552c3273398e4d851e2bf55.svg" /></div>
 </div>
 <p>Fit linear regression model and check metrics:</p>
 <div class="cell docutils container">
@@ -636,13 +631,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.6793045326613063
-Slope: -0.4477351604523669
-Mean Absolute Error (MAE): 0.3878
-Mean Squared Error (MSE): 0.2372
-Root Mean Squared Error (RMSE): 0.4871
-R2-score: 0.0658
-Mean absolute percentage error(MAPE): 1.2353
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.6522624379328485
+Slope: -0.29319831811563296
+Mean Absolute Error (MAE): 0.4101
+Mean Squared Error (MSE): 0.2531
+Root Mean Squared Error (RMSE): 0.5031
+R2-score: 0.0275
+Mean absolute percentage error(MAPE): 0.3367
 </pre></div>
 </div>
 </div>
@@ -660,7 +655,7 @@ Mean absolute percentage error(MAPE): 1.2353
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c40dc1090ff449d1d553ddc281e55b717992a83f6b248d9046c2f3e105199789.svg" src="../_images/c40dc1090ff449d1d553ddc281e55b717992a83f6b248d9046c2f3e105199789.svg" /></div>
+<img alt="../_images/af820165cbd57f08ea235c5a24573fd5f9c284e59f44f8e4c557c19a38914887.svg" src="../_images/af820165cbd57f08ea235c5a24573fd5f9c284e59f44f8e4c557c19a38914887.svg" /></div>
 </div>
 <p>Fit linear regression once again:</p>
 <div class="cell docutils container">
@@ -674,8 +669,8 @@ Mean absolute percentage error(MAPE): 1.2353
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 1.3505916613741777
-Slope: 0.6203716502287013
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bias: 2.178995111200175
+Slope: -0.9532643247162927
 </pre></div>
 </div>
 </div>
@@ -698,11 +693,11 @@ Slope: 0.6203716502287013
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error (MAE): 0.6593
-Mean Squared Error (MSE): 4.6080
-Root Mean Squared Error (RMSE): 2.1466
-R2-score: 0.0069
-Mean absolute percentage error(MAPE): 1.7298
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Absolute Error (MAE): 0.6565
+Mean Squared Error (MSE): 3.9708
+Root Mean Squared Error (RMSE): 1.9927
+R2-score: 0.0187
+Mean absolute percentage error(MAPE): 0.4181
 </pre></div>
 </div>
 </div>
