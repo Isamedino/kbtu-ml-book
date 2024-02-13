@@ -63,11 +63,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'math/proba/entropy';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Statistics" href="../statistics.html" />
-    <link rel="prev" title="Probability" href="../probability.html" />
+    <link rel="prev" title="Random variables" href="rvs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -327,6 +329,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../probability.html">Probability</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rvs.html">Random variables</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Entropy</a></li>
 </ul>
 </li>
@@ -463,7 +466,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -479,6 +484,23 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy-of-discrete-distributions">Entropy of discrete distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy-of-mathrm-bern-p">Entropy of <span class="math notranslate nohighlight">\(\mathrm{Bern}(p)\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy-of-mathrm-bin-p">Entropy of <span class="math notranslate nohighlight">\(\mathrm{Bin}(p)\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy-of-mathrm-geom-p">Entropy of <span class="math notranslate nohighlight">\(\mathrm{Geom}(p)\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy-of-mathrm-pois-lambda">Entropy of <span class="math notranslate nohighlight">\(\mathrm{Pois}(\lambda)\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-entropy">Differential entropy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy-in-ml">Entropy in ML</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -490,6 +512,108 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="entropy">
 <h1>Entropy<a class="headerlink" href="#entropy" title="Permalink to this heading">#</a></h1>
+<p><strong>Entropy</strong> reflects the uncertainty of a probability distribution. It is a quantitive estimation of the amount of information stored in the distribution.</p>
+<section id="entropy-of-discrete-distributions">
+<h2>Entropy of discrete distributions<a class="headerlink" href="#entropy-of-discrete-distributions" title="Permalink to this heading">#</a></h2>
+<p>If <span class="math notranslate nohighlight">\(p_k = \mathbb P(\xi = x_k)\)</span> is pmd of a discrete random variable <span class="math notranslate nohighlight">\(\xi\)</span> then its entropy is calculated as</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb H\xi =  -\mathbb E \big(\log p(\xi)\big) = -\sum\limits_k p_k \log p_k.
+\]</div>
+<p>The logarithm base can be any number greater than <span class="math notranslate nohighlight">\(1\)</span>. In practice two bases are used:</p>
+<ul class="simple">
+<li><p>binary logarithm, then <span class="math notranslate nohighlight">\(\mathbb H\xi\)</span> is measured in <strong>bits</strong></p></li>
+<li><p>natrural lograrithm, then <span class="math notranslate nohighlight">\(\mathbb H\xi\)</span> is measured in <strong>nats</strong></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When dealing with entopy, often expression of the form <span class="math notranslate nohighlight">\(0\cdot \log 0\)</span> may arise. By definition it is settled to <span class="math notranslate nohighlight">\(0\)</span>.</p>
+</div>
+<section id="entropy-of-mathrm-bern-p">
+<h3>Entropy of <span class="math notranslate nohighlight">\(\mathrm{Bern}(p)\)</span><a class="headerlink" href="#entropy-of-mathrm-bern-p" title="Permalink to this heading">#</a></h3>
+<p>If <span class="math notranslate nohighlight">\(\xi \sim \mathrm{Bern}(p)\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb H\xi = -(1 - p)\log(1 - p) - p\log p.
+\]</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/eeb7bb6174c2dab328b2215c5d95cbe1f69a419add08c2f20362a2c641b3eac6.svg" src="../../_images/eeb7bb6174c2dab328b2215c5d95cbe1f69a419add08c2f20362a2c641b3eac6.svg" /></div>
+</div>
+<p>Минимальное значение (нулевое) энтропия принимает при <span class="math notranslate nohighlight">\(p = 0\)</span> или <span class="math notranslate nohighlight">\(p=1\)</span>. Исход такого вырожденного эксперимента заранее известен, поэтому наблюдение значения случайной величины не несёт никакой новой информации.</p>
+<p>Максимальное значение энтропии достигается в точке <span class="math notranslate nohighlight">\(\frac12\)</span>, что вполне соответствует тому, что при <span class="math notranslate nohighlight">\(p=\frac12\)</span> предсказать исход эксперимента сложнее всего.</p>
+</section>
+<section id="entropy-of-mathrm-bin-p">
+<h3>Entropy of <span class="math notranslate nohighlight">\(\mathrm{Bin}(p)\)</span><a class="headerlink" href="#entropy-of-mathrm-bin-p" title="Permalink to this heading">#</a></h3>
+<p>If <span class="math notranslate nohighlight">\(\xi \sim \mathrm{Bin}(p)\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb H\xi = -\sum\limits_{k=0}^n \binom n k p^k (1-p)^{n-k}\Big(\log \binom nk + k\log p + (n-k) \log(1-p)\Big).
+\]</div>
+<p>It can hardly be calculated in closed form.</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/8ef295495230cad61beb882f85e8f53a67db13032117a15e891ce0ca4ef3648a.svg" src="../../_images/8ef295495230cad61beb882f85e8f53a67db13032117a15e891ce0ca4ef3648a.svg" /></div>
+</div>
+</section>
+<section id="entropy-of-mathrm-geom-p">
+<h3>Entropy of <span class="math notranslate nohighlight">\(\mathrm{Geom}(p)\)</span><a class="headerlink" href="#entropy-of-mathrm-geom-p" title="Permalink to this heading">#</a></h3>
+<p>If <span class="math notranslate nohighlight">\(\xi \sim \mathrm{Geom}(p)\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb H\xi = -\sum\limits_{k=1}^\infty q^{k-1}p\big(\log p + (k-1)\log q\big).
+\]</div>
+<p>Unlike for the binomial disribution, this entropy can be easily calculated in closed form (see exercises below).</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/6e0dfb24a7f2a65c4337568728960aa53f88b9b5b01fe5bbffb7f9acf2fb9032.svg" src="../../_images/6e0dfb24a7f2a65c4337568728960aa53f88b9b5b01fe5bbffb7f9acf2fb9032.svg" /></div>
+</div>
+</section>
+<section id="entropy-of-mathrm-pois-lambda">
+<h3>Entropy of <span class="math notranslate nohighlight">\(\mathrm{Pois}(\lambda)\)</span><a class="headerlink" href="#entropy-of-mathrm-pois-lambda" title="Permalink to this heading">#</a></h3>
+<p>If <span class="math notranslate nohighlight">\(\xi \sim \mathrm{Pois}(\lambda)\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb H\xi = \sum\limits_{k=0}^\infty e^{-\lambda}\frac{\lambda^k}{k!}\big(\lambda - k\log \lambda + \log k!\big) = \lambda - \lambda \log\lambda  +  e^{-\lambda}\sum\limits_{k=0}^\infty\frac{\lambda^k \log k!}{k!}.
+\]</div>
+<p>It <a class="reference external" href="https://pure.tue.nl/ws/files/1959440/Metis199989.pdf">turns out</a> that</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb H\xi = \frac 12\log(2\pi e \lambda) - \frac 1{12\lambda} + \mathcal O\Big(\frac 1{\lambda^2}\Big), \quad \lambda \to +\infty.
+\]</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/5afd0deff9b909611a664986a87159cde68e0e0be1847a7b214008536f633a02.svg" src="../../_images/5afd0deff9b909611a664986a87159cde68e0e0be1847a7b214008536f633a02.svg" /></div>
+</div>
+</section>
+</section>
+<section id="differential-entropy">
+<h2>Differential entropy<a class="headerlink" href="#differential-entropy" title="Permalink to this heading">#</a></h2>
+<p>Entropy of a continuous random variable is sometimes called <strong>differential entropy</strong>. Given pdf <span class="math notranslate nohighlight">\(p_\xi(x)\)</span>, entropy of <span class="math notranslate nohighlight">\(\xi\)</span> is calculated by the formula</p>
+<div class="math notranslate nohighlight">
+\[
+ \mathbb H\xi = -\int p_{\xi}(x) \log p_{\xi}(x)\, dx.
+\]</div>
+</section>
+<section id="entropy-in-ml">
+<h2>Entropy in ML<a class="headerlink" href="#entropy-in-ml" title="Permalink to this heading">#</a></h2>
+<p>Entropy is used in <a class="reference internal" href="../../decision_trees/impurity.html#impurity"><span class="std std-ref">decision trees</span></a> as an information criterion.</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Prove that <span class="math notranslate nohighlight">\(0\leqslant \mathbb H\xi \leqslant \log n\)</span> if <span class="math notranslate nohighlight">\(\Omega = \{1, 2, \ldots, n\}\)</span>. For which distribution do these inequalities turn into equalities?</p></li>
+<li><p>Calculate entropy of <span class="math notranslate nohighlight">\(\mathrm{Geom}(p)\)</span> in closed form.</p></li>
+<li><p>Find entropy of <span class="math notranslate nohighlight">\(U[a, b]\)</span>.</p></li>
+<li><p>Calculate entropy of <span class="math notranslate nohighlight">\(\mathcal N(\mu, \sigma^2)\)</span>.</p></li>
+<li><p>Calculate entropy of <span class="math notranslate nohighlight">\(\mathrm{Exp}(\lambda)\)</span>.</p></li>
+<li><p>Calculate entropy of <span class="math notranslate nohighlight">\(\mathrm{Gamma}(\alpha, \beta)\)</span>.</p></li>
+</ol>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -524,12 +648,12 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../probability.html"
+       href="rvs.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Probability</p>
+        <p class="prev-next-title">Random variables</p>
       </div>
     </a>
     <a class="right-next"
@@ -550,6 +674,29 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy-of-discrete-distributions">Entropy of discrete distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy-of-mathrm-bern-p">Entropy of <span class="math notranslate nohighlight">\(\mathrm{Bern}(p)\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy-of-mathrm-bin-p">Entropy of <span class="math notranslate nohighlight">\(\mathrm{Bin}(p)\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy-of-mathrm-geom-p">Entropy of <span class="math notranslate nohighlight">\(\mathrm{Geom}(p)\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy-of-mathrm-pois-lambda">Entropy of <span class="math notranslate nohighlight">\(\mathrm{Pois}(\lambda)\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-entropy">Differential entropy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy-in-ml">Entropy in ML</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
