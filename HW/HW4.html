@@ -498,6 +498,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">YOUR SOLUTION HERE</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-4-3-1-point">Task 4.3 (1 point)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">YOUR SOLUTION HERE</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-4-4-1-point">Task 4.4 (1 point)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">YOUR SOLUTION HERE</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -513,7 +521,7 @@ document.write(`
 <span id="id1"></span><h1>HW4<a class="headerlink" href="#hw4" title="Permalink to this heading">#</a></h1>
 <section id="task-4-1-0-5-points">
 <h2>Task 4.1 (0.5 points)<a class="headerlink" href="#task-4-1-0-5-points" title="Permalink to this heading">#</a></h2>
-<p>A bridge player had no ace in three consecutive hands. Did he have reason to complain of ill luck? A hand consists of <span class="math notranslate nohighlight">\(13\)</span> random cards drawn out of <span class="math notranslate nohighlight">\(52\)</span>.</p>
+<p>A bridge player had no ace in three consecutive hands. What is the probability of this event? Did he have reason to complain of ill luck? A hand consists of <span class="math notranslate nohighlight">\(13\)</span> random cards drawn out of <span class="math notranslate nohighlight">\(52\)</span>.</p>
 <section id="your-solution-here">
 <h3>YOUR SOLUTION HERE<a class="headerlink" href="#your-solution-here" title="Permalink to this heading">#</a></h3>
 </section>
@@ -525,11 +533,15 @@ document.write(`
 \[
     x_{(1)} \leqslant x_{(2)} \leqslant \ldots \leqslant x_{(k)} \leqslant\ldots\leqslant x_{(n)}.
 \]</div>
-<p>The <span class="math notranslate nohighlight">\(k\)</span>-th element <span class="math notranslate nohighlight">\(x_{(k)}\)</span> in this sequence is called <strong><span class="math notranslate nohighlight">\(k\)</span>-th order statistics</strong>. Show that <span class="math notranslate nohighlight">\(x_{(k)} \sim B(k, n+1 -k)\)</span>. Do it in two ways:</p>
+<p>The <span class="math notranslate nohighlight">\(k\)</span>-th element <span class="math notranslate nohighlight">\(x_{(k)}\)</span> in this sequence is called <strong><span class="math notranslate nohighlight">\(k\)</span>-th order statistics</strong>. Show that <span class="math notranslate nohighlight">\(x_{(k)} \sim \mathrm{Beta}(k, n+1 -k)\)</span>. Do it in two ways:</p>
 <ul class="simple">
-<li><p><strong>experimentally</strong>: generate a random matrix of shape <span class="math notranslate nohighlight">\(N \times n\)</span> (try <span class="math notranslate nohighlight">\(N = 1000, 10000, 100000\)</span>), calculate <span class="math notranslate nohighlight">\(k\)</span>-th order statistics for each row and plot historgram of these values along with pdf of beta distribution (<strong>1 point</strong>)</p></li>
+<li><p><strong>experimentally</strong>: generate a random matrix of shape <span class="math notranslate nohighlight">\(N \times n\)</span> (try <span class="math notranslate nohighlight">\(N = 1000, 10000, 100000\)</span>), calculate <span class="math notranslate nohighlight">\(k\)</span>-th order statistics for each row and plot historgram of these values along with pdf of beta distribution. (<strong>1 point</strong>)</p></li>
 <li><p><strong>theoretically</strong>: present a mathematical proof of this statement (<strong>1 point</strong>)</p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>To get full points for the experimental part you should avoid pythonic loops when generating random matrix. The only place where <code class="docutils literal notranslate"><span class="pre">for</span></code> loop is allowed is iterating over several values of <span class="math notranslate nohighlight">\(N\)</span>.</p>
+</div>
 <section id="id2">
 <h3>YOUR SOLUTION HERE<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <p>Your historgram for a paticular value of <span class="math notranslate nohighlight">\(N\)</span> should look like this:</p>
@@ -554,6 +566,20 @@ document.write(`
 <div class="cell_output docutils container">
 <img alt="../_images/4676bfcbc5412ee05e7fcc611c8acc415c378490f3cb7224a87632fdeb290f1f.svg" src="../_images/4676bfcbc5412ee05e7fcc611c8acc415c378490f3cb7224a87632fdeb290f1f.svg" /></div>
 </div>
+</section>
+</section>
+<section id="task-4-3-1-point">
+<h2>Task 4.3 (1 point)<a class="headerlink" href="#task-4-3-1-point" title="Permalink to this heading">#</a></h2>
+<p>Calculate entropy of <span class="math notranslate nohighlight">\(\mathcal N(\mu, \sigma^2)\)</span>. Plot the graph of this entropy as function of <span class="math notranslate nohighlight">\(\sigma\)</span>. What is the limit of this function as <span class="math notranslate nohighlight">\(\sigma \to +0\)</span>? <span class="math notranslate nohighlight">\(\sigma \to +\infty\)</span>?</p>
+<section id="id3">
+<h3>YOUR SOLUTION HERE<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="task-4-4-1-point">
+<h2>Task 4.4 (1 point)<a class="headerlink" href="#task-4-4-1-point" title="Permalink to this heading">#</a></h2>
+<p>Find KL divergence between <span class="math notranslate nohighlight">\(p\sim \mathrm{Geom}(s)\)</span> and <span class="math notranslate nohighlight">\(q\sim \mathrm{Geom}(t)\)</span>, <span class="math notranslate nohighlight">\(0 &lt; s, t &lt; 1\)</span>. Is <span class="math notranslate nohighlight">\(\mathbb{KL}(p, q) = 0\)</span> when <span class="math notranslate nohighlight">\(s = t\)</span>? Does equality <span class="math notranslate nohighlight">\(\mathbb{KL}(p, q) = \mathbb{KL}(q, p)\)</span> hold? Plot the graphs of <span class="math notranslate nohighlight">\(\mathbb{KL}(p, q)\)</span> as functions of <span class="math notranslate nohighlight">\(s\)</span> for several fixed values of <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<section id="id4">
+<h3>YOUR SOLUTION HERE<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 </section>
 </section>
 </section>
@@ -631,6 +657,14 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-4-2-2-points">Task 4.2 (2 points)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">YOUR SOLUTION HERE</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-4-3-1-point">Task 4.3 (1 point)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">YOUR SOLUTION HERE</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-4-4-1-point">Task 4.4 (1 point)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">YOUR SOLUTION HERE</a></li>
 </ul>
 </li>
 </ul>
