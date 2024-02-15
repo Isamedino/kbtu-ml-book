@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW3.html">HW3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW4.html">HW4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -327,6 +328,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/probability.html">Probability</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/rvs.html">Random variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/proba/entropy.html">Entropy</a></li>
 </ul>
 </li>
@@ -486,15 +488,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-best-of-pandas">The best of pandas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-columns">Select columns</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing">Indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-best-of-pandas">The best of pandas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-columns">Select columns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing">Indexing</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-series"><code class="docutils literal notranslate"><span class="pre">pd.Series</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-pd-series">Creating <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nan-s">NaN’s</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Визуализация</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply">Apply</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-join">Merge &amp; Join</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#groupping">Groupping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timestamps">Timestamps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
 </ul>
             </nav>
         </div>
@@ -881,9 +889,8 @@ memory usage: 14.8+ KB
 </div>
 </div>
 </div>
-</section>
 <section id="select-columns">
-<h2>Select columns<a class="headerlink" href="#select-columns" title="Permalink to this heading">#</a></h2>
+<h3>Select columns<a class="headerlink" href="#select-columns" title="Permalink to this heading">#</a></h3>
 <p>Use syntax <code class="docutils literal notranslate"><span class="pre">df[[col1,</span> <span class="pre">...,</span> <span class="pre">colN]]</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1002,7 +1009,7 @@ Name: Age, Length: 156, dtype: float64
 </div>
 </section>
 <section id="indexing">
-<h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this heading">#</a></h2>
+<h3>Indexing<a class="headerlink" href="#indexing" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1463,6 +1470,7 @@ Name: 78, dtype: object
 </div></div></div>
 </div>
 </section>
+</section>
 <section id="pd-series">
 <h2><code class="docutils literal notranslate"><span class="pre">pd.Series</span></code><a class="headerlink" href="#pd-series" title="Permalink to this heading">#</a></h2>
 <p>1-d slice of dataframes has type <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code></p>
@@ -1651,8 +1659,1299 @@ Name: Cabin, dtype: bool
 </div>
 </div>
 </section>
-<section id="id1">
-<h3>Визуализация<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<section id="apply">
+<h3>Apply<a class="headerlink" href="#apply" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummpy_example</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Pclass&#39;</span><span class="p">]</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;dummy_example&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">dummpy_example</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+      <th>dummy_example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>128</th>
+      <td>129</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Peter, Miss. Anna</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2668</td>
+      <td>22.3583</td>
+      <td>F E69</td>
+      <td>C</td>
+      <td>femalefemalefemale</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>141</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Boulos, Mrs. Joseph (Sultana)</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2678</td>
+      <td>15.2458</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>femalefemalefemale</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>155</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Olsen, Mr. Ole Martin</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Fa 265302</td>
+      <td>7.3125</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>malemalemale</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="merge-join">
+<h2><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/merging.html">Merge &amp; Join</a><a class="headerlink" href="#merge-join" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="s2">&quot;Parch&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Ticket&quot;</span><span class="p">,</span> <span class="s2">&quot;Fare&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Parch</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>78</th>
+      <td>0.83</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>2.00</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2.00</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2.00</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>3.00</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Ticket</th>
+      <th>Fare</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>78</th>
+      <td>248738</td>
+      <td>29.0000</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>347082</td>
+      <td>31.2750</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>349909</td>
+      <td>21.0750</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>382652</td>
+      <td>29.1250</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>SC/Paris 2123</td>
+      <td>41.5792</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Join <code class="docutils literal notranslate"><span class="pre">df1</span></code> and <code class="docutils literal notranslate"><span class="pre">df2</span></code> by index:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>78</th>
+      <td>0.83</td>
+      <td>2</td>
+      <td>248738</td>
+      <td>29.0000</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>2.00</td>
+      <td>2</td>
+      <td>347082</td>
+      <td>31.2750</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2.00</td>
+      <td>1</td>
+      <td>349909</td>
+      <td>21.0750</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2.00</td>
+      <td>1</td>
+      <td>382652</td>
+      <td>29.1250</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>3.00</td>
+      <td>2</td>
+      <td>SC/Paris 2123</td>
+      <td>41.5792</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Join by value in column <code class="docutils literal notranslate"><span class="pre">PassengerId</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="s2">&quot;Parch&quot;</span><span class="p">,</span> <span class="s2">&quot;PassengerId&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Ticket&quot;</span><span class="p">,</span> <span class="s2">&quot;Fare&quot;</span><span class="p">,</span> <span class="s2">&quot;PassengerId&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;PassengerId&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Parch</th>
+      <th>PassengerId</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.83</td>
+      <td>2</td>
+      <td>79</td>
+      <td>248738</td>
+      <td>29.0000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.00</td>
+      <td>2</td>
+      <td>120</td>
+      <td>347082</td>
+      <td>31.2750</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.00</td>
+      <td>1</td>
+      <td>8</td>
+      <td>349909</td>
+      <td>21.0750</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2.00</td>
+      <td>1</td>
+      <td>17</td>
+      <td>382652</td>
+      <td>29.1250</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3.00</td>
+      <td>2</td>
+      <td>44</td>
+      <td>SC/Paris 2123</td>
+      <td>41.5792</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>By default <code class="docutils literal notranslate"><span class="pre">merge</span></code> works as <code class="docutils literal notranslate"><span class="pre">INNER</span> <span class="pre">JOIN</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;PassengerId&quot;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Parch</th>
+      <th>PassengerId</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.83</td>
+      <td>2</td>
+      <td>79</td>
+      <td>248738</td>
+      <td>29.0000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.00</td>
+      <td>2</td>
+      <td>120</td>
+      <td>347082</td>
+      <td>31.2750</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.00</td>
+      <td>1</td>
+      <td>8</td>
+      <td>349909</td>
+      <td>21.0750</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2.00</td>
+      <td>1</td>
+      <td>17</td>
+      <td>382652</td>
+      <td>29.1250</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3.00</td>
+      <td>2</td>
+      <td>44</td>
+      <td>SC/Paris 2123</td>
+      <td>41.5792</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="groupping">
+<h2>Groupping<a class="headerlink" href="#groupping" title="Permalink to this heading">#</a></h2>
+<p>How to calculate average age among passengers of a particular class?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pclass 1: &quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Pclass&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="s2">&quot;Age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pclass 2: &quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Pclass</span> <span class="o">==</span> <span class="mi">2</span><span class="p">][</span><span class="s2">&quot;Age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pclass 3: &quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Pclass&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">Age</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pclass 1:  38.111111111111114
+Pclass 2:  28.114827586206893
+Pclass 3:  24.307142857142857
+</pre></div>
+</div>
+</div>
+</div>
+<p>The same using <code class="docutils literal notranslate"><span class="pre">group</span> <span class="pre">by</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Pclass&quot;</span><span class="p">])[[</span><span class="s2">&quot;Age&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+    </tr>
+    <tr>
+      <th>Pclass</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>38.111111</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>28.114828</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>24.307143</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Groupping by several columns is also available:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Survived&quot;</span><span class="p">,</span> <span class="s2">&quot;Pclass&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x11d5fe1d0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Survived&quot;</span><span class="p">,</span> <span class="s2">&quot;Pclass&quot;</span><span class="p">])[</span><span class="s2">&quot;PassengerId&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Survived  Pclass
+0         1         18
+          2         16
+          3         68
+1         1         12
+          2         14
+          3         28
+Name: PassengerId, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Survived&quot;</span><span class="p">,</span> <span class="s2">&quot;Pclass&quot;</span><span class="p">])[[</span><span class="s2">&quot;PassengerId&quot;</span><span class="p">,</span> <span class="s2">&quot;Cabin&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>PassengerId</th>
+      <th>Cabin</th>
+    </tr>
+    <tr>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="3" valign="top">0</th>
+      <th>1</th>
+      <td>18</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>16</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>68</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">1</th>
+      <th>1</th>
+      <td>12</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>14</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>28</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Survived&quot;</span><span class="p">,</span> <span class="s2">&quot;Pclass&quot;</span><span class="p">])[[</span><span class="s2">&quot;PassengerId&quot;</span><span class="p">,</span> <span class="s2">&quot;Fare&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th colspan="8" halign="left">PassengerId</th>
+      <th colspan="8" halign="left">Fare</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="3" valign="top">0</th>
+      <th>1</th>
+      <td>18.0</td>
+      <td>82.555556</td>
+      <td>44.501450</td>
+      <td>7.0</td>
+      <td>40.75</td>
+      <td>88.5</td>
+      <td>117.00</td>
+      <td>156.0</td>
+      <td>18.0</td>
+      <td>80.035183</td>
+      <td>66.109719</td>
+      <td>27.7208</td>
+      <td>51.896875</td>
+      <td>61.27710</td>
+      <td>78.721875</td>
+      <td>263.0000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>16.0</td>
+      <td>107.187500</td>
+      <td>44.842270</td>
+      <td>21.0</td>
+      <td>72.50</td>
+      <td>122.0</td>
+      <td>145.25</td>
+      <td>151.0</td>
+      <td>16.0</td>
+      <td>26.243225</td>
+      <td>20.039973</td>
+      <td>10.5000</td>
+      <td>12.881250</td>
+      <td>21.00000</td>
+      <td>27.017700</td>
+      <td>73.5000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>68.0</td>
+      <td>80.161765</td>
+      <td>43.375352</td>
+      <td>1.0</td>
+      <td>46.75</td>
+      <td>84.0</td>
+      <td>114.25</td>
+      <td>155.0</td>
+      <td>68.0</td>
+      <td>13.545954</td>
+      <td>9.905474</td>
+      <td>6.7500</td>
+      <td>7.895800</td>
+      <td>8.05000</td>
+      <td>15.309350</td>
+      <td>46.9000</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">1</th>
+      <th>1</th>
+      <td>12.0</td>
+      <td>60.083333</td>
+      <td>50.118874</td>
+      <td>2.0</td>
+      <td>21.00</td>
+      <td>54.5</td>
+      <td>91.25</td>
+      <td>152.0</td>
+      <td>12.0</td>
+      <td>78.702075</td>
+      <td>66.649342</td>
+      <td>26.2833</td>
+      <td>35.500000</td>
+      <td>64.97915</td>
+      <td>77.546900</td>
+      <td>263.0000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>14.0</td>
+      <td>62.000000</td>
+      <td>39.240874</td>
+      <td>10.0</td>
+      <td>27.50</td>
+      <td>58.0</td>
+      <td>83.50</td>
+      <td>134.0</td>
+      <td>14.0</td>
+      <td>20.707143</td>
+      <td>9.671110</td>
+      <td>10.5000</td>
+      <td>13.000000</td>
+      <td>19.50000</td>
+      <td>27.312500</td>
+      <td>41.5792</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>28.0</td>
+      <td>71.607143</td>
+      <td>45.525198</td>
+      <td>3.0</td>
+      <td>32.00</td>
+      <td>72.0</td>
+      <td>108.50</td>
+      <td>147.0</td>
+      <td>28.0</td>
+      <td>13.182889</td>
+      <td>10.400539</td>
+      <td>7.1417</td>
+      <td>7.768750</td>
+      <td>7.97710</td>
+      <td>15.396850</td>
+      <td>56.4958</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="timestamps">
+<h2>Timestamps<a class="headerlink" href="#timestamps" title="Permalink to this heading">#</a></h2>
+<p>Timestamp is an integer which represents the number of seconds since <a class="reference external" href="https://www.epochconverter.com/">epoch</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tdf</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">tdf</span><span class="p">[</span><span class="s2">&quot;ts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1560000000</span><span class="p">,</span> <span class="mi">1560000000</span> <span class="o">+</span> <span class="n">tdf</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">tdf</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+      <th>dummy_example</th>
+      <th>ts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>78</th>
+      <td>79</td>
+      <td>1</td>
+      <td>2</td>
+      <td>Caldwell, Master. Alden Gates</td>
+      <td>male</td>
+      <td>0.83</td>
+      <td>0</td>
+      <td>2</td>
+      <td>248738</td>
+      <td>29.000</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>malemale</td>
+      <td>1560000000</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>120</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Andersson, Miss. Ellis Anna Maria</td>
+      <td>female</td>
+      <td>2.00</td>
+      <td>4</td>
+      <td>2</td>
+      <td>347082</td>
+      <td>31.275</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>femalefemalefemale</td>
+      <td>1560000001</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tdf</span><span class="p">[</span><span class="s2">&quot;ts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">tdf</span><span class="p">[</span><span class="s2">&quot;ts&quot;</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+<span class="n">tdf</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+      <th>dummy_example</th>
+      <th>ts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>78</th>
+      <td>79</td>
+      <td>1</td>
+      <td>2</td>
+      <td>Caldwell, Master. Alden Gates</td>
+      <td>male</td>
+      <td>0.83</td>
+      <td>0</td>
+      <td>2</td>
+      <td>248738</td>
+      <td>29.000</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>malemale</td>
+      <td>2019-06-08 13:20:00</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>120</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Andersson, Miss. Ellis Anna Maria</td>
+      <td>female</td>
+      <td>2.00</td>
+      <td>4</td>
+      <td>2</td>
+      <td>347082</td>
+      <td>31.275</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>femalefemalefemale</td>
+      <td>2019-06-08 13:20:01</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tdf</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;ts&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">tdf</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+      <th>dummy_example</th>
+    </tr>
+    <tr>
+      <th>ts</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2019-06-08 13:20:00</th>
+      <td>79</td>
+      <td>1</td>
+      <td>2</td>
+      <td>Caldwell, Master. Alden Gates</td>
+      <td>male</td>
+      <td>0.83</td>
+      <td>0</td>
+      <td>2</td>
+      <td>248738</td>
+      <td>29.000</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>malemale</td>
+    </tr>
+    <tr>
+      <th>2019-06-08 13:20:01</th>
+      <td>120</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Andersson, Miss. Ellis Anna Maria</td>
+      <td>female</td>
+      <td>2.00</td>
+      <td>4</td>
+      <td>2</td>
+      <td>347082</td>
+      <td>31.275</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>femalefemalefemale</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tdf</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;15s&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()[[</span><span class="s2">&quot;PassengerId&quot;</span><span class="p">,</span> <span class="s2">&quot;Survived&quot;</span><span class="p">,</span> <span class="s2">&quot;Pclass&quot;</span><span class="p">,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Sex</th>
+    </tr>
+    <tr>
+      <th>ts</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2019-06-08 13:20:00</th>
+      <td>837</td>
+      <td>6</td>
+      <td>41</td>
+      <td>malefemalemalemalefemalemalefemalefemalemalefe...</td>
+    </tr>
+    <tr>
+      <th>2019-06-08 13:20:15</th>
+      <td>1117</td>
+      <td>5</td>
+      <td>41</td>
+      <td>femalefemalefemalemalemalefemalefemalefemalefe...</td>
+    </tr>
+    <tr>
+      <th>2019-06-08 13:20:30</th>
+      <td>1445</td>
+      <td>3</td>
+      <td>37</td>
+      <td>femalemalemalemalemalefemalemalemalefemalefema...</td>
+    </tr>
+    <tr>
+      <th>2019-06-08 13:20:45</th>
+      <td>1569</td>
+      <td>6</td>
+      <td>34</td>
+      <td>malemalemalemalefemalefemalefemalemalemalemale...</td>
+    </tr>
+    <tr>
+      <th>2019-06-08 13:21:00</th>
+      <td>1116</td>
+      <td>5</td>
+      <td>36</td>
+      <td>malemalemalefemalemalemalefemalefemalefemalema...</td>
+    </tr>
+    <tr>
+      <th>2019-06-08 13:21:15</th>
+      <td>1324</td>
+      <td>8</td>
+      <td>38</td>
+      <td>malemalefemalefemalemalefemalefemalemalemalefe...</td>
+    </tr>
+    <tr>
+      <th>2019-06-08 13:21:30</th>
+      <td>829</td>
+      <td>5</td>
+      <td>31</td>
+      <td>malemalefemalemalemalemalemalemalefemalefemale...</td>
+    </tr>
+    <tr>
+      <th>2019-06-08 13:21:45</th>
+      <td>1531</td>
+      <td>2</td>
+      <td>26</td>
+      <td>malemalemalemalemalemalefemalemalefemalemalema...</td>
+    </tr>
+    <tr>
+      <th>2019-06-08 13:22:00</th>
+      <td>642</td>
+      <td>7</td>
+      <td>35</td>
+      <td>femalemalemalemalemalemalemalemalefemalemalefe...</td>
+    </tr>
+    <tr>
+      <th>2019-06-08 13:22:15</th>
+      <td>1052</td>
+      <td>5</td>
+      <td>41</td>
+      <td>malemalemalefemalemalemalemalemalemalemalefema...</td>
+    </tr>
+    <tr>
+      <th>2019-06-08 13:22:30</th>
+      <td>784</td>
+      <td>2</td>
+      <td>18</td>
+      <td>femalemalemalefemalefemalemale</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>No <code class="docutils literal notranslate"><span class="pre">mean()</span></code> method for strings:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">tdf</span><span class="p">[[</span><span class="s2">&quot;PassengerId&quot;</span><span class="p">,</span> <span class="s2">&quot;Survived&quot;</span><span class="p">,</span> <span class="s2">&quot;Pclass&quot;</span><span class="p">,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;15s&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Could not convert malefemalemalemalefemalemalefemalefemalemalefemalefemalemalemalefemalefemale to numeric
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tdf</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;1T&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()[[</span><span class="s2">&quot;PassengerId&quot;</span><span class="p">,</span> <span class="s2">&quot;Survived&quot;</span><span class="p">,</span> <span class="s2">&quot;Pclass&quot;</span><span class="p">,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Sex</th>
+    </tr>
+    <tr>
+      <th>ts</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2019-06-08 13:20:00</th>
+      <td>4968</td>
+      <td>20</td>
+      <td>153</td>
+      <td>malefemalemalemalefemalemalefemalefemalemalefe...</td>
+    </tr>
+    <tr>
+      <th>2019-06-08 13:21:00</th>
+      <td>4800</td>
+      <td>20</td>
+      <td>131</td>
+      <td>malemalemalefemalemalemalefemalefemalefemalema...</td>
+    </tr>
+    <tr>
+      <th>2019-06-08 13:22:00</th>
+      <td>2478</td>
+      <td>14</td>
+      <td>94</td>
+      <td>femalemalemalemalemalemalemalemalefemalemalefe...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="visualization">
+<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()[</span><span class="s2">&quot;Fare&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
@@ -1673,7 +2972,6 @@ Name: Cabin, dtype: bool
 <img alt="../_images/b047b6dbbacf6126a5422dc642c204b932da97b95c20eba4697c8bcc746271ca.png" src="../_images/b047b6dbbacf6126a5422dc642c204b932da97b95c20eba4697c8bcc746271ca.png" />
 </div>
 </div>
-</section>
 </section>
 </section>
 
@@ -1744,15 +3042,21 @@ Name: Cabin, dtype: bool
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-best-of-pandas">The best of pandas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-columns">Select columns</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing">Indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-best-of-pandas">The best of pandas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-columns">Select columns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing">Indexing</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-series"><code class="docutils literal notranslate"><span class="pre">pd.Series</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-pd-series">Creating <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nan-s">NaN’s</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Визуализация</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply">Apply</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-join">Merge &amp; Join</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#groupping">Groupping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timestamps">Timestamps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
 </ul>
   </nav></div>
 

@@ -503,7 +503,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Loops: for</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops-while">Loops: while</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops-break-continue-else">Loops: break, continue, else</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contnue">contnue</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continue">continue</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#break">break</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#else">else</a></li>
 </ul>
@@ -516,24 +516,18 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured-programming">Structured Programming</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence">Sequence</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branching">Branching</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#indentation-matters-in-python">Indentation matters in Python!</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branching">Branching</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indentation-matters-in-python">Indentation matters in Python!</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops">Loops</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#while">while</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#once-again-indentation-matters">Once again indentation matters</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#euclid-s-algorithm">Euclid’s algorithm</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#while">while</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#once-again-indentation-matters">Once again indentation matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euclid-s-algorithm">Euclid’s algorithm</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for">for</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">break</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#return-as-break-early-return">return as break (early return)</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continue">continue</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">break</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#return-as-break-early-return">return as break (early return)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">continue</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-list">Sort list</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-tuple">Sort tuple</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dict-sort">dict sort</a></li>
@@ -1517,8 +1511,8 @@ finally reaches \)</span>1$. For example:</p>
 </section>
 <section id="loops-break-continue-else">
 <h2>Loops: break, continue, else<a class="headerlink" href="#loops-break-continue-else" title="Permalink to this heading">#</a></h2>
-<section id="contnue">
-<h3>contnue<a class="headerlink" href="#contnue" title="Permalink to this heading">#</a></h3>
+<section id="continue">
+<h3>continue<a class="headerlink" href="#continue" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># continue stops the execution of the current iteration and goes to the next one</span>
@@ -2005,7 +1999,9 @@ finally reaches \)</span>1$. For example:</p>
 </div>
 <section id="avoid-spaghetti-programming">
 <h3>Avoid Spaghetti Programming<a class="headerlink" href="#avoid-spaghetti-programming" title="Permalink to this heading">#</a></h3>
-<p><img alt="" src="python/basics/Spaghetti.png" /></p>
+<figure class="align-center">
+<img alt="../../_images/Spaghetti.png" src="../../_images/Spaghetti.png" />
+</figure>
 <img alt="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZEIv7B3az3XIpfqU9qcw2mRw2ScmImPCuVA&amp;usqp=CAU" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZEIv7B3az3XIpfqU9qcw2mRw2ScmImPCuVA&amp;usqp=CAU" />
 <p><a class="reference external" href="http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html">Go To Statement Considered Harmful</a></p>
 <p>Edsger W. Dijkstra</p>
@@ -2026,7 +2022,7 @@ finally reaches \)</span>1$. For example:</p>
 <h2>Structured Programming<a class="headerlink" href="#structured-programming" title="Permalink to this heading">#</a></h2>
 <section id="sequence">
 <h3>Sequence<a class="headerlink" href="#sequence" title="Permalink to this heading">#</a></h3>
-<img alt="python/basics/images/Sequence.png" src="python/basics/images/Sequence.png" />
+<img alt="../../_images/Sequence.png" src="../../_images/Sequence.png" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">radius</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the disk radius: &quot;</span><span class="p">)</span>
@@ -2045,7 +2041,7 @@ Disk area: 5541.76476
 </section>
 <section id="branching">
 <h3>Branching<a class="headerlink" href="#branching" title="Permalink to this heading">#</a></h3>
-<img alt="python/basics/branch.png" src="python/basics/branch.png" />
+<img alt="../../_images/branch.png" src="../../_images/branch.png" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_prime_number</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -2079,8 +2075,9 @@ Disk area: 5541.76476
 </div>
 </div>
 </div>
+</section>
 <section id="indentation-matters-in-python">
-<h4>Indentation matters in Python!<a class="headerlink" href="#indentation-matters-in-python" title="Permalink to this heading">#</a></h4>
+<h3>Indentation matters in Python!<a class="headerlink" href="#indentation-matters-in-python" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mark</span> <span class="o">=</span> <span class="mi">60</span>
@@ -2102,13 +2099,12 @@ prints always
 </div>
 </section>
 </section>
-</section>
 <section id="loops">
 <h2>Loops<a class="headerlink" href="#loops" title="Permalink to this heading">#</a></h2>
 <section id="while">
 <h3>while<a class="headerlink" href="#while" title="Permalink to this heading">#</a></h3>
 <figure class="align-center">
-<img alt="python/basics/images/loop.png" src="python/basics/images/loop.png" />
+<img alt="../../_images/loop.png" src="../../_images/loop.png" />
 </figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2119,8 +2115,9 @@ prints always
 </div>
 </div>
 </div>
+</section>
 <section id="once-again-indentation-matters">
-<h4>Once again indentation matters<a class="headerlink" href="#once-again-indentation-matters" title="Permalink to this heading">#</a></h4>
+<h3>Once again indentation matters<a class="headerlink" href="#once-again-indentation-matters" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
@@ -2142,7 +2139,7 @@ Now the list is empty, it&#39;s size equal to 0
 </div>
 </section>
 <section id="euclid-s-algorithm">
-<h4>Euclid’s algorithm<a class="headerlink" href="#euclid-s-algorithm" title="Permalink to this heading">#</a></h4>
+<h3>Euclid’s algorithm<a class="headerlink" href="#euclid-s-algorithm" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -2233,7 +2230,6 @@ finally reaches \)</span>1$. For example:</p>
 <img alt="../../_images/2018f5162ff8b62d66b25619756ae8dce7a0973cbae6a2d0715aab59f04aeff7.png" src="../../_images/2018f5162ff8b62d66b25619756ae8dce7a0973cbae6a2d0715aab59f04aeff7.png" />
 </div>
 </div>
-</section>
 </section>
 <section id="for">
 <h3>for<a class="headerlink" href="#for" title="Permalink to this heading">#</a></h3>
@@ -2442,8 +2438,9 @@ You win! The number was 45
 </div>
 </div>
 </div>
+</section>
 <section id="return-as-break-early-return">
-<h4>return as break (early return)<a class="headerlink" href="#return-as-break-early-return" title="Permalink to this heading">#</a></h4>
+<h3>return as break (early return)<a class="headerlink" href="#return-as-break-early-return" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_first_zero_index</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
@@ -2520,9 +2517,8 @@ None
 </div>
 </div>
 </section>
-</section>
-<section id="continue">
-<h3>continue<a class="headerlink" href="#continue" title="Permalink to this heading">#</a></h3>
+<section id="id3">
+<h3>continue<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ITEM</span> <span class="ow">in</span> <span class="n">CONTAINER</span><span class="p">:</span>
@@ -2804,7 +2800,7 @@ skip negative number
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Loops: for</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops-while">Loops: while</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops-break-continue-else">Loops: break, continue, else</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contnue">contnue</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continue">continue</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#break">break</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#else">else</a></li>
 </ul>
@@ -2817,24 +2813,18 @@ skip negative number
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured-programming">Structured Programming</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence">Sequence</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branching">Branching</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#indentation-matters-in-python">Indentation matters in Python!</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branching">Branching</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indentation-matters-in-python">Indentation matters in Python!</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops">Loops</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#while">while</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#once-again-indentation-matters">Once again indentation matters</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#euclid-s-algorithm">Euclid’s algorithm</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#while">while</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#once-again-indentation-matters">Once again indentation matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euclid-s-algorithm">Euclid’s algorithm</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for">for</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">break</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#return-as-break-early-return">return as break (early return)</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continue">continue</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">break</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#return-as-break-early-return">return as break (early return)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">continue</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-list">Sort list</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-tuple">Sort tuple</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dict-sort">dict sort</a></li>
