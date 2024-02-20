@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Estimations &#8212; ML book</title>
+    <title>Independence and random vectors &#8212; ML book</title>
   
   
   
@@ -65,11 +65,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'math/stats/MLE';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'math/proba/independence';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Notation" href="../../notation.html" />
-    <link rel="prev" title="Limit theorems" href="limit_theorems.html" />
+    <link rel="next" title="Statistics" href="../statistics.html" />
+    <link rel="prev" title="Entropy" href="entropy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -329,15 +329,15 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../calculus/optimization.html">Optimization</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../probability.html">Probability</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../proba/rvs.html">Random variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../proba/entropy.html">Entropy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../proba/independence.html">Independence and random vectors</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../probability.html">Probability</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rvs.html">Random variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="entropy.html">Entropy</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Independence and random vectors</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../statistics.html">Statistics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="limit_theorems.html">Limit theorems</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Estimations</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
 </ul>
 </li>
 </ul>
@@ -400,7 +400,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/math/stats/MLE.ipynb" target="_blank"
+      <li><a href="../../_sources/math/proba/independence.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -482,7 +482,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Estimations</h1>
+    <h1>Independence and random vectors</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -492,11 +492,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias">Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consistency">Consistency</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-decomposition">Bias-variance decomposition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asymptotic-normality">Asymptotic normality</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-estimation-mle">Maximum likelihood estimation (MLE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-events">Independent events</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probability">Conditional probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-total-probability">Law of total probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-rule">Bayes’ rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-vectors">Random vectors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-random-variables">Independent random variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multivariate-normal-distribution">Multivariate normal distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
             </nav>
@@ -509,113 +511,134 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="estimations">
-<h1>Estimations<a class="headerlink" href="#estimations" title="Permalink to this heading">#</a></h1>
-<section id="bias">
-<h2>Bias<a class="headerlink" href="#bias" title="Permalink to this heading">#</a></h2>
-<p>Let <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> be an i.i.d. sample from some distribution <span class="math notranslate nohighlight">\(F_\theta(x)\)</span>.
-Estimation <span class="math notranslate nohighlight">\(\widehat\theta = \widehat\theta (X_1, \ldots, X_n)\)</span> of <span class="math notranslate nohighlight">\(\theta\)</span> is called <strong>unbiased</strong> if
-<span class="math notranslate nohighlight">\(\mathbb E \widehat\theta = \theta\)</span>. Otherwise <span class="math notranslate nohighlight">\(\widehat\theta\)</span> is called <strong>biased</strong>, and its bias equals to</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="independence-and-random-vectors">
+<h1>Independence and random vectors<a class="headerlink" href="#independence-and-random-vectors" title="Permalink to this heading">#</a></h1>
+<section id="independent-events">
+<h2>Independent events<a class="headerlink" href="#independent-events" title="Permalink to this heading">#</a></h2>
+<p>Events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are called <strong>independent</strong> if</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{bias}(\widehat \theta) = \mathbb E \widehat\theta - \theta.
+    \mathbb P(A\cap B) = \mathbb P(A) \cdot \mathbb P(B).
 \]</div>
-<p>For example, sample average <span class="math notranslate nohighlight">\(\widehat\theta = \overline X_n\)</span> is unbiased estimate of mean <span class="math notranslate nohighlight">\(\theta\)</span> since</p>
-<div class="math notranslate nohighlight">
-\[
-    \mathbb E \overline{X}_n = \frac 1n \sum\limits_{k = 1}^n \mathbb E X_k = \frac 1n\cdot n\theta = \theta.
-\]</div>
-<p>Sometimes estimation <span class="math notranslate nohighlight">\(\widehat\theta_n = \widehat\theta(X_1, \dots, X_n)\)</span> is biased, but this bias vanishes as <span class="math notranslate nohighlight">\(n\)</span> becomes large. If <span class="math notranslate nohighlight">\(\lim\limits_{n\to\infty} \mathbb E\widehat\theta_n = \theta\)</span>, then estimation <span class="math notranslate nohighlight">\(\widehat\theta_n\)</span> is called <strong>asymptotically unbiased</strong>.</p>
 </section>
-<section id="consistency">
-<h2>Consistency<a class="headerlink" href="#consistency" title="Permalink to this heading">#</a></h2>
-<p>Estimation <span class="math notranslate nohighlight">\(\widehat\theta_n = \widehat\theta(X_1, \dots, X_n)\)</span> is called <strong>consistent</strong> if it converges to <span class="math notranslate nohighlight">\(\theta\)</span> in distribution: <span class="math notranslate nohighlight">\(\widehat\theta_n \stackrel{P}{\to} \theta\)</span>, i.e.,</p>
+<section id="conditional-probability">
+<h2>Conditional probability<a class="headerlink" href="#conditional-probability" title="Permalink to this heading">#</a></h2>
+<p>The probability of the event <span class="math notranslate nohighlight">\(A\)</span> given that another event <span class="math notranslate nohighlight">\(B\)</span> has happened is called <strong>condition probability</strong> <span class="math notranslate nohighlight">\(\mathbb P(A \vert B)\)</span>. If <span class="math notranslate nohighlight">\(\mathbb P(B) &gt; 0\)</span> then</p>
 <div class="math notranslate nohighlight">
 \[
-  \lim\limits_{n \to \infty} \mathbb{P}(|\widehat\theta_n - \theta| &gt; \varepsilon) = 0 \text{ for all } \varepsilon &gt; 0.
+    \mathbb P(A \vert B) = \frac{\mathbb P(A \cap B)}{\mathbb P(B)}.
 \]</div>
-<p>Due to the law of large numbers <span class="math notranslate nohighlight">\(\widehat\theta = \overline{X}_n\)</span> is a consistent estimation for expectation <span class="math notranslate nohighlight">\(\theta = \mathbb EX_1\)</span> for any i.i.d. sample <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span>.</p>
+<p>Note that <span class="math notranslate nohighlight">\(\mathbb P(A\vert B) = \mathbb P(A)\)</span> if the events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are independent. This is quite natural: for independent events the knowledge about happening or not happening of the event <span class="math notranslate nohighlight">\(B\)</span> does not affect <span class="math notranslate nohighlight">\(\mathbb P(A)\)</span>.</p>
 </section>
-<section id="bias-variance-decomposition">
-<h2>Bias-variance decomposition<a class="headerlink" href="#bias-variance-decomposition" title="Permalink to this heading">#</a></h2>
-<p><strong>Mean squared error</strong> (<strong>MSE</strong>) of <span class="math notranslate nohighlight">\(\widehat{\theta}\)</span> is</p>
+<section id="law-of-total-probability">
+<h2>Law of total probability<a class="headerlink" href="#law-of-total-probability" title="Permalink to this heading">#</a></h2>
+<p>If <span class="math notranslate nohighlight">\(\Omega = A_1 \bigsqcup A_2 \bigsqcup \ldots \bigsqcup A_n\)</span> then</p>
+<div class="math notranslate nohighlight" id="equation-total-proba">
+<span class="eqno">(68)<a class="headerlink" href="#equation-total-proba" title="Permalink to this equation">#</a></span>\[    \mathbb P(B) = \sum\limits_{k=1}^n \mathbb P(B\vert A_k) \mathbb P(A_k).\]</div>
+<p>This <strong>law of total probability</strong> also holds after conditioning on some event <span class="math notranslate nohighlight">\(C\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{MSE}(\widehat{\theta}) = \mathbb{E}(\widehat{\theta} - \theta)^2.
+    \mathbb P(B \vert C) = \sum\limits_{k=1}^n \mathbb P(B\vert A_k, C) \mathbb P(A_k\vert C).
 \]</div>
-<p><strong>Bias-variance decomposition</strong>:</p>
-<div class="math notranslate nohighlight">
-\[
-\mathrm{MSE}(\widehat{\theta}) = \text{bias}^2(\widehat{\theta}) + \mathbb{V}(\widehat{\theta}).
-\]</div>
-<div class="dropdown admonition">
-<p class="admonition-title">Proof</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{multline*}
-\mathrm{MSE}(\widehat{\theta}) = \mathbb{E}(\widehat{\theta} - \theta)^2 =
-\mathbb{E}\big(\widehat{\theta} - \mathbb E\widehat\theta + \mathbb E\widehat\theta  - \theta\big)^2=\\
-=\mathbb{E}\big(\widehat{\theta} - \mathbb E\widehat\theta\big)^2 + 2\mathbb{E}(\widehat{\theta} - \mathbb E\widehat\theta)(\mathbb E\widehat\theta - \theta) + 
-\mathbb{E}\big(\mathbb E\widehat\theta - \theta\big)^2 = \\
-  = \mathbb{V}(\widehat{\theta})  + 2\big(\underbrace{\mathbb{E}\widehat{\theta} - \mathbb E\widehat\theta}_{=0}\big)\big(\mathbb E\widehat\theta - \theta\big) + \mathrm{bias}^2(\widehat{\theta}).
-\end{multline*}
-\end{split}\]</div>
-</div>
-<p>If <span class="math notranslate nohighlight">\(\lim\limits_{n\to\infty}\mathrm{MSE}(\widehat{\theta}_n) = 0\)</span>, then estimation <span class="math notranslate nohighlight">\(\widehat{\theta}_n\)</span> of <span class="math notranslate nohighlight">\(\theta\)</span> asymptotically unbiased and consistent.</p>
 </section>
-<section id="asymptotic-normality">
-<h2>Asymptotic normality<a class="headerlink" href="#asymptotic-normality" title="Permalink to this heading">#</a></h2>
-<p>Estimation <span class="math notranslate nohighlight">\(\widehat{\theta}_n\)</span> is <strong>asymptotically normal</strong> if <span class="math notranslate nohighlight">\(\frac{\widehat{\theta}_n - \theta}{\mathrm{se}(\widehat{\theta}_n)} \stackrel{D}{\to} \mathcal N(0,1)\)</span>, i.e.,</p>
+<section id="bayes-rule">
+<h2>Bayes’ rule<a class="headerlink" href="#bayes-rule" title="Permalink to this heading">#</a></h2>
+<p>From the equality</p>
 <div class="math notranslate nohighlight">
 \[
-    \lim\limits_{n\to\infty}\mathbb P\bigg(\frac{\widehat{\theta}_n - \theta}{\mathrm{se}(\widehat{\theta}_n)} \leqslant z\bigg) = \mathbb \Phi(z), \quad \mathrm{se}(\widehat{\theta}_n) = \sqrt{\mathbb V\widehat{\theta}_n}.
+    \mathbb P(A\vert B) \mathbb P(B) = \mathbb P(A \cap B) = \mathbb P(B\vert A) \mathbb P(A)
 \]</div>
-<p>If <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> is an i.i.d. sample from some distribution with finite expection <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>, then according to the central limit theorem <span class="math notranslate nohighlight">\(\overline X_n\)</span> is asymptotically normal estimation of <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+<p>one can deduce <strong>Bayes’ theorem</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb P(A\vert B) =  \frac{\mathbb P(B\vert A) \mathbb P(A)}{\mathbb P(B)}
+\]</div>
+<p>Bayes’ theorem often combined with law of total probability <a class="reference internal" href="#equation-total-proba">(68)</a>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb P(A_k\vert B) =  \frac{\mathbb P(B\vert A_k) \mathbb P(A_k)}{\sum\limits_{k=1}^n \mathbb P(B\vert A_k) \mathbb P(A_k)}.
+\]</div>
 </section>
-<section id="maximum-likelihood-estimation-mle">
-<h2>Maximum likelihood estimation (MLE)<a class="headerlink" href="#maximum-likelihood-estimation-mle" title="Permalink to this heading">#</a></h2>
-<p>Let i.i.d. sample <span class="math notranslate nohighlight">\(X_1, \ldots, X_n \sim F_\theta(x)\)</span>.
-<strong>Правдоподобие</strong> (<strong>функция правдоподобия</strong>, <strong>likelihood</strong>) выборки <span class="math notranslate nohighlight">\(X_1,\ldots, \ldots X_n\)</span> — это просто её совместная pmf или pdf. Вне зависимости от типа распределения будем обозначать правдоподобие как</p>
+<section id="random-vectors">
+<h2>Random vectors<a class="headerlink" href="#random-vectors" title="Permalink to this heading">#</a></h2>
+<p>A <strong>random vector</strong> <span class="math notranslate nohighlight">\(\boldsymbol \xi = (\xi_1, \ldots, \xi_n) \in \mathbb R^n\)</span> is just a vector of random variables. It can be either discrete or countinuos depending on the types of <span class="math notranslate nohighlight">\(\xi_k\)</span>. Pmf of a discrete random vector is a tensor</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal L(\theta) \equiv L(X_1, \ldots, X_n \vert \theta) = p(X_1, \ldots, X_n \vert \theta).
+ p_{i_1i_2\ldots i_n} = \mathbb P(\xi_1 = i_1, \xi_2 = i_2, \ldots, \xi_n = i_n).
 \]</div>
-<p>Если выборка i.i.d., то функция правдоподобия распадается в произведение одномерных функций:</p>
+<p>with properties</p>
 <div class="math notranslate nohighlight">
 \[
-L(X_1, \ldots, X_n \vert \theta) = \prod\limits_{k=1}^n \log p(X_k\vert \theta). 
+    p_{i_1i_2\ldots i_n} \geqslant 0,\quad \sum\limits_{i_1,\ldots, i_n}p_{i_1i_2\ldots i_n} = 1.
 \]</div>
-<p><strong>Оценка максимального правдоподобия</strong> (<strong>maximum likelihood estimation</strong>, <strong>MLE</strong>) максимизирует правдоподобие:</p>
+<p>Pdf <span class="math notranslate nohighlight">\(p_{\boldsymbol \xi}(x_1, \ldots, x_n)\)</span> of a continuous vector is often called <strong>joint density</strong> of the random vector <span class="math notranslate nohighlight">\(\boldsymbol \xi\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-    \widehat \theta_{\mathrm{ML}} =  \arg \max\limits_{\theta} \mathcal L(\theta)
+  \mathbb P(\boldsymbol \xi \in A) = \int\limits_A p(x_1, \ldots, x_n)\,dx_1\ldots dx_n.
 \]</div>
-<p>Поскольку максимизировать сумму проще, чем произведение, обычно переходят к логарифму правдоподобия (<strong>log-likelihood</strong>). Это особенно удобно в случае i.i.d. выборки, тогда</p>
+<p>Joint density is a nonnegative function which integrates to <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Expectation of a random vector is calculated elementwise:</p>
 <div class="math notranslate nohighlight">
 \[
-    \widehat \theta_{\mathrm{ML}} =  \arg \max\limits_{\theta} \log \mathcal L(\theta) =
-    \arg \max\limits_{\theta} \sum\limits_{k=1}^n p(X_k\vert \theta).
+    \mathbb E\xi =  (\mathbb E\xi_1, \ldots, \mathbb E\xi_n).
 \]</div>
-<p><strong>Properties of MLE</strong></p>
-<ul class="simple">
-<li><p>consistency: <span class="math notranslate nohighlight">\(\widehat \theta_{\mathrm{ML}} \stackrel{P}{\to} \theta\)</span>;</p></li>
-<li><p>equivariance: if <span class="math notranslate nohighlight">\(\widehat \theta_{\mathrm{ML}}\)</span> — MLE for <span class="math notranslate nohighlight">\(\theta\)</span> then <span class="math notranslate nohighlight">\(\varphi(\theta)\)</span> — MLE for <span class="math notranslate nohighlight">\(\varphi(\theta)\)</span>;</p></li>
-<li><p>asymptotic normality: <span class="math notranslate nohighlight">\(\frac{\widehat \theta_{\mathrm{ML}} - \theta}{\widehat{\mathrm{se}}} \stackrel{D}{\to} \mathcal N(0,1)\)</span>;</p></li>
-<li><p>асимптотическая оптимальность: при достаточно больших <span class="math notranslate nohighlight">\(n\)</span> оценка
-<span class="math notranslate nohighlight">\(\widehat \theta_{\mathrm{ML}}\)</span> имеет минимальную дисперсию.</p></li>
-</ul>
+<p><strong>Covariance matrix</strong> of a random vector <span class="math notranslate nohighlight">\(\boldsymbol \xi = (\xi_1, \ldots, \xi_n)\)</span> is an <span class="math notranslate nohighlight">\(n\times n\)</span> matrix <span class="math notranslate nohighlight">\(\mathrm{cov}(\boldsymbol \xi , \boldsymbol \xi) = \mathbb E(\boldsymbol\xi - \mathbb E \boldsymbol \xi)(\boldsymbol\xi - \mathbb E \boldsymbol \xi)^\mathsf{T}\)</span>. In other words,</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathrm{cov}(\boldsymbol \xi , \boldsymbol \xi)_{ij} = \mathrm{cov}(\xi_i, \xi_j), \quad 1\leqslant i, j\leqslant n.
+\]</div>
+</section>
+<section id="independent-random-variables">
+<h2>Independent random variables<a class="headerlink" href="#independent-random-variables" title="Permalink to this heading">#</a></h2>
+<p>Discrete random variables <span class="math notranslate nohighlight">\(\xi\)</span> and <span class="math notranslate nohighlight">\(\eta\)</span> are called <strong>independent</strong> if</p>
+<div class="math notranslate nohighlight" id="equation-multivariate-gaussian">
+<span class="eqno">(69)<a class="headerlink" href="#equation-multivariate-gaussian" title="Permalink to this equation">#</a></span>\[    \mathbb P(\xi = x_i, \eta = y_j) = \mathbb P(\xi = x_i)\mathbb P(\eta = y_j) \text{ for all } i, j.\]</div>
+<p>Similarly, two continuous random variables <span class="math notranslate nohighlight">\(\xi\)</span> and <span class="math notranslate nohighlight">\(\eta\)</span> are independent if their joint density <span class="math notranslate nohighlight">\(p(x, y)\)</span> is equal to product of densities:</p>
+<div class="math notranslate nohighlight">
+\[
+    p(x, y) = p_{\xi}(x) p_\eta(y).
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(\xi\)</span> and <span class="math notranslate nohighlight">\(\eta\)</span> are independent, their covariance is <span class="math notranslate nohighlight">\(0\)</span>, and <span class="math notranslate nohighlight">\(\mathbb V(\xi + \eta) = \mathbb V \xi + \mathbb V \eta\)</span>.</p>
+<p>Random variables <span class="math notranslate nohighlight">\(\xi_1\ldots, \xi_n\)</span> are called <strong>mutually independent</strong> if their pmf or pdf equals to the product of one-dimensional ones. In this case the random vector <span class="math notranslate nohighlight">\(\boldsymbol \xi = (\xi_1, \ldots, \xi_n)\)</span> has mutually independent coordinates. Covariance matrix of such random vector is diagonal:</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathrm{cov}(\boldsymbol \xi, \boldsymbol \xi) = \mathrm{diag}\{\mathbb V\xi_1, \ldots, \mathbb V\xi_n\}.
+\]</div>
+</section>
+<section id="multivariate-normal-distribution">
+<h2>Multivariate normal distribution<a class="headerlink" href="#multivariate-normal-distribution" title="Permalink to this heading">#</a></h2>
+<p><strong>Multivariate normal (gaussian) distribution</strong> <span class="math notranslate nohighlight">\(\mathcal{N}(\boldsymbol\mu, \boldsymbol\Sigma)\)</span> is specified by its joint density</p>
+<div class="math notranslate nohighlight">
+\[
+p(\boldsymbol x) = \frac1{(2\pi)^{n/2}\sqrt{\det\boldsymbol\Sigma}}\exp\left(-\frac12(\boldsymbol x - \boldsymbol\mu)^T\boldsymbol\Sigma^{-1}(\boldsymbol x - \boldsymbol\mu)\right),
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol x, \boldsymbol \mu\in\mathbb{R}^n\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol\Sigma\)</span> is a symmetric invertible matrix of shape <span class="math notranslate nohighlight">\(n\times n\)</span>.</p>
+<p>If a random vector <span class="math notranslate nohighlight">\(\boldsymbol \xi \sim \mathcal{N}(\boldsymbol\mu, \boldsymbol\Sigma)\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb E\boldsymbol \xi =\boldsymbol \mu, \quad \mathrm{cov}(\boldsymbol \xi, \boldsymbol \xi ) = \boldsymbol \Sigma.
+\]</div>
+<p>Any linear transformation of a gaussian random vector is also gaussian: if <span class="math notranslate nohighlight">\(\boldsymbol \xi \sim \mathcal{N}(\boldsymbol\mu, \boldsymbol\Sigma)\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol \eta =  \boldsymbol{A\xi} + \boldsymbol b\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol \eta \sim \mathcal{N}(\boldsymbol{A\mu} + \boldsymbol b, \boldsymbol{A\Sigma A}^T).
+\]</div>
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Let <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> be an i.i.d. sample from <span class="math notranslate nohighlight">\(U[0, \theta]\)</span> and <span class="math notranslate nohighlight">\(\widehat\theta = X_{(n)}\)</span>. Is this estimation unbiased? Asymptotically unbiased? Consistent?</p></li>
-<li><p>Show that estimation <span class="math notranslate nohighlight">\(\widehat{\theta}_n\)</span> is consistent if it is asymptotically unbiased and  <span class="math notranslate nohighlight">\(\lim\limits_{n\to\infty}\mathbb{V}(\widehat{\theta}_n) = 0\)</span>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> be an i.i.d. sample from <span class="math notranslate nohighlight">\(U[0, 2\theta]\)</span>. Show that sample median <span class="math notranslate nohighlight">\(\mathrm{med}(X_1, \ldots, X_n)\)</span> is unbiased estimation of <span class="math notranslate nohighlight">\(\theta\)</span>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> be an i.i.d. sample from a distribution with finite moments <span class="math notranslate nohighlight">\(\mathbb EX_1\)</span> and <span class="math notranslate nohighlight">\(\mathbb EX_1^2\)</span>. Is sample variance <span class="math notranslate nohighlight">\(\overline S_n\)</span> unbiased estimation of <span class="math notranslate nohighlight">\(\theta = \mathbb V X_1\)</span>? Asymptotically unbiased?</p></li>
-<li><p>There are <span class="math notranslate nohighlight">\(k\)</span> heads and <span class="math notranslate nohighlight">\(n-k\)</span> tails in <span class="math notranslate nohighlight">\(n\)</span> independent Bernoulli trials. Find MLE of the probability of heads.</p></li>
-<li><p>Find MLE estimation of <span class="math notranslate nohighlight">\(\lambda\)</span> if <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> is an i.i.d. sample from <span class="math notranslate nohighlight">\(\mathrm{Pois}(\lambda)\)</span>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> be i.i.d. sample from <span class="math notranslate nohighlight">\(\mathcal N(\mu, \tau)\)</span>. Find MLE of <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\tau\)</span>.</p></li>
-<li><p>Find MLE estimation of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> if <span class="math notranslate nohighlight">\(X_1, \ldots, X_n \sim U[a, b]\)</span>.</p></li>
+<ol class="arabic">
+<li><p>Given that a family has a boy, what is the probability that both children are boys?</p></li>
+<li><p>Среди населения <span class="math notranslate nohighlight">\(33.7\%\)</span> имеют первую группу крови, <span class="math notranslate nohighlight">\(37.5\%\)</span> — вторую, <span class="math notranslate nohighlight">\(20.9\%\)</span> — третью, <span class="math notranslate nohighlight">\(7.9\%\)</span> — четвёртую. При переливании крови надо учитывать группы крови донора и рецепиента:</p>
+<ul class="simple">
+<li><p>реципиенту с четвёртой группой крови можно перелить кровь любой группы;</p></li>
+<li><p>реципиентам со второй и третьей группами можно перелить кровь той же группы или первой;</p></li>
+<li><p>реципиентам с первой группой крови можно перелить только кровь первой группы.</p></li>
+</ul>
+<p>С какой вероятностью допустимо переливание в случайно взятой паре донор—реципиент?</p>
+</li>
+<li><p>Suppose that <span class="math notranslate nohighlight">\(5\)</span> men out of <span class="math notranslate nohighlight">\(100\)</span> and <span class="math notranslate nohighlight">\(25\)</span> women out of <span class="math notranslate nohighlight">\(10000\)</span> are colorblind. A colorblind person is chosen at random. What is the probability of them being male?</p></li>
+<li><p>Show that covariance matrix of any random vector is symmetric and semi-positive definite.</p></li>
+<li><p>Find pdf of a gaussian random vector <span class="math notranslate nohighlight">\(\boldsymbol \xi \in \mathbb R^n\)</span> with mutually independent coordinates.</p></li>
 </ol>
 </section>
 </section>
@@ -633,7 +656,7 @@ L(X_1, \ldots, X_n \vert \theta) = \prod\limits_{k=1}^n \log p(X_k\vert \theta).
         },
         kernelOptions: {
             name: "python3",
-            path: "./math/stats"
+            path: "./math/proba"
         },
         predefinedOutput: true
     }
@@ -652,20 +675,20 @@ L(X_1, \ldots, X_n \vert \theta) = \prod\limits_{k=1}^n \log p(X_k\vert \theta).
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="limit_theorems.html"
+       href="entropy.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Limit theorems</p>
+        <p class="prev-next-title">Entropy</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../notation.html"
+       href="../statistics.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Notation</p>
+        <p class="prev-next-title">Statistics</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -687,11 +710,13 @@ L(X_1, \ldots, X_n \vert \theta) = \prod\limits_{k=1}^n \log p(X_k\vert \theta).
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias">Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consistency">Consistency</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-decomposition">Bias-variance decomposition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asymptotic-normality">Asymptotic normality</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-estimation-mle">Maximum likelihood estimation (MLE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-events">Independent events</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probability">Conditional probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-total-probability">Law of total probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-rule">Bayes’ rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-vectors">Random vectors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-random-variables">Independent random variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multivariate-normal-distribution">Multivariate normal distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
   </nav></div>

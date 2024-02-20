@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Estimations &#8212; ML book</title>
+    <title>Limit theorems &#8212; ML book</title>
   
   
   
@@ -65,11 +65,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'math/stats/MLE';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'math/stats/limit_theorems';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Notation" href="../../notation.html" />
-    <link rel="prev" title="Limit theorems" href="limit_theorems.html" />
+    <link rel="next" title="Estimations" href="MLE.html" />
+    <link rel="prev" title="Statistics" href="../statistics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -336,8 +336,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../statistics.html">Statistics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="limit_theorems.html">Limit theorems</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Estimations</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MLE.html">Estimations</a></li>
 </ul>
 </li>
 </ul>
@@ -400,7 +400,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/math/stats/MLE.ipynb" target="_blank"
+      <li><a href="../../_sources/math/stats/limit_theorems.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -482,7 +482,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Estimations</h1>
+    <h1>Limit theorems</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -492,11 +492,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias">Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consistency">Consistency</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-decomposition">Bias-variance decomposition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asymptotic-normality">Asymptotic normality</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-estimation-mle">Maximum likelihood estimation (MLE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-large-numbers">Law of large numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-limit-theorem">Central limit theorem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
             </nav>
@@ -509,113 +506,68 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="estimations">
-<h1>Estimations<a class="headerlink" href="#estimations" title="Permalink to this heading">#</a></h1>
-<section id="bias">
-<h2>Bias<a class="headerlink" href="#bias" title="Permalink to this heading">#</a></h2>
-<p>Let <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> be an i.i.d. sample from some distribution <span class="math notranslate nohighlight">\(F_\theta(x)\)</span>.
-Estimation <span class="math notranslate nohighlight">\(\widehat\theta = \widehat\theta (X_1, \ldots, X_n)\)</span> of <span class="math notranslate nohighlight">\(\theta\)</span> is called <strong>unbiased</strong> if
-<span class="math notranslate nohighlight">\(\mathbb E \widehat\theta = \theta\)</span>. Otherwise <span class="math notranslate nohighlight">\(\widehat\theta\)</span> is called <strong>biased</strong>, and its bias equals to</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="limit-theorems">
+<h1>Limit theorems<a class="headerlink" href="#limit-theorems" title="Permalink to this heading">#</a></h1>
+<section id="law-of-large-numbers">
+<h2>Law of large numbers<a class="headerlink" href="#law-of-large-numbers" title="Permalink to this heading">#</a></h2>
+<p>Sample average of an i.i.d. sample <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> with finite mean <span class="math notranslate nohighlight">\(\mathbb EX_1 = \mu\)</span> converges to <span class="math notranslate nohighlight">\(\mu\)</span> <strong>in probability</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{bias}(\widehat \theta) = \mathbb E \widehat\theta - \theta.
+    \overline X_n \stackrel{P}{\to} \mu, \quad n\to \infty,
 \]</div>
-<p>For example, sample average <span class="math notranslate nohighlight">\(\widehat\theta = \overline X_n\)</span> is unbiased estimate of mean <span class="math notranslate nohighlight">\(\theta\)</span> since</p>
+<p>i.e., for all <span class="math notranslate nohighlight">\(\varepsilon &gt; 0\)</span></p>
 <div class="math notranslate nohighlight">
 \[
-    \mathbb E \overline{X}_n = \frac 1n \sum\limits_{k = 1}^n \mathbb E X_k = \frac 1n\cdot n\theta = \theta.
-\]</div>
-<p>Sometimes estimation <span class="math notranslate nohighlight">\(\widehat\theta_n = \widehat\theta(X_1, \dots, X_n)\)</span> is biased, but this bias vanishes as <span class="math notranslate nohighlight">\(n\)</span> becomes large. If <span class="math notranslate nohighlight">\(\lim\limits_{n\to\infty} \mathbb E\widehat\theta_n = \theta\)</span>, then estimation <span class="math notranslate nohighlight">\(\widehat\theta_n\)</span> is called <strong>asymptotically unbiased</strong>.</p>
-</section>
-<section id="consistency">
-<h2>Consistency<a class="headerlink" href="#consistency" title="Permalink to this heading">#</a></h2>
-<p>Estimation <span class="math notranslate nohighlight">\(\widehat\theta_n = \widehat\theta(X_1, \dots, X_n)\)</span> is called <strong>consistent</strong> if it converges to <span class="math notranslate nohighlight">\(\theta\)</span> in distribution: <span class="math notranslate nohighlight">\(\widehat\theta_n \stackrel{P}{\to} \theta\)</span>, i.e.,</p>
-<div class="math notranslate nohighlight">
-\[
-  \lim\limits_{n \to \infty} \mathbb{P}(|\widehat\theta_n - \theta| &gt; \varepsilon) = 0 \text{ for all } \varepsilon &gt; 0.
-\]</div>
-<p>Due to the law of large numbers <span class="math notranslate nohighlight">\(\widehat\theta = \overline{X}_n\)</span> is a consistent estimation for expectation <span class="math notranslate nohighlight">\(\theta = \mathbb EX_1\)</span> for any i.i.d. sample <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span>.</p>
-</section>
-<section id="bias-variance-decomposition">
-<h2>Bias-variance decomposition<a class="headerlink" href="#bias-variance-decomposition" title="Permalink to this heading">#</a></h2>
-<p><strong>Mean squared error</strong> (<strong>MSE</strong>) of <span class="math notranslate nohighlight">\(\widehat{\theta}\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[
-\mathrm{MSE}(\widehat{\theta}) = \mathbb{E}(\widehat{\theta} - \theta)^2.
-\]</div>
-<p><strong>Bias-variance decomposition</strong>:</p>
-<div class="math notranslate nohighlight">
-\[
-\mathrm{MSE}(\widehat{\theta}) = \text{bias}^2(\widehat{\theta}) + \mathbb{V}(\widehat{\theta}).
+\lim\limits_{n\to\infty}\mathbb P(\vert \overline X_n  - \mu \vert &gt; \varepsilon) = 0.
 \]</div>
 <div class="dropdown admonition">
-<p class="admonition-title">Proof</p>
+<p class="admonition-title">Strong LLN</p>
+<p>A stronger version of the law of large numbers states that <span class="math notranslate nohighlight">\(\overline X_n\)</span> converges to <span class="math notranslate nohighlight">\(\mu\)</span> <strong>almost surely</strong>:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{multline*}
-\mathrm{MSE}(\widehat{\theta}) = \mathbb{E}(\widehat{\theta} - \theta)^2 =
-\mathbb{E}\big(\widehat{\theta} - \mathbb E\widehat\theta + \mathbb E\widehat\theta  - \theta\big)^2=\\
-=\mathbb{E}\big(\widehat{\theta} - \mathbb E\widehat\theta\big)^2 + 2\mathbb{E}(\widehat{\theta} - \mathbb E\widehat\theta)(\mathbb E\widehat\theta - \theta) + 
-\mathbb{E}\big(\mathbb E\widehat\theta - \theta\big)^2 = \\
-  = \mathbb{V}(\widehat{\theta})  + 2\big(\underbrace{\mathbb{E}\widehat{\theta} - \mathbb E\widehat\theta}_{=0}\big)\big(\mathbb E\widehat\theta - \theta\big) + \mathrm{bias}^2(\widehat{\theta}).
-\end{multline*}
-\end{split}\]</div>
+\[
+    \overline X_n \stackrel{a.s.}{\to} \mu  \iff \mathbb P\big(\lim\limits_{n\to\infty} \overline X_n = \mu\big) = 1.
+\]</div>
 </div>
-<p>If <span class="math notranslate nohighlight">\(\lim\limits_{n\to\infty}\mathrm{MSE}(\widehat{\theta}_n) = 0\)</span>, then estimation <span class="math notranslate nohighlight">\(\widehat{\theta}_n\)</span> of <span class="math notranslate nohighlight">\(\theta\)</span> asymptotically unbiased and consistent.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/f0e76082d09850ca083349d4450841fcbf548d5d9c164024f062e39dddff7bef.svg" src="../../_images/f0e76082d09850ca083349d4450841fcbf548d5d9c164024f062e39dddff7bef.svg" /></div>
+</div>
 </section>
-<section id="asymptotic-normality">
-<h2>Asymptotic normality<a class="headerlink" href="#asymptotic-normality" title="Permalink to this heading">#</a></h2>
-<p>Estimation <span class="math notranslate nohighlight">\(\widehat{\theta}_n\)</span> is <strong>asymptotically normal</strong> if <span class="math notranslate nohighlight">\(\frac{\widehat{\theta}_n - \theta}{\mathrm{se}(\widehat{\theta}_n)} \stackrel{D}{\to} \mathcal N(0,1)\)</span>, i.e.,</p>
+<section id="central-limit-theorem">
+<h2>Central limit theorem<a class="headerlink" href="#central-limit-theorem" title="Permalink to this heading">#</a></h2>
+<p>If i.i.d. samples <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> come from a distribution with finite variance <span class="math notranslate nohighlight">\(\mathbb VX_1 = \sigma ^2\)</span>, then</p>
 <div class="math notranslate nohighlight">
 \[
-    \lim\limits_{n\to\infty}\mathbb P\bigg(\frac{\widehat{\theta}_n - \theta}{\mathrm{se}(\widehat{\theta}_n)} \leqslant z\bigg) = \mathbb \Phi(z), \quad \mathrm{se}(\widehat{\theta}_n) = \sqrt{\mathbb V\widehat{\theta}_n}.
+    \mathbb E \overline{X}_n = \frac 1n \sum\limits_{k=1}^n \mathbb EX_k = \mu, \quad
+    \mathbb V \overline{X}_n = \frac 1{n^2} \sum\limits_{k=1}^n \mathbb VX_k = \frac{\sigma^2}n.
 \]</div>
-<p>If <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> is an i.i.d. sample from some distribution with finite expection <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>, then according to the central limit theorem <span class="math notranslate nohighlight">\(\overline X_n\)</span> is asymptotically normal estimation of <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
-</section>
-<section id="maximum-likelihood-estimation-mle">
-<h2>Maximum likelihood estimation (MLE)<a class="headerlink" href="#maximum-likelihood-estimation-mle" title="Permalink to this heading">#</a></h2>
-<p>Let i.i.d. sample <span class="math notranslate nohighlight">\(X_1, \ldots, X_n \sim F_\theta(x)\)</span>.
-<strong>Правдоподобие</strong> (<strong>функция правдоподобия</strong>, <strong>likelihood</strong>) выборки <span class="math notranslate nohighlight">\(X_1,\ldots, \ldots X_n\)</span> — это просто её совместная pmf или pdf. Вне зависимости от типа распределения будем обозначать правдоподобие как</p>
+<p><strong>Central limit theorem</strong> claims that <span class="math notranslate nohighlight">\(\overline{X}_n\)</span> looks like <span class="math notranslate nohighlight">\(\mathcal N\big(\mu, \frac{\sigma^2}n\big)\)</span> for big values of <span class="math notranslate nohighlight">\(n\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal L(\theta) \equiv L(X_1, \ldots, X_n \vert \theta) = p(X_1, \ldots, X_n \vert \theta).
+  Z_n := \frac{\sqrt n(\overline X_n - \mu)}{\sigma} \approx \mathcal N(0, 1) \text{ при } n \gg 1. 
 \]</div>
-<p>Если выборка i.i.d., то функция правдоподобия распадается в произведение одномерных функций:</p>
+<p>More precisely, <span class="math notranslate nohighlight">\(Z_n\)</span> converges to <span class="math notranslate nohighlight">\(\mathcal N(0,1)\)</span> <strong>in distribution</strong>, i.e.,</p>
 <div class="math notranslate nohighlight">
 \[
-L(X_1, \ldots, X_n \vert \theta) = \prod\limits_{k=1}^n \log p(X_k\vert \theta). 
+    \lim\limits_{n\to\infty}\mathbb P(Z_n \leqslant z) = \Phi(z), \quad \Phi(z) = \frac 1{\sqrt{2\pi}}\int\limits_{-\infty}^z e^{-\frac{t^2}2}dt.
 \]</div>
-<p><strong>Оценка максимального правдоподобия</strong> (<strong>maximum likelihood estimation</strong>, <strong>MLE</strong>) максимизирует правдоподобие:</p>
-<div class="math notranslate nohighlight">
-\[
-    \widehat \theta_{\mathrm{ML}} =  \arg \max\limits_{\theta} \mathcal L(\theta)
-\]</div>
-<p>Поскольку максимизировать сумму проще, чем произведение, обычно переходят к логарифму правдоподобия (<strong>log-likelihood</strong>). Это особенно удобно в случае i.i.d. выборки, тогда</p>
-<div class="math notranslate nohighlight">
-\[
-    \widehat \theta_{\mathrm{ML}} =  \arg \max\limits_{\theta} \log \mathcal L(\theta) =
-    \arg \max\limits_{\theta} \sum\limits_{k=1}^n p(X_k\vert \theta).
-\]</div>
-<p><strong>Properties of MLE</strong></p>
-<ul class="simple">
-<li><p>consistency: <span class="math notranslate nohighlight">\(\widehat \theta_{\mathrm{ML}} \stackrel{P}{\to} \theta\)</span>;</p></li>
-<li><p>equivariance: if <span class="math notranslate nohighlight">\(\widehat \theta_{\mathrm{ML}}\)</span> — MLE for <span class="math notranslate nohighlight">\(\theta\)</span> then <span class="math notranslate nohighlight">\(\varphi(\theta)\)</span> — MLE for <span class="math notranslate nohighlight">\(\varphi(\theta)\)</span>;</p></li>
-<li><p>asymptotic normality: <span class="math notranslate nohighlight">\(\frac{\widehat \theta_{\mathrm{ML}} - \theta}{\widehat{\mathrm{se}}} \stackrel{D}{\to} \mathcal N(0,1)\)</span>;</p></li>
-<li><p>асимптотическая оптимальность: при достаточно больших <span class="math notranslate nohighlight">\(n\)</span> оценка
-<span class="math notranslate nohighlight">\(\widehat \theta_{\mathrm{ML}}\)</span> имеет минимальную дисперсию.</p></li>
-</ul>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/c05954c46d6daed4a894b0041ecf75ba5582f72b2578f69dd5f7af51541d8689.svg" src="../../_images/c05954c46d6daed4a894b0041ecf75ba5582f72b2578f69dd5f7af51541d8689.svg" /></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/6a7407da7ed13c969b81b6a1bb7dff4d6193850ecbfac84274c69d9c5c3c52dc.svg" src="../../_images/6a7407da7ed13c969b81b6a1bb7dff4d6193850ecbfac84274c69d9c5c3c52dc.svg" /></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/77e143090f49107e41783ae86ea99d9b9d3ead2f4b2ae4c402535a23e8af71e7.svg" src="../../_images/77e143090f49107e41783ae86ea99d9b9d3ead2f4b2ae4c402535a23e8af71e7.svg" /></div>
+</div>
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Let <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> be an i.i.d. sample from <span class="math notranslate nohighlight">\(U[0, \theta]\)</span> and <span class="math notranslate nohighlight">\(\widehat\theta = X_{(n)}\)</span>. Is this estimation unbiased? Asymptotically unbiased? Consistent?</p></li>
-<li><p>Show that estimation <span class="math notranslate nohighlight">\(\widehat{\theta}_n\)</span> is consistent if it is asymptotically unbiased and  <span class="math notranslate nohighlight">\(\lim\limits_{n\to\infty}\mathbb{V}(\widehat{\theta}_n) = 0\)</span>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> be an i.i.d. sample from <span class="math notranslate nohighlight">\(U[0, 2\theta]\)</span>. Show that sample median <span class="math notranslate nohighlight">\(\mathrm{med}(X_1, \ldots, X_n)\)</span> is unbiased estimation of <span class="math notranslate nohighlight">\(\theta\)</span>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> be an i.i.d. sample from a distribution with finite moments <span class="math notranslate nohighlight">\(\mathbb EX_1\)</span> and <span class="math notranslate nohighlight">\(\mathbb EX_1^2\)</span>. Is sample variance <span class="math notranslate nohighlight">\(\overline S_n\)</span> unbiased estimation of <span class="math notranslate nohighlight">\(\theta = \mathbb V X_1\)</span>? Asymptotically unbiased?</p></li>
-<li><p>There are <span class="math notranslate nohighlight">\(k\)</span> heads and <span class="math notranslate nohighlight">\(n-k\)</span> tails in <span class="math notranslate nohighlight">\(n\)</span> independent Bernoulli trials. Find MLE of the probability of heads.</p></li>
-<li><p>Find MLE estimation of <span class="math notranslate nohighlight">\(\lambda\)</span> if <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> is an i.i.d. sample from <span class="math notranslate nohighlight">\(\mathrm{Pois}(\lambda)\)</span>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> be i.i.d. sample from <span class="math notranslate nohighlight">\(\mathcal N(\mu, \tau)\)</span>. Find MLE of <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\tau\)</span>.</p></li>
-<li><p>Find MLE estimation of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> if <span class="math notranslate nohighlight">\(X_1, \ldots, X_n \sim U[a, b]\)</span>.</p></li>
+<li><p>Show that <span class="math notranslate nohighlight">\(\overline S_n = \overline{X^2}_n - \big(\overline X_n\big)^2\)</span> where <span class="math notranslate nohighlight">\(\overline{X^2}_n = \frac 1n\sum\limits_{i=1}^n X_i^2\)</span>.</p></li>
 </ol>
 </section>
 </section>
@@ -652,20 +604,20 @@ L(X_1, \ldots, X_n \vert \theta) = \prod\limits_{k=1}^n \log p(X_k\vert \theta).
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="limit_theorems.html"
+       href="../statistics.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Limit theorems</p>
+        <p class="prev-next-title">Statistics</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../notation.html"
+       href="MLE.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Notation</p>
+        <p class="prev-next-title">Estimations</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -687,11 +639,8 @@ L(X_1, \ldots, X_n \vert \theta) = \prod\limits_{k=1}^n \log p(X_k\vert \theta).
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias">Bias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consistency">Consistency</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-decomposition">Bias-variance decomposition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asymptotic-normality">Asymptotic normality</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-estimation-mle">Maximum likelihood estimation (MLE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-large-numbers">Law of large numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-limit-theorem">Central limit theorem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
   </nav></div>
