@@ -168,6 +168,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW3.html">HW3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW4.html">HW4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW5.html">HW5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -534,7 +535,7 @@ document.write(`
 </div>
 </section>
 <section id="central-limit-theorem">
-<h2>Central limit theorem<a class="headerlink" href="#central-limit-theorem" title="Permalink to this heading">#</a></h2>
+<span id="clt"></span><h2>Central limit theorem<a class="headerlink" href="#central-limit-theorem" title="Permalink to this heading">#</a></h2>
 <p>If i.i.d. samples <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> come from a distribution with finite variance <span class="math notranslate nohighlight">\(\mathbb VX_1 = \sigma ^2\)</span>, then</p>
 <div class="math notranslate nohighlight">
 \[
@@ -553,21 +554,22 @@ document.write(`
 \]</div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/c05954c46d6daed4a894b0041ecf75ba5582f72b2578f69dd5f7af51541d8689.svg" src="../../_images/c05954c46d6daed4a894b0041ecf75ba5582f72b2578f69dd5f7af51541d8689.svg" /></div>
+<img alt="../../_images/d4df9820bb7e8d2eb5b4ec510cbfccde1d32a6c40244ee2e6a8f34d2f6cc390d.svg" src="../../_images/d4df9820bb7e8d2eb5b4ec510cbfccde1d32a6c40244ee2e6a8f34d2f6cc390d.svg" /></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/6a7407da7ed13c969b81b6a1bb7dff4d6193850ecbfac84274c69d9c5c3c52dc.svg" src="../../_images/6a7407da7ed13c969b81b6a1bb7dff4d6193850ecbfac84274c69d9c5c3c52dc.svg" /></div>
+<img alt="../../_images/31e774f4930d8721475e7b98d93b161ba6ca512a89286172772664ad3e055e2f.svg" src="../../_images/31e774f4930d8721475e7b98d93b161ba6ca512a89286172772664ad3e055e2f.svg" /></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/77e143090f49107e41783ae86ea99d9b9d3ead2f4b2ae4c402535a23e8af71e7.svg" src="../../_images/77e143090f49107e41783ae86ea99d9b9d3ead2f4b2ae4c402535a23e8af71e7.svg" /></div>
+<img alt="../../_images/54e1aba69834cdbb8b7df3c86aa6e3080f69f38d48e3e213c01d454f42c11fa8.svg" src="../../_images/54e1aba69834cdbb8b7df3c86aa6e3080f69f38d48e3e213c01d454f42c11fa8.svg" /></div>
 </div>
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Show that <span class="math notranslate nohighlight">\(\overline S_n = \overline{X^2}_n - \big(\overline X_n\big)^2\)</span> where <span class="math notranslate nohighlight">\(\overline{X^2}_n = \frac 1n\sum\limits_{i=1}^n X_i^2\)</span>.</p></li>
+<li><p>CLT and histograms from above show that <span class="math notranslate nohighlight">\(\overline X_n \sim \mathcal N\big(\mu, \frac {\sigma^2}n\big)\)</span>. What about sample variance? How would look distribution of <span class="math notranslate nohighlight">\(\overline S_n\)</span> for large <span class="math notranslate nohighlight">\(n\)</span>?</p></li>
 </ol>
 </section>
 </section>

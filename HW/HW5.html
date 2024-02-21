@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Probability &#8212; ML book</title>
+    <title>HW5 &#8212; ML book</title>
   
   
   
@@ -63,11 +63,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'math/probability';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'HW/HW5';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Random variables" href="proba/rvs.html" />
-    <link rel="prev" title="Optimization" href="calculus/optimization.html" />
+    <link rel="next" title="HW notMNIST" href="not_mnist_student.html" />
+    <link rel="prev" title="HW4" href="HW4.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -159,14 +161,15 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../HW/HW3.html">HW3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../HW/HW4.html">HW4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="HW1.html">HW1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HW2.html">HW2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HW3.html">HW3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HW4.html">HW4</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">HW5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
@@ -305,37 +308,37 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../python/visual.html">Data visualization</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Math for ML</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="lin_alg/vectors.html">Vectors</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/linear_algebra.html">Linear Algebra</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/vectors.html">Vectors</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="lin_alg/matrices.html">Matrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lin_alg/inverse.html">Inverse matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lin_alg/rank.html">Rank of a matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lin_alg/projections.html">Orthogonal projections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lin_alg/determinant.html">Determinants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lin_alg/eig.html">Eigenvalues and eigenvectors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lin_alg/diagonalize.html">Diagonalization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lin_alg/matrix_norms.html">Matrix norms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lin_alg/SVD.html">Singular Value Decomposition (SVD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/inverse.html">Inverse matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/rank.html">Rank of a matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/projections.html">Orthogonal projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/determinant.html">Determinants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/eig.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/diagonalize.html">Diagonalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/matrix_norms.html">Matrix norms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/lin_alg/SVD.html">Singular Value Decomposition (SVD)</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="calculus.html">Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="calculus/1-d.html">Derivative</a></li>
-<li class="toctree-l2"><a class="reference internal" href="calculus/multivariate.html">Multivariate calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="calculus/matrix_diff.html">Matrix calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="calculus/optimization.html">Optimization</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/calculus.html">Calculus</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/1-d.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/multivariate.html">Multivariate calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/matrix_diff.html">Matrix calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus/optimization.html">Optimization</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Probability</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="proba/rvs.html">Random variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="proba/entropy.html">Entropy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="proba/independence.html">Independence and random vectors</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/probability.html">Probability</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/rvs.html">Random variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/entropy.html">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/independence.html">Independence and random vectors</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="stats/limit_theorems.html">Limit theorems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stats/MLE.html">Estimations</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Estimations</a></li>
 </ul>
 </li>
 </ul>
@@ -398,7 +401,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/math/probability.md" target="_blank"
+      <li><a href="../_sources/HW/HW5.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -408,7 +411,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -467,7 +470,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -478,11 +483,27 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Probability</h1>
+    <h1>HW5</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-1-1-5-points">Task 5.1 (1.5 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-solution-here">YOUR SOLUTION HERE</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-2-1-5-points">Task 5.2 (1.5 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">YOUR SOLUTION HERE</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-3-1-point">Task 5.3 (1 point)</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -492,16 +513,61 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="probability">
-<h1>Probability<a class="headerlink" href="#probability" title="Permalink to this heading">#</a></h1>
-<blockquote class="epigraph">
-<div><p>Probability theory is nothing but common sense reduced to calculation.</p>
-<p class="attribution">—Pierre Laplace</p>
-</div></blockquote>
-<p>Принимая то или иное решение в условиях недостаточной информации, нам часто приходится взвешивать шансы, просчитывать риски, а то и вовсе уповать на удачу. Теория вероятностей предоставляет математические инструменты для проведения корректных рассуждений в условиях неопределённости, количественного измерения характеристик случайных событий и оценки правдоподобия их реализации.</p>
-<p>Probability theory and statistics are crucial fields which underpin modern areas machine learning and AI. For instance, a famous textbook <span id="id1">[<a class="reference internal" href="../bibliography.html#id3" title="Kevin P. Murphy. Probabilistic Machine Learning: An introduction. MIT Press, 2022. URL: probml.ai.">Murphy, 2022</a>]</span> has word “probabilistic” in its caption. In this approach all models of ML deal with random quantities, that’s why it is really important to get familiar with core ideas, tools and language of probability theory.</p>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="hw5">
+<span id="id1"></span><h1>HW5<a class="headerlink" href="#hw5" title="Permalink to this heading">#</a></h1>
+<section id="task-5-1-1-5-points">
+<h2>Task 5.1 (1.5 points)<a class="headerlink" href="#task-5-1-1-5-points" title="Permalink to this heading">#</a></h2>
+<p>For a one-dimensional gaussian <span class="math notranslate nohighlight">\(\xi \sim \mathcal N(\mu, \sigma^2)\)</span> there are well-known rules of one, two and three sigmas:</p>
+<ul class="simple">
+<li><p>one-sigma rule: <span class="math notranslate nohighlight">\(\mathbb P(\vert \xi - \mu \vert \leqslant \sigma) = \Phi(1) - \Phi(-1) \approx 0.6827\)</span></p></li>
+<li><p>two-sigma rule: <span class="math notranslate nohighlight">\(\mathbb P(\vert \xi - \mu \vert \leqslant 2\sigma) = \Phi(2) - \Phi(-2) \approx 0.9545\)</span></p></li>
+<li><p>three-sigma rule: <span class="math notranslate nohighlight">\(\mathbb P(\vert \xi - \mu \vert \leqslant 3\sigma) = \Phi(3) - \Phi(-3) \approx 0.9973\)</span></p></li>
+</ul>
+<figure class="align-center">
+<img alt="https://news.mit.edu/sites/default/files/styles/news_article__image_gallery/public/images/201202/20120208160239-1_0.jpg?itok=1X1a_HCs" src="https://news.mit.edu/sites/default/files/styles/news_article__image_gallery/public/images/201202/20120208160239-1_0.jpg?itok=1X1a_HCs" />
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+
+<span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">),</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.6826894921370859, 0.9544997361036416, 0.9973002039367398)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compute analagous values for a 2-d gaussian distribution <span class="math notranslate nohighlight">\(\boldsymbol \xi \sim \mathcal N(\boldsymbol 0, \boldsymbol I_2)\)</span>. Namely, find <span class="math notranslate nohighlight">\(\mathbb P(\Vert\boldsymbol \xi\Vert_2 \leqslant 1)\)</span>, <span class="math notranslate nohighlight">\(\mathbb P(\Vert\boldsymbol \xi\Vert_2 \leqslant 2)\)</span>, <span class="math notranslate nohighlight">\(\mathbb P(\Vert\boldsymbol \xi\Vert_2 \leqslant 3)\)</span>.</p>
+<p><strong>Note:</strong> this problem assumes analytic solution. If you provide a reliable numeric solution, you’ll receive <span class="math notranslate nohighlight">\(0.3\)</span> points as bonus.</p>
+<section id="your-solution-here">
+<h3>YOUR SOLUTION HERE<a class="headerlink" href="#your-solution-here" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="task-5-2-1-5-points">
+<h2>Task 5.2 (1.5 points)<a class="headerlink" href="#task-5-2-1-5-points" title="Permalink to this heading">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> is an i.i.d. sample from <span class="math notranslate nohighlight">\(\mathcal N(0, \sigma^2)\)</span> and <span class="math notranslate nohighlight">\(\widehat \sigma = \frac 1n \sum\limits_{i=1}^n |X_i|\)</span>.</p>
+<ul class="simple">
+<li><p>Find bias, se and MSE of the estimation <span class="math notranslate nohighlight">\(\widehat \sigma\)</span>. Is this estimation unbiased? (<strong>0.7 points</strong>)</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\widehat \sigma\)</span> turned out to be biased, fix it to get an unbiased estimation of <span class="math notranslate nohighlight">\(\sigma\)</span>. Find se of this corrected estimation. Is it consistent? Justify your answer. (<strong>0.8 points</strong>)</p></li>
+</ul>
+<section id="id2">
+<h3>YOUR SOLUTION HERE<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="task-5-3-1-point">
+<h2>Task 5.3 (1 point)<a class="headerlink" href="#task-5-3-1-point" title="Permalink to this heading">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> is an i.i.d. sample form <span class="math notranslate nohighlight">\(U[0, 2\theta]\)</span>. The parameter <span class="math notranslate nohighlight">\(\theta\)</span> can be estimated as
+<span class="math notranslate nohighlight">\(\widehat\theta = \overline X_n\)</span> (sample average) or <span class="math notranslate nohighlight">\(\tilde\theta = \mathrm{med}(X_1, \ldots, X_n)\)</span> (sample median). According to ML Handbook, both estimations are unbiased, and <span class="math notranslate nohighlight">\(\mathbb V \widehat\theta = \frac{\theta^2}{3n}\)</span>, <span class="math notranslate nohighlight">\(\mathbb V \tilde\theta = \frac{\theta^2}{n+3}\)</span>. Hence, due to the central limit theorem</p>
+<div class="math notranslate nohighlight">
+\[
+    \widehat\theta \approx \mathcal N\Big(\theta, \frac{\theta^2}{3n}\Big), \quad
+    \tilde\theta \approx \mathcal N\Big(\theta, \frac{\theta^2}{n+3}\Big), \quad n \gg 1.
+\]</div>
+<p>Plot two histograms on the same plot verifying this theoretical statements. Add two dashed lines for gaussians as it done <a class="reference internal" href="../math/stats/limit_theorems.html#clt"><span class="std std-ref">here</span></a>.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -517,7 +583,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./math"
+            path: "./HW"
         },
         predefinedOutput: true
     }
@@ -536,20 +602,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="calculus/optimization.html"
+       href="HW4.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Optimization</p>
+        <p class="prev-next-title">HW4</p>
       </div>
     </a>
     <a class="right-next"
-       href="proba/rvs.html"
+       href="not_mnist_student.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Random variables</p>
+        <p class="prev-next-title">HW notMNIST</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -562,6 +628,28 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-1-1-5-points">Task 5.1 (1.5 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-solution-here">YOUR SOLUTION HERE</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-2-1-5-points">Task 5.2 (1.5 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">YOUR SOLUTION HERE</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-5-3-1-point">Task 5.3 (1 point)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

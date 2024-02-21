@@ -337,7 +337,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../stats/limit_theorems.html">Limit theorems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/MLE.html">Estimations</a></li>
 </ul>
 </li>
 </ul>
@@ -523,7 +523,7 @@ document.write(`
 </section>
 <section id="conditional-probability">
 <h2>Conditional probability<a class="headerlink" href="#conditional-probability" title="Permalink to this heading">#</a></h2>
-<p>The probability of the event <span class="math notranslate nohighlight">\(A\)</span> given that another event <span class="math notranslate nohighlight">\(B\)</span> has happened is called <strong>condition probability</strong> <span class="math notranslate nohighlight">\(\mathbb P(A \vert B)\)</span>. If <span class="math notranslate nohighlight">\(\mathbb P(B) &gt; 0\)</span> then</p>
+<p>The probability of the event <span class="math notranslate nohighlight">\(A\)</span> given that another event <span class="math notranslate nohighlight">\(B\)</span> has happened is called <strong>conditional probability</strong> <span class="math notranslate nohighlight">\(\mathbb P(A \vert B)\)</span>. If <span class="math notranslate nohighlight">\(\mathbb P(B) &gt; 0\)</span> then</p>
 <div class="math notranslate nohighlight">
 \[
     \mathbb P(A \vert B) = \frac{\mathbb P(A \cap B)}{\mathbb P(B)}.
@@ -580,7 +580,7 @@ document.write(`
 <p>Expectation of a random vector is calculated elementwise:</p>
 <div class="math notranslate nohighlight">
 \[
-    \mathbb E\xi =  (\mathbb E\xi_1, \ldots, \mathbb E\xi_n).
+    \mathbb E \boldsymbol\xi =  (\mathbb E\xi_1, \ldots, \mathbb E\xi_n).
 \]</div>
 <p><strong>Covariance matrix</strong> of a random vector <span class="math notranslate nohighlight">\(\boldsymbol \xi = (\xi_1, \ldots, \xi_n)\)</span> is an <span class="math notranslate nohighlight">\(n\times n\)</span> matrix <span class="math notranslate nohighlight">\(\mathrm{cov}(\boldsymbol \xi , \boldsymbol \xi) = \mathbb E(\boldsymbol\xi - \mathbb E \boldsymbol \xi)(\boldsymbol\xi - \mathbb E \boldsymbol \xi)^\mathsf{T}\)</span>. In other words,</p>
 <div class="math notranslate nohighlight">
@@ -599,7 +599,7 @@ document.write(`
     p(x, y) = p_{\xi}(x) p_\eta(y).
 \]</div>
 <p>If <span class="math notranslate nohighlight">\(\xi\)</span> and <span class="math notranslate nohighlight">\(\eta\)</span> are independent, their covariance is <span class="math notranslate nohighlight">\(0\)</span>, and <span class="math notranslate nohighlight">\(\mathbb V(\xi + \eta) = \mathbb V \xi + \mathbb V \eta\)</span>.</p>
-<p>Random variables <span class="math notranslate nohighlight">\(\xi_1\ldots, \xi_n\)</span> are called <strong>mutually independent</strong> if their pmf or pdf equals to the product of one-dimensional ones. In this case the random vector <span class="math notranslate nohighlight">\(\boldsymbol \xi = (\xi_1, \ldots, \xi_n)\)</span> has mutually independent coordinates. Covariance matrix of such random vector is diagonal:</p>
+<p>Random variables <span class="math notranslate nohighlight">\(\xi_1\ldots, \xi_n\)</span> are called <strong>mutually independent</strong> if their joint pmf or pdf equals to the product of one-dimensional ones. In this case the random vector <span class="math notranslate nohighlight">\(\boldsymbol \xi = (\xi_1, \ldots, \xi_n)\)</span> has mutually independent coordinates. Covariance matrix of such random vector is diagonal:</p>
 <div class="math notranslate nohighlight">
 \[
     \mathrm{cov}(\boldsymbol \xi, \boldsymbol \xi) = \mathrm{diag}\{\mathbb V\xi_1, \ldots, \mathbb V\xi_n\}.

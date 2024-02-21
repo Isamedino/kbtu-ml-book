@@ -529,7 +529,7 @@ Estimation <span class="math notranslate nohighlight">\(\widehat\theta = \wideha
 </section>
 <section id="consistency">
 <h2>Consistency<a class="headerlink" href="#consistency" title="Permalink to this heading">#</a></h2>
-<p>Estimation <span class="math notranslate nohighlight">\(\widehat\theta_n = \widehat\theta(X_1, \dots, X_n)\)</span> is called <strong>consistent</strong> if it converges to <span class="math notranslate nohighlight">\(\theta\)</span> in distribution: <span class="math notranslate nohighlight">\(\widehat\theta_n \stackrel{P}{\to} \theta\)</span>, i.e.,</p>
+<p>Estimation <span class="math notranslate nohighlight">\(\widehat\theta_n = \widehat\theta(X_1, \dots, X_n)\)</span> is called <strong>consistent</strong> if it converges to <span class="math notranslate nohighlight">\(\theta\)</span> in probability: <span class="math notranslate nohighlight">\(\widehat\theta_n \stackrel{P}{\to} \theta\)</span>, i.e.,</p>
 <div class="math notranslate nohighlight">
 \[
   \lim\limits_{n \to \infty} \mathbb{P}(|\widehat\theta_n - \theta| &gt; \varepsilon) = 0 \text{ for all } \varepsilon &gt; 0.
@@ -562,6 +562,10 @@ Estimation <span class="math notranslate nohighlight">\(\widehat\theta = \wideha
 \end{split}\]</div>
 </div>
 <p>If <span class="math notranslate nohighlight">\(\lim\limits_{n\to\infty}\mathrm{MSE}(\widehat{\theta}_n) = 0\)</span>, then estimation <span class="math notranslate nohighlight">\(\widehat{\theta}_n\)</span> of <span class="math notranslate nohighlight">\(\theta\)</span> asymptotically unbiased and consistent.</p>
+<p>In machine learning bias-variance decomposition is also called <strong>bias-variance tradeoff</strong>:</p>
+<figure class="align-center">
+<img alt="https://scott.fortmann-roe.com/docs/docs/BiasVariance/biasvariance.png" src="https://scott.fortmann-roe.com/docs/docs/BiasVariance/biasvariance.png" />
+</figure>
 </section>
 <section id="asymptotic-normality">
 <h2>Asymptotic normality<a class="headerlink" href="#asymptotic-normality" title="Permalink to this heading">#</a></h2>
