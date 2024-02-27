@@ -467,7 +467,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -483,6 +485,20 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-roadmap">ML roadmap</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maths">Maths</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-manipulation">Data manipulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization">Data visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-frameworks">ML frameworks</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -508,6 +524,50 @@ document.write(`
 <img alt="https://slideplayer.com/7520891/24/images/slide_1.jpg" src="https://slideplayer.com/7520891/24/images/slide_1.jpg" />
 </figure>
 <p>Our attempt will technically rely on <a class="reference external" href="https://jupyterbook.org/en/stable/intro.html">Jupyter book</a>, an open-source tool for building publication-quality books and documents from computational material.</p>
+<section id="ml-roadmap">
+<h2><a class="reference external" href="https://drive.google.com/file/d/1dKGx_tJu_piWrteRjbmRlcoRalZ6ht7s/view">ML roadmap</a><a class="headerlink" href="#ml-roadmap" title="Permalink to this heading">#</a></h2>
+<p>Machine learning is the fusion of mathematical principles and programming techniques, enabling systems to learn from data and make predictions or decisions without explicit programming instructions</p>
+<figure class="align-center">
+<img alt="_images/ML_map.png" src="_images/ML_map.png" />
+</figure>
+<section id="maths">
+<h3>Maths<a class="headerlink" href="#maths" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Linear algebra</p></li>
+<li><p>Calculus and optimization</p></li>
+<li><p>Probability</p></li>
+<li><p>Statistics</p></li>
+</ul>
+</section>
+<section id="data-manipulation">
+<h3>Data manipulation<a class="headerlink" href="#data-manipulation" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://numpy.org/">NumPy</a></p></li>
+<li><p><a class="reference external" href="https://scipy.org/">SciPy</a></p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/">Pandas</a></p></li>
+<li><p><a class="reference external" href="https://pola.rs/">Polars</a></p></li>
+<li><p>SQL</p></li>
+</ul>
+</section>
+<section id="data-visualization">
+<h3>Data visualization<a class="headerlink" href="#data-visualization" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://matplotlib.org/">Matplotlib</a></p></li>
+<li><p><a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a></p></li>
+<li><p><a class="reference external" href="https://plotly.com/python/">Plotly</a></p></li>
+</ul>
+</section>
+<section id="ml-frameworks">
+<h3>ML frameworks<a class="headerlink" href="#ml-frameworks" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/">Scikit-learn</a></p></li>
+<li><p><a class="reference external" href="https://pytorch.org/">PyTorch</a></p></li>
+<li><p><a class="reference external" href="https://keras.io/">Keras</a></p></li>
+<li><p><a class="reference external" href="https://jax.readthedocs.io/en/latest/notebooks/quickstart.html">JAX</a></p></li>
+</ul>
+<p>The last three are actually deep learning frameworks.</p>
+</section>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -571,6 +631,26 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-roadmap">ML roadmap</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maths">Maths</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-manipulation">Data manipulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization">Data visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-frameworks">ML frameworks</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
