@@ -167,6 +167,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW1.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW3.html">HW3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW4.html">HW4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW5.html">HW5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW6.html">HW6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -329,11 +332,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../probability.html">Probability</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proba/rvs.html">Random variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../proba/entropy.html">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proba/independence.html">Independence and random vectors</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/MLE.html">Estimations</a></li>
 </ul>
 </li>
 </ul>
@@ -508,7 +514,7 @@ document.write(`
 <span id="svd"></span><h1>Singular Value Decomposition (SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Permalink to this heading">#</a></h1>
 <p>Any rectangular matrix <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span> has a <strong>singular value decomposition</strong></p>
 <div class="math notranslate nohighlight" id="equation-svd">
-<span class="eqno">(57)<a class="headerlink" href="#equation-svd" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol A = \boldsymbol U \boldsymbol \Sigma \boldsymbol V^\mathsf{T} = [\boldsymbol u_1 \ldots \boldsymbol u_m]  \begin{pmatrix}
+<span class="eqno">(59)<a class="headerlink" href="#equation-svd" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol A = \boldsymbol U \boldsymbol \Sigma \boldsymbol V^\mathsf{T} = [\boldsymbol u_1 \ldots \boldsymbol u_m]  \begin{pmatrix}
         \boldsymbol \Lambda &amp;  \boldsymbol 0 \\
          \boldsymbol 0 &amp;  \boldsymbol 0
     \end{pmatrix}
@@ -661,7 +667,7 @@ V:
 </section>
 <section id="reduced-form-of-svd">
 <h2>Reduced form of SVD<a class="headerlink" href="#reduced-form-of-svd" title="Permalink to this heading">#</a></h2>
-<p>SVD <a class="reference internal" href="#equation-svd">(57)</a> is equivalent to  <span class="math notranslate nohighlight">\(\boldsymbol{A} = \boldsymbol U_r \boldsymbol \Lambda \boldsymbol V_r^\mathsf{T}\)</span> where</p>
+<p>SVD <a class="reference internal" href="#equation-svd">(59)</a> is equivalent to  <span class="math notranslate nohighlight">\(\boldsymbol{A} = \boldsymbol U_r \boldsymbol \Lambda \boldsymbol V_r^\mathsf{T}\)</span> where</p>
 <div class="math notranslate nohighlight">
 \[
     \boldsymbol{U}_r = [\boldsymbol u_1 \ldots \boldsymbol u_r],\quad
@@ -725,7 +731,7 @@ Consequently, $\boldsymbol {Av}_i = \sigma_i \boldsymbol u_i$, $i=1,\ldots, r$. 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/333d412a6427cc10c893a3e68b6df9667873fb13a3434ddc5ea3fedeec5a3b89.svg" src="../../_images/333d412a6427cc10c893a3e68b6df9667873fb13a3434ddc5ea3fedeec5a3b89.svg" /></div>
+<img alt="../../_images/4be27307b7856ac5893266004d56d608045244e2ead0363ca52f2533a79b96b5.svg" src="../../_images/4be27307b7856ac5893266004d56d608045244e2ead0363ca52f2533a79b96b5.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -761,7 +767,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0c8e276911c49055eb98385779d2b2814c2573f773bc9c92c5808cf59d03b990.svg" src="../../_images/0c8e276911c49055eb98385779d2b2814c2573f773bc9c92c5808cf59d03b990.svg" /></div>
+<img alt="../../_images/f3fb98f1d33a36dd90a15a8aa905358353f6829d072c57d85d53e40a34db2b6a.svg" src="../../_images/f3fb98f1d33a36dd90a15a8aa905358353f6829d072c57d85d53e40a34db2b6a.svg" /></div>
 </div>
 <p><span class="math notranslate nohighlight">\(2\)</span>-rank approximaion:</p>
 <div class="cell docutils container">
@@ -771,7 +777,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6aa816d15332edb5c405e93238f80eea63dd705b78caea3323807b1a32ad960d.svg" src="../../_images/6aa816d15332edb5c405e93238f80eea63dd705b78caea3323807b1a32ad960d.svg" /></div>
+<img alt="../../_images/aeda4d242852f7b9e42e675ce021757db630e30f1cc651723ddd6320dbf80f1e.svg" src="../../_images/aeda4d242852f7b9e42e675ce021757db630e30f1cc651723ddd6320dbf80f1e.svg" /></div>
 </div>
 <p><span class="math notranslate nohighlight">\(5\)</span>-rank approximation:</p>
 <div class="cell docutils container">
@@ -781,7 +787,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a84aa627106baf89f01beafdb8b75e36b03cfec44975fe1007baa3c7218e6472.svg" src="../../_images/a84aa627106baf89f01beafdb8b75e36b03cfec44975fe1007baa3c7218e6472.svg" /></div>
+<img alt="../../_images/01abd135ab43966a9883ded23d02fd4b42359a9629f259d889567fa8b7f8d9d5.svg" src="../../_images/01abd135ab43966a9883ded23d02fd4b42359a9629f259d889567fa8b7f8d9d5.svg" /></div>
 </div>
 <p><span class="math notranslate nohighlight">\(10\)</span>-rank approximation:</p>
 <div class="cell docutils container">
@@ -791,7 +797,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/71bb7c1fd5051b2c8a2b3600559c197ee00304c85813833b60d57f0dbaf20ea7.svg" src="../../_images/71bb7c1fd5051b2c8a2b3600559c197ee00304c85813833b60d57f0dbaf20ea7.svg" /></div>
+<img alt="../../_images/735c08abdf040fa5c1751be527c5324c3e52707e16bd804c4d394958e3d6cbd9.svg" src="../../_images/735c08abdf040fa5c1751be527c5324c3e52707e16bd804c4d394958e3d6cbd9.svg" /></div>
 </div>
 <p><span class="math notranslate nohighlight">\(20\)</span>-rank approximation is quite admittable:</p>
 <div class="cell docutils container">
@@ -801,7 +807,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/93145cebfce5d66d3ab184d648460e093c0ecb6c050df271e8d1cf81e04ff837.svg" src="../../_images/93145cebfce5d66d3ab184d648460e093c0ecb6c050df271e8d1cf81e04ff837.svg" /></div>
+<img alt="../../_images/40c0a76d31da24aa02d2c3f83f14df8c59de4a4a356331fb34e8817762a7d5f2.svg" src="../../_images/40c0a76d31da24aa02d2c3f83f14df8c59de4a4a356331fb34e8817762a7d5f2.svg" /></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
@@ -813,7 +819,7 @@ Rank: 200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/527c9828d84306fa01ab3eab3b76b1acc2da001448513bf9047ea28c8a8f3a6d.svg" src="../../_images/527c9828d84306fa01ab3eab3b76b1acc2da001448513bf9047ea28c8a8f3a6d.svg" /></div>
+<img alt="../../_images/538b63988285764ed4b37212ecfa1abaddab1560c9607360ed632a1f09581035.svg" src="../../_images/538b63988285764ed4b37212ecfa1abaddab1560c9607360ed632a1f09581035.svg" /></div>
 </div>
 </section>
 <section id="exercises">

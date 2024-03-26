@@ -167,6 +167,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW3.html">HW3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW4.html">HW4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW5.html">HW5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW6.html">HW6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -329,11 +332,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/probability.html">Probability</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/rvs.html">Random variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/proba/entropy.html">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/independence.html">Independence and random vectors</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Estimations</a></li>
 </ul>
 </li>
 </ul>
@@ -511,7 +517,7 @@ document.write(`
 <p>where <span class="math notranslate nohighlight">\(\sigma(t) = \frac 1{1 + e^{-t}}\)</span> — <strong>sigmoid function</strong>.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/e16a0bba9758250adfdbb5bc8ef273f3af81130f75bf971a6c28271b297166a5.svg" src="../_images/e16a0bba9758250adfdbb5bc8ef273f3af81130f75bf971a6c28271b297166a5.svg" /></div>
+<img alt="../_images/3305eb75a6740675770cfa62c208215deb297e20838d2faee741e0357a4666b3.svg" src="../_images/3305eb75a6740675770cfa62c208215deb297e20838d2faee741e0357a4666b3.svg" /></div>
 </div>
 <p><strong>Q</strong>. What is <span class="math notranslate nohighlight">\(\sigma'(t)\)</span>?</p>
 <div class="tip dropdown admonition">
@@ -524,7 +530,7 @@ document.write(`
 <p>The linear output <span class="math notranslate nohighlight">\(\boldsymbol x^\top \boldsymbol w\)</span> is also called <strong>logit</strong>.</p>
 <p>The loss function is binary cross-entropy</p>
 <div class="math notranslate nohighlight" id="equation-bin-log-reg-loss">
-<span class="eqno">(25)<a class="headerlink" href="#equation-bin-log-reg-loss" title="Permalink to this equation">#</a></span>\[\begin{split}    \begin{multline*}
+<span class="eqno">(27)<a class="headerlink" href="#equation-bin-log-reg-loss" title="Permalink to this equation">#</a></span>\[\begin{split}    \begin{multline*}
     \mathcal L(\boldsymbol w) = -\frac 1n\sum\limits_{i=1}^n \big(y_i \log \widehat y_i + (1-y_i)\log(1-\widehat y_i)\big) = \\
     =-\frac 1n\sum\limits_{i=1}^n \big(y_i \log(\sigma(\boldsymbol x_i^\top \boldsymbol w)) + (1- y_i)\log(1 - \sigma(\boldsymbol x_i^\top \boldsymbol w))\big).
     \end{multline*}\end{split}\]</div>
@@ -652,8 +658,8 @@ Please also refer to the documentation for alternative solver options:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train accuracy: 0.945054945054945
-Test accuracy: 0.956140350877193
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train accuracy: 0.9428571428571428
+Test accuracy: 0.9649122807017544
 </pre></div>
 </div>
 </div>
@@ -678,8 +684,8 @@ Test accuracy: 0.956140350877193
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train accuracy: 0.9604395604395605
-Test accuracy: 0.9473684210526315
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train accuracy: 0.9648351648351648
+Test accuracy: 0.956140350877193
 </pre></div>
 </div>
 </div>

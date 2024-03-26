@@ -167,6 +167,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW3.html">HW3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW4.html">HW4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW5.html">HW5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -329,11 +331,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/probability.html">Probability</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/rvs.html">Random variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/proba/entropy.html">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/independence.html">Independence and random vectors</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Estimations</a></li>
 </ul>
 </li>
 </ul>
@@ -548,7 +553,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b03f164af4b19f29759226817699ebf872f3c0755bc10aa7c87d797f5f800b3d.png" src="../_images/b03f164af4b19f29759226817699ebf872f3c0755bc10aa7c87d797f5f800b3d.png" />
+<img alt="../_images/5a7944d6f154f0a6e0b1297e04cbd68d63a23e8978340875bd4afc9f252e7c2d.png" src="../_images/5a7944d6f154f0a6e0b1297e04cbd68d63a23e8978340875bd4afc9f252e7c2d.png" />
 </div>
 </div>
 <p>A prettier tree can be drawn by <code class="docutils literal notranslate"><span class="pre">graphviz</span></code>:</p>
@@ -567,7 +572,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4ae2ead9e33ded6d957c5a6a6b93eba9174354f9fac01b46385b33fd12b14a56.svg" src="../_images/4ae2ead9e33ded6d957c5a6a6b93eba9174354f9fac01b46385b33fd12b14a56.svg" /></div>
+<img alt="../_images/123b5fba0251a69339684c80f9f18e9cf19177093bd6ae602dc804401987aa7d.svg" src="../_images/123b5fba0251a69339684c80f9f18e9cf19177093bd6ae602dc804401987aa7d.svg" /></div>
 </div>
 <p>Depth equal to <span class="math notranslate nohighlight">\(2\)</span> is enough for this toy dataset:</p>
 <div class="cell docutils container">
@@ -586,7 +591,7 @@ document.write(`
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/8a5f1c375ee12cd8f4a6373d0abfd0ffc99f5a091535fb7fcbd05b050421aa08.svg" src="../_images/8a5f1c375ee12cd8f4a6373d0abfd0ffc99f5a091535fb7fcbd05b050421aa08.svg" /></div>
+<img alt="../_images/6d9e99c87ae639de8e8484aa5c4d97819c3683a1c8d46e155562ae465be1b267.svg" src="../_images/6d9e99c87ae639de8e8484aa5c4d97819c3683a1c8d46e155562ae465be1b267.svg" /></div>
 </div>
 </section>
 <section id="mnist">
@@ -613,7 +618,7 @@ document.write(`
 <p>Visualize data:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/ba193696d72e5ab3119ed78b8c1ac0710f63e3afde5718f3444ed7398c53119a.svg" src="../_images/ba193696d72e5ab3119ed78b8c1ac0710f63e3afde5718f3444ed7398c53119a.svg" /></div>
+<img alt="../_images/cc336481ce1c058b9b684b56bd3496abbdb5d84c4e29a21352d94af3c48c7701.svg" src="../_images/cc336481ce1c058b9b684b56bd3496abbdb5d84c4e29a21352d94af3c48c7701.svg" /></div>
 </div>
 <p>Split into train and test:</p>
 <div class="cell docutils container">
@@ -666,7 +671,7 @@ Test accuracy: 0.8735
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/caa4320436f674c94afbeb760e5a562773c6e457b440f189a42be33e0d76e518.svg" src="../_images/caa4320436f674c94afbeb760e5a562773c6e457b440f189a42be33e0d76e518.svg" /></div>
+<img alt="../_images/4e2649c1c17c9ae73dabf1d8604af1aba06ecb4ba95b4ddab90e75ebbbffea88.svg" src="../_images/4e2649c1c17c9ae73dabf1d8604af1aba06ecb4ba95b4ddab90e75ebbbffea88.svg" /></div>
 </div>
 <p>Limit the tree depth and size of leaves:</p>
 <div class="cell docutils container">
@@ -695,7 +700,7 @@ Test accuracy: 0.8776
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/ccc949751d2bb0c5da24b54a0b7919bfa1029ce31b81529f3970522d60188956.svg" src="../_images/ccc949751d2bb0c5da24b54a0b7919bfa1029ce31b81529f3970522d60188956.svg" /></div>
+<img alt="../_images/b753e077fa74223509874e7b4daaecdc322f686a3e241130c02339e701694716.svg" src="../_images/b753e077fa74223509874e7b4daaecdc322f686a3e241130c02339e701694716.svg" /></div>
 </div>
 </section>
 <section id="splitting-conditions">

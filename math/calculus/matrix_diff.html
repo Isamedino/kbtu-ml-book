@@ -167,6 +167,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW1.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW3.html">HW3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW4.html">HW4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW5.html">HW5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW6.html">HW6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -329,11 +332,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../probability.html">Probability</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proba/rvs.html">Random variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../proba/entropy.html">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proba/independence.html">Independence and random vectors</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/MLE.html">Estimations</a></li>
 </ul>
 </li>
 </ul>
@@ -513,15 +519,15 @@ document.write(`
 <p>While training a machine learning model, often some function <span class="math notranslate nohighlight">\(\mathcal L(\boldsymbol X)\)</span> of a matrix <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> is being minimized or maximized. That’s why it is important to elaborate a neat notation for differentials and gradients of such functions.</p>
 <section id="differentiating-functions-of-matrices">
 <span id="matrix-gradient"></span><h2>Differentiating functions of matrices<a class="headerlink" href="#differentiating-functions-of-matrices" title="Permalink to this heading">#</a></h2>
-<p>Let <span class="math notranslate nohighlight">\(f\colon \mathbb R^{m\times n} \to \mathbb R\)</span> be a real-valued function of matrix <span class="math notranslate nohighlight">\(\boldsymbol X\)</span>. Such function can be differentiated similar <a class="reference internal" href="multivariate.html#equation-vector-func-diff">(59)</a> as a function of vector from <span class="math notranslate nohighlight">\(\mathbb R^{mn}\)</span>:</p>
+<p>Let <span class="math notranslate nohighlight">\(f\colon \mathbb R^{m\times n} \to \mathbb R\)</span> be a real-valued function of matrix <span class="math notranslate nohighlight">\(\boldsymbol X\)</span>. Such function can be differentiated similar <a class="reference internal" href="multivariate.html#equation-vector-func-diff">(61)</a> as a function of vector from <span class="math notranslate nohighlight">\(\mathbb R^{mn}\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-matrix-func-diff">
-<span class="eqno">(64)<a class="headerlink" href="#equation-matrix-func-diff" title="Permalink to this equation">#</a></span>\[	Df(\boldsymbol X)[\boldsymbol H] = \sum\limits_{i=1}^m \sum\limits_{j=1}^n \frac{\partial f (\boldsymbol X)}{\partial X_{ij}} H_{ij} = \mathrm{tr}\big(\nabla f(\boldsymbol X)^\mathsf{T} \boldsymbol H\big).\]</div>
+<span class="eqno">(66)<a class="headerlink" href="#equation-matrix-func-diff" title="Permalink to this equation">#</a></span>\[	Df(\boldsymbol X)[\boldsymbol H] = \sum\limits_{i=1}^m \sum\limits_{j=1}^n \frac{\partial f (\boldsymbol X)}{\partial X_{ij}} H_{ij} = \mathrm{tr}\big(\nabla f(\boldsymbol X)^\mathsf{T} \boldsymbol H\big).\]</div>
 <p>Здесь мы упаковали градиент функции <span class="math notranslate nohighlight">\(f\)</span> в матрице того же размера, что и матрица <span class="math notranslate nohighlight">\(\boldsymbol X\)</span>, а также воспользовались равенством</p>
 <div class="math notranslate nohighlight">
 \[
     \sum\limits_{i=1}^m \sum\limits_{j=1}^n A_{ij} B_{ij} = \mathrm{tr} (\boldsymbol A^\mathsf{T} \boldsymbol B), \quad A, B \in \mathbb R^{m\times n}.
 \]</div>
-<p>Using more traditional notation, we can rewrite <a class="reference internal" href="#equation-matrix-func-diff">(64)</a> as</p>
+<p>Using more traditional notation, we can rewrite <a class="reference internal" href="#equation-matrix-func-diff">(66)</a> as</p>
 <div class="math notranslate nohighlight">
 \[
     df(\boldsymbol X) = \mathrm{tr}\big(\nabla f(\boldsymbol X)^\mathsf{T} d\boldsymbol X\big).

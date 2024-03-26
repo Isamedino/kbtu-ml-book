@@ -167,6 +167,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW3.html">HW3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW4.html">HW4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW5.html">HW5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW6.html">HW6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -329,11 +332,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/probability.html">Probability</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/rvs.html">Random variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/proba/entropy.html">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/independence.html">Independence and random vectors</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Estimations</a></li>
 </ul>
 </li>
 </ul>
@@ -519,7 +525,7 @@ document.write(`
     \mathcal L(\boldsymbol w) = \Vert \boldsymbol y - \boldsymbol{Xw}\Vert_2^2 + C\Vert \boldsymbol w \Vert_2^2, \quad C&gt;0.
 \]</div>
 <p>To find the optimal weights, one need to solve the equation <span class="math notranslate nohighlight">\(\nabla_{\boldsymbol w} \mathcal L(\boldsymbol w) = \boldsymbol 0\)</span>.</p>
-<p>Since <span class="math notranslate nohighlight">\(\nabla_{\boldsymbol w}(\Vert \boldsymbol w \Vert_2^2) = 2\boldsymbol w\)</span>, we receive one additional term to <a class="reference internal" href="multiple.html#equation-lin-reg-grad">(18)</a>:</p>
+<p>Since <span class="math notranslate nohighlight">\(\nabla_{\boldsymbol w}(\Vert \boldsymbol w \Vert_2^2) = 2\boldsymbol w\)</span>, we receive one additional term to <a class="reference internal" href="multiple.html#equation-lin-reg-grad">(20)</a>:</p>
 <div class="math notranslate nohighlight">
 \[
     \boldsymbol X^\top \boldsymbol X\boldsymbol w - \boldsymbol X^\top \boldsymbol y + C\boldsymbol w = \boldsymbol 0.
@@ -529,7 +535,7 @@ document.write(`
 \[
     \widehat{\boldsymbol w} = (\boldsymbol X^\top \boldsymbol X + C\boldsymbol I)^{-1} \boldsymbol X^\top \boldsymbol y.
 \]</div>
-<p>Note that this is equal to <a class="reference internal" href="multiple.html#equation-lin-reg-solution">(19)</a> if <span class="math notranslate nohighlight">\(C=0\)</span>. Ridge regression also allows to avoid inverting of a singular matrix.</p>
+<p>Note that this is equal to <a class="reference internal" href="multiple.html#equation-lin-reg-solution">(21)</a> if <span class="math notranslate nohighlight">\(C=0\)</span>. Ridge regression also allows to avoid inverting of a singular matrix.</p>
 <p>Once again take the Boston dataset, and try ridge regression on it:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1529,7 +1535,7 @@ if (typeof version == 'undefined') {
 \]</div>
 <p>and the optimal weights <span class="math notranslate nohighlight">\(\widehat w\)</span> are the solution of the optimization task</p>
 <div class="math notranslate nohighlight" id="equation-lasso-opt">
-<span class="eqno">(21)<a class="headerlink" href="#equation-lasso-opt" title="Permalink to this equation">#</a></span>\[\Vert \boldsymbol y - \boldsymbol{Xw}\Vert_2^2 + C\Vert \boldsymbol w \Vert_1 \to \min\limits_{\boldsymbol w}.\]</div>
+<span class="eqno">(23)<a class="headerlink" href="#equation-lasso-opt" title="Permalink to this equation">#</a></span>\[\Vert \boldsymbol y - \boldsymbol{Xw}\Vert_2^2 + C\Vert \boldsymbol w \Vert_1 \to \min\limits_{\boldsymbol w}.\]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>LASSO stands for <strong>L</strong>east <strong>A</strong>bsolute <strong>S</strong>hrinkage and <strong>S</strong>election <strong>O</strong>perator</p>
@@ -1544,7 +1550,7 @@ if (typeof version == 'undefined') {
 <li><p>sparse solution</p></li>
 <li><p>feature selection</p></li>
 </ul>
-<p>However, there is no closed-form solution of <a class="reference internal" href="#equation-lasso-opt">(21)</a>.</p>
+<p>However, there is no closed-form solution of <a class="reference internal" href="#equation-lasso-opt">(23)</a>.</p>
 <p><strong>Empirical recipe</strong> to provide better prediction performance:</p>
 <ul class="simple">
 <li><p>first, perform variable selection using LASSO;</p></li>

@@ -167,6 +167,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW3.html">HW3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW4.html">HW4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW5.html">HW5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW6.html">HW6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -329,11 +332,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/probability.html">Probability</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/rvs.html">Random variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/proba/entropy.html">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/independence.html">Independence and random vectors</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Estimations</a></li>
 </ul>
 </li>
 </ul>
@@ -508,7 +514,7 @@ document.write(`
 <h1>Simple linear regression<a class="headerlink" href="#simple-linear-regression" title="Permalink to this heading">#</a></h1>
 <p>In case of one feature (<span class="math notranslate nohighlight">\(d=1\)</span>) linear regression is written as</p>
 <div class="math notranslate nohighlight" id="equation-simple-lin-reg">
-<span class="eqno">(5)<a class="headerlink" href="#equation-simple-lin-reg" title="Permalink to this equation">#</a></span>\[    y = a x + b.\]</div>
+<span class="eqno">(7)<a class="headerlink" href="#equation-simple-lin-reg" title="Permalink to this equation">#</a></span>\[    y = a x + b.\]</div>
 <p>The parameters of this model <span class="math notranslate nohighlight">\(\boldsymbol \theta = (a, b)\)</span>, where
 <span class="math notranslate nohighlight">\(b\)</span> is <strong>intercept</strong> (or <strong>bias</strong>), <span class="math notranslate nohighlight">\(a\)</span> is <strong>slope</strong>.</p>
 <p>The <a class="reference internal" href="../intro/data.html#feature-matrix"><span class="std std-ref">feature matrix</span></a> here has only one column, denote it <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and let <span class="math notranslate nohighlight">\(\boldsymbol y\)</span> be the vector of corresponding labels. Also denote</p>
@@ -520,7 +526,7 @@ document.write(`
 <h2>MSE fit<a class="headerlink" href="#mse-fit" title="Permalink to this heading">#</a></h2>
 <p>Use MSE to fit parameters <span class="math notranslate nohighlight">\(\boldsymbol \theta = (a, b)\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-1-d-mse">
-<span class="eqno">(6)<a class="headerlink" href="#equation-1-d-mse" title="Permalink to this equation">#</a></span>\[\mathcal L(a, b) =  \frac 1n\sum\limits_{i=1}^n (y_i - ax_i - b)^2 \to \min\limits_{a, b}.\]</div>
+<span class="eqno">(8)<a class="headerlink" href="#equation-1-d-mse" title="Permalink to this equation">#</a></span>\[\mathcal L(a, b) =  \frac 1n\sum\limits_{i=1}^n (y_i - ax_i - b)^2 \to \min\limits_{a, b}.\]</div>
 <div class="dropdown admonition">
 <p class="admonition-title">What about some calculus?</p>
 <p>We have</p>
@@ -541,24 +547,24 @@ document.write(`
 </div>
 <p>The optimal parameters are</p>
 <div class="math notranslate nohighlight" id="equation-1-d-weights">
-<span class="eqno">(7)<a class="headerlink" href="#equation-1-d-weights" title="Permalink to this equation">#</a></span>\[    \widehat a = \frac{\sum\limits_{i=1}^n (x_i - \overline {\boldsymbol x})(y_i - \overline {\boldsymbol y})}{\sum\limits_{i=1}^n (x_i - \overline {\boldsymbol x})^2}, \quad 
+<span class="eqno">(9)<a class="headerlink" href="#equation-1-d-weights" title="Permalink to this equation">#</a></span>\[    \widehat a = \frac{\sum\limits_{i=1}^n (x_i - \overline {\boldsymbol x})(y_i - \overline {\boldsymbol y})}{\sum\limits_{i=1}^n (x_i - \overline {\boldsymbol x})^2}, \quad 
     \widehat b = \overline {\boldsymbol y} - \widehat a \overline {\boldsymbol x}.\]</div>
 <p>Note that the slope is equal to the ratio of sample correlation between <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y\)</span> to the sample variance of <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>.</p>
 <div class="important admonition">
 <p class="admonition-title">Question</p>
-<p>Does <a class="reference internal" href="#equation-1-d-weights">(7)</a> work for all possible values of <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y\)</span>?</p>
+<p>Does <a class="reference internal" href="#equation-1-d-weights">(9)</a> work for all possible values of <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y\)</span>?</p>
 </div>
 </section>
 <section id="dummy-model">
 <h2>Dummy model<a class="headerlink" href="#dummy-model" title="Permalink to this heading">#</a></h2>
-<p>The model <a class="reference internal" href="#equation-simple-lin-reg">(5)</a> is simple but we can do even simpler! Let <span class="math notranslate nohighlight">\(a=0\)</span> and predict labels by a <strong>constant</strong> (or <strong>dummy</strong>) model <span class="math notranslate nohighlight">\(\widehat y = b\)</span>. In fact, for constant predictions you don’t need any features, only labels do the job.</p>
+<p>The model <a class="reference internal" href="#equation-simple-lin-reg">(7)</a> is simple but we can do even simpler! Let <span class="math notranslate nohighlight">\(a=0\)</span> and predict labels by a <strong>constant</strong> (or <strong>dummy</strong>) model <span class="math notranslate nohighlight">\(\widehat y = b\)</span>. In fact, for constant predictions you don’t need any features, only labels do the job.</p>
 <div class="important admonition">
 <p class="admonition-title">Question</p>
-<p>Which value of <span class="math notranslate nohighlight">\(b\)</span> minimizes the MSE <a class="reference internal" href="#equation-1-d-mse">(6)</a>?</p>
+<p>Which value of <span class="math notranslate nohighlight">\(b\)</span> minimizes the MSE <a class="reference internal" href="#equation-1-d-mse">(8)</a>?</p>
 </div>
 <p>Linear regression can be used with different loss functions. For example, we can choose mean absolute error (MAE) instead of MSE:</p>
 <div class="math notranslate nohighlight" id="equation-1-d-mae">
-<span class="eqno">(8)<a class="headerlink" href="#equation-1-d-mae" title="Permalink to this equation">#</a></span>\[\mathcal L(a, b) =  \frac 1n\sum\limits_{i=1}^n \vert y_i - ax_i - b\vert \to \min\limits_{a, b}.\]</div>
+<span class="eqno">(10)<a class="headerlink" href="#equation-1-d-mae" title="Permalink to this equation">#</a></span>\[\mathcal L(a, b) =  \frac 1n\sum\limits_{i=1}^n \vert y_i - ax_i - b\vert \to \min\limits_{a, b}.\]</div>
 <p>This time it is unlikely that we can find the analytical solution. But maybe it can be done for the dummy model?</p>
 <div class="important admonition">
 <p class="admonition-title">Question</p>
@@ -576,7 +582,7 @@ document.write(`
 </section>
 <section id="rss-and-r-2-score">
 <h2>RSS and <span class="math notranslate nohighlight">\(R^2\)</span>-score<a class="headerlink" href="#rss-and-r-2-score" title="Permalink to this heading">#</a></h2>
-<p>Putting the optimal weights <span class="math notranslate nohighlight">\(\widehat a\)</span> and <span class="math notranslate nohighlight">\(\widehat b\)</span> into the loss function <a class="reference internal" href="#equation-1-d-mse">(6)</a>, we obtain <strong>residual square error</strong> (RSE). Multiplying by <span class="math notranslate nohighlight">\(n\)</span> we get <strong>residual sum of squares</strong></p>
+<p>Putting the optimal weights <span class="math notranslate nohighlight">\(\widehat a\)</span> and <span class="math notranslate nohighlight">\(\widehat b\)</span> into the loss function <a class="reference internal" href="#equation-1-d-mse">(8)</a>, we obtain <strong>residual square error</strong> (RSE). Multiplying by <span class="math notranslate nohighlight">\(n\)</span> we get <strong>residual sum of squares</strong></p>
 <div class="math notranslate nohighlight">
 \[
     RSS = \sum\limits_{i=1}^n(y_i - \widehat a x_i - \widehat b)^2.
@@ -588,18 +594,18 @@ TSS = \sum\limits_{i=1}^n(y_i - \overline {\boldsymbol y})^2.
 \]</div>
 <p>A popular metric called <strong>coefficient of determination</strong> (or <strong><span class="math notranslate nohighlight">\(R^2\)</span>-score</strong>) is defined as</p>
 <div class="math notranslate nohighlight" id="equation-r2-score">
-<span class="eqno">(9)<a class="headerlink" href="#equation-r2-score" title="Permalink to this equation">#</a></span>\[R^2 = 1 - \frac{RSS}{TSS} = 1 - \frac{\sum\limits_{i=1}^n(y_i - \widehat y_i)^2}{\sum\limits_{i=1}^n(y_i - \overline {\boldsymbol y})^2}.\]</div>
+<span class="eqno">(11)<a class="headerlink" href="#equation-r2-score" title="Permalink to this equation">#</a></span>\[R^2 = 1 - \frac{RSS}{TSS} = 1 - \frac{\sum\limits_{i=1}^n(y_i - \widehat y_i)^2}{\sum\limits_{i=1}^n(y_i - \overline {\boldsymbol y})^2}.\]</div>
 <p>The coefficient of determination shows proportion of variance explained. <span class="math notranslate nohighlight">\(R^2\)</span>-score does not exceed <span class="math notranslate nohighlight">\(1\)</span> (the greater —  the better).</p>
 <p><span style="display:none" id="R2_dummy">W3sicXVlc3Rpb24iOiAiV2hhdCBpcyB0aGUgJFJeMiQtc2NvcmUgb2YgdGhlIGR1bW15IG1vZGVsICRcXHdpZGVoYXQgeSA9IFxcb3ZlcmxpbmUge1xcYm9sZHN5bWJvbCB5fSQ/IiwgInR5cGUiOiAibnVtZXJpYyIsICJhbnN3ZXJzIjogW3sidHlwZSI6ICJ2YWx1ZSIsICJ2YWx1ZSI6IDAsICJjb3JyZWN0IjogdHJ1ZSwgImZlZWRiYWNrIjogIllvdSBuYWlsZWQgaXQhICRSXjIgPSAxIC0gMSA9IDAkIn0sIHsidHlwZSI6ICJ2YWx1ZSIsICJ2YWx1ZSI6IDEsICJjb3JyZWN0IjogZmFsc2UsICJmZWVkYmFjayI6ICJObywgaXQgc2hvdWxkIGJlIHN1YnRyYWN0ZWQgZnJvbSAkMSQifSwgeyJ0eXBlIjogInJhbmdlIiwgInJhbmdlIjogWy0xMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCwgMF0sICJmZWVkYmFjayI6ICIkUl4yJC1zY29yZSBtdXN0IGJlIGJldHdlZW4gMCBhbmQgMSJ9LCB7InR5cGUiOiAicmFuZ2UiLCAicmFuZ2UiOiBbMS4wMDAwMDAwMDAxLCAxMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMF0sICJmZWVkYmFjayI6ICIkUl4yJC1zY29yZSBtdXN0IGJlIGJldHdlZW4gMCBhbmQgMSJ9LCB7InR5cGUiOiAiZGVmYXVsdCIsICJmZWVkYmFjayI6ICJUaGlzIHZhbHVlIGxvb2tzIGluY29ycmVjdCJ9XX1d</span></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="gpxQMVZECVVq" data-shufflequestions="False"
+<div class="output text_html"><div id="fqziMgzUJuhT" data-shufflequestions="False"
                data-shuffleanswers="True"
                data-preserveresponses="false"
                data-numquestions="1000000"
                data-maxwidth="600"
                style="border-radius: 10px; text-align: left"> <style>
-#gpxQMVZECVVq {
+#fqziMgzUJuhT {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -770,14 +776,14 @@ TSS = \sum\limits_{i=1}^n(y_i - \overline {\boldsymbol y})^2.
     }
 }
 </style></div><script type="application/javascript">var element=document.getElementById("R2_dummy");
-            var questionsgpxQMVZECVVq;
+            var questionsfqziMgzUJuhT;
             try {
-               questionsgpxQMVZECVVq=JSON.parse(window.atob(element.innerHTML));
+               questionsfqziMgzUJuhT=JSON.parse(window.atob(element.innerHTML));
             } catch(err) {
                console.log("Fell into catch");
-               questionsgpxQMVZECVVq = JSON.parse(element.innerHTML);
+               questionsfqziMgzUJuhT = JSON.parse(element.innerHTML);
             }
-            console.log(questionsgpxQMVZECVVq);;
+            console.log(questionsfqziMgzUJuhT);;
     // Make a random ID
 function makeid(length) {
     var result = [];
@@ -1526,8 +1532,8 @@ if (typeof version == 'undefined') {
            Someone more knowledgeable could make this better ;-) */
 
         function try_show() {
-          if(document.getElementById("gpxQMVZECVVq")) {
-            show_questions(questionsgpxQMVZECVVq,  gpxQMVZECVVq); 
+          if(document.getElementById("fqziMgzUJuhT")) {
+            show_questions(questionsfqziMgzUJuhT,  fqziMgzUJuhT); 
           } else {
              setTimeout(try_show, 200);
           }
@@ -1536,8 +1542,8 @@ if (typeof version == 'undefined') {
         {
         // console.log(element);
 
-        //console.log("gpxQMVZECVVq");
-        // console.log(document.getElementById("gpxQMVZECVVq"));
+        //console.log("fqziMgzUJuhT");
+        // console.log(document.getElementById("fqziMgzUJuhT"));
 
         try_show();
         }
@@ -1674,7 +1680,7 @@ if (typeof version == 'undefined') {
 </table>
 </div></div></div>
 </div>
-<p>Let predictors be <code class="docutils literal notranslate"><span class="pre">lstat</span></code>, target — <code class="docutils literal notranslate"><span class="pre">medv</span></code>. Let’s calculate the regression coefficients using <a class="reference internal" href="#equation-1-d-weights">(7)</a>:</p>
+<p>Let predictors be <code class="docutils literal notranslate"><span class="pre">lstat</span></code>, target — <code class="docutils literal notranslate"><span class="pre">medv</span></code>. Let’s calculate the regression coefficients using <a class="reference internal" href="#equation-1-d-weights">(9)</a>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1714,7 +1720,7 @@ if (typeof version == 'undefined') {
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9dc8a298105877d4e6516ba7826b148de92a47c85255dcae85461a9a1e727179.svg" src="../_images/9dc8a298105877d4e6516ba7826b148de92a47c85255dcae85461a9a1e727179.svg" /></div>
+<img alt="../_images/0f64809f8f082df554aeb0a7dea11f16a12f63ee21309c1f13e2260a10218076.svg" src="../_images/0f64809f8f082df554aeb0a7dea11f16a12f63ee21309c1f13e2260a10218076.svg" /></div>
 </div>
 <p>Calculate MSE:</p>
 <div class="cell docutils container">
@@ -1760,7 +1766,7 @@ Dummy R2-score: 0.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b801237697e3e66a7bb718f179b1f9d81b49b95d4e4e5e7cb4b7b87bf99bc2ac.svg" src="../_images/b801237697e3e66a7bb718f179b1f9d81b49b95d4e4e5e7cb4b7b87bf99bc2ac.svg" /></div>
+<img alt="../_images/393c0e69e5fc075c4195a55e1ecb4223838041a1f7a11f4819d74c7c76cb3d0b.svg" src="../_images/393c0e69e5fc075c4195a55e1ecb4223838041a1f7a11f4819d74c7c76cb3d0b.svg" /></div>
 </div>
 <p>Linear regression from <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>:</p>
 <div class="cell docutils container">

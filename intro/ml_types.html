@@ -167,6 +167,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW3.html">HW3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW4.html">HW4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW5.html">HW5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW6.html">HW6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -329,11 +332,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/probability.html">Probability</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/rvs.html">Random variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/proba/entropy.html">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/independence.html">Independence and random vectors</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Estimations</a></li>
 </ul>
 </li>
 </ul>
@@ -550,12 +556,12 @@ document.write(`
 <li><p>denote model predictions as <span class="math notranslate nohighlight">\(\hat y_i = f_{\boldsymbol \theta}(\boldsymbol x_i)\)</span></p></li>
 <li><p>typical loss function is <strong>misclassification rate</strong> (or <strong>error rate</strong>)</p>
 <div class="math notranslate nohighlight" id="equation-mis-rate">
-<span class="eqno">(1)<a class="headerlink" href="#equation-mis-rate" title="Permalink to this equation">#</a></span>\[    \mathcal L(\boldsymbol \theta) = \frac 1n \sum\limits_{i=1}^n \mathbb I\big[y_i \ne \hat y_i\big]\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-mis-rate" title="Permalink to this equation">#</a></span>\[    \mathcal L(\boldsymbol \theta) = \frac 1n \sum\limits_{i=1}^n \mathbb I\big[y_i \ne \hat y_i\big]\]</div>
 </li>
 <li><p>this loss is not a smooth function, that’s why they often predict  which is treated as probability of class <span class="math notranslate nohighlight">\(1\)</span>, and then use <strong>cross-entropy loss</strong></p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-binary-cross-entropy">
-<span class="eqno">(2)<a class="headerlink" href="#equation-binary-cross-entropy" title="Permalink to this equation">#</a></span>\[    \mathcal L(\boldsymbol \theta) = -\frac 1n \sum\limits_{i=1}^n \big(y_i \log(\hat y_i) + (1-y_i) \log(1 - \hat y_i)\big)\]</div>
+<span class="eqno">(4)<a class="headerlink" href="#equation-binary-cross-entropy" title="Permalink to this equation">#</a></span>\[    \mathcal L(\boldsymbol \theta) = -\frac 1n \sum\limits_{i=1}^n \big(y_i \log(\hat y_i) + (1-y_i) \log(1 - \hat y_i)\big)\]</div>
 <div class="important admonition">
 <p class="admonition-title">Notation</p>
 <ol class="arabic simple">
@@ -599,18 +605,18 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<p>Calculate the missclassification rate <a class="reference internal" href="#equation-mis-rate">(1)</a> and cross-entropy loss <a class="reference internal" href="#equation-binary-cross-entropy">(2)</a>.</p>
+<p>Calculate the missclassification rate <a class="reference internal" href="#equation-mis-rate">(3)</a> and cross-entropy loss <a class="reference internal" href="#equation-binary-cross-entropy">(4)</a>.</p>
 </div>
 <p><span style="display:none" id="binary_loss">W3sicXVlc3Rpb24iOiAiQ2FsY3VsYXRlIHRoZSBtaXNjbGFzc2lmaWNhdGlvbiByYXRlIiwgInR5cGUiOiAibnVtZXJpYyIsICJhbnN3ZXJzIjogW3sidHlwZSI6ICJ2YWx1ZSIsICJ2YWx1ZSI6IDAuNCwgImNvcnJlY3QiOiB0cnVlLCAiZmVlZGJhY2siOiAiUmlnaHQgeW91IGFyZSEgSGVyZSAkTj01JCwgdHdvIGluY29ycmVjdCBwcmVkaWN0aW9ucywgc28gdGhlIGxvc3MgaXMgJFxcZnJhYyAyNSQifSwgeyJ0eXBlIjogImRlZmF1bHQiLCAiZmVlZGJhY2siOiAiTm9wZSJ9XX0sIHsicXVlc3Rpb24iOiAiQ2FsY3VsYXRlIHRoZSBjcm9zcy1lbnRyb3B5IGxvc3MiLCAidHlwZSI6ICJtYW55X2Nob2ljZSIsICJhbnN3ZXJzIjogW3siYW5zd2VyIjogIiQwJCIsICJjb3JyZWN0IjogZmFsc2UsICJmZWVkYmFjayI6ICJUb28gbG93In0sIHsiYW5zd2VyIjogIiRcXGZyYWMgMTUgXFxsb2cgMiQiLCAiY29ycmVjdCI6IGZhbHNlLCAiZmVlZGJhY2siOiAiRG9lc24ndCBsb29rIGNvcnJlY3QifSwgeyJhbnN3ZXIiOiAiJFxcZnJhYyAxNSBcXGxvZyAzJCIsICJjb3JyZWN0IjogZmFsc2UsICJmZWVkYmFjayI6ICJOb3BlIn0sIHsiYW5zd2VyIjogIiQrXFxpbmZ0eSQiLCAiY29ycmVjdCI6IHRydWUsICJmZWVkYmFjayI6ICJPaCwgeWVhaC4uLiJ9XX1d</span></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="JwWLjSuGmihu" data-shufflequestions="False"
+<div class="output text_html"><div id="OnWGtvQbsufz" data-shufflequestions="False"
                data-shuffleanswers="True"
                data-preserveresponses="false"
                data-numquestions="1000000"
                data-maxwidth="600"
                style="border-radius: 10px; text-align: left"> <style>
-#JwWLjSuGmihu {
+#OnWGtvQbsufz {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -781,14 +787,14 @@ document.write(`
     }
 }
 </style></div><script type="application/javascript">var element=document.getElementById("binary_loss");
-            var questionsJwWLjSuGmihu;
+            var questionsOnWGtvQbsufz;
             try {
-               questionsJwWLjSuGmihu=JSON.parse(window.atob(element.innerHTML));
+               questionsOnWGtvQbsufz=JSON.parse(window.atob(element.innerHTML));
             } catch(err) {
                console.log("Fell into catch");
-               questionsJwWLjSuGmihu = JSON.parse(element.innerHTML);
+               questionsOnWGtvQbsufz = JSON.parse(element.innerHTML);
             }
-            console.log(questionsJwWLjSuGmihu);;
+            console.log(questionsOnWGtvQbsufz);;
     // Make a random ID
 function makeid(length) {
     var result = [];
@@ -1537,8 +1543,8 @@ if (typeof version == 'undefined') {
            Someone more knowledgeable could make this better ;-) */
 
         function try_show() {
-          if(document.getElementById("JwWLjSuGmihu")) {
-            show_questions(questionsJwWLjSuGmihu,  JwWLjSuGmihu); 
+          if(document.getElementById("OnWGtvQbsufz")) {
+            show_questions(questionsOnWGtvQbsufz,  OnWGtvQbsufz); 
           } else {
              setTimeout(try_show, 200);
           }
@@ -1547,14 +1553,14 @@ if (typeof version == 'undefined') {
         {
         // console.log(element);
 
-        //console.log("JwWLjSuGmihu");
-        // console.log(document.getElementById("JwWLjSuGmihu"));
+        //console.log("OnWGtvQbsufz");
+        // console.log(document.getElementById("OnWGtvQbsufz"));
 
         try_show();
         }
         </script></div>
 </div>
-<p>To avoid such problems with loss <a class="reference internal" href="#equation-binary-cross-entropy">(2)</a> models usually predict numbers from <span class="math notranslate nohighlight">\((0, 1)\)</span>, which are interpreted as probabilities of class <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>To avoid such problems with loss <a class="reference internal" href="#equation-binary-cross-entropy">(4)</a> models usually predict numbers from <span class="math notranslate nohighlight">\((0, 1)\)</span>, which are interpreted as probabilities of class <span class="math notranslate nohighlight">\(1\)</span>.</p>
 <p><strong>Multiclass classification</strong></p>
 <a class="bg-primary mb-1 reference internal image-reference" href="https://miro.medium.com/max/1400/1*JAXmOAImcf683aXaBDPPVg.jpeg"><img alt="multiclass" class="bg-primary mb-1 align-center" src="https://miro.medium.com/max/1400/1*JAXmOAImcf683aXaBDPPVg.jpeg" style="width: 500px;" /></a>
 <ul>
@@ -1569,7 +1575,7 @@ if (typeof version == 'undefined') {
 <li><p>the cross-entropy loss is now written as follows:</p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-cross-entropy">
-<span class="eqno">(3)<a class="headerlink" href="#equation-cross-entropy" title="Permalink to this equation">#</a></span>\[\mathcal L(\boldsymbol \theta) = -\frac 1n \sum\limits_{i=1}^n \sum\limits_{k=1}^Ky_{ik} \log(\hat y_{ik})\]</div>
+<span class="eqno">(5)<a class="headerlink" href="#equation-cross-entropy" title="Permalink to this equation">#</a></span>\[\mathcal L(\boldsymbol \theta) = -\frac 1n \sum\limits_{i=1}^n \sum\limits_{k=1}^Ky_{ik} \log(\hat y_{ik})\]</div>
 <div class="admonition-example admonition">
 <p class="admonition-title">Example</p>
 <p>Classifying into <span class="math notranslate nohighlight">\(3\)</span> classes, model produces the following outputs:</p>
@@ -1594,18 +1600,18 @@ if (typeof version == 'undefined') {
 </tr>
 </tbody>
 </table>
-<p>Calculate the cross-entropy loss <a class="reference internal" href="#equation-cross-entropy">(3)</a>. Assume that log base is <span class="math notranslate nohighlight">\(2\)</span>.</p>
+<p>Calculate the cross-entropy loss <a class="reference internal" href="#equation-cross-entropy">(5)</a>. Assume that log base is <span class="math notranslate nohighlight">\(2\)</span>.</p>
 </div>
 <p><span style="display:none" id="cross_entropy_loss">W3sicXVlc3Rpb24iOiAiQ2FsY3VsYXRlIHRoZSBjcm9zcyBlbnRyb3B5IGZyb20gdGhlIHByZXZpb3VzIGV4YW1wbGUiLCAidHlwZSI6ICJudW1lcmljIiwgImFuc3dlcnMiOiBbeyJ0eXBlIjogInZhbHVlIiwgInZhbHVlIjogMC44NzUsICJjb3JyZWN0IjogdHJ1ZSwgImZlZWRiYWNrIjogIkV4YWN0bHkhIn0sIHsidHlwZSI6ICJkZWZhdWx0IiwgImZlZWRiYWNrIjogIkluY29ycmVjdCJ9XX1d</span></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="HmcDQmpZksID" data-shufflequestions="False"
+<div class="output text_html"><div id="nwaMPhhplHsB" data-shufflequestions="False"
                data-shuffleanswers="True"
                data-preserveresponses="false"
                data-numquestions="1000000"
                data-maxwidth="600"
                style="border-radius: 10px; text-align: left"> <style>
-#HmcDQmpZksID {
+#nwaMPhhplHsB {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -1776,14 +1782,14 @@ if (typeof version == 'undefined') {
     }
 }
 </style></div><script type="application/javascript">var element=document.getElementById("cross_entropy_loss");
-            var questionsHmcDQmpZksID;
+            var questionsnwaMPhhplHsB;
             try {
-               questionsHmcDQmpZksID=JSON.parse(window.atob(element.innerHTML));
+               questionsnwaMPhhplHsB=JSON.parse(window.atob(element.innerHTML));
             } catch(err) {
                console.log("Fell into catch");
-               questionsHmcDQmpZksID = JSON.parse(element.innerHTML);
+               questionsnwaMPhhplHsB = JSON.parse(element.innerHTML);
             }
-            console.log(questionsHmcDQmpZksID);;
+            console.log(questionsnwaMPhhplHsB);;
     // Make a random ID
 function makeid(length) {
     var result = [];
@@ -2532,8 +2538,8 @@ if (typeof version == 'undefined') {
            Someone more knowledgeable could make this better ;-) */
 
         function try_show() {
-          if(document.getElementById("HmcDQmpZksID")) {
-            show_questions(questionsHmcDQmpZksID,  HmcDQmpZksID); 
+          if(document.getElementById("nwaMPhhplHsB")) {
+            show_questions(questionsnwaMPhhplHsB,  nwaMPhhplHsB); 
           } else {
              setTimeout(try_show, 200);
           }
@@ -2542,8 +2548,8 @@ if (typeof version == 'undefined') {
         {
         // console.log(element);
 
-        //console.log("HmcDQmpZksID");
-        // console.log(document.getElementById("HmcDQmpZksID"));
+        //console.log("nwaMPhhplHsB");
+        // console.log(document.getElementById("nwaMPhhplHsB"));
 
         try_show();
         }
@@ -2592,7 +2598,7 @@ if (typeof version == 'undefined') {
 <p>Clusterisation made on <a class="reference internal" href="data.html#iris"><span class="std std-ref">Iris dataset</span></a> (figure 1.8 from <span id="id2">[<a class="reference internal" href="../bibliography.html#id3" title="Kevin P. Murphy. Probabilistic Machine Learning: An introduction. MIT Press, 2022. URL: probml.ai.">Murphy, 2022</a>]</span>):</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/3db3994c509b61510bc3ee9c903afcd4bd6fc2098e1abd7bc1866464550bfcf4.svg" src="../_images/3db3994c509b61510bc3ee9c903afcd4bd6fc2098e1abd7bc1866464550bfcf4.svg" /></div>
+<img alt="../_images/d0159bbccf6ba8e7ed2eeb908f6ccf1ec37f44deaf6e62a134d07f69f6681f4d.svg" src="../_images/d0159bbccf6ba8e7ed2eeb908f6ccf1ec37f44deaf6e62a134d07f69f6681f4d.svg" /></div>
 </div>
 </section>
 <section id="semisupervised-learning">
@@ -2613,10 +2619,10 @@ if (typeof version == 'undefined') {
 \[
       \frac{\text{Number of correct predictions}}{\text{Total number of samples}}.
   \]</div>
-<p>Prove that accuracy equals one minus error rate <a class="reference internal" href="#equation-mis-rate">(1)</a>.</p>
+<p>Prove that accuracy equals one minus error rate <a class="reference internal" href="#equation-mis-rate">(3)</a>.</p>
 <ol class="arabic simple" start="2">
 <li><p>Suppose that training dataset has only one sample (<span class="math notranslate nohighlight">\(n=1\)</span>) and one feature. How would linear regression look like in this case? What if <span class="math notranslate nohighlight">\(n=2\)</span>? <span class="math notranslate nohighlight">\(n=3\)</span>?</p></li>
-<li><p>Show that the binary cross-entropy loss <a class="reference internal" href="#equation-binary-cross-entropy">(2)</a> is a special case of the cross-entropy <a class="reference internal" href="#equation-cross-entropy">(3)</a>.</p></li>
+<li><p>Show that the binary cross-entropy loss <a class="reference internal" href="#equation-binary-cross-entropy">(4)</a> is a special case of the cross-entropy <a class="reference internal" href="#equation-cross-entropy">(5)</a>.</p></li>
 </ol>
 <!--
 ```{admonition} TODO

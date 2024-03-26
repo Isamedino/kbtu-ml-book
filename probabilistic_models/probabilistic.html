@@ -167,6 +167,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW3.html">HW3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW4.html">HW4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW5.html">HW5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW6.html">HW6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -329,11 +332,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/probability.html">Probability</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/rvs.html">Random variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/proba/entropy.html">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/independence.html">Independence and random vectors</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Estimations</a></li>
 </ul>
 </li>
 </ul>
@@ -524,18 +530,18 @@ document.write(`
 \]</div>
 <p>The optimal weights <span class="math notranslate nohighlight">\(\boldsymbol{\widehat w}\)</span> maximize the likelihood, or, equivalently, log-likelihood:</p>
 <div class="math notranslate nohighlight" id="equation-log-likelihood-max">
-<span class="eqno">(29)<a class="headerlink" href="#equation-log-likelihood-max" title="Permalink to this equation">#</a></span>\[    \log p(\boldsymbol y \vert \boldsymbol X, \boldsymbol w) = \log\prod_{i=1}^n p(y_i \vert \boldsymbol x_i, \boldsymbol w) = \sum_{i=1}^n \log p(y_i \vert \boldsymbol x_i, \boldsymbol w) \to \max\limits_{\boldsymbol w}.\]</div>
+<span class="eqno">(31)<a class="headerlink" href="#equation-log-likelihood-max" title="Permalink to this equation">#</a></span>\[    \log p(\boldsymbol y \vert \boldsymbol X, \boldsymbol w) = \log\prod_{i=1}^n p(y_i \vert \boldsymbol x_i, \boldsymbol w) = \sum_{i=1}^n \log p(y_i \vert \boldsymbol x_i, \boldsymbol w) \to \max\limits_{\boldsymbol w}.\]</div>
 <p>Alternatively, one can minimize <strong>negative log-likelikelihood</strong> (<strong>NLL</strong>):</p>
 <div class="math notranslate nohighlight">
 \[
 - \log p(\boldsymbol y \vert \boldsymbol X, \boldsymbol w) = -\sum_{i=1}^n \log p(y_i \vert \boldsymbol x_i, \boldsymbol w) \to \min\limits_{\boldsymbol w}.
 \]</div>
-<p>The optimal estimation of weights <span class="math notranslate nohighlight">\(\boldsymbol{\widehat w}\)</span> maximizing log-likelihood <a class="reference internal" href="#equation-log-likelihood-max">(29)</a> is called <strong>maximum likelihood estimation</strong> (<strong>MLE</strong>).</p>
+<p>The optimal estimation of weights <span class="math notranslate nohighlight">\(\boldsymbol{\widehat w}\)</span> maximizing log-likelihood <a class="reference internal" href="#equation-log-likelihood-max">(31)</a> is called <strong>maximum likelihood estimation</strong> (<strong>MLE</strong>).</p>
 </section>
 <section id="bayesian-approach">
 <h2>Bayesian approach<a class="headerlink" href="#bayesian-approach" title="Permalink to this heading">#</a></h2>
 <p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Thomas_Bayes.gif/274px-Thomas_Bayes.gif" /></p>
-<p>From <a class="reference internal" href="#equation-log-likelihood-max">(29)</a> we obtain a point estimation <span class="math notranslate nohighlight">\(\boldsymbol {\widehat w}_{\mathrm{MLE}}\)</span>. In Bayesian framework we estimate not points but distributions!</p>
+<p>From <a class="reference internal" href="#equation-log-likelihood-max">(31)</a> we obtain a point estimation <span class="math notranslate nohighlight">\(\boldsymbol {\widehat w}_{\mathrm{MLE}}\)</span>. In Bayesian framework we estimate not points but distributions!</p>
 <p>Assume that parameters <span class="math notranslate nohighlight">\(\boldsymbol w\)</span> have <strong>prior</strong> distribution <span class="math notranslate nohighlight">\(p(\boldsymbol w)\)</span>. Observing the dataset <span class="math notranslate nohighlight">\(\mathcal D\)</span>, we can apply the Bayes formula and obtain <strong>posterior</strong> distribution</p>
 <div class="math notranslate nohighlight">
 \[

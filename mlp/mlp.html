@@ -167,6 +167,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW3.html">HW3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW4.html">HW4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW5.html">HW5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW6.html">HW6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -331,10 +334,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/probability.html">Probability</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/proba/rvs.html">Random variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/proba/entropy.html">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/independence.html">Independence and random vectors</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Estimations</a></li>
 </ul>
 </li>
 </ul>
@@ -515,10 +520,10 @@ document.write(`
 \]</div>
 <p>If we have several neurons <span class="math notranslate nohighlight">\(z_1, \ldots, z_m\)</span> in the output layer, then the linear transformation between layers can be written as</p>
 <div class="math notranslate nohighlight" id="equation-linear-layer-coord">
-<span class="eqno">(31)<a class="headerlink" href="#equation-linear-layer-coord" title="Permalink to this equation">#</a></span>\[    z_j = \sum\limits_{i=1}^n w_{ij} x_i + b_j, \quad j = 1, \ldots, m.\]</div>
+<span class="eqno">(33)<a class="headerlink" href="#equation-linear-layer-coord" title="Permalink to this equation">#</a></span>\[    z_j = \sum\limits_{i=1}^n w_{ij} x_i + b_j, \quad j = 1, \ldots, m.\]</div>
 <div class="important admonition">
 <p class="admonition-title">Question</p>
-<p>Denote <span class="math notranslate nohighlight">\(\boldsymbol x^{\mathsf T} = (x_1, \ldots, x_n)\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol z^{\mathsf T} = (z_1, \ldots, z_m)\)</span>,  <span class="math notranslate nohighlight">\(\boldsymbol W = (w_{ij})\)</span>. How to rewrite <a class="reference internal" href="#equation-linear-layer-coord">(31)</a> in matrix form?</p>
+<p>Denote <span class="math notranslate nohighlight">\(\boldsymbol x^{\mathsf T} = (x_1, \ldots, x_n)\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol z^{\mathsf T} = (z_1, \ldots, z_m)\)</span>,  <span class="math notranslate nohighlight">\(\boldsymbol W = (w_{ij})\)</span>. How to rewrite <a class="reference internal" href="#equation-linear-layer-coord">(33)</a> in matrix form?</p>
 </div>
 <!-- #endregion -->
 <div class="toctree-wrapper compound">

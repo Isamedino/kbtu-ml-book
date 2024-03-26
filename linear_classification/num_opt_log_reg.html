@@ -167,6 +167,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW3.html">HW3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW4.html">HW4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW5.html">HW5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -329,11 +331,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/probability.html">Probability</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/rvs.html">Random variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/proba/entropy.html">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/independence.html">Independence and random vectors</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Estimations</a></li>
 </ul>
 </li>
 </ul>
@@ -618,18 +623,16 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>max_iter exceeded
-CPU times: user 1min 8s, sys: 7.54 s, total: 1min 15s
-Wall time: 51.3 s
+CPU times: user 1min 7s, sys: 7.47 s, total: 1min 15s
+Wall time: 1min 5s
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2.34853601e+00,  1.90312646e-01,  7.20905799e-01, -3.95589561e-02,
-       -1.10749574e+00,  2.71663511e-01,  2.65838700e-01, -5.43311026e-02,
-       -1.92779504e-03,  1.12618191e+00, -5.86199445e-01,  8.14596433e-01,
-       -1.08057964e-01, -1.69678969e-01,  5.41171048e-01, -1.72939742e-01,
-       -8.18954223e-01, -8.08013501e-01,  2.57692633e-01, -7.27380717e-01,
-        1.23911342e+00, -5.90003809e-01, -5.29677344e-01, -2.63998436e-02,
-       -2.60904370e-01, -4.66388335e-04, -1.94284264e+00, -4.16468519e-01,
-        1.30926398e+00,  6.12066857e-01])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.88239944,  0.15622662,  0.85305614, -0.0419092 , -0.60594889,
+       -1.68410025,  0.54131089, -0.53568648, -0.58952449,  0.01065915,
+        0.20785494, -1.20280894, -0.00227925, -0.14598475, -0.98141292,
+        0.05659573,  0.34895675,  1.0969944 , -1.26854998,  0.03806694,
+        1.4275309 , -0.44773639, -0.615157  , -0.02580667,  0.59487576,
+        0.1883812 , -1.44125065, -0.67639331, -0.39567591,  0.14381629])
 </pre></div>
 </div>
 </div>
@@ -643,7 +646,7 @@ Wall time: 51.3 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9490333919156415
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9402460456942003
 </pre></div>
 </div>
 </div>
@@ -683,7 +686,7 @@ Wall time: 51.3 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.664346079477963
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.145933776105386
 </pre></div>
 </div>
 </div>

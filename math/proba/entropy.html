@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'math/proba/entropy';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Statistics" href="../statistics.html" />
+    <link rel="next" title="Independence and random vectors" href="independence.html" />
     <link rel="prev" title="Random variables" href="rvs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -168,6 +168,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW3.html">HW3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW4.html">HW4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW5.html">HW5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -332,10 +333,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../probability.html">Probability</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="rvs.html">Random variables</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="independence.html">Independence and random vectors</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/MLE.html">Estimations</a></li>
 </ul>
 </li>
 </ul>
@@ -542,7 +545,7 @@ document.write(`
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/051533465e5f440bc0f5f658fb8196a615f02663ceb9191e733aa3250cb7698d.svg" src="../../_images/051533465e5f440bc0f5f658fb8196a615f02663ceb9191e733aa3250cb7698d.svg" /></div>
+<img alt="../../_images/9e27bf7eee81cb45fedfa051399b2fd85c8405539b382e4271cd8aa3f76957bd.svg" src="../../_images/9e27bf7eee81cb45fedfa051399b2fd85c8405539b382e4271cd8aa3f76957bd.svg" /></div>
 </div>
 <p>Минимальное значение (нулевое) энтропия принимает при <span class="math notranslate nohighlight">\(p = 0\)</span> или <span class="math notranslate nohighlight">\(p=1\)</span>. Исход такого вырожденного эксперимента заранее известен, поэтому наблюдение значения случайной величины не несёт никакой новой информации.</p>
 <p>Максимальное значение энтропии достигается в точке <span class="math notranslate nohighlight">\(\frac12\)</span>, что вполне соответствует тому, что при <span class="math notranslate nohighlight">\(p=\frac12\)</span> предсказать исход эксперимента сложнее всего.</p>
@@ -559,7 +562,7 @@ document.write(`
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/f32a91785938b45051dda01b55d6ecdb4330d1e7700ec68ae0ec3388d4e957b1.svg" src="../../_images/f32a91785938b45051dda01b55d6ecdb4330d1e7700ec68ae0ec3388d4e957b1.svg" /></div>
+<img alt="../../_images/ef8be61633c75c81beff4655f26facc705e99462e44f5c5edff3184d58b832ab.svg" src="../../_images/ef8be61633c75c81beff4655f26facc705e99462e44f5c5edff3184d58b832ab.svg" /></div>
 </div>
 </section>
 <section id="entropy-of-mathrm-geom-p">
@@ -572,7 +575,7 @@ document.write(`
 <p>Unlike for the binomial disribution, this entropy can be easily calculated in closed form (see exercises below).</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/fb8ea56e27044cf5cf45cedcf65fa2e284c438da0f485ee54076c308eb15f59c.svg" src="../../_images/fb8ea56e27044cf5cf45cedcf65fa2e284c438da0f485ee54076c308eb15f59c.svg" /></div>
+<img alt="../../_images/b662fff3d7af3358781e70520cdb001b42f5a1624aae7a714e2e3f8d7c9c8f20.svg" src="../../_images/b662fff3d7af3358781e70520cdb001b42f5a1624aae7a714e2e3f8d7c9c8f20.svg" /></div>
 </div>
 </section>
 <section id="entropy-of-mathrm-pois-lambda">
@@ -589,7 +592,7 @@ document.write(`
 \]</div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/3f7d3551bf723749c298e27ce07ac6c15c9327568aa88dbee95dd41f32bac043.svg" src="../../_images/3f7d3551bf723749c298e27ce07ac6c15c9327568aa88dbee95dd41f32bac043.svg" /></div>
+<img alt="../../_images/ab16179bcc5ace3b0588f1c1a8f24d527ec646cfbfbf19730b34fe94c84cbfe8.svg" src="../../_images/ab16179bcc5ace3b0588f1c1a8f24d527ec646cfbfbf19730b34fe94c84cbfe8.svg" /></div>
 </div>
 </section>
 </section>
@@ -687,11 +690,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../statistics.html"
+       href="independence.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Statistics</p>
+        <p class="prev-next-title">Independence and random vectors</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

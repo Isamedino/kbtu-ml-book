@@ -167,6 +167,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW3.html">HW3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW4.html">HW4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW5.html">HW5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW6.html">HW6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -329,11 +332,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/probability.html">Probability</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/rvs.html">Random variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math/proba/entropy.html">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/proba/independence.html">Independence and random vectors</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Estimations</a></li>
 </ul>
 </li>
 </ul>
@@ -515,7 +521,7 @@ document.write(`
 <h1>Layers of MLP<a class="headerlink" href="#layers-of-mlp" title="Permalink to this heading">#</a></h1>
 <p>From mathematical point of view MLP is a smooth function <span class="math notranslate nohighlight">\(F\)</span> which is constructed as a composition of some other functions</p>
 <div class="math notranslate nohighlight" id="equation-mlp-composition">
-<span class="eqno">(32)<a class="headerlink" href="#equation-mlp-composition" title="Permalink to this equation">#</a></span>\[F(\boldsymbol x) = (f_{L} \circ f_{L-1} \circ\ldots \circ f_2 \circ f_1)(\boldsymbol x),\quad
+<span class="eqno">(34)<a class="headerlink" href="#equation-mlp-composition" title="Permalink to this equation">#</a></span>\[F(\boldsymbol x) = (f_{L} \circ f_{L-1} \circ\ldots \circ f_2 \circ f_1)(\boldsymbol x),\quad
 \boldsymbol x \in \mathbb R^{n_0}\]</div>
 <p>Each function</p>
 <div class="math notranslate nohighlight">
@@ -544,7 +550,7 @@ document.write(`
 <h2>Linear regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h2>
 <p>Linear regression is one the simplest MLPs. There are several types of linear regression model:</p>
 <ul>
-<li><p>simple linear regression <a class="reference internal" href="../lin_reg/simple.html#equation-simple-lin-reg">(5)</a> <span class="math notranslate nohighlight">\(y = ax +b\)</span></p></li>
+<li><p>simple linear regression <a class="reference internal" href="../lin_reg/simple.html#equation-simple-lin-reg">(7)</a> <span class="math notranslate nohighlight">\(y = ax +b\)</span></p></li>
 <li><p><a class="reference internal" href="../lin_reg/multiple.html#linear-regression"><span class="std std-ref">multiple linear regression</span></a> <span class="math notranslate nohighlight">\(y = \boldsymbol x^\mathsf{T} \boldsymbol w + w_0\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -578,7 +584,7 @@ document.write(`
 </section>
 <section id="parameters-of-mlp">
 <h2>Parameters of MLP<a class="headerlink" href="#parameters-of-mlp" title="Permalink to this heading">#</a></h2>
-<p>However, one important element is missing in <a class="reference internal" href="#equation-mlp-composition">(32)</a>: parameters! Each layer <span class="math notranslate nohighlight">\(f_\ell\)</span> has a vector of parameters <span class="math notranslate nohighlight">\(\boldsymbol \theta_\ell\in\mathbb R^{m_\ell}\)</span> (sometimes empty). Hence, a layer should be defined as</p>
+<p>However, one important element is missing in <a class="reference internal" href="#equation-mlp-composition">(34)</a>: parameters! Each layer <span class="math notranslate nohighlight">\(f_\ell\)</span> has a vector of parameters <span class="math notranslate nohighlight">\(\boldsymbol \theta_\ell\in\mathbb R^{m_\ell}\)</span> (sometimes empty). Hence, a layer should be defined as</p>
 <div class="math notranslate nohighlight">
 \[
     f_\ell \colon \mathbb R^{n_{\ell - 1}} \times \mathbb R^{m_\ell} \to \mathbb R^{n_\ell}.
@@ -640,10 +646,10 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter containing:
-tensor([[-0.2277,  0.3730,  0.0443],
-        [-0.1655, -0.0463, -0.4230],
-        [ 0.0732, -0.2157,  0.2316],
-        [-0.2727,  0.4656, -0.5735]], requires_grad=True)
+tensor([[-0.4304, -0.3307,  0.1231],
+        [ 0.4877,  0.5188,  0.2566],
+        [ 0.4129,  0.2789,  0.1979],
+        [-0.1454, -0.0376,  0.4418]], requires_grad=True)
 </pre></div>
 </div>
 </div>
@@ -656,7 +662,7 @@ tensor([[-0.2277,  0.3730,  0.0443],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 0.1897, -0.6348,  0.0891, -0.3806], grad_fn=&lt;SqueezeBackward4&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([-0.6380,  1.2631,  0.8897,  0.2588], grad_fn=&lt;SqueezeBackward4&gt;)
 </pre></div>
 </div>
 </div>
@@ -703,7 +709,7 @@ tensor([[-0.2277,  0.3730,  0.0443],
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/33092b50a7ad21f3a50ac59c0893b6c47b705048c3d84668aa10c0701c459b31.svg" src="../_images/33092b50a7ad21f3a50ac59c0893b6c47b705048c3d84668aa10c0701c459b31.svg" /></div>
+<img alt="../_images/45fc97727b9ffd6a4e02b020caea003404097f13b3a2c48160fc615ecfcb1dc3.svg" src="../_images/45fc97727b9ffd6a4e02b020caea003404097f13b3a2c48160fc615ecfcb1dc3.svg" /></div>
 </div>
 <p>You can read about advantages and disadvantages of different activation functions <a class="reference external" href="https://education.yandex.ru/handbook/ml/article/beta-pervoe-znakomstvo-s-polnosvyaznymi-nejrosetyami#populyarnye-funkczii-aktivaczii">here</a>.</p>
 </section>
@@ -719,8 +725,8 @@ tensor([[-0.2277,  0.3730,  0.0443],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.9079,  0.4278,  1.2380, -0.5007,  0.1343],
-        [ 0.6846, -0.7535,  0.8055, -0.5264,  0.8778]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-1.5622,  2.1024,  1.5971, -2.7043, -1.1599],
+        [ 1.7655, -2.4289,  0.6984,  0.5233, -0.3491]])
 </pre></div>
 </div>
 </div>
@@ -733,10 +739,10 @@ tensor([[-0.2277,  0.3730,  0.0443],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([[0.9079, 0.4278, 1.2380, 0.0000, 0.1343],
-         [0.6846, 0.0000, 0.8055, 0.0000, 0.8778]]),
- tensor([[ 0.9079,  0.4278,  1.2380, -0.0050,  0.1343],
-         [ 0.6846, -0.0075,  0.8055, -0.0053,  0.8778]]))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([[0.0000, 2.1024, 1.5971, 0.0000, 0.0000],
+         [1.7655, 0.0000, 0.6984, 0.5233, 0.0000]]),
+ tensor([[-0.0156,  2.1024,  1.5971, -0.0270, -0.0116],
+         [ 1.7655, -0.0243,  0.6984,  0.5233, -0.0035]]))
 </pre></div>
 </div>
 </div>

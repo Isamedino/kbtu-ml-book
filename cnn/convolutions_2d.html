@@ -168,6 +168,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW3.html">HW3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW4.html">HW4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW5.html">HW5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW6.html">HW6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -336,7 +338,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../math/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/stats/MLE.html">Estimations</a></li>
 </ul>
 </li>
 </ul>
@@ -524,7 +527,7 @@ document.write(`
 <h3>Convolution of sequences<a class="headerlink" href="#convolution-of-sequences" title="Permalink to this heading">#</a></h3>
 <p>The convolution of sequences <span class="math notranslate nohighlight">\((a_n)\)</span> and <span class="math notranslate nohighlight">\((b_n)\)</span> is the sequence <span class="math notranslate nohighlight">\(a * b\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-1-d-conv">
-<span class="eqno">(36)<a class="headerlink" href="#equation-1-d-conv" title="Permalink to this equation">#</a></span>\[(a * b)_n = \sum\limits_k a_k b_{n-k}\]</div>
+<span class="eqno">(38)<a class="headerlink" href="#equation-1-d-conv" title="Permalink to this equation">#</a></span>\[(a * b)_n = \sum\limits_k a_k b_{n-k}\]</div>
 <p>This formula assumes that the sequences <span class="math notranslate nohighlight">\((a_n)\)</span> and <span class="math notranslate nohighlight">\((b_n)\)</span> continue indefinitely to both sides. To calculate the convolution of finite sequences</p>
 <div class="math notranslate nohighlight">
 \[
@@ -541,7 +544,7 @@ document.write(`
 </div>
 <div class="important admonition">
 <p class="admonition-title">Question</p>
-<p>How many nonzero elements are there in <a class="reference internal" href="#equation-1-d-conv">(36)</a> for these finite sequences?</p>
+<p>How many nonzero elements are there in <a class="reference internal" href="#equation-1-d-conv">(38)</a> for these finite sequences?</p>
 </div>
 <p>In practice there are several reasonable strategies how to caclulate convolutions.</p>
 <ul>
@@ -584,7 +587,7 @@ Valid: [13 22]
 <h3>Cross correlation<a class="headerlink" href="#cross-correlation" title="Permalink to this heading">#</a></h3>
 <p>This is a very similar operation to convolution. The cross correlation of sequences <span class="math notranslate nohighlight">\((a_n)\)</span> and <span class="math notranslate nohighlight">\((b_n)\)</span> is a sequence <span class="math notranslate nohighlight">\((c_n)\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-1-d-cross-corr">
-<span class="eqno">(37)<a class="headerlink" href="#equation-1-d-cross-corr" title="Permalink to this equation">#</a></span>\[c_n = \sum\limits_k a_{n+k} b_k\]</div>
+<span class="eqno">(39)<a class="headerlink" href="#equation-1-d-cross-corr" title="Permalink to this equation">#</a></span>\[c_n = \sum\limits_k a_{n+k} b_k\]</div>
 <p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.correlate.html"><code class="docutils literal notranslate"><span class="pre">np.correlate</span></code></a> calculates the cross correlation of two arrays. The meaning of the parameters <code class="docutils literal notranslate"><span class="pre">full</span></code>, <code class="docutils literal notranslate"><span class="pre">same</span></code>, <code class="docutils literal notranslate"><span class="pre">valid</span></code> is analogous to those of <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.convolve.html"><code class="docutils literal notranslate"><span class="pre">np.convolve</span></code></a>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -607,7 +610,7 @@ Valid: [14 23]
 <p>How to express cross correlation it terms of convolution?</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Answer</p>
-<p>Denote <span class="math notranslate nohighlight">\((x^-_n)\)</span> the flipped sequence: <span class="math notranslate nohighlight">\(x^-_n = x_{-n}\)</span>. Now <span class="math notranslate nohighlight">\(c_n\)</span> from <a class="reference internal" href="#equation-1-d-cross-corr">(37)</a> is</p>
+<p>Denote <span class="math notranslate nohighlight">\((x^-_n)\)</span> the flipped sequence: <span class="math notranslate nohighlight">\(x^-_n = x_{-n}\)</span>. Now <span class="math notranslate nohighlight">\(c_n\)</span> from <a class="reference internal" href="#equation-1-d-cross-corr">(39)</a> is</p>
 <div class="math notranslate nohighlight">
 \[
     c_n = \sum\limits_k a^-_{-n-k} b_k = (a^- * b)_{-n}=(a^- * b)^-_n.
@@ -791,7 +794,7 @@ Valid:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/346bc7ff1f8f3ef91af2591f9ede3cd46b066928a8b3baf13349730d1b76ad96.svg" src="../_images/346bc7ff1f8f3ef91af2591f9ede3cd46b066928a8b3baf13349730d1b76ad96.svg" /></div>
+<img alt="../_images/705cb02acd9b7d0b518f02a0b5854c80eb62672734df0bee3b4acb671ffd6ed3.svg" src="../_images/705cb02acd9b7d0b518f02a0b5854c80eb62672734df0bee3b4acb671ffd6ed3.svg" /></div>
 </div>
 <p>The shape is <span class="math notranslate nohighlight">\(H\times W = 200\times 320\)</span>:</p>
 <div class="cell docutils container">
@@ -828,7 +831,7 @@ averages the values of each pixel with its neigbours, so the image becomes blurr
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e71fa3eb6319d2a2ad6373691fe7eebf8a2866276e9339b99dcd2a36050b177c.svg" src="../_images/e71fa3eb6319d2a2ad6373691fe7eebf8a2866276e9339b99dcd2a36050b177c.svg" /></div>
+<img alt="../_images/6b1141b801319e8fde71d9e59cf4cfb8da0f19dc58fc600e52369ef9fd581bf4.svg" src="../_images/6b1141b801319e8fde71d9e59cf4cfb8da0f19dc58fc600e52369ef9fd581bf4.svg" /></div>
 </div>
 <p><span class="math notranslate nohighlight">\(n = 8\)</span>:</p>
 <div class="cell docutils container">
@@ -838,7 +841,7 @@ averages the values of each pixel with its neigbours, so the image becomes blurr
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/77552c26a363d5624b09e59fdeb7c32de764d79bcabce25276f42d21b63e6429.svg" src="../_images/77552c26a363d5624b09e59fdeb7c32de764d79bcabce25276f42d21b63e6429.svg" /></div>
+<img alt="../_images/bf16bb45f3c93cb7639f9b55ab33b5771157e63b95c836da151b8dd1ee848b48.svg" src="../_images/bf16bb45f3c93cb7639f9b55ab33b5771157e63b95c836da151b8dd1ee848b48.svg" /></div>
 </div>
 <p>Now what if we convolve the image with kernel</p>
 <div class="math notranslate nohighlight">
@@ -866,7 +869,7 @@ averages the values of each pixel with its neigbours, so the image becomes blurr
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/eea0027720805dbbd83bf230f20393595fcbc2c74b1684970732c1a8456a0d01.svg" src="../_images/eea0027720805dbbd83bf230f20393595fcbc2c74b1684970732c1a8456a0d01.svg" /></div>
+<img alt="../_images/b70fb0805217c9fad11f75587092373d53ef2c5749a77b3ade1abc80f6731c84.svg" src="../_images/b70fb0805217c9fad11f75587092373d53ef2c5749a77b3ade1abc80f6731c84.svg" /></div>
 </details>
 </div>
 </section>

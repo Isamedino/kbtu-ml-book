@@ -167,6 +167,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW1.html">HW1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW2.html">HW2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/HW3.html">HW3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW4.html">HW4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW5.html">HW5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../HW/HW6.html">HW6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -329,11 +332,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../probability.html">Probability</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proba/rvs.html">Random variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../proba/entropy.html">Entropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proba/independence.html">Independence and random vectors</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stats/MLE.html">Maximum likelihood estimation (MLE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/limit_theorems.html">Limit theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stats/MLE.html">Estimations</a></li>
 </ul>
 </li>
 </ul>
@@ -513,7 +519,7 @@ document.write(`
 <p>In other words, <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> is <strong>diagonalizable</strong> if there exist an invertible matrix <span class="math notranslate nohighlight">\(M\)</span> and a diagonal matrix <span class="math notranslate nohighlight">\(\boldsymbol \Lambda\)</span> such that <span class="math notranslate nohighlight">\(\boldsymbol M^{-1}\boldsymbol {AM} = \boldsymbol \Lambda\)</span>.</p>
 <p><strong>Теорема</strong>. Если у матрицы <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{n\times n}\)</span> есть <span class="math notranslate nohighlight">\(n\)</span> линейно независимых собственных векторов <span class="math notranslate nohighlight">\(\boldsymbol x_1, \ldots, \boldsymbol x_n\)</span>, то матрица <span class="math notranslate nohighlight">\(\boldsymbol X = [\boldsymbol x_1 \ldots \boldsymbol x_n]\)</span> <strong>диагонализирует</strong> матрицу <span class="math notranslate nohighlight">\(\boldsymbol A\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-diagonalize">
-<span class="eqno">(53)<a class="headerlink" href="#equation-diagonalize" title="Permalink to this equation">#</a></span>\[    \boldsymbol X^{-1} \boldsymbol A \boldsymbol X =
+<span class="eqno">(55)<a class="headerlink" href="#equation-diagonalize" title="Permalink to this equation">#</a></span>\[    \boldsymbol X^{-1} \boldsymbol A \boldsymbol X =
     \boldsymbol\Lambda = \mathrm{diag} \{\lambda_1, \ldots, \lambda_n\}.\]</div>
 <div class="dropdown admonition">
 <p class="admonition-title">Proof</p>
@@ -542,13 +548,13 @@ document.write(`
 <p class="admonition-title">Proof</p>
 <p>Рассуждение проведём индукцией по <span class="math notranslate nohighlight">\(m\)</span>. При <span class="math notranslate nohighlight">\(m=1\)</span> утверждение, очевидно, верно. Пусть теперь <span class="math notranslate nohighlight">\(m&gt;1\)</span> и</p>
 <div class="math notranslate nohighlight" id="equation-linear-dep">
-<span class="eqno">(54)<a class="headerlink" href="#equation-linear-dep" title="Permalink to this equation">#</a></span>\[    c_1\boldsymbol x_1 + \ldots + c_{m-1} \boldsymbol x_{m-1} + c_m\boldsymbol x_m = \boldsymbol 0. \]</div>
+<span class="eqno">(56)<a class="headerlink" href="#equation-linear-dep" title="Permalink to this equation">#</a></span>\[    c_1\boldsymbol x_1 + \ldots + c_{m-1} \boldsymbol x_{m-1} + c_m\boldsymbol x_m = \boldsymbol 0. \]</div>
 <p>Умножим это равенство на матирцу <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> слева:</p>
 <div class="math notranslate nohighlight">
 \[
     c_1 \lambda_1\boldsymbol x_1 + \ldots + c_{m-1}\lambda_{m-1}\boldsymbol x_{m-1}+ c_m\lambda_m\boldsymbol x_m = \boldsymbol 0.
 \]</div>
-<p>Вычтем отсюда равенство <a class="reference internal" href="#equation-linear-dep">(54)</a>, умноженное на <span class="math notranslate nohighlight">\(\lambda_m\)</span>:</p>
+<p>Вычтем отсюда равенство <a class="reference internal" href="#equation-linear-dep">(56)</a>, умноженное на <span class="math notranslate nohighlight">\(\lambda_m\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
     c_1 (\lambda_1 - \lambda_m)\boldsymbol x_1 + \ldots + c_{m-1}(\lambda_{m-1} - \lambda_m)\boldsymbol x_{m-1} = \boldsymbol 0.
@@ -558,12 +564,12 @@ document.write(`
 \[
     c_k(\lambda_k - \lambda_m) = 0, \quad 1\leqslant k \leqslant m-1.
 \]</div>
-<p>Все собственные значения различны, значит, <span class="math notranslate nohighlight">\(c_k = 0\)</span> при <span class="math notranslate nohighlight">\(k=1, \ldots, m-1\)</span>. Но тогда <a class="reference internal" href="#equation-linear-dep">(54)</a> превращается в <span class="math notranslate nohighlight">\(c_m\boldsymbol x_m = \boldsymbol 0\)</span>, откуда <span class="math notranslate nohighlight">\(c_m = 0\)</span>. Итак, все коэффициенты линейной комбинации <a class="reference internal" href="#equation-linear-dep">(54)</a> обнулились, поэтому система собственных векторов <span class="math notranslate nohighlight">\(\boldsymbol x_1, \ldots,\boldsymbol x_m\)</span> линейно независима.</p>
+<p>Все собственные значения различны, значит, <span class="math notranslate nohighlight">\(c_k = 0\)</span> при <span class="math notranslate nohighlight">\(k=1, \ldots, m-1\)</span>. Но тогда <a class="reference internal" href="#equation-linear-dep">(56)</a> превращается в <span class="math notranslate nohighlight">\(c_m\boldsymbol x_m = \boldsymbol 0\)</span>, откуда <span class="math notranslate nohighlight">\(c_m = 0\)</span>. Итак, все коэффициенты линейной комбинации <a class="reference internal" href="#equation-linear-dep">(56)</a> обнулились, поэтому система собственных векторов <span class="math notranslate nohighlight">\(\boldsymbol x_1, \ldots,\boldsymbol x_m\)</span> линейно независима.</p>
 </div>
 <p>Применяя лемму к матрице <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{n\times n}\)</span> с простым спектром, заключаем, что у неё есть <span class="math notranslate nohighlight">\(n\)</span> линейно независимых собственных векторов <span class="math notranslate nohighlight">\(\boldsymbol x_1, \ldots,\boldsymbol x_n\)</span>, которые и образуют собственный базис. Следовательно, матрица <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> диагонализируема.</p>
 <p>Ну а что насчёт диагонализируемости, если спектр не простой? Бывает по-разному. Например, у единичной матрицы спектр отнюдь не простой (все <span class="math notranslate nohighlight">\(\lambda = 1\)</span>), однако, она уже диагональна. А вот у матрицы</p>
 <div class="math notranslate nohighlight" id="equation-non-diag">
-<span class="eqno">(55)<a class="headerlink" href="#equation-non-diag" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol A =
+<span class="eqno">(57)<a class="headerlink" href="#equation-non-diag" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol A =
 \begin{pmatrix}
         1 &amp; 1 \\
         0 &amp; 1 \\
@@ -742,7 +748,7 @@ $$
 \]</div>
 <p>то существует такая ортогональная матрица <span class="math notranslate nohighlight">\(\boldsymbol Q\)</span>, что</p>
 <div class="math notranslate nohighlight" id="equation-spectral-decomposition">
-<span class="eqno">(56)<a class="headerlink" href="#equation-spectral-decomposition" title="Permalink to this equation">#</a></span>\[    \boldsymbol Q^\mathsf{T}\boldsymbol{AQ} = \boldsymbol \Lambda = \mathrm{diag}\{\lambda_1, \ldots, \lambda_n\}.\]</div>
+<span class="eqno">(58)<a class="headerlink" href="#equation-spectral-decomposition" title="Permalink to this equation">#</a></span>\[    \boldsymbol Q^\mathsf{T}\boldsymbol{AQ} = \boldsymbol \Lambda = \mathrm{diag}\{\lambda_1, \ldots, \lambda_n\}.\]</div>
 </section>
 </div><p>Можно показать, что спектральная теорема справедлива для любой симметричной матрицы, а не только для матриц с простым спектром.</p>
 <!--
