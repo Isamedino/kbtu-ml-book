@@ -502,6 +502,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-performance">Visualize performance</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
             </nav>
         </div>
@@ -528,7 +529,7 @@ document.write(`
 <p>How to predict these probabilities? We can use a linear model whose output is a vector of <span class="math notranslate nohighlight">\(K\)</span> different numbers:</p>
 <div class="math notranslate nohighlight">
 \[
-z_k = \boldsymbol x^\top \boldsymbol w_k, \quad \boldsymbol w_k \in \mathbb R^d, \quad
+z_k = \boldsymbol x^\mathsf{T} \boldsymbol w_k, \quad \boldsymbol w_k \in \mathbb R^d, \quad
 k = 1, \ldots, K.
 \]</div>
 <p>Now convert the vector <span class="math notranslate nohighlight">\(\boldsymbol z \in \mathbb R^K\)</span> to the vector of probabilities <span class="math notranslate nohighlight">\(\boldsymbol{\widehat y}\)</span> via <strong>softmax</strong>:</p>
@@ -540,7 +541,7 @@ k = 1, \ldots, K.
 <div class="math notranslate nohighlight">
 \[
     \arg\max\limits_{1\leqslant k \leqslant K} p_k = 
-    \arg\max\limits_{1\leqslant k \leqslant K} \Big\{\frac{\exp(\boldsymbol x^\top \boldsymbol w_k)}{\sum \exp(\boldsymbol x^\top \boldsymbol w_k)}\Big\}
+    \arg\max\limits_{1\leqslant k \leqslant K} \Big\{\frac{\exp(\boldsymbol x^\mathsf{T} \boldsymbol w_k)}{\sum \exp(\boldsymbol x^\mathsf{T} \boldsymbol w_k)}\Big\}
 \]</div>
 <p>The parameters <span class="math notranslate nohighlight">\(\boldsymbol w_k\)</span> naturally form a matrix</p>
 <div class="math notranslate nohighlight">
@@ -552,37 +553,26 @@ k = 1, \ldots, K.
 <h2>Loss function<a class="headerlink" href="#loss-function" title="Permalink to this heading">#</a></h2>
 <p>The optimal parameters <span class="math notranslate nohighlight">\(\boldsymbol W\)</span> are solutions of the following optimization problem:</p>
 <div class="math notranslate nohighlight" id="equation-multi-log-reg-opt">
-<span class="eqno">(28)<a class="headerlink" href="#equation-multi-log-reg-opt" title="Permalink to this equation">#</a></span>\[\mathcal L (\boldsymbol W) = \sum\limits_{i=1}^n  \bigg(\boldsymbol x_i^\top\boldsymbol w_{y_i} -\log\Big(\sum\limits_{k=1}^K \exp(\boldsymbol x_i^\top\boldsymbol w_{k})\Big)\bigg) \to \max\limits_{\boldsymbol w_{1}, \ldots, \boldsymbol w_{K}}\]</div>
+<span class="eqno">(28)<a class="headerlink" href="#equation-multi-log-reg-opt" title="Permalink to this equation">#</a></span>\[\mathcal L (\boldsymbol W) = \sum\limits_{i=1}^n  \bigg(\boldsymbol x_i^\mathsf{T}\boldsymbol w_{y_i} -\log\Big(\sum\limits_{k=1}^K \exp(\boldsymbol x_i^\mathsf{T}\boldsymbol w_{k})\Big)\bigg) \to \max\limits_{\boldsymbol w_{1}, \ldots, \boldsymbol w_{K}}\]</div>
 <p>If the targets <span class="math notranslate nohighlight">\(y_k\)</span> are one-hot encoded, then they from a matrix</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \boldsymbol Y = \begin{pmatrix}
-    \boldsymbol y_1^\top \\
+    \boldsymbol y_1^\mathsf{T} \\
     \vdots \\
-     \boldsymbol y_n^\top
+     \boldsymbol y_n^\mathsf{T}
     \end{pmatrix},
     \quad
     y_{ik} \geqslant 0, \quad \sum\limits_{k=1}^K y_{ik} = 1.
 \end{split}\]</div>
-<p>Accordingly, the loss function <a class="reference internal" href="#equation-multi-log-reg-loss">(29)</a> can be written as</p>
+<p>Accordingly, the loss function <a class="reference internal" href="#equation-multi-log-reg-opt">(28)</a> can be written as</p>
 <div class="math notranslate nohighlight" id="equation-multi-log-reg-loss">
-<span class="eqno">(29)<a class="headerlink" href="#equation-multi-log-reg-loss" title="Permalink to this equation">#</a></span>\[\mathcal L (\boldsymbol W) = \sum\limits_{i=1}^n \sum\limits_{k=1}^K  y_{ik}\log\bigg(\frac{\exp(\boldsymbol x_i^\top\boldsymbol w_k)}{\sum\limits_{1 \leqslant k \leqslant K}\exp(\boldsymbol x_i^\top\boldsymbol w_{k})}\bigg) =  \sum\limits_{i=1}^n \sum\limits_{k=1}^K  y_{ik} \log \widehat y_{ik},\]</div>
+<span class="eqno">(29)<a class="headerlink" href="#equation-multi-log-reg-loss" title="Permalink to this equation">#</a></span>\[\mathcal L (\boldsymbol W) = \sum\limits_{i=1}^n \sum\limits_{k=1}^K  y_{ik}\log\bigg(\frac{\exp(\boldsymbol x_i^\mathsf{T}\boldsymbol w_k)}{\sum\limits_{1 \leqslant k \leqslant K}\exp(\boldsymbol x_i^\mathsf{T}\boldsymbol w_{k})}\bigg) =  \sum\limits_{i=1}^n \sum\limits_{k=1}^K  y_{ik} \log \widehat y_{ik},\]</div>
 <p>and this is generally the cross-entropy loss <a class="reference internal" href="../intro/ml_types.html#equation-cross-entropy">(5)</a>, taken with opposite sign.</p>
-<div class="important admonition">
-<p class="admonition-title">Question</p>
-<p>Denote <span class="math notranslate nohighlight">\(\boldsymbol{\widehat Y} = (\widehat y_{ik}) = \mathrm{Softmax}(\boldsymbol {XW})\)</span> (softmax is applied to each row). Rewrite the loss function <a class="reference internal" href="#equation-multi-log-reg-loss">(29)</a> in matrix form.</p>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Answer</p>
-<div class="math notranslate nohighlight">
-\[
-\sum\limits_{i=1}^n \sum\limits_{k=1}^K  y_{ik} \log \widehat y_{ik} = \mathrm{tr} (\boldsymbol Y^\top \boldsymbol {\widehat Y}).
-\]</div>
-</div>
-</div>
 <p>Regularized version:</p>
 <div class="math notranslate nohighlight">
 \[
-\sum\limits_{i=1}^n  \Big(\boldsymbol x_i^\top\boldsymbol w_{y_i} -\sum\limits_{k=1}^K \exp(\boldsymbol x_i^\top\boldsymbol w_{k})\Big) - C\Vert \boldsymbol W \Vert_F^2 \to \max\limits_{\boldsymbol W}, \quad C &gt; 0.
+\sum\limits_{i=1}^n  \Big(\boldsymbol x_i^\mathsf{T}\boldsymbol w_{y_i} -\sum\limits_{k=1}^K \exp(\boldsymbol x_i^\mathsf{T}\boldsymbol w_{k})\Big) - C\Vert \boldsymbol W \Vert_F^2 \to \max\limits_{\boldsymbol W}, \quad C &gt; 0.
 \]</div>
 <p><strong>Q</strong>. Why do we see minus before the regularization term?</p>
 </section>
@@ -613,7 +603,7 @@ k = 1, \ldots, K.
 <p>Visualize some random samples:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/738a83e40805bb51841cfdfd9d4f2278bbad7a2b54ab05a8a27a0a0a1b8dbccc.svg" src="../_images/738a83e40805bb51841cfdfd9d4f2278bbad7a2b54ab05a8a27a0a0a1b8dbccc.svg" /></div>
+<img alt="../_images/efd68858db07a2d40f4e66ce7d665d65b27ca43bdc86f6825dd46ad8a9df95f9.svg" src="../_images/efd68858db07a2d40f4e66ce7d665d65b27ca43bdc86f6825dd46ad8a9df95f9.svg" /></div>
 </div>
 </section>
 <section id="splitting-into-train-and-test">
@@ -658,8 +648,8 @@ k = 1, \ldots, K.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 40.2 s, sys: 1.09 s, total: 41.3 s
-Wall time: 25.6 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 41.8 s, sys: 915 ms, total: 42.7 s
+Wall time: 26.8 s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/sklearn/linear_model/_logistic.py:460: ConvergenceWarning: lbfgs failed to converge (status=1):
@@ -735,7 +725,7 @@ Please also refer to the documentation for alternative solver options:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8a1ab9a1474292f5dbb674465be05a363999489f69d4f819b1cc812a52524c28.svg" src="../_images/8a1ab9a1474292f5dbb674465be05a363999489f69d4f819b1cc812a52524c28.svg" /></div>
+<img alt="../_images/50ded7a2eb1a80a05d74fa1eae6f94cd6734092d7e8dd9ee04f64da322bc52ff.svg" src="../_images/50ded7a2eb1a80a05d74fa1eae6f94cd6734092d7e8dd9ee04f64da322bc52ff.svg" /></div>
 </div>
 <p>Plot some samples with predictions and ground truths:</p>
 <div class="cell docutils container">
@@ -745,10 +735,23 @@ Please also refer to the documentation for alternative solver options:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/14f1f7938f5c1176e6e31523d0f5c6cd654f8757b9e3b1b45073649654eab195.svg" src="../_images/14f1f7938f5c1176e6e31523d0f5c6cd654f8757b9e3b1b45073649654eab195.svg" /></div>
+<img alt="../_images/9fa76456b6f707065ed0c783fce614d8d433bfcb74361b3994e792fdf73ce07c.svg" src="../_images/9fa76456b6f707065ed0c783fce614d8d433bfcb74361b3994e792fdf73ce07c.svg" /></div>
 </div>
 </section>
 </section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Denote <span class="math notranslate nohighlight">\(\boldsymbol{\widehat Y} = (\widehat y_{ik}) = \mathrm{Softmax}(\boldsymbol {XW})\)</span> (softmax is applied to each row). Rewrite the loss function <a class="reference internal" href="#equation-multi-log-reg-loss">(29)</a> in matrix form.</p></li>
+</ol>
+<!--
+```{admonition} Answer
+:class: tip, dropdown
+$$
+\sum\limits_{i=1}^n \sum\limits_{k=1}^K  y_{ik} \log \widehat y_{ik} = \mathrm{tr} (\boldsymbol Y^\mathsf{T} \boldsymbol {\widehat Y}).
+$$
+```
+--></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -826,6 +829,7 @@ Please also refer to the documentation for alternative solver options:
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-performance">Visualize performance</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
   </nav></div>
 

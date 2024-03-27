@@ -532,17 +532,17 @@ document.write(`
 <p>Suppose that <span class="math notranslate nohighlight">\(\mathcal Y = \{-1, 1\}\)</span>, then we could predict labels of <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^d\)</span> by the formula</p>
 <div class="math notranslate nohighlight">
 \[
-    \widehat y = \mathrm{sgn}\Big(\sum\limits_{j=1}^d x_j w_j\Big) = \mathrm{sgn}(\boldsymbol x^\top \boldsymbol w).
+    \widehat y = \mathrm{sgn}\Big(\sum\limits_{j=1}^d x_j w_j\Big) = \mathrm{sgn}(\boldsymbol x^\mathsf{T}\boldsymbol w).
 \]</div>
 <p>What about loss function? Rewrite the misclassification rate <a class="reference internal" href="../intro/ml_types.html#equation-mis-rate">(3)</a> as</p>
 <div class="math notranslate nohighlight" id="equation-mis-rate-class">
-<span class="eqno">(25)<a class="headerlink" href="#equation-mis-rate-class" title="Permalink to this equation">#</a></span>\[\mathcal L(\boldsymbol w) = \frac 1n\sum\limits_{i=1}^n [\boldsymbol x_i^\top \boldsymbol w y_i &lt; 0].\]</div>
+<span class="eqno">(25)<a class="headerlink" href="#equation-mis-rate-class" title="Permalink to this equation">#</a></span>\[\mathcal L(\boldsymbol w) = \frac 1n\sum\limits_{i=1}^n [\boldsymbol x_i^\mathsf{T} \boldsymbol w y_i &lt; 0].\]</div>
 <section id="margins">
 <h3>Margins<a class="headerlink" href="#margins" title="Permalink to this heading">#</a></h3>
 <p>Define the <strong>margin</strong> of the training sample <span class="math notranslate nohighlight">\((\boldsymbol x_i, y_i)\)</span> as</p>
 <div class="math notranslate nohighlight">
 \[
-    M_i = \boldsymbol x_i^\top \boldsymbol w y_i.
+    M_i = \boldsymbol x_i^\mathsf{T} \boldsymbol w y_i.
 \]</div>
 <p>If the margin is positive, the prediction is correct, and vise versa. Now we can express the loss function <a class="reference internal" href="#equation-mis-rate-class">(25)</a> in terms of margins:</p>
 <div class="math notranslate nohighlight" id="equation-mis-rate-margin">
@@ -570,7 +570,7 @@ document.write(`
 \[
     \widehat y = \mathbb P(\boldsymbol x \in \text{class } 1).
 \]</div>
-<p>Linear regression <span class="math notranslate nohighlight">\(\widehat y = \boldsymbol x^\top \boldsymbol w\)</span> is not suitable for this purpose since <span class="math notranslate nohighlight">\(\widehat y\)</span> here can be any real number. However, it is not difficult to convert it to the desired probability. Just apply the sigmoid function</p>
+<p>Linear regression <span class="math notranslate nohighlight">\(\widehat y = \boldsymbol x^\mathsf{T} \boldsymbol w\)</span> is not suitable for this purpose since <span class="math notranslate nohighlight">\(\widehat y\)</span> here can be any real number. However, it is not difficult to convert it to the desired probability. Just apply the sigmoid function</p>
 <div class="math notranslate nohighlight">
 \[
 \sigma(t) = \frac 1{1 + e^{-t}}.

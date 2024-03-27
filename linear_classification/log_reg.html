@@ -494,8 +494,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-logistic-regression">Simple logistic regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-logistic-classes">Binary logistic classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regularization">Regularization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-breast-cancer-dataset">Example: breast cancer dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
             </nav>
         </div>
@@ -509,31 +512,40 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="logistic-regression">
 <span id="simple-log-reg"></span><h1>Logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this heading">#</a></h1>
-<p>Let <span class="math notranslate nohighlight">\(\mathcal D = \{\boldsymbol x_i, y_i\}\)</span>, <span class="math notranslate nohighlight">\(y_i \in \{0, 1\}\)</span>.  <strong>Logistic regression</strong> model predicts the probability of the positive class:</p>
+<section id="simple-logistic-regression">
+<h2>Simple logistic regression<a class="headerlink" href="#simple-logistic-regression" title="Permalink to this heading">#</a></h2>
+<p>Just like in <a class="reference internal" href="../lin_reg/simple.html#simple-linear-regression"><span class="std std-ref">Simple linear regression</span></a>, if we have only one feature <span class="math notranslate nohighlight">\(x\)</span> and two classes <span class="math notranslate nohighlight">\(0\)</span> (negative) and <span class="math notranslate nohighlight">\(1\)</span> (positive), introduce two parameters: <strong>intercept</strong> <span class="math notranslate nohighlight">\(w_0\)</span> and <strong>slope</strong> <span class="math notranslate nohighlight">\(w_1\)</span>. Then put</p>
 <div class="math notranslate nohighlight">
 \[
-    \widehat y = \sigma(\boldsymbol x^\top \boldsymbol w) = \mathbb P(\boldsymbol x \in \text{class }1),
+    \widehat y = \mathbb P(\text{class }1) = \sigma(w_0 + w_1 x)
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\sigma(t) = \frac 1{1 + e^{-t}}\)</span> — <strong>sigmoid function</strong>.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/3305eb75a6740675770cfa62c208215deb297e20838d2faee741e0357a4666b3.svg" src="../_images/3305eb75a6740675770cfa62c208215deb297e20838d2faee741e0357a4666b3.svg" /></div>
+<img alt="../_images/17f915da34c8247596e7b9eeb0738802d2d9629e1647737ab01b3ed3a33d5282.svg" src="../_images/17f915da34c8247596e7b9eeb0738802d2d9629e1647737ab01b3ed3a33d5282.svg" /></div>
 </div>
-<p><strong>Q</strong>. What is <span class="math notranslate nohighlight">\(\sigma'(t)\)</span>?</p>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Answer</p>
+<p><strong>Q</strong>. What is <span class="math notranslate nohighlight">\(\mathbb P(\text{class } 0)\)</span>?</p>
+<p><strong>Q</strong>. How to predict classes if we know predicted probabilities?</p>
+</section>
+<section id="binary-logistic-classes">
+<h2>Binary logistic classes<a class="headerlink" href="#binary-logistic-classes" title="Permalink to this heading">#</a></h2>
+<p>Now suppose that each sample is descirbed by <span class="math notranslate nohighlight">\(d\)</span> numeric features, and we have a dataset <span class="math notranslate nohighlight">\(\mathcal D = \{\boldsymbol x_i, y_i\}_{i=1}^n\)</span>, <span class="math notranslate nohighlight">\(y_i \in \{0, 1\}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol x_i \in \mathbb R^d\)</span>.  <strong>Logistic regression</strong> model predicts the probability of the positive class:</p>
 <div class="math notranslate nohighlight">
 \[
-\sigma'(t) = \frac{e^{-t}}{(1+e^{-t})^2} = \sigma(t) (1-\sigma(t))
+    \widehat y_i = \sigma(\boldsymbol x_i^\mathsf{T} \boldsymbol w) = \mathbb P(\boldsymbol x \in \text{class }1),
 \]</div>
+<p>The linear output <span class="math notranslate nohighlight">\(\boldsymbol x^\mathsf{T} \boldsymbol w\)</span> is also called <strong>logit</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As for linear regression model, intercept is included to <span class="math notranslate nohighlight">\(\boldsymbol w\)</span> by putting <span class="math notranslate nohighlight">\(\boldsymbol x_0 = \boldsymbol 1\)</span>.</p>
 </div>
-<p>The linear output <span class="math notranslate nohighlight">\(\boldsymbol x^\top \boldsymbol w\)</span> is also called <strong>logit</strong>.</p>
 <p>The loss function is binary cross-entropy</p>
 <div class="math notranslate nohighlight" id="equation-bin-log-reg-loss">
 <span class="eqno">(27)<a class="headerlink" href="#equation-bin-log-reg-loss" title="Permalink to this equation">#</a></span>\[\begin{split}    \begin{multline*}
     \mathcal L(\boldsymbol w) = -\frac 1n\sum\limits_{i=1}^n \big(y_i \log \widehat y_i + (1-y_i)\log(1-\widehat y_i)\big) = \\
-    =-\frac 1n\sum\limits_{i=1}^n \big(y_i \log(\sigma(\boldsymbol x_i^\top \boldsymbol w)) + (1- y_i)\log(1 - \sigma(\boldsymbol x_i^\top \boldsymbol w))\big).
+    =-\frac 1n\sum\limits_{i=1}^n \big(y_i \log(\sigma(\boldsymbol x_i^\mathsf{T}\boldsymbol w)) + (1- y_i)\log(1 - \sigma(\boldsymbol x_i^\mathsf{T} \boldsymbol w))\big).
     \end{multline*}\end{split}\]</div>
+<p>Fitting a logistic regression model is achieved by minimizing this loss function with respect to <span class="math notranslate nohighlight">\(\boldsymbol w\)</span>.</p>
 <div class="important admonition">
 <p class="admonition-title">Question</p>
 <p>How will the cross entropy loss change if <span class="math notranslate nohighlight">\(\mathcal Y = \{-1, 1\}\)</span>?</p>
@@ -542,26 +554,28 @@ document.write(`
 <p>In this case</p>
 <div class="math notranslate nohighlight">
 \[
-    \mathbb P(\boldsymbol x \in \text{class }1) = \sigma(\boldsymbol x^\top \boldsymbol w), \quad \mathbb P(\boldsymbol x \in \text{class }-1) = \sigma(-\boldsymbol x^\top \boldsymbol w).
+    \mathbb P(\boldsymbol x \in \text{class }1) = \sigma(\boldsymbol x^\mathsf{T} \boldsymbol w), \quad \mathbb P(\boldsymbol x \in \text{class }-1) = \sigma(-\boldsymbol x^\mathsf{T} \boldsymbol w).
 \]</div>
 <p>Hence,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{multline*}
-\mathcal L(\boldsymbol w) = -\frac 1n\sum\limits_{i=1}^n [y_i = 1] \log\sigma(\boldsymbol x_i^\top \boldsymbol w) + [y_i = -1] \log\sigma(-\boldsymbol x_i^\top \boldsymbol w)
+\mathcal L(\boldsymbol w) = -\frac 1n\sum\limits_{i=1}^n [y_i = 1] \log\sigma(\boldsymbol x_i^\mathsf{T} \boldsymbol w) + [y_i = -1] \log\sigma(-\boldsymbol x_i^\mathsf{T} \boldsymbol w)
 = \\
-= -\frac 1n\sum\limits_{i=1}^n \log \sigma(y_i \boldsymbol x_i^\top \boldsymbol w) =
-\frac 1n\sum\limits_{i=1}^n \log \big(1 + e^{y_i \boldsymbol x_i^\top \boldsymbol w}\big).
+= -\frac 1n\sum\limits_{i=1}^n \log \sigma(y_i \boldsymbol x_i^\mathsf{T} \boldsymbol w) =
+\frac 1n\sum\limits_{i=1}^n \log \big(1 + e^{y_i \boldsymbol x_i^\mathsf{T} \boldsymbol w}\big).
 \end{multline*}
 \end{split}\]</div>
 </div>
 </div>
+</section>
 <section id="regularization">
 <h2>Regularization<a class="headerlink" href="#regularization" title="Permalink to this heading">#</a></h2>
-<p>The loss function for <span class="math notranslate nohighlight">\(L_2\)</span>-regularized logistic regression with is <span class="math notranslate nohighlight">\(\mathcal Y = \{-1, 1\}\)</span></p>
+<p>Logistic regression can also suffer from multicollinearity. A possible solution is to add regularization term of the form <span class="math notranslate nohighlight">\(C\Vert \boldsymbol w \Vert\)</span>. For example,
+the loss function for <span class="math notranslate nohighlight">\(L_2\)</span>-regularized logistic regression with <span class="math notranslate nohighlight">\(\mathcal Y = \{-1, 1\}\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal L(\boldsymbol w) = \frac 1n\sum\limits_{i=1}^n \log \big(1 + e^{y_i \boldsymbol x_i^\top \boldsymbol w}\big) + C \boldsymbol w^\top \boldsymbol w.
+\mathcal L(\boldsymbol w) = \frac 1n\sum\limits_{i=1}^n \log \big(1 + e^{y_i \boldsymbol x_i^\mathsf{T} \boldsymbol w}\big) + C \boldsymbol w^\mathsf{T} \boldsymbol w.
 \]</div>
 <p>There are also versions of <span class="math notranslate nohighlight">\(L_1\)</span> penalizer or elastic net.</p>
 </section>
@@ -626,12 +640,126 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Now take the logistic regression from <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
+<p>Train and evaluate <span class="math notranslate nohighlight">\(30\)</span> simple logistic regressions — one per each feature:</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 
-<span class="n">log_reg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">feature_names</span><span class="p">):</span>
+    <span class="n">log_reg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+    <span class="n">log_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:,</span> <span class="n">i</span><span class="p">][:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Train accuracy: </span><span class="si">{:.2%}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">log_reg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:,</span> <span class="n">i</span><span class="p">][:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">y_train</span><span class="p">))</span> <span class="o">+</span> 
+          <span class="s2">&quot;  test accuracy: </span><span class="si">{:.2%}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">log_reg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:,</span> <span class="n">i</span><span class="p">][:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">y_test</span><span class="p">)))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Intercept: </span><span class="si">{</span><span class="n">log_reg</span><span class="o">.</span><span class="n">intercept_</span><span class="si">}</span><span class="s2">, coef: </span><span class="si">{</span><span class="n">log_reg</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean radius
+  Train accuracy: 87.25%  test accuracy: 89.47%
+  Intercept: [15.40420471], coef: [-1.04522006]
+mean texture
+  Train accuracy: 67.25%  test accuracy: 79.82%
+  Intercept: [4.62388895], coef: [-0.21082646]
+mean perimeter
+  Train accuracy: 87.69%  test accuracy: 88.60%
+  Intercept: [16.12462748], coef: [-0.16871663]
+mean area
+  Train accuracy: 88.57%  test accuracy: 87.72%
+  Intercept: [8.12816756], coef: [-0.01202711]
+mean smoothness
+  Train accuracy: 61.76%  test accuracy: 66.67%
+  Intercept: [0.58328176], coef: [-1.07850092]
+mean compactness
+  Train accuracy: 65.93%  test accuracy: 76.32%
+  Intercept: [1.01969151], coef: [-5.14148173]
+mean concavity
+  Train accuracy: 77.80%  test accuracy: 85.09%
+  Intercept: [1.15439327], coef: [-7.41211983]
+mean concave points
+  Train accuracy: 65.27%  test accuracy: 71.93%
+  Intercept: [0.76284472], coef: [-5.66836617]
+mean symmetry
+  Train accuracy: 61.76%  test accuracy: 66.67%
+  Intercept: [0.83174852], coef: [-1.95138822]
+mean fractal dimension
+  Train accuracy: 61.76%  test accuracy: 66.67%
+  Intercept: [0.47654206], coef: [0.04397962]
+radius error
+  Train accuracy: 81.76%  test accuracy: 75.44%
+  Intercept: [2.93744616], coef: [-6.22167211]
+texture error
+  Train accuracy: 61.76%  test accuracy: 66.67%
+  Intercept: [0.51113765], coef: [-0.02644874]
+perimeter error
+  Train accuracy: 82.42%  test accuracy: 73.68%
+  Intercept: [4.52684329], coef: [-1.49427771]
+area error
+  Train accuracy: 88.13%  test accuracy: 82.46%
+  Intercept: [4.90990957], coef: [-0.13598212]
+smoothness error
+  Train accuracy: 61.76%  test accuracy: 66.67%
+  Intercept: [0.47914547], coef: [0.0220901]
+compactness error
+  Train accuracy: 61.76%  test accuracy: 66.67%
+  Intercept: [0.50390608], coef: [-0.98030559]
+concavity error
+  Train accuracy: 61.76%  test accuracy: 65.79%
+  Intercept: [0.52671501], coef: [-1.49761213]
+concave points error
+  Train accuracy: 61.76%  test accuracy: 66.67%
+  Intercept: [0.48577569], coef: [-0.54705078]
+symmetry error
+  Train accuracy: 61.76%  test accuracy: 66.67%
+  Intercept: [0.47912056], coef: [0.00970369]
+fractal dimension error
+  Train accuracy: 61.76%  test accuracy: 66.67%
+  Intercept: [0.47946227], coef: [-0.04405271]
+worst radius
+  Train accuracy: 92.09%  test accuracy: 88.60%
+  Intercept: [19.53199544], coef: [-1.17393621]
+worst texture
+  Train accuracy: 69.89%  test accuracy: 80.70%
+  Intercept: [4.99420063], coef: [-0.17210549]
+worst perimeter
+  Train accuracy: 91.87%  test accuracy: 90.35%
+  Intercept: [20.14278956], coef: [-0.18374807]
+worst area
+  Train accuracy: 91.87%  test accuracy: 87.72%
+  Intercept: [10.17650575], coef: [-0.01194894]
+worst smoothness
+  Train accuracy: 61.76%  test accuracy: 66.67%
+  Intercept: [0.73654389], coef: [-1.93685759]
+worst compactness
+  Train accuracy: 77.36%  test accuracy: 85.96%
+  Intercept: [2.05769149], coef: [-6.09501095]
+worst concavity
+  Train accuracy: 82.20%  test accuracy: 91.23%
+  Intercept: [2.36163647], coef: [-6.65525259]
+worst concave points
+  Train accuracy: 80.66%  test accuracy: 86.84%
+  Intercept: [1.40541046], coef: [-7.79666026]
+worst symmetry
+  Train accuracy: 65.05%  test accuracy: 72.81%
+  Intercept: [1.62845695], coef: [-3.94143715]
+worst fractal dimension
+  Train accuracy: 61.76%  test accuracy: 66.67%
+  Intercept: [0.57107814], coef: [-1.09334988]
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>Now take all <span class="math notranslate nohighlight">\(30\)</span> features at once:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_reg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
 <span class="n">log_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -658,8 +786,8 @@ Please also refer to the documentation for alternative solver options:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train accuracy: 0.9428571428571428
-Test accuracy: 0.9649122807017544
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train accuracy: 0.9406593406593406
+Test accuracy: 0.9385964912280702
 </pre></div>
 </div>
 </div>
@@ -684,12 +812,33 @@ Test accuracy: 0.9649122807017544
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train accuracy: 0.9648351648351648
-Test accuracy: 0.956140350877193
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train accuracy: 0.9560439560439561
+Test accuracy: 0.9736842105263158
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Suppose we collect data for a group of students in a statistics class with variables</p>
+<div class="math notranslate nohighlight">
+\[
+    x_1 = \text{hours studied},\quad x_2 = \text{undergrad GPA},\quad y = \text{receive an A}.
+    \]</div>
+<p>We fit a logistic regression and produce estimated coefficients</p>
+<div class="math notranslate nohighlight">
+\[
+    w_0 = -6, \quad w_1 = 0.05, \quad w_2 = 1.
+    \]</div>
+<ul class="simple">
+<li><p>Estimate the probability that a student who studies for <span class="math notranslate nohighlight">\(40\)</span> h and has an undergrad GPA of <span class="math notranslate nohighlight">\(3.5\)</span> gets an A in the class.</p></li>
+<li><p>How many hours would the student need to study to have a <span class="math notranslate nohighlight">\(50\%\)</span> chance of getting an A in the class?</p></li>
+</ul>
+</li>
+<li><p>Write down the loss function of logstic regression model with <span class="math notranslate nohighlight">\(\mathcal Y = \{-1, 1\}\)</span> in matrix-vector form.</p></li>
+</ol>
 </section>
 </section>
 
@@ -760,8 +909,11 @@ Test accuracy: 0.956140350877193
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-logistic-regression">Simple logistic regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-logistic-classes">Binary logistic classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regularization">Regularization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-breast-cancer-dataset">Example: breast cancer dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
   </nav></div>
 

@@ -169,6 +169,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW3.html">HW3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW4.html">HW4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW5.html">HW5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW6.html">HW6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -512,29 +513,29 @@ document.write(`
 <p>To find the optimal weights of the logistic regression, we can use <a class="reference internal" href="../math/calculus/optimization.html#GD">gradient descent</a> algorithm. To apply this algorithm, one need to calculate the gradient of the loss function.</p>
 <section id="binary-logistic-regression">
 <h2>Binary logistic regression<a class="headerlink" href="#binary-logistic-regression" title="Permalink to this heading">#</a></h2>
-<p>Multiply the loss function <a class="reference internal" href="log_reg.html#equation-bin-log-reg-loss">(25)</a> by <span class="math notranslate nohighlight">\(n\)</span>:</p>
+<p>Multiply the loss function <a class="reference internal" href="log_reg.html#equation-bin-log-reg-loss">(27)</a> by <span class="math notranslate nohighlight">\(n\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \mathcal L(\boldsymbol w) = 
--\sum\limits_{i=1}^n \big(y_i \log(\sigma(\boldsymbol x_i^\top \boldsymbol w)) + (1- y_i)\log(1 - \sigma(\boldsymbol x_i^\top \boldsymbol w))\big).
+-\sum\limits_{i=1}^n \big(y_i \log(\sigma(\boldsymbol x_i^\mathsf{T} \boldsymbol w)) + (1- y_i)\log(1 - \sigma(\boldsymbol x_i^\mathsf{T} \boldsymbol w))\big).
 \]</div>
 <p>To find <span class="math notranslate nohighlight">\(\nabla \mathcal L(\boldsymbol w)\)</span> observe that</p>
 <div class="math notranslate nohighlight">
 \[
-   \nabla \log(\sigma(\boldsymbol x_i^\top \boldsymbol w)) = \frac {\nabla \sigma(\boldsymbol x_i^\top \boldsymbol w)}{\sigma(\boldsymbol x_i^\top \boldsymbol w)} = 
-   \frac{\sigma'(\boldsymbol x_i^\top \boldsymbol w) \nabla(\boldsymbol x_i^\top \boldsymbol w)}{{\sigma(\boldsymbol x_i^\top \boldsymbol w)}}.
+   \nabla \log(\sigma(\boldsymbol x_i^\mathsf{T} \boldsymbol w)) = \frac {\nabla \sigma(\boldsymbol x_i^\mathsf{T} \boldsymbol w)}{\sigma(\boldsymbol x_i^\mathsf{T} \boldsymbol w)} = 
+   \frac{\sigma'(\boldsymbol x_i^\mathsf{T} \boldsymbol w) \nabla(\boldsymbol x_i^\mathsf{T} \boldsymbol w)}{{\sigma(\boldsymbol x_i^\mathsf{T} \boldsymbol w)}}.
 \]</div>
 <p>Also,</p>
 <div class="math notranslate nohighlight">
 \[
-   \nabla \log(1 - \sigma(\boldsymbol x_i^\top \boldsymbol w)) = -\frac {\nabla  \sigma(\boldsymbol x_i^\top \boldsymbol w)}{1 - \sigma(\boldsymbol x_i^\top \boldsymbol w)} = 
-   \frac{\sigma'(\boldsymbol x_i^\top \boldsymbol w) \nabla(\boldsymbol x_i^\top \boldsymbol w)}{{1 - \sigma(\boldsymbol x_i^\top \boldsymbol w)}}.
+   \nabla \log(1 - \sigma(\boldsymbol x_i^\mathsf{T} \boldsymbol w)) = -\frac {\nabla  \sigma(\boldsymbol x_i^\mathsf{T} \boldsymbol w)}{1 - \sigma(\boldsymbol x_i^\mathsf{T} \boldsymbol w)} = 
+   \frac{\sigma'(\boldsymbol x_i^\mathsf{T} \boldsymbol w) \nabla(\boldsymbol x_i^\mathsf{T} \boldsymbol w)}{{1 - \sigma(\boldsymbol x_i^\mathsf{T} \boldsymbol w)}}.
 \]</div>
-<p><strong>Q</strong>. What is <span class="math notranslate nohighlight">\(\nabla(\boldsymbol x_i^\top \boldsymbol w)\)</span>?</p>
+<p><strong>Q</strong>. What is <span class="math notranslate nohighlight">\(\nabla(\boldsymbol x_i^\mathsf{T} \boldsymbol w)\)</span>?</p>
 <p>Putting it altogeter, we get</p>
 <div class="math notranslate nohighlight">
 \[
-   \nabla \mathcal L(\boldsymbol w) = -\sum\limits_{i=1}^n \big(y_i(1 - \sigma(\boldsymbol x_i^\top \boldsymbol w))\boldsymbol x_i - (1-y_i)\sigma(\boldsymbol x_i^\top \boldsymbol w)\boldsymbol x_i\big) = \sum\limits_{i=1}^n (\sigma(\boldsymbol x_i^\top \boldsymbol w) - y_i)\boldsymbol x_i.
+   \nabla \mathcal L(\boldsymbol w) = -\sum\limits_{i=1}^n \big(y_i(1 - \sigma(\boldsymbol x_i^\mathsf{T} \boldsymbol w))\boldsymbol x_i - (1-y_i)\sigma(\boldsymbol x_i^\mathsf{T} \boldsymbol w)\boldsymbol x_i\big) = \sum\limits_{i=1}^n (\sigma(\boldsymbol x_i^\mathsf{T} \boldsymbol w) - y_i)\boldsymbol x_i.
 \]</div>
 <div class="important admonition">
 <p class="admonition-title">Question</p>
@@ -545,9 +546,9 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\begin{split}
    \begin{pmatrix}
-   \sigma(\boldsymbol x_1^\top \boldsymbol w) - y_1 \\
+   \sigma(\boldsymbol x_1^\mathsf{T} \boldsymbol w) - y_1 \\
    \vdots \\
-   \sigma(\boldsymbol x_n^\top \boldsymbol w) - y_n
+   \sigma(\boldsymbol x_n^\mathsf{T} \boldsymbol w) - y_n
    \end{pmatrix}
    = \sigma(\boldsymbol X \boldsymbol w )- \boldsymbol y \in \mathbb R^n.
 \end{split}\]</div>
@@ -561,15 +562,15 @@ document.write(`
 <p class="admonition-title">Answer</p>
 <div class="math notranslate nohighlight">
 \[
-\nabla^2 L(\boldsymbol w) = \boldsymbol X^\top \boldsymbol S \boldsymbol X,
+\nabla^2 L(\boldsymbol w) = \boldsymbol X^\mathsf{T} \boldsymbol S \boldsymbol X,
 \]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
    \boldsymbol S = \mathrm{diag}\{\sigma(\boldsymbol X \boldsymbol w )- \boldsymbol y\} = \begin{pmatrix}
-   \sigma(\boldsymbol x_1^{\boldsymbol{\top}} \boldsymbol w) - y_1  &amp; \ldots &amp; 0 \\
+   \sigma(\boldsymbol x_1^{\mathsf{T}} \boldsymbol w) - y_1  &amp; \ldots &amp; 0 \\
    \vdots &amp; \ddots &amp; \vdots \\
-   0 &amp; \ldots &amp; \sigma(\boldsymbol x_n^{\boldsymbol{\top}} \boldsymbol w) - y_n
+   0 &amp; \ldots &amp; \sigma(\boldsymbol x_n^{\mathsf{T}} \boldsymbol w) - y_n
    \end{pmatrix}
 \end{split}\]</div>
 </div>
@@ -623,16 +624,16 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>max_iter exceeded
-CPU times: user 1min 7s, sys: 7.47 s, total: 1min 15s
-Wall time: 1min 5s
+CPU times: user 59.8 s, sys: 5.26 s, total: 1min 5s
+Wall time: 36.1 s
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.88239944,  0.15622662,  0.85305614, -0.0419092 , -0.60594889,
-       -1.68410025,  0.54131089, -0.53568648, -0.58952449,  0.01065915,
-        0.20785494, -1.20280894, -0.00227925, -0.14598475, -0.98141292,
-        0.05659573,  0.34895675,  1.0969944 , -1.26854998,  0.03806694,
-        1.4275309 , -0.44773639, -0.615157  , -0.02580667,  0.59487576,
-        0.1883812 , -1.44125065, -0.67639331, -0.39567591,  0.14381629])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2.178621  ,  0.17476304,  0.4992673 , -0.01595015,  1.49645052,
+       -1.38296943, -0.00553193, -0.26076272,  1.41817567,  0.110417  ,
+        0.53618601,  1.05929512, -0.64582116, -0.14709405, -0.1823647 ,
+       -1.32514355, -0.43510158,  0.88712521,  1.25085555, -0.90605777,
+        1.67394244, -0.58344548, -0.3689794 , -0.04600845,  1.73833028,
+        0.34421417, -2.83028634, -1.21719397, -0.5357929 ,  1.27493064])
 </pre></div>
 </div>
 </div>
@@ -646,7 +647,7 @@ Wall time: 1min 5s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9402460456942003
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9490333919156415
 </pre></div>
 </div>
 </div>
@@ -686,7 +687,7 @@ Wall time: 1min 5s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.145933776105386
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.873966687361175
 </pre></div>
 </div>
 </div>
@@ -698,7 +699,7 @@ Wall time: 1min 5s
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \begin{multline*}
-    \mathcal L(\boldsymbol W) = -\sum\limits_{i=1}^n \sum\limits_{k=1}^K  y_{ik} \bigg(\boldsymbol x_i^\top\boldsymbol w_{k} -\log\Big(\sum\limits_{k=1}^K \exp(\boldsymbol x_i^\top\boldsymbol w_{k})\Big)\bigg) = \\
+    \mathcal L(\boldsymbol W) = -\sum\limits_{i=1}^n \sum\limits_{k=1}^K  y_{ik} \bigg(\boldsymbol x_i^\mathsf{T}\boldsymbol w_{k} -\log\Big(\sum\limits_{k=1}^K \exp(\boldsymbol x_i^\mathsf{T}\boldsymbol w_{k})\Big)\bigg) = \\
     =
     -\sum\limits_{i=1}^n \sum\limits_{k=1}^K  y_{ik} \bigg(\sum\limits_{j=1}^d x_{ij} w_{jk} -\log\Big(\sum\limits_{k=1}^K \exp\Big(\sum\limits_{j=1}^d x_{ij} w_{jk}\Big)\Big)\bigg)
     \end{multline*}
@@ -706,7 +707,7 @@ Wall time: 1min 5s
 <p>One can show that</p>
 <div class="math notranslate nohighlight">
 \[
-    \nabla \mathcal L(\boldsymbol W) = \boldsymbol X^\top (\boldsymbol {\widehat Y} - \boldsymbol Y) = \boldsymbol X^\top ( \sigma(\boldsymbol{XW}) - \boldsymbol Y).
+    \nabla \mathcal L(\boldsymbol W) = \boldsymbol X^\mathsf{T} (\boldsymbol {\widehat Y} - \boldsymbol Y) = \boldsymbol X^\mathsf{T} ( \sigma(\boldsymbol{XW}) - \boldsymbol Y).
 \]</div>
 <!-- Observe that
 
