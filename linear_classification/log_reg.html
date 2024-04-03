@@ -495,7 +495,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-logistic-regression">Simple logistic regression</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-logistic-classes">Binary logistic classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-logistic-regression">Binary logistic regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regularization">Regularization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-breast-cancer-dataset">Example: breast cancer dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
@@ -522,13 +522,13 @@ document.write(`
 <p>where <span class="math notranslate nohighlight">\(\sigma(t) = \frac 1{1 + e^{-t}}\)</span> — <strong>sigmoid function</strong>.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/17f915da34c8247596e7b9eeb0738802d2d9629e1647737ab01b3ed3a33d5282.svg" src="../_images/17f915da34c8247596e7b9eeb0738802d2d9629e1647737ab01b3ed3a33d5282.svg" /></div>
+<img alt="../_images/274ffb3986d663025e03ec09f41391f2624eb5a6c3374098d2c0a729ca5fbb99.svg" src="../_images/274ffb3986d663025e03ec09f41391f2624eb5a6c3374098d2c0a729ca5fbb99.svg" /></div>
 </div>
 <p><strong>Q</strong>. What is <span class="math notranslate nohighlight">\(\mathbb P(\text{class } 0)\)</span>?</p>
 <p><strong>Q</strong>. How to predict classes if we know predicted probabilities?</p>
 </section>
-<section id="binary-logistic-classes">
-<h2>Binary logistic classes<a class="headerlink" href="#binary-logistic-classes" title="Permalink to this heading">#</a></h2>
+<section id="binary-logistic-regression">
+<h2>Binary logistic regression<a class="headerlink" href="#binary-logistic-regression" title="Permalink to this heading">#</a></h2>
 <p>Now suppose that each sample is descirbed by <span class="math notranslate nohighlight">\(d\)</span> numeric features, and we have a dataset <span class="math notranslate nohighlight">\(\mathcal D = \{\boldsymbol x_i, y_i\}_{i=1}^n\)</span>, <span class="math notranslate nohighlight">\(y_i \in \{0, 1\}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol x_i \in \mathbb R^d\)</span>.  <strong>Logistic regression</strong> model predicts the probability of the positive class:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -662,95 +662,95 @@ the loss function for <span class="math notranslate nohighlight">\(L_2\)</span>-
 </summary>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean radius
-  Train accuracy: 87.25%  test accuracy: 89.47%
-  Intercept: [15.40420471], coef: [-1.04522006]
+  Train accuracy: 87.47%  test accuracy: 89.47%
+  Intercept: [14.80524331], coef: [-1.01003758]
 mean texture
-  Train accuracy: 67.25%  test accuracy: 79.82%
-  Intercept: [4.62388895], coef: [-0.21082646]
+  Train accuracy: 69.89%  test accuracy: 74.56%
+  Intercept: [4.85461411], coef: [-0.22464545]
 mean perimeter
-  Train accuracy: 87.69%  test accuracy: 88.60%
-  Intercept: [16.12462748], coef: [-0.16871663]
+  Train accuracy: 87.69%  test accuracy: 89.47%
+  Intercept: [15.48774632], coef: [-0.16288581]
 mean area
-  Train accuracy: 88.57%  test accuracy: 87.72%
-  Intercept: [8.12816756], coef: [-0.01202711]
+  Train accuracy: 87.69%  test accuracy: 89.47%
+  Intercept: [7.75744602], coef: [-0.01158083]
 mean smoothness
-  Train accuracy: 61.76%  test accuracy: 66.67%
-  Intercept: [0.58328176], coef: [-1.07850092]
+  Train accuracy: 60.88%  test accuracy: 70.18%
+  Intercept: [0.55949898], coef: [-1.21854415]
 mean compactness
-  Train accuracy: 65.93%  test accuracy: 76.32%
-  Intercept: [1.01969151], coef: [-5.14148173]
+  Train accuracy: 68.13%  test accuracy: 76.32%
+  Intercept: [1.03572387], coef: [-5.60372478]
 mean concavity
-  Train accuracy: 77.80%  test accuracy: 85.09%
-  Intercept: [1.15439327], coef: [-7.41211983]
+  Train accuracy: 79.56%  test accuracy: 82.46%
+  Intercept: [1.14750231], coef: [-7.60268599]
 mean concave points
-  Train accuracy: 65.27%  test accuracy: 71.93%
-  Intercept: [0.76284472], coef: [-5.66836617]
+  Train accuracy: 66.15%  test accuracy: 75.44%
+  Intercept: [0.73775258], coef: [-5.88209902]
 mean symmetry
-  Train accuracy: 61.76%  test accuracy: 66.67%
-  Intercept: [0.83174852], coef: [-1.95138822]
+  Train accuracy: 60.88%  test accuracy: 70.18%
+  Intercept: [0.78539459], coef: [-1.89227181]
 mean fractal dimension
-  Train accuracy: 61.76%  test accuracy: 66.67%
-  Intercept: [0.47654206], coef: [0.04397962]
+  Train accuracy: 60.88%  test accuracy: 70.18%
+  Intercept: [0.44378706], coef: [-0.02478042]
 radius error
-  Train accuracy: 81.76%  test accuracy: 75.44%
-  Intercept: [2.93744616], coef: [-6.22167211]
+  Train accuracy: 79.34%  test accuracy: 82.46%
+  Intercept: [2.79461819], coef: [-5.87654032]
 texture error
-  Train accuracy: 61.76%  test accuracy: 66.67%
-  Intercept: [0.51113765], coef: [-0.02644874]
+  Train accuracy: 60.88%  test accuracy: 70.18%
+  Intercept: [0.30943779], coef: [0.10963842]
 perimeter error
-  Train accuracy: 82.42%  test accuracy: 73.68%
-  Intercept: [4.52684329], coef: [-1.49427771]
+  Train accuracy: 80.66%  test accuracy: 78.95%
+  Intercept: [4.45861165], coef: [-1.48449401]
 area error
-  Train accuracy: 88.13%  test accuracy: 82.46%
-  Intercept: [4.90990957], coef: [-0.13598212]
+  Train accuracy: 87.91%  test accuracy: 84.21%
+  Intercept: [4.81129784], coef: [-0.13222751]
 smoothness error
-  Train accuracy: 61.76%  test accuracy: 66.67%
-  Intercept: [0.47914547], coef: [0.0220901]
+  Train accuracy: 60.88%  test accuracy: 70.18%
+  Intercept: [0.44190519], coef: [0.04687281]
 compactness error
-  Train accuracy: 61.76%  test accuracy: 66.67%
-  Intercept: [0.50390608], coef: [-0.98030559]
+  Train accuracy: 60.88%  test accuracy: 70.18%
+  Intercept: [0.47357206], coef: [-1.23174852]
 concavity error
-  Train accuracy: 61.76%  test accuracy: 65.79%
-  Intercept: [0.52671501], coef: [-1.49761213]
+  Train accuracy: 60.66%  test accuracy: 69.30%
+  Intercept: [0.49662912], coef: [-1.70223867]
 concave points error
-  Train accuracy: 61.76%  test accuracy: 66.67%
-  Intercept: [0.48577569], coef: [-0.54705078]
+  Train accuracy: 60.88%  test accuracy: 70.18%
+  Intercept: [0.44897342], coef: [-0.57865655]
 symmetry error
-  Train accuracy: 61.76%  test accuracy: 66.67%
-  Intercept: [0.47912056], coef: [0.00970369]
+  Train accuracy: 60.88%  test accuracy: 70.18%
+  Intercept: [0.4427844], coef: [-0.02709849]
 fractal dimension error
-  Train accuracy: 61.76%  test accuracy: 66.67%
-  Intercept: [0.47946227], coef: [-0.04405271]
+  Train accuracy: 60.88%  test accuracy: 70.18%
+  Intercept: [0.44247272], coef: [-0.06289785]
 worst radius
-  Train accuracy: 92.09%  test accuracy: 88.60%
-  Intercept: [19.53199544], coef: [-1.17393621]
+  Train accuracy: 91.43%  test accuracy: 92.11%
+  Intercept: [18.75267297], coef: [-1.13569826]
 worst texture
-  Train accuracy: 69.89%  test accuracy: 80.70%
-  Intercept: [4.99420063], coef: [-0.17210549]
+  Train accuracy: 70.99%  test accuracy: 73.68%
+  Intercept: [5.22269213], coef: [-0.18209002]
 worst perimeter
-  Train accuracy: 91.87%  test accuracy: 90.35%
-  Intercept: [20.14278956], coef: [-0.18374807]
+  Train accuracy: 91.21%  test accuracy: 92.11%
+  Intercept: [19.31785526], coef: [-0.17721146]
 worst area
-  Train accuracy: 91.87%  test accuracy: 87.72%
-  Intercept: [10.17650575], coef: [-0.01194894]
+  Train accuracy: 91.43%  test accuracy: 91.23%
+  Intercept: [9.79446525], coef: [-0.01163801]
 worst smoothness
-  Train accuracy: 61.76%  test accuracy: 66.67%
-  Intercept: [0.73654389], coef: [-1.93685759]
+  Train accuracy: 60.88%  test accuracy: 70.18%
+  Intercept: [0.73054119], coef: [-2.17075656]
 worst compactness
-  Train accuracy: 77.36%  test accuracy: 85.96%
-  Intercept: [2.05769149], coef: [-6.09501095]
+  Train accuracy: 78.46%  test accuracy: 81.58%
+  Intercept: [2.18333686], coef: [-6.74440989]
 worst concavity
-  Train accuracy: 82.20%  test accuracy: 91.23%
-  Intercept: [2.36163647], coef: [-6.65525259]
+  Train accuracy: 84.18%  test accuracy: 83.33%
+  Intercept: [2.44539746], coef: [-7.06009075]
 worst concave points
-  Train accuracy: 80.66%  test accuracy: 86.84%
-  Intercept: [1.40541046], coef: [-7.79666026]
+  Train accuracy: 84.18%  test accuracy: 85.09%
+  Intercept: [1.40978925], coef: [-8.18192933]
 worst symmetry
-  Train accuracy: 65.05%  test accuracy: 72.81%
-  Intercept: [1.62845695], coef: [-3.94143715]
+  Train accuracy: 66.15%  test accuracy: 75.44%
+  Intercept: [1.6542131], coef: [-4.16898212]
 worst fractal dimension
-  Train accuracy: 61.76%  test accuracy: 66.67%
-  Intercept: [0.57107814], coef: [-1.09334988]
+  Train accuracy: 60.88%  test accuracy: 70.18%
+  Intercept: [0.5604026], coef: [-1.40343111]
 </pre></div>
 </div>
 </div>
@@ -786,8 +786,8 @@ Please also refer to the documentation for alternative solver options:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train accuracy: 0.9406593406593406
-Test accuracy: 0.9385964912280702
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train accuracy: 0.9582417582417583
+Test accuracy: 0.956140350877193
 </pre></div>
 </div>
 </div>
@@ -812,8 +812,8 @@ Test accuracy: 0.9385964912280702
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train accuracy: 0.9560439560439561
-Test accuracy: 0.9736842105263158
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train accuracy: 0.9714285714285714
+Test accuracy: 0.956140350877193
 </pre></div>
 </div>
 </div>
@@ -910,7 +910,7 @@ Test accuracy: 0.9736842105263158
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-logistic-regression">Simple logistic regression</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-logistic-classes">Binary logistic classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-logistic-regression">Binary logistic regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regularization">Regularization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-breast-cancer-dataset">Example: breast cancer dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>

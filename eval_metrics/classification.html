@@ -169,6 +169,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW3.html">HW3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW4.html">HW4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/HW5.html">HW5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HW/HW6.html">HW6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
 </ul>
 </li>
@@ -534,7 +535,7 @@ document.write(`
 <p><strong>Q</strong>. What can be the value of accuracy if <span class="math notranslate nohighlight">\(n=4\)</span>?</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <strong>missclassificaton rate</strong> (or <strong>error rate</strong>) <a class="reference internal" href="../intro/ml_types.html#equation-mis-rate">(1)</a> is a similar metric and equals to <span class="math notranslate nohighlight">\(1 -\mathrm{acc}\)</span>.</p>
+<p>The <strong>missclassificaton rate</strong> (or <strong>error rate</strong>) <a class="reference internal" href="../intro/ml_types.html#equation-mis-rate">(3)</a> is a similar metric and equals to <span class="math notranslate nohighlight">\(1 -\mathrm{acc}\)</span>.</p>
 </div>
 <section id="confusion-matrix">
 <span id="id1"></span><h3>Confusion matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this heading">#</a></h3>
@@ -720,7 +721,7 @@ F_1 = \frac 2{\frac 1{\mathrm{Presision}} + \frac 1{\mathrm{Recall}}} = \frac{2 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">credit_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../ISLP_datsets/creditcard.csv.zip&quot;</span><span class="p">)</span>
+<span class="n">credit_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../ISLP_datasets/creditcard.csv.zip&quot;</span><span class="p">)</span>
 <span class="n">credit_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
