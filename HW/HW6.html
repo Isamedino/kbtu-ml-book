@@ -617,7 +617,7 @@ document.write(`
 </section>
 <section id="task-6-2-0-5-points">
 <h3>Task 6.2 (0.5 points)<a class="headerlink" href="#task-6-2-0-5-points" title="Permalink to this heading">#</a></h3>
-<p>Implement quadratic oracle <a class="reference internal" href="HW6_solved.html#equation-quadratic-oracle">()</a>.</p>
+<p>Implement quadratic oracle <a class="reference internal" href="#equation-quadratic-oracle">(1)</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -701,25 +701,26 @@ document.write(`
 </section>
 <section id="logistic-regression-oracle">
 <h2>Logistic regression oracle<a class="headerlink" href="#logistic-regression-oracle" title="Permalink to this heading">#</a></h2>
+<p>The analytic formula:</p>
 <div class="math notranslate nohighlight" id="equation-log-reg-oracle">
 <span class="eqno">(2)<a class="headerlink" href="#equation-log-reg-oracle" title="Permalink to this equation">#</a></span>\[    f(\boldsymbol x) = \frac 1m \sum_{i=1}^m \log\big(1 + \exp(-b_i\boldsymbol a_i^\mathsf{T} \boldsymbol x)\big) + \frac C2\Vert \boldsymbol x\Vert_2^2\]</div>
 <section id="task-6-4-0-5-points">
 <h3>Task 6.4 (0.5 points)<a class="headerlink" href="#task-6-4-0-5-points" title="Permalink to this heading">#</a></h3>
-<p>Show that <a class="reference internal" href="HW6_solved.html#equation-log-reg-oracle">()</a> is proportional to the loss function of <a class="reference internal" href="../linear_classification/log_reg.html#simple-log-reg"><span class="std std-ref">binary logistic regression</span></a> model with targets denoted as <span class="math notranslate nohighlight">\(\pm 1\)</span>.</p>
+<p>Show that <a class="reference internal" href="#equation-log-reg-oracle">(2)</a> is proportional to the loss function of <a class="reference internal" href="../linear_classification/log_reg.html#simple-log-reg"><span class="std std-ref">binary logistic regression</span></a> model with targets denoted as <span class="math notranslate nohighlight">\(\pm 1\)</span>.</p>
 <section id="id2">
 <h4>YOUR SOLUTION HERE<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
 </section>
 </section>
 <section id="task-6-5-1-point">
 <h3>Task 6.5 (1 point)<a class="headerlink" href="#task-6-5-1-point" title="Permalink to this heading">#</a></h3>
-<p>Find the gradient <span class="math notranslate nohighlight">\(\nabla f(\boldsymbol x)\)</span> and hessian <span class="math notranslate nohighlight">\(\nabla^2 f(\boldsymbol x)\)</span> of logistic regression oracle <a class="reference internal" href="HW6_solved.html#equation-log-reg-oracle">()</a> in matrix-vector form.</p>
+<p>Find the gradient <span class="math notranslate nohighlight">\(\nabla f(\boldsymbol x)\)</span> and hessian <span class="math notranslate nohighlight">\(\nabla^2 f(\boldsymbol x)\)</span> of logistic regression oracle <a class="reference internal" href="#equation-log-reg-oracle">(2)</a> in matrix-vector form.</p>
 <section id="id3">
 <h4>YOUR SOLUTION HERE<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
 </section>
 </section>
 <section id="task-6-6-1-point">
 <h3>Task 6.6 (1 point)<a class="headerlink" href="#task-6-6-1-point" title="Permalink to this heading">#</a></h3>
-<p>Implement logistic regression oracle <a class="reference internal" href="HW6_solved.html#equation-log-reg-oracle">()</a>.</p>
+<p>Implement logistic regression oracle <a class="reference internal" href="#equation-log-reg-oracle">(2)</a>.</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>

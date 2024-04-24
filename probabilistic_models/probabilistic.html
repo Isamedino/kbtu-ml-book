@@ -535,7 +535,7 @@ document.write(`
 <p>The optimal weights <span class="math notranslate nohighlight">\(\boldsymbol{\widehat w}\)</span> maximize the likelihood, or, equivalently, log-likelihood:</p>
 <div class="math notranslate nohighlight" id="equation-log-likelihood-max">
 <span class="eqno">(31)<a class="headerlink" href="#equation-log-likelihood-max" title="Permalink to this equation">#</a></span>\[    \log p(\boldsymbol y \vert \boldsymbol X, \boldsymbol w) = \log\prod_{i=1}^n p(y_i \vert \boldsymbol x_i, \boldsymbol w) = \sum_{i=1}^n \log p(y_i \vert \boldsymbol x_i, \boldsymbol w) \to \max\limits_{\boldsymbol w}.\]</div>
-<p>Alternatively, one can minimize <strong>negative log-likelikelihood</strong> (<strong>NLL</strong>):</p>
+<p>Alternatively, one can minimize <strong>negative log-likelihood</strong> (<strong>NLL</strong>):</p>
 <div class="math notranslate nohighlight">
 \[
 - \log p(\boldsymbol y \vert \boldsymbol X, \boldsymbol w) = -\sum_{i=1}^n \log p(y_i \vert \boldsymbol x_i, \boldsymbol w) \to \min\limits_{\boldsymbol w}.

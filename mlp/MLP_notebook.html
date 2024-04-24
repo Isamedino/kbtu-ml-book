@@ -618,7 +618,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1334e97133ae6e697c439c5ee4c191d4473236719cff4238ce5ce58fb28107ff.svg" src="../_images/1334e97133ae6e697c439c5ee4c191d4473236719cff4238ce5ce58fb28107ff.svg" /></div>
+<img alt="../_images/680c0189be513760dca5b53306f6cd17367890ed16b968464ed8fcfea7b8a5ed.svg" src="../_images/680c0189be513760dca5b53306f6cd17367890ed16b968464ed8fcfea7b8a5ed.svg" /></div>
 </div>
 </section>
 <section id="learning-objectives">
@@ -812,12 +812,12 @@ $<span class="math notranslate nohighlight">\(
     
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply elementwise ReLU to [batch, input_units] matrix&quot;&quot;&quot;</span>
-        <span class="c1"># YOUR CODE HERE</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">output</span>
     
     <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">grad_output</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute gradient of loss w.r.t. ReLU input&quot;&quot;&quot;</span>
-        <span class="c1"># YOUR CODE HERE</span>
+        <span class="n">relu_grad</span> <span class="o">=</span> <span class="nb">input</span> <span class="o">&gt;</span> <span class="mi">0</span>
         
         <span class="c1"># Note that this is exactly the Hadamard product</span>
         <span class="k">return</span> <span class="n">grad_output</span><span class="o">*</span><span class="n">relu_grad</span>     
@@ -835,28 +835,6 @@ $<span class="math notranslate nohighlight">\(
 <span class="n">numeric_grads</span> <span class="o">=</span> <span class="n">eval_numerical_gradient</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">l</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">numeric_grads</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>\
     <span class="s2">&quot;gradient returned by your layer does not match the numerically computed gradient&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="o">*</span><span class="mi">32</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">32</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">l</span> <span class="o">=</span> <span class="n">ReLU</span><span class="p">()</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">grads</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">32</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">32</span><span class="o">*</span><span class="mi">10</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">numeric_grads</span> <span class="o">=</span> <span class="n">eval_numerical_gradient</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">l</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">numeric_grads</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>\
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="s2">&quot;gradient returned by your layer does not match the numerically computed gradient&quot;</span>
-
-<span class="nn">Cell In[4], line 16,</span> in <span class="ni">ReLU.backward</span><span class="nt">(self, input, grad_output)</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Compute gradient of loss w.r.t. ReLU input&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="c1"># YOUR CODE HERE</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> 
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="c1"># Note that this is exactly the Hadamard product</span>
-<span class="ne">---&gt; </span><span class="mi">16</span> <span class="k">return</span> <span class="n">grad_output</span><span class="o">*</span><span class="n">relu_grad</span>
-
-<span class="ne">NameError</span>: name &#39;relu_grad&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -900,18 +878,17 @@ $<span class="math notranslate nohighlight">\(
 <span class="sd">        input shape: [batch, input_units]</span>
 <span class="sd">        output shape: [batch, output units]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># output = # YOUR CODE HERE</span>
-        <span class="k">pass</span>
+        <span class="k">return</span> <span class="nb">input</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">biases</span>
     
     <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">grad_output</span><span class="p">):</span>
         
         <span class="c1"># compute d f / d x = d f / d dense * d dense / d x</span>
         <span class="c1"># where d dense/ d x = weights transposed</span>
-        <span class="c1"># grad_output = YOUR CODE HERE</span>
+        <span class="n">grad_input</span> <span class="o">=</span> <span class="n">grad_output</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">T</span>
         
         <span class="c1"># compute gradient w.r.t. weights and biases</span>
-        <span class="c1"># grad_weights = # YOUR CODE HERE</span>
-        <span class="c1"># grad_biases = # YOUR CODE HERE</span>
+        <span class="n">grad_weights</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">grad_output</span>
+        <span class="n">grad_biases</span> <span class="o">=</span> <span class="n">grad_output</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
         
         <span class="k">assert</span> <span class="n">grad_weights</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">shape</span> <span class="ow">and</span> <span class="n">grad_biases</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">biases</span><span class="o">.</span><span class="n">shape</span>
         <span class="c1"># Here we perform a stochastic gradient descent step. </span>
@@ -957,35 +934,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">15</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">l</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">l</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">15</span> <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mf">0.07272727</span><span class="p">,</span>  <span class="mf">0.41212121</span><span class="p">,</span>  <span class="mf">0.75151515</span><span class="p">,</span>  <span class="mf">1.09090909</span><span class="p">],</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>                                           <span class="p">[</span><span class="o">-</span><span class="mf">0.90909091</span><span class="p">,</span>  <span class="mf">0.08484848</span><span class="p">,</span>  <span class="mf">1.07878788</span><span class="p">,</span>  <span class="mf">2.07272727</span><span class="p">]]))</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Well done!&quot;</span><span class="p">)</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/numpy/core/numeric.py:2241,</span> in <span class="ni">allclose</span><span class="nt">(a, b, rtol, atol, equal_nan)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2170</span> <span class="nd">@array_function_dispatch</span><span class="p">(</span><span class="n">_allclose_dispatcher</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2171</span> <span class="k">def</span> <span class="nf">allclose</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1.e-5</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1.e-8</span><span class="p">,</span> <span class="n">equal_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">2172</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">2173</span><span class="sd">     Returns True if two arrays are element-wise equal within a tolerance.</span>
-<span class="g g-Whitespace">   </span><span class="mi">2174</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2239</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">2240</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">2241</span>     <span class="n">res</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span><span class="n">isclose</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="n">rtol</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="n">atol</span><span class="p">,</span> <span class="n">equal_nan</span><span class="o">=</span><span class="n">equal_nan</span><span class="p">))</span>
-<span class="g g-Whitespace">   </span><span class="mi">2242</span>     <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/numpy/core/numeric.py:2348,</span> in <span class="ni">isclose</span><span class="nt">(a, b, rtol, atol, equal_nan)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2345</span>     <span class="n">dt</span> <span class="o">=</span> <span class="n">multiarray</span><span class="o">.</span><span class="n">result_type</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2346</span>     <span class="n">y</span> <span class="o">=</span> <span class="n">asanyarray</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dt</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2348</span> <span class="n">xfin</span> <span class="o">=</span> <span class="n">isfinite</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2349</span> <span class="n">yfin</span> <span class="o">=</span> <span class="n">isfinite</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2350</span> <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">xfin</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="n">yfin</span><span class="p">):</span>
-
-<span class="ne">TypeError</span>: ufunc &#39;isfinite&#39; not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule &#39;&#39;safe&#39;&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Well done!
 </pre></div>
 </div>
 </div>
@@ -1008,33 +957,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="o">*</span><span class="mi">32</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">32</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">l</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span><span class="mi">64</span><span class="p">,</span><span class="n">learning_rate</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">numeric_grads</span> <span class="o">=</span> <span class="n">eval_numerical_gradient</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">l</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="n">x</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">grads</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">64</span><span class="p">]))</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span><span class="n">numeric_grads</span><span class="p">,</span><span class="n">rtol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span><span class="n">atol</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="s2">&quot;input gradient does not match numeric grad&quot;</span>
-
-<span class="nn">File ~/Math4DS/kbtu-ml-book/mlp/util.py:12,</span> in <span class="ni">eval_numerical_gradient</span><span class="nt">(f, x, verbose, h)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">def</span> <span class="nf">eval_numerical_gradient</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.00001</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Evaluates gradient df/dx via finite differences:</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span><span class="sd">     df/dx ~ (f(x+h) - f(x-h)) / 2h</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span><span class="sd">     Adopted from https://github.com/ddtm/dl-course/ (our ysda course).</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">12</span>     <span class="n">fx</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># evaluate function value at original point</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">grad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="c1"># iterate over all indexes in x</span>
-
-<span class="nn">Cell In[8], line 8,</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(x)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="o">*</span><span class="mi">32</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">32</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">l</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span><span class="mi">64</span><span class="p">,</span><span class="n">learning_rate</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">numeric_grads</span> <span class="o">=</span> <span class="n">eval_numerical_gradient</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">l</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="n">x</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">grads</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">64</span><span class="p">]))</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span><span class="n">numeric_grads</span><span class="p">,</span><span class="n">rtol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span><span class="n">atol</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="s2">&quot;input gradient does not match numeric grad&quot;</span>
-
-<span class="ne">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;sum&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Well done!
 </pre></div>
 </div>
 </div>
@@ -1070,33 +993,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">19</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="k">return</span> <span class="n">w</span> <span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span> <span class="n">b</span> <span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">biases</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">w</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span><span class="mi">64</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">64</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">19</span> <span class="n">numeric_dw</span> <span class="o">=</span> <span class="n">eval_numerical_gradient</span><span class="p">(</span><span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="n">compute_out_given_wb</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="n">w</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">numeric_db</span> <span class="o">=</span> <span class="n">eval_numerical_gradient</span><span class="p">(</span><span class="k">lambda</span> <span class="n">b</span><span class="p">:</span> <span class="n">compute_out_given_wb</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="n">b</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="n">grad_w</span><span class="p">,</span><span class="n">grad_b</span> <span class="o">=</span> <span class="n">compute_grad_by_params</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
-
-<span class="nn">File ~/Math4DS/kbtu-ml-book/mlp/util.py:12,</span> in <span class="ni">eval_numerical_gradient</span><span class="nt">(f, x, verbose, h)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">def</span> <span class="nf">eval_numerical_gradient</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.00001</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Evaluates gradient df/dx via finite differences:</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span><span class="sd">     df/dx ~ (f(x+h) - f(x-h)) / 2h</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span><span class="sd">     Adopted from https://github.com/ddtm/dl-course/ (our ysda course).</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">12</span>     <span class="n">fx</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># evaluate function value at original point</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">grad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="c1"># iterate over all indexes in x</span>
-
-<span class="nn">Cell In[9], line 19,</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(w)</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="k">return</span> <span class="n">w</span> <span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span> <span class="n">b</span> <span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">biases</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">w</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span><span class="mi">64</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">64</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">19</span> <span class="n">numeric_dw</span> <span class="o">=</span> <span class="n">eval_numerical_gradient</span><span class="p">(</span><span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="n">compute_out_given_wb</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="n">w</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">numeric_db</span> <span class="o">=</span> <span class="n">eval_numerical_gradient</span><span class="p">(</span><span class="k">lambda</span> <span class="n">b</span><span class="p">:</span> <span class="n">compute_out_given_wb</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="n">b</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="n">grad_w</span><span class="p">,</span><span class="n">grad_b</span> <span class="o">=</span> <span class="n">compute_grad_by_params</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
-
-<span class="ne">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;mean&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Well done!
 </pre></div>
 </div>
 </div>
@@ -1203,7 +1100,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/01ae951621a311396f59f45fc7f88a574e39de3d84affa14fb0686a225cd610a.svg" src="../_images/01ae951621a311396f59f45fc7f88a574e39de3d84affa14fb0686a225cd610a.svg" /></div>
+<img alt="../_images/89779ebebfafbc9a81e101fa0fbd04817da7017de977e2e65aa8bff69a2bef41.svg" src="../_images/89779ebebfafbc9a81e101fa0fbd04817da7017de977e2e65aa8bff69a2bef41.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1244,8 +1141,10 @@ $<span class="math notranslate nohighlight">\(
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">activations</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="nb">input</span> <span class="o">=</span> <span class="n">X</span>
+    <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">network</span><span class="p">:</span>
+        <span class="nb">input</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+        <span class="n">activations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
     
-    <span class="c1"># YOUR CODE HERE</span>
         
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">activations</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">network</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">activations</span>
@@ -1290,8 +1189,8 @@ $<span class="math notranslate nohighlight">\(
     <span class="c1"># propagate gradients through network layers using .backward</span>
     <span class="c1"># hint: start from last layer and move to earlier layers</span>
     
-    
-    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">network</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">loss_grad</span> <span class="o">=</span> <span class="n">network</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">layer_inputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">loss_grad</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
 </pre></div>
@@ -1349,17 +1248,184 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                            | 0/1562 [00:00&lt;?, ?it/s]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 8
+Train accuracy: 0.9948
+Val accuracy: 0.9754
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                            | 0/1562 [00:00&lt;?, ?it/s]
+<img alt="../_images/b4ec112bdb6e983a6b7f58e3661816b7f73a1c0b85365ec0536b299c2cde2705.svg" src="../_images/b4ec112bdb6e983a6b7f58e3661816b7f73a1c0b85365ec0536b299c2cde2705.svg" /><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                              | 0/1562 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1%|▋                                                                   | 15/1562 [00:00&lt;00:10, 145.30it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2%|█▌                                                                  | 36/1562 [00:00&lt;00:08, 178.33it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  4%|██▍                                                                 | 55/1562 [00:00&lt;00:08, 181.16it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5%|███▏                                                                | 74/1562 [00:00&lt;00:08, 178.91it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  6%|████                                                                | 92/1562 [00:00&lt;00:08, 176.90it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  7%|████▋                                                              | 110/1562 [00:00&lt;00:08, 161.62it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  8%|█████▍                                                             | 128/1562 [00:00&lt;00:08, 166.37it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  9%|██████▎                                                            | 148/1562 [00:00&lt;00:08, 174.21it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 11%|███████▏                                                           | 168/1562 [00:00&lt;00:07, 181.58it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 12%|████████                                                           | 189/1562 [00:01&lt;00:07, 188.02it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 13%|████████▉                                                          | 209/1562 [00:01&lt;00:07, 190.98it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 15%|█████████▊                                                         | 229/1562 [00:01&lt;00:07, 189.58it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 16%|██████████▋                                                        | 249/1562 [00:01&lt;00:06, 192.27it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 17%|███████████▌                                                       | 269/1562 [00:01&lt;00:07, 183.50it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 19%|████████████▍                                                      | 289/1562 [00:01&lt;00:06, 185.55it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 20%|█████████████▏                                                     | 308/1562 [00:01&lt;00:06, 186.23it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 21%|██████████████                                                     | 328/1562 [00:01&lt;00:06, 188.04it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 22%|██████████████▉                                                    | 348/1562 [00:01&lt;00:06, 190.21it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 24%|███████████████▊                                                   | 368/1562 [00:02&lt;00:06, 188.96it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 25%|████████████████▌                                                  | 387/1562 [00:02&lt;00:06, 185.39it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 26%|█████████████████▍                                                 | 407/1562 [00:02&lt;00:06, 189.37it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 27%|██████████████████▎                                                | 426/1562 [00:02&lt;00:06, 188.32it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 28%|███████████████████                                                | 445/1562 [00:02&lt;00:06, 180.50it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 30%|███████████████████▉                                               | 465/1562 [00:02&lt;00:05, 184.23it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 31%|████████████████████▊                                              | 484/1562 [00:02&lt;00:05, 185.84it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 32%|█████████████████████▌                                             | 503/1562 [00:02&lt;00:06, 169.41it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 34%|██████████████████████▍                                            | 524/1562 [00:02&lt;00:05, 178.22it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 35%|███████████████████████▎                                           | 544/1562 [00:02&lt;00:05, 184.00it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 36%|████████████████████████▏                                          | 564/1562 [00:03&lt;00:05, 187.83it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 37%|█████████████████████████                                          | 584/1562 [00:03&lt;00:05, 191.32it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 39%|█████████████████████████▉                                         | 604/1562 [00:03&lt;00:05, 189.87it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 40%|██████████████████████████▊                                        | 624/1562 [00:03&lt;00:04, 190.17it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 41%|███████████████████████████▌                                       | 644/1562 [00:03&lt;00:04, 186.41it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 43%|████████████████████████████▍                                      | 664/1562 [00:03&lt;00:04, 188.94it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 44%|█████████████████████████████▎                                     | 683/1562 [00:03&lt;00:04, 188.10it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 45%|██████████████████████████████▏                                    | 704/1562 [00:03&lt;00:04, 192.50it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 46%|███████████████████████████████                                    | 724/1562 [00:03&lt;00:04, 194.47it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 48%|███████████████████████████████▉                                   | 744/1562 [00:04&lt;00:04, 195.53it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 49%|████████████████████████████████▊                                  | 764/1562 [00:04&lt;00:04, 181.93it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████████████████████████████████▌                                 | 783/1562 [00:04&lt;00:04, 181.02it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 51%|██████████████████████████████████▍                                | 803/1562 [00:04&lt;00:04, 184.97it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 53%|███████████████████████████████████▎                               | 822/1562 [00:04&lt;00:05, 145.03it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 54%|███████████████████████████████████▉                               | 838/1562 [00:04&lt;00:07, 102.79it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 55%|████████████████████████████████████▋                              | 855/1562 [00:04&lt;00:06, 115.39it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 56%|█████████████████████████████████████▌                             | 876/1562 [00:05&lt;00:05, 134.57it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 57%|██████████████████████████████████████▍                            | 896/1562 [00:05&lt;00:04, 149.70it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 59%|███████████████████████████████████████▎                           | 916/1562 [00:05&lt;00:04, 161.16it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 60%|████████████████████████████████████████▏                          | 936/1562 [00:05&lt;00:03, 170.09it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 61%|████████████████████████████████████████▉                          | 955/1562 [00:05&lt;00:03, 169.37it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 62%|█████████████████████████████████████████▊                         | 975/1562 [00:05&lt;00:03, 176.89it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 64%|██████████████████████████████████████████▋                        | 994/1562 [00:05&lt;00:03, 178.86it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 65%|██████████████████████████████████████████▊                       | 1014/1562 [00:05&lt;00:02, 184.72it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 66%|███████████████████████████████████████████▋                      | 1034/1562 [00:05&lt;00:02, 188.97it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 67%|████████████████████████████████████████████▌                     | 1054/1562 [00:05&lt;00:02, 191.89it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 68%|█████████████████████████████████████████████▏                    | 1069/1562 [00:06&lt;00:02, 176.70it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">):</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="k">for</span> <span class="n">x_batch</span><span class="p">,</span> <span class="n">y_batch</span> <span class="ow">in</span> <span class="n">iterate_minibatches</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">batchsize</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -1367,25 +1433,32 @@ $<span class="math notranslate nohighlight">\(
 <span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">train_log</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">predict</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">X_train</span><span class="p">)</span> <span class="o">==</span> <span class="n">y_train</span><span class="p">))</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">val_log</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">predict</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">X_val</span><span class="p">)</span> <span class="o">==</span> <span class="n">y_val</span><span class="p">))</span>
 
-<span class="nn">Cell In[18], line 13,</span> in <span class="ni">train</span><span class="nt">(network, X, y)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> Train your network on a given batch of X and y.</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="sd"> You first need to run forward to get all layer activations.</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span><span class="sd"> After you called backward for all layers, all Dense layers have already made one gradient step.</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># Get the layer activations</span>
-<span class="ne">---&gt; </span><span class="mi">13</span> <span class="n">layer_activations</span> <span class="o">=</span> <span class="n">forward</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">layer_inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span><span class="p">]</span> <span class="o">+</span> <span class="n">layer_activations</span>  <span class="c1">#layer_input[i] is an input for network[i]</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">logits</span> <span class="o">=</span> <span class="n">layer_activations</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nn">Cell In[18], line 26,</span> in <span class="ni">train</span><span class="nt">(network, X, y)</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="c1"># propagate gradients through network layers using .backward</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="c1"># hint: start from last layer and move to earlier layers</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">network</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">26</span>     <span class="n">loss_grad</span> <span class="o">=</span> <span class="n">network</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">layer_inputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">loss_grad</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
 
-<span class="nn">Cell In[17], line 12,</span> in <span class="ni">forward</span><span class="nt">(network, X)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="nb">input</span> <span class="o">=</span> <span class="n">X</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># YOUR CODE HERE</span>
-<span class="ne">---&gt; </span><span class="mi">12</span> <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">activations</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">network</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="k">return</span> <span class="n">activations</span>
+<span class="nn">Cell In[6], line 32,</span> in <span class="ni">Dense.backward</span><span class="nt">(self, input, grad_output)</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="c1"># compute gradient w.r.t. weights and biases</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="n">grad_weights</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">grad_output</span>
+<span class="ne">---&gt; </span><span class="mi">32</span> <span class="n">grad_biases</span> <span class="o">=</span> <span class="n">grad_output</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="k">assert</span> <span class="n">grad_weights</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">shape</span> <span class="ow">and</span> <span class="n">grad_biases</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">biases</span><span class="o">.</span><span class="n">shape</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="c1"># Here we perform a stochastic gradient descent step. </span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="c1"># Later on, you can try replacing that with something better.</span>
 
-<span class="ne">AssertionError</span>: 
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/numpy/core/_methods.py:47,</span> in <span class="ni">_sum</span><span class="nt">(a, axis, dtype, out, keepdims, initial, where)</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="k">def</span> <span class="nf">_amin</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span>           <span class="n">initial</span><span class="o">=</span><span class="n">_NoValue</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span>     <span class="k">return</span> <span class="n">umr_minimum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">keepdims</span><span class="p">,</span> <span class="n">initial</span><span class="p">,</span> <span class="n">where</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">47</span> <span class="k">def</span> <span class="nf">_sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span>          <span class="n">initial</span><span class="o">=</span><span class="n">_NoValue</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span>     <span class="k">return</span> <span class="n">umr_sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">keepdims</span><span class="p">,</span> <span class="n">initial</span><span class="p">,</span> <span class="n">where</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span> <span class="k">def</span> <span class="nf">_prod</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span>           <span class="n">initial</span><span class="o">=</span><span class="n">_NoValue</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -1397,26 +1470,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">predict</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span>
-
-<span class="nn">Cell In[17], line 19,</span> in <span class="ni">predict</span><span class="nt">(network, X)</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span><span class="sd">     Use network to predict the most likely class for each sample.</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">19</span>     <span class="n">logits</span> <span class="o">=</span> <span class="n">forward</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">X</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span>     <span class="k">return</span> <span class="n">logits</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="nn">Cell In[17], line 12,</span> in <span class="ni">forward</span><span class="nt">(network, X)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="nb">input</span> <span class="o">=</span> <span class="n">X</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># YOUR CODE HERE</span>
-<span class="ne">---&gt; </span><span class="mi">12</span> <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">activations</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">network</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="k">return</span> <span class="n">activations</span>
-
-<span class="ne">AssertionError</span>: 
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9788
 </pre></div>
 </div>
 </div>
@@ -1510,7 +1564,7 @@ $<span class="math notranslate nohighlight">\(
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train the Model</span>
-<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">15</span>
 
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
     <span class="c1"># Training</span>
@@ -1558,16 +1612,66 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [1/1], Step [200/782], Loss: 0.2424
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [1/1], Step [400/782], Loss: 0.2965
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [1/1], Step [600/782], Loss: 0.1269
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [1/1], Training Accuracy: 0.9176, Validation Accuracy: 0.9590
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [1/15], Step [200/782], Loss: 0.1581
+Epoch [1/15], Step [400/782], Loss: 0.2056
+Epoch [1/15], Step [600/782], Loss: 0.1417
+Epoch [1/15], Training Accuracy: 0.9223, Validation Accuracy: 0.9499
+Epoch [2/15], Step [200/782], Loss: 0.1829
+Epoch [2/15], Step [400/782], Loss: 0.0674
+Epoch [2/15], Step [600/782], Loss: 0.0511
+Epoch [2/15], Training Accuracy: 0.9695, Validation Accuracy: 0.9669
+Epoch [3/15], Step [200/782], Loss: 0.0517
+Epoch [3/15], Step [400/782], Loss: 0.0207
+Epoch [3/15], Step [600/782], Loss: 0.0680
+Epoch [3/15], Training Accuracy: 0.9806, Validation Accuracy: 0.9729
+Epoch [4/15], Step [200/782], Loss: 0.0179
+Epoch [4/15], Step [400/782], Loss: 0.0746
+Epoch [4/15], Step [600/782], Loss: 0.0523
+Epoch [4/15], Training Accuracy: 0.9853, Validation Accuracy: 0.9770
+Epoch [5/15], Step [200/782], Loss: 0.0621
+Epoch [5/15], Step [400/782], Loss: 0.0347
+Epoch [5/15], Step [600/782], Loss: 0.0343
+Epoch [5/15], Training Accuracy: 0.9890, Validation Accuracy: 0.9738
+Epoch [6/15], Step [200/782], Loss: 0.0392
+Epoch [6/15], Step [400/782], Loss: 0.0009
+Epoch [6/15], Step [600/782], Loss: 0.0062
+Epoch [6/15], Training Accuracy: 0.9919, Validation Accuracy: 0.9751
+Epoch [7/15], Step [200/782], Loss: 0.0032
+Epoch [7/15], Step [400/782], Loss: 0.0083
+Epoch [7/15], Step [600/782], Loss: 0.0587
+Epoch [7/15], Training Accuracy: 0.9924, Validation Accuracy: 0.9765
+Epoch [8/15], Step [200/782], Loss: 0.0085
+Epoch [8/15], Step [400/782], Loss: 0.0006
+Epoch [8/15], Step [600/782], Loss: 0.0179
+Epoch [8/15], Training Accuracy: 0.9935, Validation Accuracy: 0.9719
+Epoch [9/15], Step [200/782], Loss: 0.0214
+Epoch [9/15], Step [400/782], Loss: 0.0045
+Epoch [9/15], Step [600/782], Loss: 0.0266
+Epoch [9/15], Training Accuracy: 0.9945, Validation Accuracy: 0.9764
+Epoch [10/15], Step [200/782], Loss: 0.0014
+Epoch [10/15], Step [400/782], Loss: 0.0023
+Epoch [10/15], Step [600/782], Loss: 0.0061
+Epoch [10/15], Training Accuracy: 0.9956, Validation Accuracy: 0.9754
+Epoch [11/15], Step [200/782], Loss: 0.0020
+Epoch [11/15], Step [400/782], Loss: 0.0001
+Epoch [11/15], Step [600/782], Loss: 0.0005
+Epoch [11/15], Training Accuracy: 0.9950, Validation Accuracy: 0.9774
+Epoch [12/15], Step [200/782], Loss: 0.0002
+Epoch [12/15], Step [400/782], Loss: 0.0033
+Epoch [12/15], Step [600/782], Loss: 0.1085
+Epoch [12/15], Training Accuracy: 0.9968, Validation Accuracy: 0.9780
+Epoch [13/15], Step [200/782], Loss: 0.0030
+Epoch [13/15], Step [400/782], Loss: 0.0135
+Epoch [13/15], Step [600/782], Loss: 0.0243
+Epoch [13/15], Training Accuracy: 0.9959, Validation Accuracy: 0.9733
+Epoch [14/15], Step [200/782], Loss: 0.0009
+Epoch [14/15], Step [400/782], Loss: 0.1896
+Epoch [14/15], Step [600/782], Loss: 0.0000
+Epoch [14/15], Training Accuracy: 0.9964, Validation Accuracy: 0.9782
+Epoch [15/15], Step [200/782], Loss: 0.0000
+Epoch [15/15], Step [400/782], Loss: 0.0001
+Epoch [15/15], Step [600/782], Loss: 0.0199
+Epoch [15/15], Training Accuracy: 0.9968, Validation Accuracy: 0.9774
 </pre></div>
 </div>
 </div>
@@ -1595,7 +1699,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test Accuracy: 0.9603
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test Accuracy: 0.9767
 </pre></div>
 </div>
 </div>

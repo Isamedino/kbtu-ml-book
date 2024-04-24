@@ -529,7 +529,7 @@ document.write(`
 <p>In this setting the random noise is gaussian: <span class="math notranslate nohighlight">\(\varepsilon_i \sim \mathcal N (0, \sigma^2)\)</span>. Hence,</p>
 <div class="math notranslate nohighlight">
 \[
-    p(y_i \vert \boldsymbol x_i, \boldsymbol w) = \mathcal N(\boldsymbol x_i^{\mathsf T} \boldsymbol w, \sigma^2) = \frac 1{\sqrt{2\pi} \sigma} \exp\Big(-\frac{(\boldsymbol x_i^{\mathsf T} \boldsymbol w - y_i)^2}{2\sigma^2}\Big).
+    p(y_i \vert \boldsymbol x_i, \boldsymbol w) = \mathcal N(y_i \vert \boldsymbol x_i^{\mathsf T} \boldsymbol w, \sigma^2) = \frac 1{\sqrt{2\pi} \sigma} \exp\Big(-\frac{(\boldsymbol x_i^{\mathsf T} \boldsymbol w - y_i)^2}{2\sigma^2}\Big).
 \]</div>
 <p><strong>Q</strong>. What is <span class="math notranslate nohighlight">\(\mathbb E y_i\)</span>? <span class="math notranslate nohighlight">\(\mathbb V y_i\)</span>?</p>
 <p>A picture from <a class="reference external" href="https://academy.yandex.ru/handbook/ml/article/beta-pervoe-znakomstvo-s-veroyatnostnymi-modelyami#sluchajnost-kak-istochnik-nesovershenstva-modeli">ML Handbook</a>:</p>
@@ -540,13 +540,13 @@ document.write(`
 <p>The likelihood of the dataset <span class="math notranslate nohighlight">\(\mathcal D\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
-    p(\boldsymbol y \vert \boldsymbol X, \boldsymbol w) = \prod_{i=1}^n \mathcal N(\boldsymbol x_i^{\mathsf T} \boldsymbol w, \sigma^2) = \frac 1{(\sqrt{2\pi}\sigma)^n}\exp\Big(-\sum\limits_{i=1}^n \frac{(\boldsymbol x_i^{\mathsf T} \boldsymbol w - y_i)^2}{2\sigma^2}\Big).
+    p(\boldsymbol y \vert \boldsymbol X, \boldsymbol w) = \prod_{i=1}^n \mathcal N(y_i \vert\boldsymbol x_i^{\mathsf T} \boldsymbol w, \sigma^2) = \frac 1{(\sqrt{2\pi}\sigma)^n}\exp\Big(-\sum\limits_{i=1}^n \frac{(\boldsymbol x_i^{\mathsf T} \boldsymbol w - y_i)^2}{2\sigma^2}\Big).
 \]</div>
 <p>Hence, the negative log-likelihood is</p>
 <div class="math notranslate nohighlight">
 \[
     \mathrm{NLL}(\boldsymbol w) = -\log p(\boldsymbol y \vert \boldsymbol X, \boldsymbol w)=
-    \frac 1{2\sigma^2} \sum\limits_{i=1}^n (\boldsymbol x_i^{\mathsf T} \boldsymbol w - y_i)^2 + \frac n2\log(2\pi\sigma)^2.
+    \frac 1{2\sigma^2} \sum\limits_{i=1}^n (\boldsymbol x_i^{\mathsf T} \boldsymbol w - y_i)^2 + \frac n2\log(2\pi\sigma^2).
 \]</div>
 <p><strong>Q.</strong> How does this NLL relates to the loss function <a class="reference internal" href="../lin_reg/multiple.html#equation-lin-reg-loss-opt">(19)</a> of the linear regression model?</p>
 <p>Thus, the optimal weights <a class="reference internal" href="../lin_reg/multiple.html#equation-lin-reg-solution">(21)</a> of the linear regression with MSE loss coincide with MLE:</p>
@@ -608,7 +608,7 @@ Find posterior <span class="math notranslate nohighlight">\(p(a \vert \boldsymbo
 <p class="admonition-title">Possible answer</p>
 <div class="math notranslate nohighlight">
 \[
-   p(a \vert \boldsymbol x, \boldsymbol y) = \mathcal N\Bigg(\frac{\boldsymbol x^\intercal\boldsymbol y}{\frac{\sigma^2}{\tau^2}+ \sum\limits_{i=1}^n x_i^2}, \frac 1{\frac 1{\tau^2} + \frac 1{\sigma^2}\sum\limits_{i=1}^n x_i^2}\Bigg)
+   p(a \vert \boldsymbol x, \boldsymbol y) = \mathcal N\Bigg(\frac{\boldsymbol x^\mathsf{T}\boldsymbol y}{\frac{\sigma^2}{\tau^2}+ \sum\limits_{i=1}^n x_i^2}, \frac 1{\frac 1{\tau^2} + \frac 1{\sigma^2}\sum\limits_{i=1}^n x_i^2}\Bigg)
 \]</div>
 </div>
 </div>
@@ -621,23 +621,23 @@ Find posterior <span class="math notranslate nohighlight">\(p(a \vert \boldsymbo
 <div class="math notranslate nohighlight">
 \[
     -\log p( \boldsymbol y \vert  \boldsymbol X, \boldsymbol w) - \log p(\boldsymbol w)
-    = \frac 1{2\sigma^2} \sum\limits_{i=1}^n (y_i -\boldsymbol x_i^\intercal \boldsymbol w)^2 + \frac 1{2\tau^2} \sum\limits_{j=1}^d w_j^2 + \mathrm{const}.
+    = \frac 1{2\sigma^2} \sum\limits_{i=1}^n (y_i -\boldsymbol x_i^\mathsf{T} \boldsymbol w)^2 + \frac 1{2\tau^2} \sum\limits_{j=1}^d w_j^2 + \mathrm{const}.
 \]</div>
 <p>Hence,</p>
 <div class="math notranslate nohighlight">
 \[
 \boldsymbol {\widehat w}_{\mathrm{MAP}} = \arg\min\limits_{\boldsymbol w}
-\bigg(\sum\limits_{i=1}^n (y_i -\boldsymbol x_i^\intercal \boldsymbol w)^2 + \frac{\sigma^2}{\tau^2} \Vert \boldsymbol w \Vert_2^2\bigg).
+\bigg(\sum\limits_{i=1}^n (y_i -\boldsymbol x_i^\mathsf{T} \boldsymbol w)^2 + \frac{\sigma^2}{\tau^2} \Vert \boldsymbol w \Vert_2^2\bigg).
 \]</div>
 <p>Can you recognize the objective of the <a class="reference internal" href="../lin_reg/regularization.html#ridge"><span class="std std-ref">ridge regression</span></a> with <span class="math notranslate nohighlight">\(C =  \frac{\sigma^2}{\tau^2}\)</span>? The analytical solution is</p>
 <div class="math notranslate nohighlight">
 \[
-    \boldsymbol {\widehat w}_{\mathrm{MAP}} = \Big(\boldsymbol X^\intercal \boldsymbol X + \frac{\sigma^2}{\tau^2}\boldsymbol I\Big)^{-1}\boldsymbol X^{\intercal}\boldsymbol y.
+    \boldsymbol {\widehat w}_{\mathrm{MAP}} = \Big(\boldsymbol X^\mathsf{T} \boldsymbol X + \frac{\sigma^2}{\tau^2}\boldsymbol I\Big)^{-1}\boldsymbol X^{\mathsf{T}}\boldsymbol y.
 \]</div>
 <p>Contnuing calculations, we can find posterior:</p>
 <div class="math notranslate nohighlight">
 \[
-    p(\boldsymbol w \vert \boldsymbol X, \boldsymbol y) = \mathcal N\Big(\boldsymbol {\widehat w}_{\mathrm{MAP}},\Big(\frac 1{\sigma^2}\boldsymbol X^\intercal \boldsymbol X + \frac{1}{\tau^2}\boldsymbol I\Big)^{-1} \Big).
+    p(\boldsymbol w \vert \boldsymbol X, \boldsymbol y) = \mathcal N\Big(\boldsymbol {\widehat w}_{\mathrm{MAP}},\Big(\frac 1{\sigma^2}\boldsymbol X^\mathsf{T} \boldsymbol X + \frac{1}{\tau^2}\boldsymbol I\Big)^{-1} \Big).
 \]</div>
 </section>
 <section id="laplacian-prior">
@@ -645,7 +645,7 @@ Find posterior <span class="math notranslate nohighlight">\(p(a \vert \boldsymbo
 <p>Consinder the following prior: <span class="math notranslate nohighlight">\(w_1, \ldots, w_d\)</span> are i.i.d laplacian random variables with parameter <span class="math notranslate nohighlight">\(\lambda\)</span>. Then</p>
 <div class="math notranslate nohighlight">
 \[
-    p(\boldsymbol w) = \prod\limits_{j=1}^d \mathrm{Laplace}(\lambda) = 
+    p(\boldsymbol w) = \prod\limits_{j=1}^d \mathrm{Laplace}(w_j \vert \lambda) = 
     \prod\limits_{j=1}^d \frac\lambda 2e^{-\lambda|w_j|} = \frac {\lambda^d}{2^d}
     \exp\Big(-\sum\limits_{j=1}^d\lambda|w_j|\Big).
 \]</div>
