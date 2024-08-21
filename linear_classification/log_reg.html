@@ -526,7 +526,7 @@ document.write(`
 <p>where <span class="math notranslate nohighlight">\(\sigma(t) = \frac 1{1 + e^{-t}}\)</span> — <strong>sigmoid function</strong>.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/9ded3761d497e034d6119419188a3896d990a7e2931d34df7d4b8bec383ec059.svg" src="../_images/9ded3761d497e034d6119419188a3896d990a7e2931d34df7d4b8bec383ec059.svg" /></div>
+<img alt="../_images/9d0c14ed7bdb12c2d55816e3ff140d138d92b7788d7df559758ed12931e0a393.svg" src="../_images/9d0c14ed7bdb12c2d55816e3ff140d138d92b7788d7df559758ed12931e0a393.svg" /></div>
 </div>
 <p><strong>Q</strong>. What is <span class="math notranslate nohighlight">\(\mathbb P(\text{class } 0)\)</span>?</p>
 <p><strong>Q</strong>. How to predict classes if we know predicted probabilities?</p>
@@ -666,95 +666,97 @@ the loss function for <span class="math notranslate nohighlight">\(L_2\)</span>-
 </summary>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean radius
-  Train accuracy: 88.79%  test accuracy: 85.09%
-  Intercept: [16.49491781], coef: [-1.11727153]
+  Train accuracy: 87.69%  test accuracy: 90.35%
+  Intercept: [15.04155184], coef: [-1.0151141]
 mean texture
-  Train accuracy: 71.21%  test accuracy: 68.42%
-  Intercept: [5.33780018], coef: [-0.24464971]
+  Train accuracy: 70.77%  test accuracy: 71.93%
+  Intercept: [5.34359963], coef: [-0.24608724]
 mean perimeter
-  Train accuracy: 89.45%  test accuracy: 84.21%
-  Intercept: [17.42875049], coef: [-0.18169348]
+  Train accuracy: 88.35%  test accuracy: 90.35%
+  Intercept: [15.55958865], coef: [-0.16171987]
 mean area
-  Train accuracy: 89.23%  test accuracy: 85.09%
-  Intercept: [8.72871385], coef: [-0.01288486]
+  Train accuracy: 88.57%  test accuracy: 87.72%
+  Intercept: [7.93588544], coef: [-0.01160767]
 mean smoothness
-  Train accuracy: 62.86%  test accuracy: 62.28%
-  Intercept: [0.63576399], coef: [-1.13677084]
+  Train accuracy: 62.42%  test accuracy: 64.04%
+  Intercept: [0.61207286], coef: [-1.08875408]
 mean compactness
-  Train accuracy: 68.35%  test accuracy: 64.04%
-  Intercept: [1.11189495], coef: [-5.53013528]
+  Train accuracy: 67.25%  test accuracy: 70.18%
+  Intercept: [1.07018403], coef: [-5.36024461]
 mean concavity
-  Train accuracy: 78.68%  test accuracy: 77.19%
-  Intercept: [1.20812848], coef: [-7.43874593]
+  Train accuracy: 78.90%  test accuracy: 78.07%
+  Intercept: [1.20080034], coef: [-7.63093597]
 mean concave points
-  Train accuracy: 66.59%  test accuracy: 64.91%
-  Intercept: [0.81810004], coef: [-5.84134436]
+  Train accuracy: 66.59%  test accuracy: 65.79%
+  Intercept: [0.79570173], coef: [-5.77161677]
 mean symmetry
-  Train accuracy: 62.86%  test accuracy: 62.28%
-  Intercept: [0.86295182], coef: [-1.8601106]
+  Train accuracy: 62.42%  test accuracy: 64.04%
+  Intercept: [0.84353096], coef: [-1.8574274]
 mean fractal dimension
-  Train accuracy: 62.86%  test accuracy: 62.28%
-  Intercept: [0.52784967], coef: [-0.02798098]
+  Train accuracy: 62.42%  test accuracy: 64.04%
+  Intercept: [0.50531415], coef: [0.03185139]
 radius error
-  Train accuracy: 80.66%  test accuracy: 77.19%
-  Intercept: [2.92054153], coef: [-6.06638992]
+  Train accuracy: 80.44%  test accuracy: 78.07%
+  Intercept: [2.88584748], coef: [-5.99004207]
 texture error
-  Train accuracy: 62.86%  test accuracy: 62.28%
-  Intercept: [0.58667356], coef: [-0.05024406]
+  Train accuracy: 62.42%  test accuracy: 64.04%
+  Intercept: [0.56169172], coef: [-0.04399479]
 perimeter error
-  Train accuracy: 81.10%  test accuracy: 78.07%
-  Intercept: [4.54794922], coef: [-1.49052456]
+  Train accuracy: 80.44%  test accuracy: 78.07%
+  Intercept: [4.43584362], coef: [-1.44489142]
 area error
-  Train accuracy: 88.35%  test accuracy: 82.46%
-  Intercept: [5.12993037], coef: [-0.14076242]
+  Train accuracy: 87.03%  test accuracy: 86.84%
+  Intercept: [5.00284937], coef: [-0.13764427]
 smoothness error
-  Train accuracy: 62.86%  test accuracy: 62.28%
-  Intercept: [0.52592485], coef: [0.02384702]
+  Train accuracy: 62.42%  test accuracy: 64.04%
+  Intercept: [0.50694724], coef: [0.05154788]
 compactness error
-  Train accuracy: 62.86%  test accuracy: 62.28%
-  Intercept: [0.55976941], coef: [-1.3140302]
+  Train accuracy: 62.42%  test accuracy: 64.04%
+  Intercept: [0.53703803], coef: [-1.19366759]
 concavity error
-  Train accuracy: 62.64%  test accuracy: 62.28%
-  Intercept: [0.58081323], coef: [-1.71152293]
+  Train accuracy: 62.42%  test accuracy: 63.16%
+  Intercept: [0.56389601], coef: [-1.85396668]
 concave points error
-  Train accuracy: 62.86%  test accuracy: 62.28%
-  Intercept: [0.53330147], coef: [-0.61428997]
+  Train accuracy: 62.42%  test accuracy: 64.04%
+  Intercept: [0.51384513], coef: [-0.56617047]
 symmetry error
-  Train accuracy: 62.86%  test accuracy: 62.28%
-  Intercept: [0.52652487], coef: [-0.02098261]
+  Train accuracy: 62.42%  test accuracy: 64.04%
+  Intercept: [0.50615906], coef: [0.05679772]
 fractal dimension error
-  Train accuracy: 62.86%  test accuracy: 62.28%
-  Intercept: [0.52637019], coef: [-0.07385566]
+  Train accuracy: 62.42%  test accuracy: 64.04%
+  Intercept: [0.50753148], coef: [-0.05777808]
 worst radius
-  Train accuracy: 91.87%  test accuracy: 90.35%
-  Intercept: [19.97630432], coef: [-1.19709811]
+  Train accuracy: 91.21%  test accuracy: 92.98%
+  Intercept: [19.06480079], coef: [-1.14017936]
 worst texture
-  Train accuracy: 72.09%  test accuracy: 71.93%
-  Intercept: [5.46535797], coef: [-0.18803845]
-worst perimeter
-  Train accuracy: 92.75%  test accuracy: 88.60%
-  Intercept: [20.88332474], coef: [-0.18909711]
+  Train accuracy: 71.65%  test accuracy: 73.68%
+  Intercept: [5.57132443], coef: [-0.19208884]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>worst perimeter
+  Train accuracy: 91.87%  test accuracy: 92.11%
+  Intercept: [19.44392944], coef: [-0.17610663]
 worst area
-  Train accuracy: 91.65%  test accuracy: 90.35%
-  Intercept: [10.53631777], coef: [-0.01229413]
+  Train accuracy: 91.21%  test accuracy: 92.11%
+  Intercept: [10.1475706], coef: [-0.01180197]
 worst smoothness
-  Train accuracy: 62.86%  test accuracy: 62.28%
-  Intercept: [0.79235974], coef: [-2.00384528]
+  Train accuracy: 62.42%  test accuracy: 64.04%
+  Intercept: [0.76920397], coef: [-1.98290702]
 worst compactness
   Train accuracy: 78.90%  test accuracy: 78.95%
-  Intercept: [2.17765681], coef: [-6.3400393]
+  Intercept: [2.1502491], coef: [-6.41299443]
 worst concavity
-  Train accuracy: 82.86%  test accuracy: 85.96%
-  Intercept: [2.35141042], coef: [-6.49747447]
+  Train accuracy: 84.18%  test accuracy: 84.21%
+  Intercept: [2.47120955], coef: [-7.03693181]
 worst concave points
-  Train accuracy: 80.44%  test accuracy: 77.19%
-  Intercept: [1.47041109], coef: [-7.96985929]
+  Train accuracy: 81.32%  test accuracy: 84.21%
+  Intercept: [1.43433269], coef: [-7.936967]
 worst symmetry
-  Train accuracy: 65.71%  test accuracy: 66.67%
-  Intercept: [1.63536617], coef: [-3.81311801]
+  Train accuracy: 65.71%  test accuracy: 69.30%
+  Intercept: [1.66621184], coef: [-4.00081193]
 worst fractal dimension
-  Train accuracy: 62.86%  test accuracy: 62.28%
-  Intercept: [0.63535574], coef: [-1.30059963]
+  Train accuracy: 62.42%  test accuracy: 64.04%
+  Intercept: [0.60985404], coef: [-1.22467628]
 </pre></div>
 </div>
 </div>
@@ -790,8 +792,8 @@ Please also refer to the documentation for alternative solver options:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train accuracy: 0.9538461538461539
-Test accuracy: 0.9298245614035088
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train accuracy: 0.9362637362637363
+Test accuracy: 0.9210526315789473
 </pre></div>
 </div>
 </div>
@@ -816,8 +818,8 @@ Test accuracy: 0.9298245614035088
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train accuracy: 0.9692307692307692
-Test accuracy: 0.9210526315789473
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train accuracy: 0.9604395604395605
+Test accuracy: 0.9385964912280702
 </pre></div>
 </div>
 </div>
