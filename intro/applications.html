@@ -160,31 +160,28 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../HW/HW3.html">HW3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../HW/HW4.html">HW4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../HW/HW5.html">HW5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../HW/HW6.html">HW6</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../HW/HW7.html">HW7</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro_to_ML.html">Overview</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro_to_ML.html">Introduction</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="definition.html">Definitions of ML</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Applications of ML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data.html">Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ml_types.html">Types of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">Python libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_selection.html">Model selection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="knn.html">k-Nearest Neighbors</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data/data.html">Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data/tabular.html">Tabular data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/images.html">Image data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/text.html">Text data</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lin_reg/linear_regression.html">Linear regression</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -510,9 +507,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-translation">Machine translation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-summarization">Text summarization</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#speech-recognition">Speech recognition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spam-filtering">Spam filtering</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spam-filtering">Spam filtering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finance">Finance</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#credit-scoring">Credit scoring</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fraud-detection">Fraud detection</a></li>
@@ -522,7 +519,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommendation-systems">Recommendation systems</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robotics">Robotics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#playing-games">Playing games</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generarive-ai">Generarive AI</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-ai">Generative AI</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#content-creation">Content creation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-generation">Image generation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-fake">Deep fake</a></li>
@@ -587,10 +584,10 @@ document.write(`
 <h3>Speech recognition<a class="headerlink" href="#speech-recognition" title="Permalink to this heading">#</a></h3>
 <a class="bg-primary mb-1 reference internal image-reference" href="https://developer-blogs.nvidia.com/wp-content/uploads/2019/12/automatic-speech-recognition_updated.png"><img alt="speech-recognition" class="bg-primary mb-1 align-center" src="https://developer-blogs.nvidia.com/wp-content/uploads/2019/12/automatic-speech-recognition_updated.png" style="width: 500px;" /></a>
 </section>
-</section>
 <section id="spam-filtering">
-<h2>Spam filtering<a class="headerlink" href="#spam-filtering" title="Permalink to this heading">#</a></h2>
+<h3>Spam filtering<a class="headerlink" href="#spam-filtering" title="Permalink to this heading">#</a></h3>
 <a class="bg-primary mb-1 reference internal image-reference" href="https://www.spcdn.org/images/spam-filter1.jpg"><img alt="spam-filtering" class="bg-primary mb-1 align-center" src="https://www.spcdn.org/images/spam-filter1.jpg" style="width: 500px;" /></a>
+</section>
 </section>
 <section id="finance">
 <h2>Finance<a class="headerlink" href="#finance" title="Permalink to this heading">#</a></h2>
@@ -629,8 +626,8 @@ document.write(`
 ```
 --->
 </section>
-<section id="generarive-ai">
-<h2>Generarive AI<a class="headerlink" href="#generarive-ai" title="Permalink to this heading">#</a></h2>
+<section id="generative-ai">
+<h2>Generative AI<a class="headerlink" href="#generative-ai" title="Permalink to this heading">#</a></h2>
 <section id="content-creation">
 <h3>Content creation<a class="headerlink" href="#content-creation" title="Permalink to this heading">#</a></h3>
 <a class="bg-primary mb-1 reference internal image-reference" href="https://media.licdn.com/dms/image/D5612AQFoxSZYLjV_EA/article-cover_image-shrink_720_1280/0/1677588476245?e=2147483647&amp;v=beta&amp;t=5WT3HMuBEmRSB9aJY-gUJkivFbH7DvkIH4LWk9T7u1Y"><img alt="chat-gpt" class="bg-primary mb-1 align-center" src="https://media.licdn.com/dms/image/D5612AQFoxSZYLjV_EA/article-cover_image-shrink_720_1280/0/1677588476245?e=2147483647&amp;v=beta&amp;t=5WT3HMuBEmRSB9aJY-gUJkivFbH7DvkIH4LWk9T7u1Y" style="width: 500px;" /></a>
@@ -731,9 +728,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-translation">Machine translation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-summarization">Text summarization</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#speech-recognition">Speech recognition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spam-filtering">Spam filtering</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spam-filtering">Spam filtering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finance">Finance</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#credit-scoring">Credit scoring</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fraud-detection">Fraud detection</a></li>
@@ -743,7 +740,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommendation-systems">Recommendation systems</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robotics">Robotics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#playing-games">Playing games</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generarive-ai">Generarive AI</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-ai">Generative AI</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#content-creation">Content creation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-generation">Image generation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-fake">Deep fake</a></li>

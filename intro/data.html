@@ -162,31 +162,28 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Courses</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../HW/not_mnist_student.html">HW notMNIST</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../HW/HW1.html">HW1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../HW/HW2.html">HW2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../HW/HW3.html">HW3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../HW/HW4.html">HW4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../HW/HW5.html">HW5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../HW/HW6.html">HW6</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../HW/HW7.html">HW7</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro_to_ML.html">Overview</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro_to_ML.html">Introduction</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="definition.html">Definitions of ML</a></li>
 <li class="toctree-l2"><a class="reference internal" href="applications.html">Applications of ML</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ml_types.html">Types of ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">Python libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_selection.html">Model selection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="knn.html">k-Nearest Neighbors</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data/data.html">Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data/tabular.html">Tabular data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/images.html">Image data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/text.html">Text data</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lin_reg/linear_regression.html">Linear regression</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -526,26 +523,21 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data">
 <h1>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h1>
-<blockquote class="epigraph">
-<div><p>In God we trust, all others bring data.</p>
-<p class="attribution">—William Edwards Deming </p>
-</div></blockquote>
-<p><strong>Data</strong> is a broad term that refers to facts, statistics, or information in a raw, unprocessed, or organized form. Data can take many forms, including numbers, text, images, audio recordings, and more.</p>
 <section id="data-processing">
 <h2>Data processing<a class="headerlink" href="#data-processing" title="Permalink to this heading">#</a></h2>
 <p>The process of preparing raw data for machine learning involves several stages of data processing and manipulation to transform it into a structured and suitable format. The most common stages are:</p>
 <ul class="simple">
-<li><p>data collection;</p></li>
-<li><p>data cleaning:</p>
+<li><p>data collection</p></li>
+<li><p>data cleaning</p>
 <ul>
-<li><p>handling missing values;</p></li>
-<li><p>remove duplicates;</p></li>
-<li><p>outlier detection;</p></li>
-<li><p>data type conversions;</p></li>
+<li><p>handling missing values</p></li>
+<li><p>remove duplicates</p></li>
+<li><p>outlier detection</p></li>
+<li><p>data type conversions</p></li>
 </ul>
 </li>
-<li><p>data exploration and visualization;</p></li>
-<li><p>feature engineering.</p></li>
+<li><p>data exploration and visualization</p></li>
+<li><p>feature engineering</p></li>
 </ul>
 <p>The result of these manipulation is what is usually called a <strong>dataset</strong>: a specific collection of data that is organized and structured in a way that makes it suitable for analysis, processing, or machine learning tasks.</p>
 </section>
@@ -608,13 +600,13 @@ The distiction between continuous and discrete data can be occasionally ambiguou
 <p><span style="display:none" id="variable_type">W3sicXVlc3Rpb24iOiAiU2VsZWN0IGFsbCBjYXRlZ29yaWNhbCBub21pbmFsIGRhdGEiLCAidHlwZSI6ICJtYW55X2Nob2ljZSIsICJhbnN3ZXJzIjogW3siYW5zd2VyIjogIk1vbnRobHkgbG9hbiBwYXltZW50cyIsICJjb3JyZWN0IjogZmFsc2UsICJmZWVkYmFjayI6ICJUaGlzIGlzIGEgbnVtZXJpY2FsIGNvbnRpbnVvdXMgdmFyaWFibGUifSwgeyJhbnN3ZXIiOiAiQ2l0aWVzIGluIEV1cm9wZSB3aXRoIHBvcHVsYXRpb24gbW9yZSB0aGFuIDFNIiwgImNvcnJlY3QiOiB0cnVlLCAiZmVlZGJhY2siOiAiUXVpdGUgcmlnaHQhIENpdGllcyBhcmUgY2F0ZWdvcmljYWwgdmFyaWFibGVzLCBhbmQgdGhlcmUgaXMgbm8gbmF0dXJhbCBvcmRlcmluZyBvbiB0aGVtIn0sIHsiYW5zd2VyIjogIkNsb3RoaW5nIHNpemVzIChTLCBNLCBMLCBYTCwgZXRjLikiLCAiY29ycmVjdCI6IGZhbHNlLCAiZmVlZGJhY2siOiAiVGhpcyBpcyBhIGNhdGVnb3JpY2FsIG9yZGluYWwgdmFyaWFibGUifSwgeyJhbnN3ZXIiOiAiUGxhbmV0cyBpbiB0aGUgU29sYXIgc3lzdGVtIiwgImNvcnJlY3QiOiB0cnVlLCAiZmVlZGJhY2siOiAiWWVzISBUaGlzIGlzIGEgY2F0ZWdvcmljYWwgbm9taW5hbCB2YXJpYWJsZSJ9LCB7ImFuc3dlciI6ICJOdW1iZXIgb2YgY2FycyBpbiBhIHBhcmtpbmcgbG90IiwgImNvcnJlY3QiOiBmYWxzZSwgImZlZWRiYWNrIjogIlRoaXMgaXMgYSBudW1lcmljYWwgZGlzY3JldGUgdmFyaWFibGUifSwgeyJhbnN3ZXIiOiAiY2hlbWljYWwgZWxlbWVudHMgaW4gdGhlIHBlcmlvZGljIHRhYmxlIiwgImNvcnJlY3QiOiB0cnVlLCAiZmVlZGJhY2siOiAiVGhpcyBpcyBhIHRyaWNreSBvbmU6IGRvZXMgdGhlIG51bWJlciBvZiBhbiBlbGVtZW50IG1ha2UgaXQgYW4gb3JkaW5hbCB2YXJpYWJsZSBvciBub3Q/In1dfV0=</span></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="MNbvcEQUNJQh" data-shufflequestions="False"
+<div class="output text_html"><div id="KpQZhXMUknve" data-shufflequestions="False"
                data-shuffleanswers="True"
                data-preserveresponses="false"
                data-numquestions="1000000"
                data-maxwidth="600"
                style="border-radius: 10px; text-align: left"> <style>
-#MNbvcEQUNJQh {
+#KpQZhXMUknve {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -785,14 +777,14 @@ The distiction between continuous and discrete data can be occasionally ambiguou
     }
 }
 </style></div><script type="application/javascript">var element=document.getElementById("variable_type");
-            var questionsMNbvcEQUNJQh;
+            var questionsKpQZhXMUknve;
             try {
-               questionsMNbvcEQUNJQh=JSON.parse(window.atob(element.innerHTML));
+               questionsKpQZhXMUknve=JSON.parse(window.atob(element.innerHTML));
             } catch(err) {
                console.log("Fell into catch");
-               questionsMNbvcEQUNJQh = JSON.parse(element.innerHTML);
+               questionsKpQZhXMUknve = JSON.parse(element.innerHTML);
             }
-            console.log(questionsMNbvcEQUNJQh);;
+            console.log(questionsKpQZhXMUknve);;
     // Make a random ID
 function makeid(length) {
     var result = [];
@@ -1541,8 +1533,8 @@ if (typeof version == 'undefined') {
            Someone more knowledgeable could make this better ;-) */
 
         function try_show() {
-          if(document.getElementById("MNbvcEQUNJQh")) {
-            show_questions(questionsMNbvcEQUNJQh,  MNbvcEQUNJQh); 
+          if(document.getElementById("KpQZhXMUknve")) {
+            show_questions(questionsKpQZhXMUknve,  KpQZhXMUknve); 
           } else {
              setTimeout(try_show, 200);
           }
@@ -1551,8 +1543,8 @@ if (typeof version == 'undefined') {
         {
         // console.log(element);
 
-        //console.log("MNbvcEQUNJQh");
-        // console.log(document.getElementById("MNbvcEQUNJQh"));
+        //console.log("KpQZhXMUknve");
+        // console.log(document.getElementById("KpQZhXMUknve"));
 
         try_show();
         }
@@ -1752,7 +1744,7 @@ Name: count, dtype: int64
 <h3>Bikeshare dataset<a class="headerlink" href="#bikeshare-dataset" title="Permalink to this heading">#</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>To install Python library <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, run the command <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">scikit-learn</span></code></p>
+<p>To install Python library <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, run the command <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pandas</span></code></p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2041,8 +2033,7 @@ Name: count, dtype: int64
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>How many features does a colored image of width <span class="math notranslate nohighlight">\(1920\)</span> and height <span class="math notranslate nohighlight">\(1080\)</span> have?</p></li>
+<ol class="arabic simple" start="2">
 <li><p>What is the shape of the feature matrix of MNIST dataset?</p></li>
 <li><p>A dataset contains <span class="math notranslate nohighlight">\(10\)</span> features. Six of them are numeric, the rest four are categorical with <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(3\)</span>, <span class="math notranslate nohighlight">\(5\)</span> and 9 categories respectively. How many features will be in this dataset after one-hot-encoding with/without dropping?</p></li>
 <li><p>Originally each Twitter message was limited by <span class="math notranslate nohighlight">\(140\)</span> characters. Suggest a couple of methods how to convert a tweet into a numeric vector.</p></li>
