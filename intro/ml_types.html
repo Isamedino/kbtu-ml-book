@@ -63,8 +63,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro/ml_types';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -496,7 +494,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-learning">Unsupervised learning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semisupervised-learning">Semisupervised learning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement learning</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
             </nav>
         </div>
@@ -671,14 +668,7 @@ Calculate the cross-entropy loss {eq}`cross-entropy`. Assume that log base is $2
 If the function $f_{\boldsymbol \theta}(\boldsymbol x_i) = \boldsymbol {\theta^\top x}_i + b$ is linear, then the model is called **linear regression**.
 
 Example of one-dimensional linear regression (figure 1.5 from {cite:p}`pml1Book`):
---><div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/7b9f311f98cc3a20fbe668161537bc9a938cddc85c123ee532fc9df13967f024.png" src="../_images/7b9f311f98cc3a20fbe668161537bc9a938cddc85c123ee532fc9df13967f024.png" />
-</div>
-</div>
-<div class="cell tag_remove-input docutils container">
-</div>
-</section>
+--></section>
 <section id="unsupervised-learning">
 <h2>Unsupervised learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this heading">#</a></h2>
 <a class="bg-primary mb-1 reference internal image-reference" href="https://cdn-images-1.medium.com/max/1440/1*YUl_BcqFPgX49sSb5yrk3A.jpeg"><img alt="unsupervised-learning" class="bg-primary mb-1 align-center" src="https://cdn-images-1.medium.com/max/1440/1*YUl_BcqFPgX49sSb5yrk3A.jpeg" style="width: 500px;" /></a>
@@ -691,10 +681,6 @@ Example of one-dimensional linear regression (figure 1.5 from {cite:p}`pml1Book`
 <li><p>searching for association rules</p></li>
 </ul>
 <p>Clusterisation made on Iris dataset (figure 1.8 from <span id="id1">[<a class="reference internal" href="../bibliography.html#id3" title="Kevin P. Murphy. Probabilistic Machine Learning: An introduction. MIT Press, 2022. URL: probml.ai.">Murphy, 2022</a>]</span>):</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="../_images/abb4e88a0ad7352bef7c8c05d10b47f1aee36f7578458bd687af3368d38ade34.svg" src="../_images/abb4e88a0ad7352bef7c8c05d10b47f1aee36f7578458bd687af3368d38ade34.svg" /></div>
-</div>
 </section>
 <section id="semisupervised-learning">
 <h2>Semisupervised learning<a class="headerlink" href="#semisupervised-learning" title="Permalink to this heading">#</a></h2>
@@ -703,22 +689,25 @@ Example of one-dimensional linear regression (figure 1.5 from {cite:p}`pml1Book`
 </section>
 <section id="reinforcement-learning">
 <h2>Reinforcement learning<a class="headerlink" href="#reinforcement-learning" title="Permalink to this heading">#</a></h2>
+<figure class="align-center">
+<img alt="https://lilianweng.github.io/posts/2018-02-19-rl-overview/RL_illustration.png" src="https://lilianweng.github.io/posts/2018-02-19-rl-overview/RL_illustration.png" />
+</figure>
 <p><strong>Reinforcement learning</strong> is a machine learning paradigm where an agent learns to make sequential decisions by interacting with an environment. It aims to maximize a cumulative reward signal by exploring actions and learning optimal strategies through trial and error.</p>
-</section>
-<section id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p><strong>Accuracy</strong> of a predictive model is calculated as</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
+<!--
+## Exercises
+
+1. **Accuracy** of a predictive model is calculated as
+
+  $$
       \frac{\text{Number of correct predictions}}{\text{Total number of samples}}.
-  \]</div>
-<p>Prove that accuracy equals one minus error rate <code class="xref eq docutils literal notranslate"><span class="pre">mis-rate</span></code>.</p>
-<ol class="arabic simple" start="2">
-<li><p>Suppose that training dataset has only one sample (<span class="math notranslate nohighlight">\(n=1\)</span>) and one feature. How would linear regression look like in this case? What if <span class="math notranslate nohighlight">\(n=2\)</span>? <span class="math notranslate nohighlight">\(n=3\)</span>?</p></li>
-<li><p>Show that the binary cross-entropy loss <code class="xref eq docutils literal notranslate"><span class="pre">binary-cross-entropy</span></code> is a special case of the cross-entropy <code class="xref eq docutils literal notranslate"><span class="pre">cross-entropy</span></code>.</p></li>
-</ol>
+  $$
+
+  Prove that accuracy equals one minus error rate {eq}`mis-rate`.
+
+2. Suppose that training dataset has only one sample ($n=1$) and one feature. How would linear regression look like in this case? What if $n=2$? $n=3$?
+
+3. Show that the binary cross-entropy loss {eq}`binary-cross-entropy` is a special case of the cross-entropy {eq}`cross-entropy`.
+
 <!--
 ```{admonition} TODO
 :class: warning
@@ -800,7 +789,6 @@ Example of one-dimensional linear regression (figure 1.5 from {cite:p}`pml1Book`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-learning">Unsupervised learning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semisupervised-learning">Semisupervised learning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement learning</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
   </nav></div>
 
