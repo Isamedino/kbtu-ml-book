@@ -164,7 +164,9 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2024.html">ML 2024 (MS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2024_MBA.html">ML 2024 (MBA)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="current nav bd-sidenav">
@@ -497,7 +499,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-classification">Binary classification</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">Classification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-classification">Binary classification</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function">Loss function</a></li>
 </ul>
@@ -530,13 +533,17 @@ document.write(`
 \[
     \mathcal L(\boldsymbol \theta) = \frac 1n \sum\limits_{i=1}^n \ell(f_{\boldsymbol \theta}(\boldsymbol x_i), y_i) \to \min \limits_{\boldsymbol \theta}
 \]</div>
-<p>Depending on the set of targets <span class="math notranslate nohighlight">\(\mathcal Y\)</span> supervised learning is split into <strong>classification</strong> and <strong>regression</strong> tasks</p>
+<p>Depending on the set of targets <span class="math notranslate nohighlight">\(\mathcal Y\)</span> supervised learning is split into <strong>classification</strong> and <strong>regression</strong>.</p>
+<section id="classification">
+<h2>Classification<a class="headerlink" href="#classification" title="Permalink to this heading">#</a></h2>
+<p>If <span class="math notranslate nohighlight">\(\mathcal Y\)</span> is a finite set of categories, the predictive model <span class="math notranslate nohighlight">\(f_{\boldsymbol \theta}\colon \mathbb R^d\to \mathcal Y\)</span> is often called a <strong>classifier</strong>. In should classify inputs into several categories from <span class="math notranslate nohighlight">\(\mathcal Y\)</span>.</p>
 <section id="binary-classification">
-<h2>Binary classification<a class="headerlink" href="#binary-classification" title="Permalink to this heading">#</a></h2>
+<h3>Binary classification<a class="headerlink" href="#binary-classification" title="Permalink to this heading">#</a></h3>
 <figure class="align-center">
 <img alt="cats-vs-dogs" src="https://miro.medium.com/max/1400/1*biZq-ihFzq1I6Ssjz7UtdA.jpeg" />
 </figure>
 <p>In <strong>binary classification</strong> problems there are only two classes, which are often called <em>positive</em> and <em>negative</em>. The target set <span class="math notranslate nohighlight">\(\mathcal Y\)</span> in this case consists of two elements, and usually denoted as <span class="math notranslate nohighlight">\(\mathcal Y = \{0, 1\}\)</span> or <span class="math notranslate nohighlight">\(\mathcal Y = \{-1, +1\}\)</span>.</p>
+</section>
 <section id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
@@ -546,10 +553,15 @@ document.write(`
 <li><p>credit card fraud detection (<code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">=</span> <span class="pre">fraudulent</span> <span class="pre">transaction</span></code>, <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">=</span> <span class="pre">legitimate</span> <span class="pre">transaction</span></code>)</p></li>
 <li><p>customer churn prediction (<code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">=</span> <span class="pre">cutomer</span> <span class="pre">leaves</span></code>, <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">=</span> <span class="pre">customer</span> <span class="pre">stays</span></code>)</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There’s no inherent rule that “positive” must correspond to a “good” outcome. Instead, it usually refers to the class of greater interest.</p>
+</div>
 </section>
 <section id="loss-function">
 <h3>Loss function<a class="headerlink" href="#loss-function" title="Permalink to this heading">#</a></h3>
-<p>A typical loss function for binary classification is <strong>misclassification rate</strong> (or <strong>error rate</strong>) — the fraction of incorrect predictions:</p>
+<p>Let <span class="math notranslate nohighlight">\(\widehat y_i = f_{\boldsymbol \theta}(\boldsymbol x_i)\)</span> be the prediction of the model on the <span class="math notranslate nohighlight">\(i\)</span>-th sample.
+A typical loss function for binary classification is <strong>misclassification rate</strong> (or <strong>error rate</strong>) — the fraction of incorrect predictions:</p>
 <div class="math notranslate nohighlight" id="equation-mis-rate">
 <span class="eqno">(2)<a class="headerlink" href="#equation-mis-rate" title="Permalink to this equation">#</a></span>\[    \mathcal L(\boldsymbol \theta) = \frac 1n \sum\limits_{i=1}^n \mathbb I\big[y_i \ne \hat y_i\big]\]</div>
 <p>This loss is not a smooth function, that’s why they often predict a number <span class="math notranslate nohighlight">\(\widehat y \in (0, 1)\)</span> which is treated as probability of class <span class="math notranslate nohighlight">\(1\)</span>, and then use <strong>cross-entropy loss</strong></p>
@@ -1624,7 +1636,8 @@ if (typeof version == 'undefined') {
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-classification">Binary classification</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">Classification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-classification">Binary classification</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function">Loss function</a></li>
 </ul>
