@@ -163,6 +163,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2024.html">ML 2024 (MS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2024_MBA.html">ML 2024 (MBA)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
@@ -522,64 +523,6 @@ document.write(`
 <p>In supervised learning, the model is trained on a labeled dataset, meaning each training example is paired with an output label. The goal is to learn a mapping from inputs to outputs so that the model can predict labels for unseen data.</p>
 <!--
 To avoid such problems with loss {eq}`binary-cross-entropy` models usually predict numbers from $(0, 1)$, which are interpreted as probabilities of class $1$.
---><!--
-**Multiclass classification**
-
-```{image} https://miro.medium.com/max/1400/1*JAXmOAImcf683aXaBDPPVg.jpeg
-:alt: multiclass
-:class: bg-primary mb-1
-:width: 500px
-:align: center
-```
-
-* $\mathcal Y = \{1, 2, \ldots, K\}$ 
-* one-hot encoding: $\boldsymbol y_i \in \{0, 1\}^K$, $\sum\limits_{k=1}^K y_{ik} = 1$
-* $\hat{\boldsymbol y}_i = f_{\boldsymbol \theta}(\boldsymbol x_i) \in [0, 1]^K$ is now the vector of probabilities of belonging to class $k$: 
-
-    $$
-        \hat y_{ik} = \mathbb P(\boldsymbol x_i \in \text{ class }k)
-    $$
-    
-* the cross-entropy loss is now written as follows:
-
-```{math}
-:label: cross-entropy
-\mathcal L(\boldsymbol \theta) = -\frac 1n \sum\limits_{i=1}^n \sum\limits_{k=1}^Ky_{ik} \log(\hat y_{ik})
-```
-
-```{admonition} Example
-Classifying into $3$ classes, model produces the following outputs:
-
-|$y$ | $\boldsymbol {\hat y}$|
-|:---:|:-------------------:|
-|$0$| $(0.25, 0.4, 0.35)$  |
-|$0$| $(0.5, 0.3, 0.2)$  |
-|$1$| $\big(\frac 12 - \frac 1{2\sqrt 2}, \frac 1{\sqrt 2}, \frac 12 - \frac 1{2\sqrt 2}\big)$  |
-|$2$| $(0, 0, 1)$  |
-
-Calculate the cross-entropy loss {eq}`cross-entropy`. Assume that log base is $2$.
-```
-<span style="display:none" id="cross_entropy_loss">W3sicXVlc3Rpb24iOiAiQ2FsY3VsYXRlIHRoZSBjcm9zcyBlbnRyb3B5IGZyb20gdGhlIHByZXZpb3VzIGV4YW1wbGUiLCAidHlwZSI6ICJudW1lcmljIiwgImFuc3dlcnMiOiBbeyJ0eXBlIjogInZhbHVlIiwgInZhbHVlIjogMC44NzUsICJjb3JyZWN0IjogdHJ1ZSwgImZlZWRiYWNrIjogIkV4YWN0bHkhIn0sIHsidHlwZSI6ICJkZWZhdWx0IiwgImZlZWRiYWNrIjogIkluY29ycmVjdCJ9XX1d</span>
---><div class="cell tag_remove-input docutils container">
-</div>
-<!--
-### Regression
-
-* $\mathcal Y = \mathbb R$ or $\mathcal Y = \mathbb R^m$
-* the common choice is the quadratic loss 
-
-    $$
-        \ell_2(y, \hat y) = (y - \hat y)^2
-    $$
-* then the overall loss function — mean squared error:
-
-    $$
-    \mathcal L(\boldsymbol \theta) = \mathrm{MSE}(\boldsymbol \theta) = \frac 1n\sum\limits_{i=1}^n (y_i - f_{\boldsymbol \theta}(\boldsymbol x_i))^2
-    $$
-
-If the function $f_{\boldsymbol \theta}(\boldsymbol x_i) = \boldsymbol {\theta^\top x}_i + b$ is linear, then the model is called **linear regression**.
-
-Example of one-dimensional linear regression (figure 1.5 from {cite:p}`pml1Book`):
 --></section>
 <section id="unsupervised-learning">
 <h2>Unsupervised learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this heading">#</a></h2>

@@ -164,7 +164,9 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2024.html">ML 2024 (MS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2024_MBA.html">ML 2024 (MBA)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="nav bd-sidenav">
@@ -524,7 +526,7 @@ document.write(`
 <h1>Layers of MLP<a class="headerlink" href="#layers-of-mlp" title="Permalink to this heading">#</a></h1>
 <p>From mathematical point of view MLP is a smooth function <span class="math notranslate nohighlight">\(F\)</span> which is constructed as a composition of some other functions</p>
 <div class="math notranslate nohighlight" id="equation-mlp-composition">
-<span class="eqno">(32)<a class="headerlink" href="#equation-mlp-composition" title="Permalink to this equation">#</a></span>\[F(\boldsymbol x) = (f_{L} \circ f_{L-1} \circ\ldots \circ f_2 \circ f_1)(\boldsymbol x),\quad
+<span class="eqno">(34)<a class="headerlink" href="#equation-mlp-composition" title="Permalink to this equation">#</a></span>\[F(\boldsymbol x) = (f_{L} \circ f_{L-1} \circ\ldots \circ f_2 \circ f_1)(\boldsymbol x),\quad
 \boldsymbol x \in \mathbb R^{n_0}\]</div>
 <p>Each function</p>
 <div class="math notranslate nohighlight">
@@ -553,7 +555,7 @@ document.write(`
 <h2>Linear regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h2>
 <p>Linear regression is one the simplest MLPs. There are several types of linear regression model:</p>
 <ul>
-<li><p>simple linear regression <a class="reference internal" href="../lin_reg/simple.html#equation-simple-lin-reg">(5)</a> <span class="math notranslate nohighlight">\(y = ax +b\)</span></p></li>
+<li><p>simple linear regression <a class="reference internal" href="../lin_reg/simple.html#equation-simple-lin-reg">(7)</a> <span class="math notranslate nohighlight">\(y = ax +b\)</span></p></li>
 <li><p><a class="reference internal" href="../lin_reg/multiple.html#linear-regression"><span class="std std-ref">multiple linear regression</span></a> <span class="math notranslate nohighlight">\(y = \boldsymbol x^\mathsf{T} \boldsymbol w + w_0\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -587,7 +589,7 @@ document.write(`
 </section>
 <section id="parameters-of-mlp">
 <h2>Parameters of MLP<a class="headerlink" href="#parameters-of-mlp" title="Permalink to this heading">#</a></h2>
-<p>However, one important element is missing in <a class="reference internal" href="#equation-mlp-composition">(32)</a>: parameters! Each layer <span class="math notranslate nohighlight">\(f_\ell\)</span> has a vector of parameters <span class="math notranslate nohighlight">\(\boldsymbol \theta_\ell\in\mathbb R^{m_\ell}\)</span> (sometimes empty). Hence, a layer should be defined as</p>
+<p>However, one important element is missing in <a class="reference internal" href="#equation-mlp-composition">(34)</a>: parameters! Each layer <span class="math notranslate nohighlight">\(f_\ell\)</span> has a vector of parameters <span class="math notranslate nohighlight">\(\boldsymbol \theta_\ell\in\mathbb R^{m_\ell}\)</span> (sometimes empty). Hence, a layer should be defined as</p>
 <div class="math notranslate nohighlight">
 \[
     f_\ell \colon \mathbb R^{n_{\ell - 1}} \times \mathbb R^{m_\ell} \to \mathbb R^{n_\ell}.

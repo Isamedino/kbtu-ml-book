@@ -164,7 +164,9 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../courses/Intro2ML.html">Introduction to ML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2024.html">ML 2024 (MS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2024_MBA.html">ML 2024 (MBA)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="nav bd-sidenav">
@@ -517,7 +519,7 @@ document.write(`
 <span id="svd"></span><h1>Singular Value Decomposition (SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Permalink to this heading">#</a></h1>
 <p>Any rectangular matrix <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span> has a <strong>singular value decomposition</strong></p>
 <div class="math notranslate nohighlight" id="equation-svd">
-<span class="eqno">(57)<a class="headerlink" href="#equation-svd" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol A = \boldsymbol U \boldsymbol \Sigma \boldsymbol V^\mathsf{T} = [\boldsymbol u_1 \ldots \boldsymbol u_m]  \begin{pmatrix}
+<span class="eqno">(59)<a class="headerlink" href="#equation-svd" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol A = \boldsymbol U \boldsymbol \Sigma \boldsymbol V^\mathsf{T} = [\boldsymbol u_1 \ldots \boldsymbol u_m]  \begin{pmatrix}
         \boldsymbol \Lambda &amp;  \boldsymbol 0 \\
          \boldsymbol 0 &amp;  \boldsymbol 0
     \end{pmatrix}
@@ -670,7 +672,7 @@ V:
 </section>
 <section id="reduced-form-of-svd">
 <h2>Reduced form of SVD<a class="headerlink" href="#reduced-form-of-svd" title="Permalink to this heading">#</a></h2>
-<p>SVD <a class="reference internal" href="#equation-svd">(57)</a> is equivalent to  <span class="math notranslate nohighlight">\(\boldsymbol{A} = \boldsymbol U_r \boldsymbol \Lambda \boldsymbol V_r^\mathsf{T}\)</span> where</p>
+<p>SVD <a class="reference internal" href="#equation-svd">(59)</a> is equivalent to  <span class="math notranslate nohighlight">\(\boldsymbol{A} = \boldsymbol U_r \boldsymbol \Lambda \boldsymbol V_r^\mathsf{T}\)</span> where</p>
 <div class="math notranslate nohighlight">
 \[
     \boldsymbol{U}_r = [\boldsymbol u_1 \ldots \boldsymbol u_r],\quad

@@ -164,7 +164,9 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../courses/Intro2ML.html">Introduction to ML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/DL.html">Deep Learning 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2024.html">ML 2024 (MS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../courses/ML_2024_MBA.html">ML 2024 (MBA)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="nav bd-sidenav">
@@ -592,7 +594,7 @@ if (outputEl) {{
 \]</div>
 <p>A more scientific definition:</p>
 <div class="math notranslate nohighlight" id="equation-derivative-o-def">
-<span class="eqno">(58)<a class="headerlink" href="#equation-derivative-o-def" title="Permalink to this equation">#</a></span>\[    f(x + h)= f(x) + f'(x)h + O(h^2), \quad h\to 0.\]</div>
+<span class="eqno">(60)<a class="headerlink" href="#equation-derivative-o-def" title="Permalink to this equation">#</a></span>\[    f(x + h)= f(x) + f'(x)h + O(h^2), \quad h\to 0.\]</div>
 <div class="dropdown admonition">
 <p class="admonition-title">Strict definition</p>
 <p>The <strong>derivative</strong> of <span class="math notranslate nohighlight">\(f \colon (x-\delta, x+\delta) \to \mathbb R\)</span>, <span class="math notranslate nohighlight">\(\delta &gt; 0\)</span>, at point <span class="math notranslate nohighlight">\(x\)</span> is</p>
@@ -605,7 +607,7 @@ f'(x) = \lim\limits_{h\to 0} \frac{f(x+h)-f(x)}h.
 \[
     f(x + h) - f(x) =  f'(x)h + o(h), \quad h\to 0.
 \]</div>
-<p>Note that <a class="reference internal" href="#equation-derivative-o-def">(58)</a> imply this equality but the converse is false.</p>
+<p>Note that <a class="reference internal" href="#equation-derivative-o-def">(60)</a> imply this equality but the converse is false.</p>
 </div>
 <section id="differential">
 <h2>Differential<a class="headerlink" href="#differential" title="Permalink to this heading">#</a></h2>
@@ -671,7 +673,7 @@ f'(x) = \lim\limits_{h\to 0} \frac{f(x+h)-f(x)}h.
 <p>— <em>sigmoid</em> function.</p>
 </li>
 <li><p>Find <span class="math notranslate nohighlight">\(\max\limits_{x\in\mathbb R}\sigma'(x)\)</span>.</p></li>
-<li><p>Give an example of a function <span class="math notranslate nohighlight">\(f\)</span> which is differentiable at point <span class="math notranslate nohighlight">\(x\)</span> but <a class="reference internal" href="#equation-derivative-o-def">(58)</a> does not hold.</p></li>
+<li><p>Give an example of a function <span class="math notranslate nohighlight">\(f\)</span> which is differentiable at point <span class="math notranslate nohighlight">\(x\)</span> but <a class="reference internal" href="#equation-derivative-o-def">(60)</a> does not hold.</p></li>
 <li><p>Find the first and the second differential of <span class="math notranslate nohighlight">\(f(x) = \sin x\)</span> at point <span class="math notranslate nohighlight">\(x = \frac \pi 3\)</span>.</p></li>
 <li><p>Find global maximium of</p>
 <div class="math notranslate nohighlight">

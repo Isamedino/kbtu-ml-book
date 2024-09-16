@@ -164,7 +164,9 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2024.html">ML 2024 (MS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2024_MBA.html">ML 2024 (MBA)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="current nav bd-sidenav">
@@ -501,23 +503,23 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="general-linear-model">
 <h1>General linear model<a class="headerlink" href="#general-linear-model" title="Permalink to this heading">#</a></h1>
-<p>The linear regression model <a class="reference internal" href="multiple.html#equation-multiple-lin-reg">(14)</a> is linear on both features <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and weights <span class="math notranslate nohighlight">\(\boldsymbol w\)</span>, since its predictions are given by the inner product</p>
+<p>The linear regression model <a class="reference internal" href="multiple.html#equation-multiple-lin-reg">(16)</a> is linear on both features <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and weights <span class="math notranslate nohighlight">\(\boldsymbol w\)</span>, since its predictions are given by the inner product</p>
 <div class="math notranslate nohighlight">
 \[
     \widehat y = \boldsymbol x^\top \boldsymbol w = \sum\limits_{j=0}^d x_jw_j.
 \]</div>
 <p>Of course, the target variable <span class="math notranslate nohighlight">\(y\)</span> can have nonlinear dependence on the predictors <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>. We can easily sacrifise the linearity on <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> and consider <strong>general linear model</strong></p>
 <div class="math notranslate nohighlight" id="equation-general-linear">
-<span class="eqno">(22)<a class="headerlink" href="#equation-general-linear" title="Permalink to this equation">#</a></span>\[\widehat y = \sum\limits_{j=0}^M \phi_j(\boldsymbol x)w_j.\]</div>
+<span class="eqno">(24)<a class="headerlink" href="#equation-general-linear" title="Permalink to this equation">#</a></span>\[\widehat y = \sum\limits_{j=0}^M \phi_j(\boldsymbol x)w_j.\]</div>
 <p>The functions <span class="math notranslate nohighlight">\(\phi_j(\boldsymbol x)\)</span> are called <strong>basis functions</strong>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>As before, the bias is included in <a class="reference internal" href="#equation-general-linear">(22)</a> by putting <span class="math notranslate nohighlight">\(\phi_0(\boldsymbol x) =1\)</span>.</p>
+<p>As before, the bias is included in <a class="reference internal" href="#equation-general-linear">(24)</a> by putting <span class="math notranslate nohighlight">\(\phi_0(\boldsymbol x) =1\)</span>.</p>
 </div>
 <p>Note that</p>
 <ul class="simple">
-<li><p>if <span class="math notranslate nohighlight">\(M=d\)</span> and <span class="math notranslate nohighlight">\(\phi_j(\boldsymbol x) = x_j\)</span>, then <a class="reference internal" href="#equation-general-linear">(22)</a> turns into multiple linear regression;</p></li>
-<li><p>if <span class="math notranslate nohighlight">\(d=1\)</span> and <span class="math notranslate nohighlight">\(\phi_j(x) = x^j\)</span> then <a class="reference internal" href="#equation-general-linear">(22)</a> becomes polynomial regression.</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(M=d\)</span> and <span class="math notranslate nohighlight">\(\phi_j(\boldsymbol x) = x_j\)</span>, then <a class="reference internal" href="#equation-general-linear">(24)</a> turns into multiple linear regression;</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(d=1\)</span> and <span class="math notranslate nohighlight">\(\phi_j(x) = x^j\)</span> then <a class="reference internal" href="#equation-general-linear">(24)</a> becomes polynomial regression.</p></li>
 </ul>
 <p>The popular choices of <span class="math notranslate nohighlight">\(\phi_j(\boldsymbol x)\)</span> are</p>
 <ul class="simple">
