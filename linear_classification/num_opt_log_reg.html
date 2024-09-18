@@ -164,7 +164,9 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2024.html">ML 2024 (MS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2024_MBA.html">ML 2024 (MBA)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="current nav bd-sidenav">
@@ -184,8 +186,8 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../supervised/sl.html">Supervised learning</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../supervised/sl_types.html">Types of supervised learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../supervised/model_selection.html">Model selection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../supervised/knn.html">k-Nearest Neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supervised/model_selection.html">Model selection</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lin_reg/linear_regression.html">Linear regression</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -516,7 +518,7 @@ document.write(`
 <p>To find the optimal weights of the logistic regression, we can use <a class="reference internal" href="../math/calculus/optimization.html#GD">gradient descent</a> algorithm. To apply this algorithm, one need to calculate the gradient of the loss function.</p>
 <section id="binary-logistic-regression">
 <h2>Binary logistic regression<a class="headerlink" href="#binary-logistic-regression" title="Permalink to this heading">#</a></h2>
-<p>Multiply the loss function <a class="reference internal" href="log_reg.html#equation-bin-log-reg-loss">(25)</a> by <span class="math notranslate nohighlight">\(n\)</span>:</p>
+<p>Multiply the loss function <a class="reference internal" href="log_reg.html#equation-bin-log-reg-loss">(27)</a> by <span class="math notranslate nohighlight">\(n\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \mathcal L(\boldsymbol w) = 
@@ -627,16 +629,16 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>max_iter exceeded
-CPU times: user 1min 3s, sys: 6.18 s, total: 1min 9s
-Wall time: 44.7 s
+CPU times: user 57 s, sys: 5.6 s, total: 1min 2s
+Wall time: 34.8 s
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.56557467,  0.17996173,  1.17462991, -0.03843602,  0.11534334,
-        0.30370984,  0.07610112, -0.51248736,  0.06908607, -1.19439502,
-       -1.15502793, -1.1312501 ,  0.25716828, -0.13661282,  0.66589857,
-       -0.11091636, -0.03325973,  0.65354162,  0.80833886,  0.73805393,
-        1.24722504, -0.45449439, -0.67197353, -0.02672128, -0.19913778,
-       -0.15895106, -1.55300622, -1.63658906,  0.12254942,  0.17379546])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.34935903,  0.22785601,  0.99609044, -0.04434295, -0.56353632,
+       -0.47416162,  0.22566831, -0.49126536, -0.38736712,  0.32053848,
+       -0.00354362, -0.03560671, -0.1402468 , -0.14380641, -0.22418057,
+       -1.36098835, -2.78690022,  1.14733652, -1.46095154, -0.10581523,
+        0.95988963, -0.55023699, -0.56697426, -0.03181517, -0.00497017,
+       -0.09907   , -2.04228421, -0.2918177 , -0.72783566, -0.45743806])
 </pre></div>
 </div>
 </div>
@@ -650,7 +652,7 @@ Wall time: 44.7 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9173989455184535
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9138840070298769
 </pre></div>
 </div>
 </div>
@@ -690,7 +692,7 @@ Wall time: 44.7 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.336772399431983
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.412616480495628
 </pre></div>
 </div>
 </div>

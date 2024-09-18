@@ -68,8 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'supervised/knn';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Model selection" href="model_selection.html" />
-    <link rel="prev" title="Types of supervised learning" href="sl_types.html" />
+    <link rel="next" title="Linear regression" href="../lin_reg/linear_regression.html" />
+    <link rel="prev" title="Model selection" href="model_selection.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -186,8 +186,8 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="sl.html">Supervised learning</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="sl_types.html">Types of supervised learning</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">k-Nearest Neighbors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_selection.html">Model selection</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">k-Nearest Neighbors</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lin_reg/linear_regression.html">Linear regression</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -505,6 +505,8 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#role-of-k">Role of <span class="math notranslate nohighlight">\(k\)</span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curse-of-dimensionality">Curse of dimensionality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nn-for-boston-dataset">k-NN for Boston dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nn-for-classification">k-NN for classification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
             </nav>
@@ -526,7 +528,7 @@ document.write(`
 <li><p>for a sample <span class="math notranslate nohighlight">\(\boldsymbol x \in \mathbb R^d\)</span> find its <span class="math notranslate nohighlight">\(k\)</span> nearest neighbors among the training dataset;</p></li>
 <li><p>classify or predict the label of <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> according to the labels of its neighbors.</p></li>
 </ul>
-<p>Distance between two vectors <span class="math notranslate nohighlight">\(\boldsymbol x, \boldsymbol y \in \mathbb R^d\)</span> is definde as norm of their difference</p>
+<p>Distance between two vectors <span class="math notranslate nohighlight">\(\boldsymbol x, \boldsymbol y \in \mathbb R^d\)</span> is defined as norm of their difference</p>
 <div class="math notranslate nohighlight">
 \[
     \rho(\boldsymbol x, \boldsymbol y) = \Vert \boldsymbol x-  \boldsymbol y\Vert.
@@ -557,7 +559,7 @@ $$
 --><section id="k-nn-algorithm">
 <h2>k-NN algorithm<a class="headerlink" href="#k-nn-algorithm" title="Permalink to this heading">#</a></h2>
 <figure class="align-center" id="simple-knn">
-<a class="reference internal image-reference" href="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/03/knn3.png"><img alt="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/03/knn3.png" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/03/knn3.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/03/knn3.png"><img alt="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/03/knn3.png" src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/03/knn3.png" style="width: 500px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 1 </span><span class="caption-text">Simple k-NN</span><a class="headerlink" href="#simple-knn" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -594,18 +596,18 @@ This is a partition of space which associates a region <span class="math notrans
 \]</div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/b08f9dd50ce80e9b5e346b98c7414d4321ba8ac753b03ab81a38de4d3eaed10a.svg" src="../_images/b08f9dd50ce80e9b5e346b98c7414d4321ba8ac753b03ab81a38de4d3eaed10a.svg" /></div>
+<img alt="../_images/66d7e56ffa1e6fcad7295cc97ed47388856505f1668f83df05af373f8e2612d7.svg" src="../_images/66d7e56ffa1e6fcad7295cc97ed47388856505f1668f83df05af373f8e2612d7.svg" /></div>
 </div>
 <p><span style="display:none" id="q_1nn_train_loss">W3sicXVlc3Rpb24iOiAiU3VwcG9zZSB3ZSBhcmUgdHJhaW5pbmcgJDEkLU5OIGFsZ29yaXRobSB1c2luZyBtaXNjbGFzc2lmaWNhdGlvbiByYXRlIGFzIHRoZSBsb3NzIGZ1bmN0aW9uLiBXaGF0IHdpbGwgYmUgdGhlIHRyYWluIGVycm9yPyIsICJ0eXBlIjogIm51bWVyaWMiLCAiYW5zd2VycyI6IFt7InR5cGUiOiAidmFsdWUiLCAidmFsdWUiOiAwLCAiY29ycmVjdCI6IHRydWUsICJmZWVkYmFjayI6ICJSaWdodCBvbiEgQWxsIHRyYWluaW5nIHBvaW50cyB3aWxsIGJlIGNsYXNzaWZpZWQgY29ycmVjdGx5In0sIHsidHlwZSI6ICJyYW5nZSIsICJyYW5nZSI6IFstMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCwgMF0sICJmZWVkYmFjayI6ICJNaXNjbGFzc2lmaWNhdGlvbiByYXRlIG11c3QgYmUgYmV0d2VlbiAwIGFuZCAxIn0sIHsidHlwZSI6ICJyYW5nZSIsICJyYW5nZSI6IFsxLjAwMDAwMDAwMDEsIDEwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDBdLCAiZmVlZGJhY2siOiAiTWlzY2xhc3NpZmljYXRpb24gcmF0ZSBtdXN0IGJlIGJldHdlZW4gMCBhbmQgMSJ9LCB7InR5cGUiOiAiZGVmYXVsdCIsICJmZWVkYmFjayI6ICJObywgdGhpcyBpcyBub3QgdHJ1ZSJ9XX1d</span></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="HOcZmtoxezco" data-shufflequestions="False"
+<div class="output text_html"><div id="SnjVzYmZwdfu" data-shufflequestions="False"
                data-shuffleanswers="True"
                data-preserveresponses="false"
                data-numquestions="1000000"
                data-maxwidth="600"
                style="border-radius: 10px; text-align: left"> <style>
-#HOcZmtoxezco {
+#SnjVzYmZwdfu {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -776,14 +778,14 @@ This is a partition of space which associates a region <span class="math notrans
     }
 }
 </style></div><script type="application/javascript">var element=document.getElementById("q_1nn_train_loss");
-            var questionsHOcZmtoxezco;
+            var questionsSnjVzYmZwdfu;
             try {
-               questionsHOcZmtoxezco=JSON.parse(window.atob(element.innerHTML));
+               questionsSnjVzYmZwdfu=JSON.parse(window.atob(element.innerHTML));
             } catch(err) {
                console.log("Fell into catch");
-               questionsHOcZmtoxezco = JSON.parse(element.innerHTML);
+               questionsSnjVzYmZwdfu = JSON.parse(element.innerHTML);
             }
-            console.log(questionsHOcZmtoxezco);;
+            console.log(questionsSnjVzYmZwdfu);;
     // Make a random ID
 function makeid(length) {
     var result = [];
@@ -1532,8 +1534,8 @@ if (typeof version == 'undefined') {
            Someone more knowledgeable could make this better ;-) */
 
         function try_show() {
-          if(document.getElementById("HOcZmtoxezco")) {
-            show_questions(questionsHOcZmtoxezco,  HOcZmtoxezco); 
+          if(document.getElementById("SnjVzYmZwdfu")) {
+            show_questions(questionsSnjVzYmZwdfu,  SnjVzYmZwdfu); 
           } else {
              setTimeout(try_show, 200);
           }
@@ -1542,8 +1544,8 @@ if (typeof version == 'undefined') {
         {
         // console.log(element);
 
-        //console.log("HOcZmtoxezco");
-        // console.log(document.getElementById("HOcZmtoxezco"));
+        //console.log("SnjVzYmZwdfu");
+        // console.log(document.getElementById("SnjVzYmZwdfu"));
 
         try_show();
         }
@@ -1572,13 +1574,13 @@ if (typeof version == 'undefined') {
 <p><span style="display:none" id="watermelon">W3sicXVlc3Rpb24iOiAiV2hhdCBwZXJjZW50YWdlIG9mIHRoZSB3YXRlcm1lbG9uIGlzIGVhdGFibGU/IiwgInR5cGUiOiAibnVtZXJpYyIsICJhbnN3ZXJzIjogW3sidHlwZSI6ICJ2YWx1ZSIsICJ2YWx1ZSI6IDAuNzI5LCAiY29ycmVjdCI6IGZhbHNlLCAiZmVlZGJhY2siOiAiVGhpcyBpcyB0aGUgcGFydCB3cml0dGVuIGFzIGRlY2ltYWwgZnJhY3Rpb24ifSwgeyJ0eXBlIjogInZhbHVlIiwgInZhbHVlIjogNzIuOSwgImNvcnJlY3QiOiB0cnVlLCAiZmVlZGJhY2siOiAiVGhhdCdzIGNvcnJlY3QhICQoMC45KV4zXFx0aW1lcyAxMDBcXCUgPSA3Mi45XFwlJCJ9LCB7InR5cGUiOiAicmFuZ2UiLCAicmFuZ2UiOiBbLTEwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwLCAwXSwgImZlZWRiYWNrIjogIlBlcmNlbnRhZ2UgY2Fubm90IGJlIG5lZ2F0aXZlIn0sIHsidHlwZSI6ICJyYW5nZSIsICJyYW5nZSI6IFsxMDAuMDAwMDAwMDAwMSwgMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDBdLCAiZmVlZGJhY2siOiAiWW91IGNhbm5vdCBlYXQgbW9yZSB0aGF0ICQxMDBcXCUkIG9mIHRoZSB3YXRlcm1lbG9uIn0sIHsidHlwZSI6ICJkZWZhdWx0IiwgImZlZWRiYWNrIjogIk5vLCB0aGlzIGlzIG5vdCB0cnVlIn1dfSwgeyJxdWVzdGlvbiI6ICJIb3cgdGhlIGFuc3dlciB3b3VsZCBjaGFuZ2UgaWYgd2Ugd2VyZSBsaXZpbmcgaW4gJFxcbWF0aGJiIFJeezEwfSQ/IiwgInR5cGUiOiAibnVtZXJpYyIsICJhbnN3ZXJzIjogW3sidHlwZSI6ICJyYW5nZSIsICJyYW5nZSI6IFswLjM0OCwgMC4zNDkxXSwgImNvcnJlY3QiOiBmYWxzZSwgImZlZWRiYWNrIjogIlRoaXMgaXMgdGhlIHBhcnQgd3JpdHRlbiBhcyBkZWNpbWFsIGZyYWN0aW9uIn0sIHsidHlwZSI6ICJyYW5nZSIsICJyYW5nZSI6IFszNC44LCAzNC45MV0sICJjb3JyZWN0IjogdHJ1ZSwgImZlZWRiYWNrIjogIlRoYXQncyBjb3JyZWN0ISAkKDAuOSleezEwfVxcdGltZXMgMTAwXFwlIFxcYXBwcm94IDM0LjlcXCUkIn0sIHsidHlwZSI6ICJyYW5nZSIsICJyYW5nZSI6IFstMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAsIDBdLCAiY29ycmVjdCI6IGZhbHNlLCAiZmVlZGJhY2siOiAiUGVyY2VudGFnZSBjYW5ub3QgYmUgbmVnYXRpdmUifSwgeyJ0eXBlIjogInJhbmdlIiwgInJhbmdlIjogWzEwMC4wMDAwMDAwMDAxLCAxMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMF0sICJjb3JyZWN0IjogZmFsc2UsICJmZWVkYmFjayI6ICJZb3UgY2Fubm90IGVhdCBtb3JlIHRoYXQgJDEwMFxcJSQgb2YgdGhlIHdhdGVybWVsb24ifSwgeyJ0eXBlIjogImRlZmF1bHQiLCAiZmVlZGJhY2siOiAiRmFsc2UifV19XQ==</span></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="kYKtpmjMheKn" data-shufflequestions="False"
+<div class="output text_html"><div id="AjuuLTulRgrk" data-shufflequestions="False"
                data-shuffleanswers="True"
                data-preserveresponses="false"
                data-numquestions="1000000"
                data-maxwidth="600"
                style="border-radius: 10px; text-align: left"> <style>
-#kYKtpmjMheKn {
+#AjuuLTulRgrk {
    --jq-multiple-choice-bg: #6f78ffff;
    --jq-mc-button-bg: #fafafa;
    --jq-mc-button-border: #e0e0e0e0;
@@ -1749,14 +1751,14 @@ if (typeof version == 'undefined') {
     }
 }
 </style></div><script type="application/javascript">var element=document.getElementById("watermelon");
-            var questionskYKtpmjMheKn;
+            var questionsAjuuLTulRgrk;
             try {
-               questionskYKtpmjMheKn=JSON.parse(window.atob(element.innerHTML));
+               questionsAjuuLTulRgrk=JSON.parse(window.atob(element.innerHTML));
             } catch(err) {
                console.log("Fell into catch");
-               questionskYKtpmjMheKn = JSON.parse(element.innerHTML);
+               questionsAjuuLTulRgrk = JSON.parse(element.innerHTML);
             }
-            console.log(questionskYKtpmjMheKn);;
+            console.log(questionsAjuuLTulRgrk);;
     // Make a random ID
 function makeid(length) {
     var result = [];
@@ -2505,8 +2507,8 @@ if (typeof version == 'undefined') {
            Someone more knowledgeable could make this better ;-) */
 
         function try_show() {
-          if(document.getElementById("kYKtpmjMheKn")) {
-            show_questions(questionskYKtpmjMheKn,  kYKtpmjMheKn); 
+          if(document.getElementById("AjuuLTulRgrk")) {
+            show_questions(questionsAjuuLTulRgrk,  AjuuLTulRgrk); 
           } else {
              setTimeout(try_show, 200);
           }
@@ -2515,8 +2517,8 @@ if (typeof version == 'undefined') {
         {
         // console.log(element);
 
-        //console.log("kYKtpmjMheKn");
-        // console.log(document.getElementById("kYKtpmjMheKn"));
+        //console.log("AjuuLTulRgrk");
+        // console.log(document.getElementById("AjuuLTulRgrk"));
 
         try_show();
         }
@@ -2525,7 +2527,7 @@ if (typeof version == 'undefined') {
 <p>This is how the <strong>curse of dimensionality</strong> works. In <span class="math notranslate nohighlight">\(50\)</span>-dimensional space there is almost nothing to eat in a watermelon.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/58579fd78d4771ce1589b63a600a3a117757c8428eef4cf408f506536e6e20c4.svg" src="../_images/58579fd78d4771ce1589b63a600a3a117757c8428eef4cf408f506536e6e20c4.svg" /></div>
+<img alt="../_images/ee08663f13e09ce3f5b1b21aa0a0d67b040c0302677ab28555ea9cd0ecb390d3.svg" src="../_images/ee08663f13e09ce3f5b1b21aa0a0d67b040c0302677ab28555ea9cd0ecb390d3.svg" /></div>
 </div>
 <p>What are the consequenes of curse of the dimensionality for <span class="math notranslate nohighlight">\(k\)</span>-NN?</p>
 <div class="admonition-a-common-example-from-textbooks admonition">
@@ -2534,7 +2536,327 @@ if (typeof version == 'undefined') {
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/87b56878b1490e2171260922b50f7dd945612c430c1c42ea2feebe5c904add18.svg" src="../_images/87b56878b1490e2171260922b50f7dd945612c430c1c42ea2feebe5c904add18.svg" /></div>
+<img alt="../_images/f00647bd60246b2828b0b45e5232258f1a425539356c80682bd746a327839d63.svg" src="../_images/f00647bd60246b2828b0b45e5232258f1a425539356c80682bd746a327839d63.svg" /></div>
+</div>
+</section>
+<section id="k-nn-for-boston-dataset">
+<h2>k-NN for Boston dataset<a class="headerlink" href="#k-nn-for-boston-dataset" title="Permalink to this heading">#</a></h2>
+<p>Load <code class="docutils literal notranslate"><span class="pre">Boston</span></code> dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">boston_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../datasets/ISLP/Boston.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Unnamed: 0&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">boston_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>crim</th>
+      <th>zn</th>
+      <th>indus</th>
+      <th>chas</th>
+      <th>nox</th>
+      <th>rm</th>
+      <th>age</th>
+      <th>dis</th>
+      <th>rad</th>
+      <th>tax</th>
+      <th>ptratio</th>
+      <th>lstat</th>
+      <th>medv</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.00632</td>
+      <td>18.0</td>
+      <td>2.31</td>
+      <td>0</td>
+      <td>0.538</td>
+      <td>6.575</td>
+      <td>65.2</td>
+      <td>4.0900</td>
+      <td>1</td>
+      <td>296</td>
+      <td>15.3</td>
+      <td>4.98</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.02731</td>
+      <td>0.0</td>
+      <td>7.07</td>
+      <td>0</td>
+      <td>0.469</td>
+      <td>6.421</td>
+      <td>78.9</td>
+      <td>4.9671</td>
+      <td>2</td>
+      <td>242</td>
+      <td>17.8</td>
+      <td>9.14</td>
+      <td>21.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.02729</td>
+      <td>0.0</td>
+      <td>7.07</td>
+      <td>0</td>
+      <td>0.469</td>
+      <td>7.185</td>
+      <td>61.1</td>
+      <td>4.9671</td>
+      <td>2</td>
+      <td>242</td>
+      <td>17.8</td>
+      <td>4.03</td>
+      <td>34.7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.03237</td>
+      <td>0.0</td>
+      <td>2.18</td>
+      <td>0</td>
+      <td>0.458</td>
+      <td>6.998</td>
+      <td>45.8</td>
+      <td>6.0622</td>
+      <td>3</td>
+      <td>222</td>
+      <td>18.7</td>
+      <td>2.94</td>
+      <td>33.4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.06905</td>
+      <td>0.0</td>
+      <td>2.18</td>
+      <td>0</td>
+      <td>0.458</td>
+      <td>7.147</td>
+      <td>54.2</td>
+      <td>6.0622</td>
+      <td>3</td>
+      <td>222</td>
+      <td>18.7</td>
+      <td>5.33</td>
+      <td>36.2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Split it into feature matrix <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> and labels <span class="math notranslate nohighlight">\(\boldsymbol y\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">boston_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;medv&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">boston_df</span><span class="p">[</span><span class="s2">&quot;medv&quot;</span><span class="p">]</span>
+<span class="n">boston_df</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((506, 13), (506, 12), (506,))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Import kNN model from <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>, and do <strong>fit-predict</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsRegressor</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">y_hat</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">y_hat</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(506,)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check MSE:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MSE loss:&quot;</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_hat</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE loss: 15.09318620992534
+</pre></div>
+</div>
+</div>
+</div>
+<p>Study how MSE depends on the value of <span class="math notranslate nohighlight">\(k\)</span> — number of neighbors:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n_neighbors</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbors</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">y_hat</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE loss for </span><span class="si">{</span><span class="n">n_neighbors</span><span class="si">}</span><span class="s2">-NN:&quot;</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_hat</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE loss for 1-NN: 0.0
+MSE loss for 2-NN: 9.920642292490117
+MSE loss for 3-NN: 15.09318620992534
+MSE loss for 4-NN: 18.02147233201581
+MSE loss for 5-NN: 20.895541501976286
+MSE loss for 6-NN: 22.503348155467723
+MSE loss for 7-NN: 23.99821368072921
+MSE loss for 8-NN: 24.42564785079051
+MSE loss for 9-NN: 25.821026204069682
+MSE loss for 10-NN: 27.524774703557313
+</pre></div>
+</div>
+</div>
+</div>
+<p>Looks like <span class="math notranslate nohighlight">\(1\)</span>-NN model is the best. Is it true?</p>
+<p>To evaluate a model, one needs to split the dataset into train and test:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((379, 12), (379,), (127, 12), (127,))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Search for optimal number of neighbors:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_loss</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">test_loss</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">ks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n_neighbors</span> <span class="ow">in</span> <span class="n">ks</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbors</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">train_loss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)))</span>
+    <span class="n">test_loss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ks</span><span class="p">,</span> <span class="n">train_loss</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Train&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ks</span><span class="p">,</span> <span class="n">test_loss</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Test&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">ks</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ks</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Train and test error for k-NN model&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;MSE&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/67c2f34df52af59a0f1d7f5a21a11023720aa4ed96a2d9e846106502f89a39ea.svg" src="../_images/67c2f34df52af59a0f1d7f5a21a11023720aa4ed96a2d9e846106502f89a39ea.svg" /></div>
+</div>
+</section>
+<section id="k-nn-for-classification">
+<h2>k-NN for classification<a class="headerlink" href="#k-nn-for-classification" title="Permalink to this heading">#</a></h2>
+<p>Load a simple digit dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_digits</span>
+
+<span class="n">digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">()</span>
+<span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((1797, 64), (1797,))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Count samples of each class:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]),
+ array([178, 182, 177, 183, 181, 182, 181, 179, 174, 180]))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Train a k-NN classifier for different values of <span class="math notranslate nohighlight">\(k\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="n">train_acc</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">test_acc</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">ks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n_neighbors</span> <span class="ow">in</span> <span class="n">ks</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbors</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">train_acc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)))</span>
+    <span class="n">test_acc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ks</span><span class="p">,</span> <span class="n">train_acc</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Train&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ks</span><span class="p">,</span> <span class="n">test_acc</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Test&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">ks</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ks</span><span class="p">[::</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Train and test accuracy for k-NN model&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;accuracy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8fd9b86915a14ddab5b9b6ebf252ba998fe93934c4e17ca2f703f04bcc2e5a40.svg" src="../_images/8fd9b86915a14ddab5b9b6ebf252ba998fe93934c4e17ca2f703f04bcc2e5a40.svg" /></div>
 </div>
 </section>
 <section id="exercises">
@@ -2591,20 +2913,20 @@ if (typeof version == 'undefined') {
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="sl_types.html"
+       href="model_selection.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Types of supervised learning</p>
+        <p class="prev-next-title">Model selection</p>
       </div>
     </a>
     <a class="right-next"
-       href="model_selection.html"
+       href="../lin_reg/linear_regression.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Model selection</p>
+        <p class="prev-next-title">Linear regression</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2632,6 +2954,8 @@ if (typeof version == 'undefined') {
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#role-of-k">Role of <span class="math notranslate nohighlight">\(k\)</span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curse-of-dimensionality">Curse of dimensionality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nn-for-boston-dataset">k-NN for Boston dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nn-for-classification">k-NN for classification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
   </nav></div>

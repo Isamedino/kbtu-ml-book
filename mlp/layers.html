@@ -186,8 +186,8 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../supervised/sl.html">Supervised learning</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../supervised/sl_types.html">Types of supervised learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../supervised/model_selection.html">Model selection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../supervised/knn.html">k-Nearest Neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supervised/model_selection.html">Model selection</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lin_reg/linear_regression.html">Linear regression</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -651,10 +651,10 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter containing:
-tensor([[-0.3173,  0.2372, -0.2676],
-        [ 0.2976, -0.0668,  0.3774],
-        [ 0.0426,  0.2133, -0.2635],
-        [ 0.0362,  0.1673, -0.0528]], requires_grad=True)
+tensor([[-0.0743, -0.4260,  0.5201],
+        [ 0.5326, -0.4877,  0.4738],
+        [-0.0499, -0.4073,  0.3932],
+        [ 0.5466, -0.4069, -0.2349]], requires_grad=True)
 </pre></div>
 </div>
 </div>
@@ -667,7 +667,7 @@ tensor([[-0.3173,  0.2372, -0.2676],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([-0.3477,  0.6082, -0.0077,  0.1507], grad_fn=&lt;SqueezeBackward4&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 0.0198,  0.5188, -0.0640, -0.0952], grad_fn=&lt;SqueezeBackward4&gt;)
 </pre></div>
 </div>
 </div>
@@ -714,7 +714,7 @@ tensor([[-0.3173,  0.2372, -0.2676],
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1888526f6c52bcfca28b6e02babab5df085fce4d05f906232a95390e2a37d51b.svg" src="../_images/1888526f6c52bcfca28b6e02babab5df085fce4d05f906232a95390e2a37d51b.svg" /></div>
+<img alt="../_images/3aa2edb872e4564906757d7ca61fdb06323d75d22363e7c3d55ca6265fc727d3.svg" src="../_images/3aa2edb872e4564906757d7ca61fdb06323d75d22363e7c3d55ca6265fc727d3.svg" /></div>
 </div>
 <p>You can read about advantages and disadvantages of different activation functions <a class="reference external" href="https://education.yandex.ru/handbook/ml/article/beta-pervoe-znakomstvo-s-polnosvyaznymi-nejrosetyami#populyarnye-funkczii-aktivaczii">here</a>.</p>
 </section>
@@ -730,8 +730,8 @@ tensor([[-0.3173,  0.2372, -0.2676],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.1941, -0.4279,  1.6845, -0.6498,  0.9049],
-        [-0.8885, -0.9808,  1.5579, -0.9393, -1.4707]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 2.5686,  0.1998,  0.4652, -1.7241,  0.7469],
+        [-0.4227,  0.8967, -0.7444, -0.1578,  0.7496]])
 </pre></div>
 </div>
 </div>
@@ -744,10 +744,10 @@ tensor([[-0.3173,  0.2372, -0.2676],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([[0.1941, 0.0000, 1.6845, 0.0000, 0.9049],
-         [0.0000, 0.0000, 1.5579, 0.0000, 0.0000]]),
- tensor([[ 0.1941, -0.0043,  1.6845, -0.0065,  0.9049],
-         [-0.0089, -0.0098,  1.5579, -0.0094, -0.0147]]))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([[2.5686, 0.1998, 0.4652, 0.0000, 0.7469],
+         [0.0000, 0.8967, 0.0000, 0.0000, 0.7496]]),
+ tensor([[ 2.5686e+00,  1.9983e-01,  4.6524e-01, -1.7241e-02,  7.4689e-01],
+         [-4.2272e-03,  8.9665e-01, -7.4444e-03, -1.5776e-03,  7.4958e-01]]))
 </pre></div>
 </div>
 </div>

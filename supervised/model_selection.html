@@ -68,8 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'supervised/model_selection';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="k-Nearest Neighbors" href="knn.html" />
-    <link rel="prev" title="Types of supervised learning" href="sl_types.html" />
+    <link rel="next" title="Linear regression" href="../lin_reg/linear_regression.html" />
+    <link rel="prev" title="k-Nearest Neighbors" href="knn.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -164,7 +164,9 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../courses/ML_2023.html">ML 2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../courses/Intro2ML.html">Introduction to ML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/DL.html">Deep Learning 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2024.html">ML 2024 (MS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../courses/ML_2024_MBA.html">ML 2024 (MBA)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical ML</span></p>
 <ul class="current nav bd-sidenav">
@@ -184,8 +186,8 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="sl.html">Supervised learning</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="sl_types.html">Types of supervised learning</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Model selection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="knn.html">k-Nearest Neighbors</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Model selection</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lin_reg/linear_regression.html">Linear regression</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -580,15 +582,15 @@ document.write(`
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/fd43181dc7122b38e24ad06e6bbc768bf1d9a264988d06dc8da616e2384e4ef4.svg" src="../_images/fd43181dc7122b38e24ad06e6bbc768bf1d9a264988d06dc8da616e2384e4ef4.svg" /></div>
+<img alt="../_images/2c3923ebd8b6d14b7e3b6d3f19b54913ef1f5021a1f1698eb4359f4b0e3fba3a.svg" src="../_images/2c3923ebd8b6d14b7e3b6d3f19b54913ef1f5021a1f1698eb4359f4b0e3fba3a.svg" /></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/b836caa3bb5b7afbf8bd9fecdc01817c39130441cf83d4031d2f12da2d904c6d.svg" src="../_images/b836caa3bb5b7afbf8bd9fecdc01817c39130441cf83d4031d2f12da2d904c6d.svg" /></div>
+<img alt="../_images/7d0479b4e1df614871de4271879132d1f3ad59cbd35ef1a2e983457f487c5c2c.svg" src="../_images/7d0479b4e1df614871de4271879132d1f3ad59cbd35ef1a2e983457f487c5c2c.svg" /></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/050e65e594f5e8813a68a4f40949d1bb4c4a3bef798560fa86ad09942c615d4b.svg" src="../_images/050e65e594f5e8813a68a4f40949d1bb4c4a3bef798560fa86ad09942c615d4b.svg" /></div>
+<img alt="../_images/1f5c96079e1aa6fbfcfed8bf1c185c4eca9ef06e331f4817dbe3b9a69ca64ec9.svg" src="../_images/1f5c96079e1aa6fbfcfed8bf1c185c4eca9ef06e331f4817dbe3b9a69ca64ec9.svg" /></div>
 </div>
 <p>The overfitting is a big problem in ML because an overfitted model makes poor predictions. The first signal of the overfitting: <span class="math notranslate nohighlight">\(\mathcal L_{\mathrm{train}} \ll \mathcal L_{\mathrm{test}}\)</span>.</p>
 </section>
@@ -642,20 +644,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="sl_types.html"
+       href="knn.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Types of supervised learning</p>
+        <p class="prev-next-title">k-Nearest Neighbors</p>
       </div>
     </a>
     <a class="right-next"
-       href="knn.html"
+       href="../lin_reg/linear_regression.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">k-Nearest Neighbors</p>
+        <p class="prev-next-title">Linear regression</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
