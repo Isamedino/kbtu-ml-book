@@ -506,6 +506,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-linear-regression">Simple linear regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projection-onto-a-subspace">Projection onto a subspace</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-spaces">Orthogonal spaces</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
             </nav>
@@ -559,6 +560,10 @@ document.write(`
 <p>In linear regression we minimize the distance from the target vector <span class="math notranslate nohighlight">\(\boldsymbol y = (y_1, \ldots, y_n)\)</span> and the line specified by the feature vector <span class="math notranslate nohighlight">\(\boldsymbol x = (x_1, \ldots, x_n)\)</span>. According <a class="reference internal" href="#equation-1d-projection">(47)</a> we can achieve this by putting</p>
 <div class="math notranslate nohighlight" id="equation-best-slope-lr-no-bias">
 <span class="eqno">(48)<a class="headerlink" href="#equation-best-slope-lr-no-bias" title="Permalink to this equation">#</a></span>\[    \widehat a = \frac{\boldsymbol x^\mathsf{T} \boldsymbol y}{\boldsymbol x^\mathsf{T} \boldsymbol x} = \frac{\sum\limits_{i=1}^n x_i y_i}{\sum\limits_{i=1}^n x_i^2}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Linear regression with bias <span class="math notranslate nohighlight">\(y = ax + b\)</span> is described <a class="reference internal" href="../../lin_reg/simple.html#simple-linear-regression"><span class="std std-ref">here</span></a>. The optimal parameters are given by <a class="reference internal" href="../../lin_reg/simple.html#equation-1-d-weights">(9)</a>. See also <a class="reference internal" href="../../supervised/sl_types.html#lr-1d-plot"><span class="std std-ref">this</span></a> plot.</p>
+</div>
 </section>
 <section id="projection-onto-a-subspace">
 <h2>Projection onto a subspace<a class="headerlink" href="#projection-onto-a-subspace" title="Permalink to this heading">#</a></h2>
@@ -611,28 +616,14 @@ $$
 <p>Отметим, что проекция на прямую является частным случаем проекции на подпространство, когда матрица <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> состоит из одного столбца <span class="math notranslate nohighlight">\(\boldsymbol a\)</span>. Проекция на подпространство записывается в виде <span class="math notranslate nohighlight">\(\boldsymbol p = \boldsymbol {Px}\)</span> с помощью матрицы проекции</p>
 <div class="math notranslate nohighlight" id="equation-proj-matrix">
 <span class="eqno">(50)<a class="headerlink" href="#equation-proj-matrix" title="Permalink to this equation">#</a></span>\[    \boldsymbol P = \boldsymbol A (\boldsymbol A^\mathsf{T} \boldsymbol A)^{-1} \boldsymbol A^\mathsf{T}. \]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The matrix <span class="math notranslate nohighlight">\((\boldsymbol A^\mathsf{T} \boldsymbol A)^{-1} \boldsymbol A^\mathsf{T}\)</span> is also called <strong>Moore–Penrose pseudo inverse</strong> matrix and denotes as <span class="math notranslate nohighlight">\(\boldsymbol A^\dagger\)</span>. Thus, <a class="reference internal" href="#equation-projection-coef">(49)</a> can be rewritten as <span class="math notranslate nohighlight">\(\boldsymbol c = \boldsymbol A^\dagger \boldsymbol x\)</span>.</p>
+</div>
 <!--
 Поиск проекции основан на геометрических соображениях, имеющих связь с основной теоремой линейной алгебры. Проектируя вектор $\boldsymbol x$ на $C(\boldsymbol A)$, мы «опускаем перепендикуляр» из $\boldsymbol x$ на $C(\boldsymbol A)$, т.е. ищем такой вектор $\boldsymbol p$, $\boldsymbol x - \boldsymbol p \perp C(\boldsymbol A)$. Но мы знаем, что $C(\boldsymbol A)^\perp = N(\boldsymbol A^\mathsf{T})$, следовательно, вектор $\boldsymbol x - \boldsymbol p$ лежит в левом ядре матрицы $\boldsymbol A$ и $\boldsymbol A^\mathsf{T}(\boldsymbol x - \boldsymbol p) = \boldsymbol 0$.
 
-**Упражнение**. Пусть $\boldsymbol P$ — матрица проекции на подпространство $C(\boldsymbol A)$. Проекции на какое подпространтство соответствует матрица $\boldsymbol I - \boldsymbol P$?
 
-```{admonition} Answer
-:class: dropdown
-Заметим, что 
-
-$$
-(\boldsymbol I - \boldsymbol P)^2 = \boldsymbol I - 2\boldsymbol P + \overbrace{\boldsymbol P^2}^{=\boldsymbol P} = \boldsymbol I - \boldsymbol P,
-$$
-
-так что $\boldsymbol I - \boldsymbol P$ действительно матрица проекции. Любой вектор $\boldsymbol x$ единственным образом представляется в виде суммы $\boldsymbol x = \boldsymbol p + \boldsymbol e$, где $\boldsymbol p  = \boldsymbol{Px}$ — проекция на $C(\boldsymbol A)$, 
-$\boldsymbol e  = \boldsymbol x - \boldsymbol p$ — ортогональный ей вектор. Имеем
-
-$$
-(\boldsymbol I - \boldsymbol P) \boldsymbol x = \boldsymbol x - \boldsymbol p = \boldsymbol e;
-$$
-
-таким образом, матрица $\boldsymbol I - \boldsymbol P$ проектирует на ортогональное дополнение к $C(\boldsymbol A)$, т.е. на левое ядро $N(\boldsymbol A^\top)$.
-```
 --><!--
 ## Least squares approximation
 
@@ -796,14 +787,64 @@ $$
 <!--
 Вычислительная сложность нахождения весов линейной регрессии по формуле {eq}`lin-reg-solution-lsa` составляет $O(ND^2 + D^3)$. Таким образом, при большом количестве признаков точное аналитическое вычисление весов — весьма дорогое удовольствие. Вычисления можно ускорить, используя продвинутые алгоритмы перемножения матриц или итерационные методы поиска обратной матрицы. Или же можно вообще не использовать формулу {eq}`lin-reg-solution-lsa`, а искать приближённое решения задачи оптимизации {eq}`lin-reg-opt-lsa` методом градиентного спуска, например.
 --></section>
+<section id="orthogonal-spaces">
+<h2>Orthogonal spaces<a class="headerlink" href="#orthogonal-spaces" title="Permalink to this heading">#</a></h2>
+<p>Subspaces <span class="math notranslate nohighlight">\(U, V \subset \mathbb R^n\)</span> are called <strong>orthogonal</strong> if</p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol u^\mathsf{T}\boldsymbol v = 0 \text{ for all } \boldsymbol u, \boldsymbol v \in V.
+\]</div>
+<p>For example, lines <span class="math notranslate nohighlight">\(y = x\)</span> and <span class="math notranslate nohighlight">\(y = x\)</span> are orthogonal in <span class="math notranslate nohighlight">\(\mathbb R^2\)</span>, and plane <span class="math notranslate nohighlight">\(x + y + z = 0\)</span> is orthogonal to line specified by vector <span class="math notranslate nohighlight">\((1, 1, 1)\)</span>.</p>
+<p><strong>Orthogonal complement</strong> of a subspace <span class="math notranslate nohighlight">\(V\subset \mathbb R^n\)</span> is a subspace of vectors perpendicular to all vectors from <span class="math notranslate nohighlight">\(V\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    V^\perp = \{ \boldsymbol x \in \mathbb R^n\colon \boldsymbol x^{\mathsf T} \boldsymbol v = 0 \text{ for all } \boldsymbol v \in V\}.
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(V\)</span> is a subspace of <span class="math notranslate nohighlight">\(\mathbb R^n\)</span>, then <span class="math notranslate nohighlight">\(\dim V + \dim V ^\perp = n\)</span>.</p>
+<div class="important admonition">
+<p class="admonition-title">Fundamental theorem of linear algebra, part 2</p>
+<p>If <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{m\times n}\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[
+C(\boldsymbol A)^\perp = N(\boldsymbol A^\mathsf{T}), \quad
+C(\boldsymbol A^\mathsf{T})^\perp = \dim N(\boldsymbol A).
+\]</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Proof</p>
+<p>Let <span class="math notranslate nohighlight">\(\boldsymbol x \in N(\boldsymbol A)\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol y \in C(\boldsymbol A^\mathsf{T})\)</span>, then <span class="math notranslate nohighlight">\(\boldsymbol{Ax} = \boldsymbol 0\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol y = \boldsymbol A^\mathsf{T} \boldsymbol z\)</span> for some <span class="math notranslate nohighlight">\(\boldsymbol z \in \mathbb R^m\)</span>. Hence,</p>
+<div class="math notranslate nohighlight">
+\[
+    \boldsymbol x^\mathsf{T}\boldsymbol y = \boldsymbol x^\mathsf{T}  \boldsymbol A^\mathsf{T} \boldsymbol z = (\boldsymbol{Ax})^{\mathsf T} \boldsymbol z = \boldsymbol 0^\mathsf{T} \boldsymbol z = 0.
+\]</div>
+</div>
+</div>
+</section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Find the projection matrix onto the line <span class="math notranslate nohighlight">\(x + y = 0\)</span>.</p></li>
 <li><p>Prove that <span class="math notranslate nohighlight">\(\boldsymbol P = \frac{\boldsymbol a \boldsymbol a^\mathsf{T}}{\boldsymbol a^\mathsf{T} \boldsymbol a}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol a \ne \boldsymbol 0\)</span>, is a projection matrix, i.e., <span class="math notranslate nohighlight">\(\boldsymbol P^2 = \boldsymbol P\)</span>.</p></li>
 <li><p>Show that matrix <a class="reference internal" href="#equation-proj-matrix">(50)</a> is a projection matrix.</p></li>
 <li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol X \in \mathbb R^{n\times d}\)</span>. Estimate the complexity of calculations by formula <a class="reference internal" href="#equation-lin-reg-solution-lsa">(52)</a> in terms of big-O.</p></li>
 <li><p>Find the feature matrix <span class="math notranslate nohighlight">\(\boldsymbol X\)</span> for simple linear regression <span class="math notranslate nohighlight">\(y = ax + b\)</span>. Applying <a class="reference internal" href="#equation-lin-reg-solution-lsa">(52)</a> show that the equalities <a class="reference internal" href="../../lin_reg/simple.html#equation-1-d-weights">(9)</a> hold.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol P\)</span> be a projection matrix. Show that <span class="math notranslate nohighlight">\(\boldsymbol I - \boldsymbol P\)</span> is also a projection matrix.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\boldsymbol P\)</span> be the projection matrix onto <span class="math notranslate nohighlight">\(C(\boldsymbol A)\)</span>. On which subspace will project the matrix <span class="math notranslate nohighlight">\(\boldsymbol I - \boldsymbol P\)</span>?</p>
+<div class="dropdown tip admonition">
+<p class="admonition-title">Answer</p>
+<p>Заметим, что</p>
+<div class="math notranslate nohighlight">
+\[
+(\boldsymbol I - \boldsymbol P)^2 = \boldsymbol I - 2\boldsymbol P + \overbrace{\boldsymbol P^2}^{=\boldsymbol P} = \boldsymbol I - \boldsymbol P,
+\]</div>
+<p>так что <span class="math notranslate nohighlight">\(\boldsymbol I - \boldsymbol P\)</span> действительно матрица проекции. Любой вектор <span class="math notranslate nohighlight">\(\boldsymbol x\)</span> единственным образом представляется в виде суммы <span class="math notranslate nohighlight">\(\boldsymbol x = \boldsymbol p + \boldsymbol e\)</span>, где <span class="math notranslate nohighlight">\(\boldsymbol p  = \boldsymbol{Px}\)</span> — проекция на <span class="math notranslate nohighlight">\(C(\boldsymbol A)\)</span>,
+<span class="math notranslate nohighlight">\(\boldsymbol e  = \boldsymbol x - \boldsymbol p\)</span> — ортогональный ей вектор. Имеем</p>
+<div class="math notranslate nohighlight">
+\[
+(\boldsymbol I - \boldsymbol P) \boldsymbol x = \boldsymbol x - \boldsymbol p = \boldsymbol e;
+\]</div>
+<p>таким образом, матрица <span class="math notranslate nohighlight">\(\boldsymbol I - \boldsymbol P\)</span> проектирует на ортогональное дополнение к <span class="math notranslate nohighlight">\(C(\boldsymbol A)\)</span>, т.е. на левое ядро <span class="math notranslate nohighlight">\(N(\boldsymbol A^\mathsf{T})\)</span>.</p>
+</div>
+</li>
 </ol>
 </section>
 </section>
@@ -879,6 +920,7 @@ $$
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-linear-regression">Simple linear regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projection-onto-a-subspace">Projection onto a subspace</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-spaces">Orthogonal spaces</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
   </nav></div>

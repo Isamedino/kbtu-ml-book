@@ -908,14 +908,21 @@ $$
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/737c89885ebdcf4e2f6523769687fde2295136c8cfc2ac8f8e9af0985fa13e0e.svg" src="../../_images/737c89885ebdcf4e2f6523769687fde2295136c8cfc2ac8f8e9af0985fa13e0e.svg" /></div>
+<img alt="../../_images/b0ab9249522ffaac7fee5aa5dbae14a73b13b4ad7422f99be8b3303a5d82d28a.svg" src="../../_images/b0ab9249522ffaac7fee5aa5dbae14a73b13b4ad7422f99be8b3303a5d82d28a.svg" /></div>
 </div>
 <div class="important admonition">
 <p class="admonition-title">Question</p>
 <p>Is it true that it takes <span class="math notranslate nohighlight">\(O(n^2)\)</span> arithmetical operations to calculate <span class="math notranslate nohighlight">\(\det \boldsymbol A\)</span> if <span class="math notranslate nohighlight">\(\boldsymbol A \in \mathbb R^{n\times n}\)</span>?</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Answer</p>
-<img alt="../../_images/45a2b507643b4fe894c70352735b1d99f0624b9ca371f7f186871dd25d75b2c2.svg" src="../../_images/45a2b507643b4fe894c70352735b1d99f0624b9ca371f7f186871dd25d75b2c2.svg" /></div>
+<p>If we look further for larger values of <span class="math notranslate nohighlight">\(n\)</span>, we’ll see that asymptotics <span class="math notranslate nohighlight">\(O(n^2)\)</span> is incorrect:</p>
+<img alt="../../_images/b2a75213dc422de93a52c1467b9662ee925405071d0678c14293cecfadfbd713.svg" src="../../_images/b2a75213dc422de93a52c1467b9662ee925405071d0678c14293cecfadfbd713.svg" /><p>A practical way to calculate <span class="math notranslate nohighlight">\(\det \boldsymbol A \in\mathbb R{n\times n}\)</span> is to use Gaussian elimination to reduce <span class="math notranslate nohighlight">\(\boldsymbol A\)</span> to echelon form <span class="math notranslate nohighlight">\(\boldsymbol U\)</span> which is an upper triangular matrix$. Then</p>
+<div class="math notranslate nohighlight">
+\[
+    \det \boldsymbol A = \det \boldsymbol U = \prod\limits_{i=1}^n u_ii.
+\]</div>
+<p>This takes <span class="math notranslate nohighlight">\(O(n^3)\)</span> arithmetic operations in total.</p>
+</div>
 </div>
 </section>
 <section id="exercises">
